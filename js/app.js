@@ -39,7 +39,7 @@ function equalsNormalized(a, b) {
 // Cargar JSON
 // ===============================
 async function loadMiscrits() {
-  const res = await fetch("../miscrits.json", { cache: "no-store" });
+  const res = await fetch("./miscrits.json", { cache: "no-store" });
   if (!res.ok) throw new Error(`HTTP ${res.status} cargando miscrits.json`);
   const data = await res.json();
 
@@ -125,7 +125,7 @@ function placeToImageFilename(place) {
 
 function applySpawnBackground(box, place) {
   const file = placeToImageFilename(place);
-  box.style.setProperty("--spawn-bg", `url("../assets/images/places/${file}")`);
+  box.style.setProperty("--spawn-bg", `url("./assets/images/places/${file}")`);
 }
 
 // ===============================
@@ -156,7 +156,7 @@ function typeIconHTML(typeRaw) {
   return `
     <img
       class="type-icon"
-      src="../assets/images/type/${key}.png"
+      src="./assets/images/type/${key}.png"
       alt="Tipo ${safeAlt}"
       title="Tipo: ${safeAlt}"
       loading="lazy"
@@ -234,11 +234,11 @@ function render(listPaged, total, totalPages, startIdx, endIdx) {
     // Avatar
     const avatarEl = node.querySelector(".miscrit__avatar");
     if (avatarEl) {
-      avatarEl.src = `../assets/images/miscrits_avatar/${m.avatar ?? "preset_avatar.png"}`;
+      avatarEl.src = `./assets/images/miscrits_avatar/${m.avatar ?? "preset_avatar.png"}`;
       avatarEl.alt = m.name ?? "Miscrit";
       avatarEl.loading = "lazy";
       avatarEl.onerror = () => {
-        avatarEl.src = "../assets/images/miscrits_avatar/preset_avatar.png";
+        avatarEl.src = "./assets/images/miscrits_avatar/preset_avatar.png";
       };
     }
 

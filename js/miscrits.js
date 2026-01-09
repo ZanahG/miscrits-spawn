@@ -19,7 +19,7 @@ let ZONE_PRESETS = {};
 let OBJECT_PRESETS = {};
 
 async function loadMiscrits() {
-  const res = await fetch("../miscrits.json", { cache: "no-store" });
+  const res = await fetch("./miscrits.json", { cache: "no-store" });
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
   const data = await res.json();
 
@@ -59,7 +59,7 @@ function getQueryParam(name) {
 const MAPS = window.MAPS ?? {};
 
 // Pin icon
-const PIN_ICON = "../assets/images/ui/pin_question.png";
+const PIN_ICON = "./assets/images/ui/pin_question.png";
 const FALLBACK_PIN =
   "data:image/svg+xml;utf8," +
   encodeURIComponent(`
@@ -131,7 +131,7 @@ function setMiscritHeader(m) {
     return `
       <img
         class="type-icon"
-        src="../assets/images/type/${key}.png"
+        src="./assets/images/type/${key}.png"
         alt="Tipo ${typeRaw}"
         title="Tipo: ${typeRaw}"
         loading="lazy"
@@ -152,9 +152,9 @@ function setMiscritHeader(m) {
 
   const avatar = $("#avatar");
   if (avatar) {
-    avatar.src = `../assets/images/miscrits_avatar/${m.avatar ?? "preset_avatar.png"}`;
+    avatar.src = `./assets/images/miscrits_avatar/${m.avatar ?? "preset_avatar.png"}`;
     avatar.onerror = () => {
-      avatar.src = "../assets/images/miscrits_avatar/preset_avatar.png";
+      avatar.src = "./assets/images/miscrits_avatar/preset_avatar.png";
     };
   }
 
@@ -196,7 +196,7 @@ function setMapFromSpawn(spawn) {
 
     if (imgPath) {
       mapImg.src = imgPath;
-      mapImg.onerror = () => (mapImg.src = "../assets/images/maps/default.png");
+      mapImg.onerror = () => (mapImg.src = "./assets/images/maps/default.png");
       return { mode: "object" };
     }
 
@@ -206,11 +206,11 @@ function setMapFromSpawn(spawn) {
 
     if (cfgByObj?.image) {
       mapImg.src = cfgByObj.image;
-      mapImg.onerror = () => (mapImg.src = "../assets/images/maps/default.png");
+      mapImg.onerror = () => (mapImg.src = "./assets/images/maps/default.png");
       return { mode: "object" };
     }
 
-    mapImg.src = "../assets/images/maps/default.png";
+    mapImg.src = "./assets/images/maps/default.png";
     return { mode: "object" };
   }
 
@@ -218,12 +218,12 @@ function setMapFromSpawn(spawn) {
   const cfg = MAPS[spawn?.place] ?? null;
 
   if (!cfg?.image) {
-    mapImg.src = "../assets/images/maps/default.png";
+    mapImg.src = "./assets/images/maps/default.png";
     return null;
   }
 
   mapImg.src = cfg.image;
-  mapImg.onerror = () => (mapImg.src = "../assets/images/maps/default.png");
+  mapImg.onerror = () => (mapImg.src = "./assets/images/maps/default.png");
   return cfg;
 }
 
@@ -242,7 +242,7 @@ function showPinCard({ title, objects, anchorEl, imageOverride = null }) {
   chips.innerHTML = "";
 
   // Imagen de objeto (si viene override, úsalo)
-  const imgSrc = imageOverride || "../assets/images/objects/default_object.png";
+  const imgSrc = imageOverride || "./assets/images/objects/default_object.png";
   cardImg.src = imgSrc;
   cardImg.onerror = () => {
     cardImg.src =
@@ -358,7 +358,7 @@ function renderObjectView(spawn, mapCfg) {
     if (objectImg) {
       mapImg.src = objectImg;
       mapImg.onerror = () => {
-        mapImg.src = original || "../assets/images/maps/default.png";
+        mapImg.src = original || "./assets/images/maps/default.png";
       };
     }
   }
