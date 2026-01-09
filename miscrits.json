@@ -8,21 +8,8 @@
 		"MAR_VIE_DOM": ["Martes", "Viernes", "Domingo"]
   },
 	"ZONES": {
-    "ALL_ZONES": ["Zona 1","Zona 2","Zona 3","Zona 4"],
-	  "ZONE_1": ["Zona 1"],
-	  "ZONE_2": ["Zona 2"],
-		"ZONE_3": ["Zona 3"],
-		"ZONE_4": ["Zona 4"],
-    "ZONE_1_2": ["Zona 1","Zona 2"]
   },
   "OBJECTS": {
-    "ALL_OBJECTS": ["Cualquier Objeto del Mapa"],
-		"DEAD_TREES": ["Any of the Dead Trees"],
-		"BIG_FLOWER": ["Big Magical Flower"],
-		"PALM_TREE": ["Any of the Palm Trees"],
-    "BUSHES": ["Arbusto"],
-    "ROCKS": ["Piedra"],
-    "WATER_PLANTS": ["Plantas de Agua"]
   },
   "miscrits": [
     {
@@ -32,7 +19,7 @@
       "rarity": "Common",
 	    "avatar": "flue_avatar.png",
       "spawns": [
-        { "place": "Hidden Grove", "level": "Lv 3-6", "days": "WEEKDAYS" }
+        { "place": "Forest", "zone": ["Forest 1"], "view": "object", "objectImage": "../assets/images/maps/MAP_FOREST.png","days": "ALL_DAYS"}
       ]
     },
     {
@@ -42,7 +29,7 @@
       "rarity": "Common",
 			"avatar": "flowerpiller_avatar.png",
       "spawns": [
-        { "place": "Forest", "zone": "ZONE_1", "objects": "ALL_OBJECTS", "level": "Lv 4-7", "days": "ALL_DAYS" }
+        { "place": "Forest", "zone": ["Forest 1"], "view": "object", "objectImage": "../assets/images/maps/MAP_FOREST.png","days": "ALL_DAYS"}
       ]
     },
     {
@@ -51,7 +38,7 @@
 			"type": "Water",
 			"rarity": "Common",
 			"spawns": [
-				{ "place": "Forest", "level": "Lv 10-14", "days": "ALL_DAYS" }
+				{ "place": "Forest", "zone": ["Forest 1"], "view": "object", "objectImage": "../assets/images/maps/MAP_FOREST.png","days": "ALL_DAYS"}
 			]
     },
 		{
@@ -60,7 +47,7 @@
 			"type": "Nature",
 			"rarity": "Common",
 			"spawns": [
-				{ "place": "Forest", "level": "Lv 10-14", "days": "ALL_DAYS" }
+				{ "place": "Forest", "zone": ["Forest 1"], "view": "object", "objectImage": "../assets/images/maps/MAP_FOREST.png","days": "ALL_DAYS"}
 			]
     },
 		{
@@ -69,7 +56,7 @@
 			"type": "Nature",
 			"rarity": "Common",
 			"spawns": [
-				{ "place": "Forest", "zone": "ALL_ZONES", "objects": "ALL_OBJECTS", "level": "Lv 4-7", "days": "ALL_DAYS" }
+				{ "place": "Forest", "zone": ["Forest 1"], "view": "object", "objectImage": "../assets/images/maps/MAP_FOREST.png","days": "ALL_DAYS"}
 			]
     },
 		{
@@ -78,7 +65,7 @@
 			"type": "Fire",
 			"rarity": "Common",
 			"spawns": [
-				{ "place": "Forest", "zone": "ALL_ZONES", "objects": "ALL_OBJECTS", "level": "Lv 4-7", "days": "ALL_DAYS" }
+				{ "place": "Forest", "zone": ["Forest 1"], "view": "object", "objectImage": "../assets/images/maps/MAP_FOREST.png","days": "ALL_DAYS"}
 			]
     },
 		{
@@ -87,8 +74,7 @@
 			"type": "Water",
 			"rarity": "Common",
 			"spawns": [
-				{ "place": "Forest", "zone": "ALL_ZONES", "objects": "ALL_OBJECTS", "level": "Lv 4-7", "days": "ALL_DAYS" },
-				{ "place": "Mansion", "zone": "ALL_ZONES", "objects": "ALL_OBJECTS", "level": "Lv 4-7", "days": "ALL_DAYS" }
+				{ "place": "Forest", "zone": ["Forest 1"], "view": "object", "objectImage": "../assets/images/maps/MAP_FOREST.png","days": "ALL_DAYS"}
 			]
     },
 		{
@@ -97,7 +83,7 @@
 			"type": "Water",
 			"rarity": "Common",
 			"spawns": [
-				{ "place": "Forest", "zone": "Z2", "objects": "ALL_OBJECTS", "level": "Lv 4-7", "days": "ALL_DAYS" }
+				{ "place": "Forest", "zone": ["Forest 2"], "view": "object", "objectImage": "../assets/images/maps/MAP_FOREST.png","days": "ALL_DAYS"}
 			]
     },
 		{
@@ -106,8 +92,7 @@
 			"type": "Water",
 			"rarity": "Common",
 			"spawns": [
-				{ "place": "Forest", "zone": "Z2", "objects": "ALL_OBJECTS", "level": "Lv 4-7", "days": "ALL_DAYS" },
-				{ "place": "Mansion", "zone": "ALL_ZONES", "objects": "ALL_OBJECTS", "level": "Lv 4-7", "days": "ALL_DAYS" }
+				{ "place": "Forest", "zone": ["Forest 2"], "view": "object", "objectImage": "../assets/images/maps/MAP_FOREST.png","days": "ALL_DAYS"}
 			]
     },
 		{
@@ -116,7 +101,7 @@
 			"type": "Fire",
 			"rarity": "Common",
 			"spawns": [
-				{ "place": "Forest", "zone": "ZONE_2", "objects": "ALL_OBJECTS", "level": "Lv 4-7", "days": "ALL_DAYS" }
+				{ "place": "Forest", "zone": ["Forest 2"], "view": "object", "objectImage": "../assets/images/maps/MAP_FOREST.png","days": "ALL_DAYS"}
 			]
     },
 		{
@@ -125,7 +110,7 @@
 			"type": "Fire",
 			"rarity": "Common",
 			"spawns": [
-				{ "place": "Forest", "zone": "ZONE_2", "objects": "ALL_OBJECTS", "level": "Lv 4-7", "days": "ALL_DAYS" }
+				{ "place": "Forest", "zone": ["Forest 2"], "view": "object", "objectImage": "../assets/images/maps/MAP_FOREST.png","days": "ALL_DAYS"}
 			]
     },
 		{
@@ -134,7 +119,7 @@
 			"type": "Nature",
 			"rarity": "Common",
 			"spawns": [
-				{ "place": "Forest", "zone": "ZONE_3", "objects": "ALL_OBJECTS", "level": "Lv 4-7", "days": "ALL_DAYS" }
+				{ "place": "Forest", "zone": ["Forest 3"], "view": "object", "objectImage": "../assets/images/maps/MAP_FOREST.png","days": "ALL_DAYS"}
 			]
     },
 		{
@@ -143,7 +128,7 @@
 			"type": "Nature",
 			"rarity": "Common",
 			"spawns": [
-				{ "place": "Forest", "zone": "ZONE_3", "objects": "ALL_OBJECTS", "level": "Lv 4-7", "days": "ALL_DAYS" }
+				{ "place": "Forest", "zone": ["Forest 3"], "view": "object", "objectImage": "../assets/images/maps/MAP_FOREST.png","days": "ALL_DAYS"}
 			]
     },
 		{
@@ -152,7 +137,7 @@
 			"type": "Water",
 			"rarity": "Common",
 			"spawns": [
-				{ "place": "Forest", "zone": "ZONE_4", "objects": "ALL_OBJECTS", "level": "Lv 4-7", "days": "ALL_DAYS" }
+				{ "place": "Forest", "zone": ["Forest 4"], "view": "object", "objectImage": "../assets/images/maps/MAP_FOREST.png","days": "ALL_DAYS"}
 			]
     },
 		{
@@ -161,7 +146,7 @@
 			"type": "Fire",
 			"rarity": "Common",
 			"spawns": [
-				{ "place": "Forest", "zone": "ZONE_3", "objects": "ALL_OBJECTS", "level": "Lv 4-7", "days": "ALL_DAYS" }
+				{ "place": "Forest", "zone": ["Forest 3"], "view": "object", "objectImage": "../assets/images/maps/MAP_FOREST.png","days": "ALL_DAYS"}
 			]
     },
 		{
@@ -170,7 +155,7 @@
 			"type": "Nature",
 			"rarity": "Common",
 			"spawns": [
-				{ "place": "Forest", "zone": "ZONE_4", "objects": "ALL_OBJECTS", "level": "Lv 4-7", "days": "ALL_DAYS" }
+				{ "place": "Forest", "zone": ["Forest 4"], "view": "object", "objectImage": "../assets/images/maps/MAP_FOREST.png","days": "ALL_DAYS"}
 			]
     },
 		{
@@ -179,7 +164,7 @@
 			"type": "Water",
 			"rarity": "Common",
 			"spawns": [
-				{ "place": "Forest", "zone": "ZONE_3", "objects": "ALL_OBJECTS", "level": "Lv 4-7", "days": "ALL_DAYS" }
+				{ "place": "Forest", "zone": ["Forest 3"], "view": "object", "objectImage": "../assets/images/maps/MAP_FOREST.png","days": "ALL_DAYS"}
 			]
     },
 		{
@@ -188,7 +173,7 @@
 			"type": "Water",
 			"rarity": "Common",
 			"spawns": [
-				{ "place": "Forest", "zone": "ZONE_4", "objects": "ALL_OBJECTS", "level": "Lv 4-7", "days": "ALL_DAYS" }
+				{ "place": "Forest", "zone": ["Forest 4"], "view": "object", "objectImage": "../assets/images/maps/MAP_FOREST.png","days": "ALL_DAYS"}
 			]
     },
 		{
@@ -197,7 +182,7 @@
 			"type": "Fire",
 			"rarity": "Common",
 			"spawns": [
-				{ "place": "Forest", "zone": "ZONE_4", "objects": "ALL_OBJECTS", "level": "Lv 4-7", "days": "ALL_DAYS" }
+				{ "place": "Forest", "zone": ["Forest 4"], "view": "object", "objectImage": "../assets/images/maps/MAP_FOREST.png","days": "ALL_DAYS"}
 			]
     },
 		{
@@ -206,7 +191,7 @@
 			"type": "Water",
 			"rarity": "Rare",
 			"spawns": [
-				{ "place": "Forest", "zone": "ZONE_1", "objects": "WATER_PLANTS", "level": "Lv 4-7", "days": "LUN_JUE_DOM" }
+        { "place": "Forest", "zone": ["Forest 1"], "view": "object", "objectImage": "../assets/images/maps/Waddles.png","days": "LUN_JUE_DOM"}
 			]
     },
 		{
@@ -215,7 +200,7 @@
 			"type": "Nature",
 			"rarity": "Rare",
 			"spawns": [
-				{ "place": "Forest", "zone": "ZONE_1", "objects": "DEAD_TREES", "level": "Lv 4-7", "days": "LUN_JUE_DOM" }
+				{ "place": "Forest", "zone": ["Forest 1"], "view": "object", "objectImage": "../assets/images/maps/Waddles.png","days": "LUN_JUE_DOM"}
 			]
     },
 		{
@@ -224,7 +209,7 @@
 			"type": "Nature",
 			"rarity": "Rare",
 			"spawns": [
-				{ "place": "Forest", "zone": "ZONE_3", "objects": "BIG_FLOWER", "level": "Lv 4-7", "days": "MIE_SAB_DOM" }
+				{ "place": "Forest", "zone": ["Forest 3"], "view": "object", "objectImage": "../assets/images/maps/Waddles.png","days": "MIE_SAB_DOM"}
 			]
     },
 		{
@@ -233,7 +218,7 @@
 			"type": "Fire",
 			"rarity": "Rare",
 			"spawns": [
-				{ "place": "Forest", "zone": "ZONE_2", "objects": "PALM_TREE", "level": "Lv 4-7", "days": "MAR_VIE_DOM" }
+				{ "place": "Forest", "zone": ["Forest 2"], "view": "object", "objectImage": "../assets/images/maps/Waddles.png","days": "MAR_VIE_DOM"}
 			]
     },
 				{
@@ -242,7 +227,7 @@
 			"type": "Nature",
 			"rarity": "Rare",
 			"spawns": [
-				{ "place": "Forest", "zone": "ZONE_2", "objects": "PALM_TREE", "level": "Lv 4-7", "days": "MAR_VIE_DOM" }
+				{ "place": "Forest", "zone": ["Forest 1"], "view": "object", "objectImage": "../assets/images/maps/Waddles.png","days": "LUN_JUE_DOM"}
 			]
     },
 				{
@@ -251,7 +236,7 @@
 			"type": "Water",
 			"rarity": "Rare",
 			"spawns": [
-				{ "place": "Forest", "zone": "ZONE_2", "objects": "PALM_TREE", "level": "Lv 4-7", "days": "MAR_VIE_DOM" }
+				{ "place": "Forest", "zone": ["Forest 1"], "view": "object", "objectImage": "../assets/images/maps/Waddles.png","days": "LUN_JUE_DOM"}
 			]
     },
 				{
@@ -260,7 +245,7 @@
 			"type": "Fire",
 			"rarity": "Rare",
 			"spawns": [
-				{ "place": "Forest", "zone": "ZONE_4", "objects": "PALM_TREE", "level": "Lv 4-7", "days": "MAR_VIE_DOM" }
+				{ "place": "Forest", "zone": ["Forest 4"], "view": "object", "objectImage": "../assets/images/maps/Waddles.png","days": "LUN_JUE_DOM"}
 			]
     },
 				{
@@ -269,7 +254,7 @@
 			"type": "Water",
 			"rarity": "Common",
 			"spawns": [
-				{ "place": "Forest", "zone": "ZONE_2", "objects": "PALM_TREE", "level": "Lv 4-7", "days": "MAR_VIE_DOM" }
+				{ "place": "Forest", "zone": ["Forest 1"], "view": "object", "objectImage": "../assets/images/maps/Waddles.png","days": "LUN_JUE_DOM"}
 			]
     },
 						{
@@ -278,7 +263,7 @@
 			"type": "Fire",
 			"rarity": "Epic",
 			"spawns": [
-				{ "place": "Forest", "zone": "ZONE_2", "objects": "PALM_TREE", "level": "Lv 4-7", "days": "MAR_VIE_DOM" }
+				{ "place": "Forest", "zone": ["Forest 1"], "view": "object", "objectImage": "../assets/images/maps/Waddles.png","days": "LUN_JUE_DOM"}
 			]
     },
 		{
@@ -287,7 +272,7 @@
 			"type": "Lighting",
 			"rarity": "Common",
 			"spawns": [
-				{ "place": "Mount Gemma", "zone": "ZONE_2", "objects": "PALM_TREE", "level": "Lv 4-7", "days": "MAR_VIE_DOM" }
+				{ "place": "Mount Gemma", "zone": ["Mount Gemma 1"], "view": "object", "objectImage": "../assets/images/maps/Waddles.png","days": "ALL_DAYS"}
 			]
     },
 				{
@@ -296,7 +281,7 @@
 			"type": "Wind",
 			"rarity": "Common",
 			"spawns": [
-				{ "place": "Mount Gemma", "zone": "ZONE_2", "objects": "PALM_TREE", "level": "Lv 4-7", "days": "MAR_VIE_DOM" }
+				{ "place": "Mount Gemma", "zone": ["Mount Gemma 1"], "view": "object", "objectImage": "../assets/images/maps/Waddles.png","days": "ALL_DAYS"}
 			]
     },
 				{
@@ -305,7 +290,7 @@
 			"type": "Earth",
 			"rarity": "Common",
 			"spawns": [
-				{ "place": "Mount Gemma", "zone": "ZONE_2", "objects": "PALM_TREE", "level": "Lv 4-7", "days": "MAR_VIE_DOM" }
+				{ "place": "Mount Gemma", "zone": ["Mount Gemma 1"], "view": "object", "objectImage": "../assets/images/maps/Waddles.png","days": "ALL_DAYS"}
 			]
     },
 				{
@@ -314,7 +299,7 @@
 			"type": "Lighting",
 			"rarity": "Common",
 			"spawns": [
-				{ "place": "Mount Gemma", "zone": "ZONE_2", "objects": "PALM_TREE", "level": "Lv 4-7", "days": "MAR_VIE_DOM" }
+				{ "place": "Mount Gemma", "zone": ["Mount Gemma 1"], "view": "object", "objectImage": "../assets/images/maps/Waddles.png","days": "ALL_DAYS"}
 			]
     },
 						{
@@ -323,7 +308,7 @@
 			"type": "Lighting",
 			"rarity": "Common",
 			"spawns": [
-				{ "place": "Mount Gemma", "zone": "ZONE_2", "objects": "PALM_TREE", "level": "Lv 4-7", "days": "MAR_VIE_DOM" }
+				{ "place": "Mount Gemma", "zone": ["Mount Gemma 1"], "view": "object", "objectImage": "../assets/images/maps/Waddles.png","days": "ALL_DAYS"}
 			]
     },
 		    {
