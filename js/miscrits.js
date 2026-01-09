@@ -190,17 +190,15 @@ function setMapFromSpawn(spawn) {
   const zoneLabel = spawnZoneLabel(spawn);
   mapTitle.textContent = zoneLabel ? `${placeLabel} - ${zoneLabel}` : placeLabel;
 
-  // ✅ Si es vista tipo "object", mostramos esa imagen (NO depende de MAPS[place])
   if ((spawn?.view ?? "").toString().toLowerCase() === "object") {
     const imgPath = spawn.objectImage || null;
 
     if (imgPath) {
       mapImg.src = imgPath;
       mapImg.onerror = () => (mapImg.src = "../assets/images/maps/default.png");
-      return { mode: "object" };
+      return { mode: "object", image: imgPath, zones: {} };
     }
 
-    // fallback si no viene objectImage: intenta usar el primer objects como key en MAPS
     const firstObjKey = Array.isArray(spawn.objects) ? spawn.objects[0] : spawn.objects;
     const cfgByObj = firstObjKey ? (MAPS[firstObjKey] ?? null) : null;
 
@@ -394,35 +392,23 @@ async function init() {
   if (!spawn) return;
 
   const mapCfg = setMapFromSpawn(spawn);
-  if (!mapCfg) return;
 
-  if ((spawn.view ?? "").toString().toLowerCase() !== "object") {
-    renderPinsForSpawn(spawn, mapCfg);
-  } else {
-    hidePinCard();
+  const view = (spawn.view ?? "").toString().trim().toLowerCase();
+
+  // Vista object: solo imagen (sin pines)
+  if (view === "object") {
     const pinsWrap = $("#pins");
     if (pinsWrap) pinsWrap.innerHTML = "";
-  }
+    hidePinCard();
 
-
-  const placeLabel = spawn.place ?? "MAPA";
-  const zoneLabel = spawnZoneLabel(spawn);
-  $("#mapTitle").textContent = zoneLabel ? `${placeLabel} - ${zoneLabel}` : placeLabel;
-
-  if (!mapCfg) return;
-
-  // Si no hay config, no podemos poner pines (pero igual mostramos la imagen default)
-  if (!mapCfg) return;
-
-  // Si spawn.view === "object", mostramos imagen del objeto (spawn.objectImage)
-  const view = (spawn.view ?? "").toString().trim().toLowerCase();
-  if (view === "object" && spawn.objectImage) {
-    renderObjectView(spawn, mapCfg);
+    // Si además quieres el texto hint especial:
+    const hint = document.querySelector(".hint");
+    if (hint) hint.textContent = "Este Miscrit SOLO aparece en el objeto mostrado en la imágen.";
     return;
   }
 
-  // Vista normal con pines
-  renderPinsForSpawn(spawn, mapCfg);
+  // Vista normal: pines
+  if (mapCfg) renderPinsForSpawn(spawn, mapCfg);
 }
 
 init();
