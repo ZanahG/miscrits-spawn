@@ -1,0 +1,3800 @@
+{
+  "presets": {
+    "ALL_DAYS": ["Lunes","Martes","Miercoles","Jueves","Viernes","Sabado","Domingo"],
+    "WEEKDAYS": ["Lunes","Martes","Miercoles","Jueves","Viernes"],
+    "WEEKEND": ["Sabado","Domingo"],
+		"LUN_JUE_DOM": ["Lunes", "Jueves", "Domingo"],
+		"MIE_SAB_DOM": ["Miercoles", "Sabado", "Domingo"],
+		"MAR_VIE_DOM": ["Martes", "Viernes", "Domingo"]
+  },
+	"ZONES": {
+    "ALL_ZONES": ["Zona 1","Zona 2","Zona 3","Zona 4"],
+	  "ZONE_1": ["Zona 1"],
+	  "ZONE_2": ["Zona 2"],
+		"ZONE_3": ["Zona 3"],
+		"ZONE_4": ["Zona 4"],
+    "ZONE_1_2": ["Zona 1","Zona 2"]
+  },
+  "OBJECTS": {
+    "ALL_OBJECTS": ["Cualquier Objeto del Mapa"],
+		"DEAD_TREES": ["Any of the Dead Trees"],
+		"BIG_FLOWER": ["Big Magical Flower"],
+		"PALM_TREE": ["Any of the Palm Trees"],
+    "BUSHES": ["Arbusto"],
+    "ROCKS": ["Piedra"],
+    "WATER_PLANTS": ["Plantas de Agua"]
+  },
+  "miscrits": [
+    {
+      "id": "001",
+      "name": "Flue",
+      "type": "Fire",
+      "rarity": "Common",
+	    "avatar": "flue_avatar.png",
+      "spawns": [
+        { "place": "Hidden Grove", "level": "Lv 3-6", "days": "WEEKDAYS" }
+      ]
+    },
+    {
+      "id": "002",
+      "name": "Flowerpiller",
+      "type": "Nature",
+      "rarity": "Common",
+			"avatar": "flowerpiller_avatar.png",
+      "spawns": [
+        { "place": "Forest", "zone": "ZONE_1", "objects": "ALL_OBJECTS", "level": "Lv 4-7", "days": "ALL_DAYS" }
+      ]
+    },
+    {
+			"id": "003",
+			"name": "Prawnja",
+			"type": "Water",
+			"rarity": "Common",
+			"spawns": [
+				{ "place": "Forest", "level": "Lv 10-14", "days": "ALL_DAYS" }
+			]
+    },
+		{
+			"id": "004",
+			"name": "Weevern",
+			"type": "Nature",
+			"rarity": "Common",
+			"spawns": [
+				{ "place": "Forest", "level": "Lv 10-14", "days": "ALL_DAYS" }
+			]
+    },
+		{
+			"id": "005",
+			"name": "Cubsprout",
+			"type": "Nature",
+			"rarity": "Common",
+			"spawns": [
+				{ "place": "Forest", "zone": "ALL_ZONES", "objects": "ALL_OBJECTS", "level": "Lv 4-7", "days": "ALL_DAYS" }
+			]
+    },
+		{
+			"id": "006",
+			"name": "Sparkupine",
+			"type": "Fire",
+			"rarity": "Common",
+			"spawns": [
+				{ "place": "Forest", "zone": "ALL_ZONES", "objects": "ALL_OBJECTS", "level": "Lv 4-7", "days": "ALL_DAYS" }
+			]
+    },
+		{
+			"id": "007",
+			"name": "Hydroseal",
+			"type": "Water",
+			"rarity": "Common",
+			"spawns": [
+				{ "place": "Forest", "zone": "ALL_ZONES", "objects": "ALL_OBJECTS", "level": "Lv 4-7", "days": "ALL_DAYS" },
+				{ "place": "Mansion", "zone": "ALL_ZONES", "objects": "ALL_OBJECTS", "level": "Lv 4-7", "days": "ALL_DAYS" }
+			]
+    },
+		{
+			"id": "008",
+			"name": "Snortus",
+			"type": "Water",
+			"rarity": "Common",
+			"spawns": [
+				{ "place": "Forest", "zone": "Z2", "objects": "ALL_OBJECTS", "level": "Lv 4-7", "days": "ALL_DAYS" }
+			]
+    },
+		{
+			"id": "009",
+			"name": "Quirk",
+			"type": "Water",
+			"rarity": "Common",
+			"spawns": [
+				{ "place": "Forest", "zone": "Z2", "objects": "ALL_OBJECTS", "level": "Lv 4-7", "days": "ALL_DAYS" },
+				{ "place": "Mansion", "zone": "ALL_ZONES", "objects": "ALL_OBJECTS", "level": "Lv 4-7", "days": "ALL_DAYS" }
+			]
+    },
+		{
+			"id": "010",
+			"name": "Flameling",
+			"type": "Fire",
+			"rarity": "Common",
+			"spawns": [
+				{ "place": "Forest", "zone": "ZONE_2", "objects": "ALL_OBJECTS", "level": "Lv 4-7", "days": "ALL_DAYS" }
+			]
+    },
+		{
+			"id": "011",
+			"name": "Lumera",
+			"type": "Fire",
+			"rarity": "Common",
+			"spawns": [
+				{ "place": "Forest", "zone": "ZONE_2", "objects": "ALL_OBJECTS", "level": "Lv 4-7", "days": "ALL_DAYS" }
+			]
+    },
+		{
+			"id": "012",
+			"name": "Snatcher",
+			"type": "Nature",
+			"rarity": "Common",
+			"spawns": [
+				{ "place": "Forest", "zone": "ZONE_3", "objects": "ALL_OBJECTS", "level": "Lv 4-7", "days": "ALL_DAYS" }
+			]
+    },
+		{
+			"id": "013",
+			"name": "Elefauna",
+			"type": "Nature",
+			"rarity": "Common",
+			"spawns": [
+				{ "place": "Forest", "zone": "ZONE_3", "objects": "ALL_OBJECTS", "level": "Lv 4-7", "days": "ALL_DAYS" }
+			]
+    },
+		{
+			"id": "014",
+			"name": "Nessy",
+			"type": "Water",
+			"rarity": "Common",
+			"spawns": [
+				{ "place": "Forest", "zone": "ZONE_4", "objects": "ALL_OBJECTS", "level": "Lv 4-7", "days": "ALL_DAYS" }
+			]
+    },
+		{
+			"id": "015",
+			"name": "Hotfoot",
+			"type": "Fire",
+			"rarity": "Common",
+			"spawns": [
+				{ "place": "Forest", "zone": "ZONE_3", "objects": "ALL_OBJECTS", "level": "Lv 4-7", "days": "ALL_DAYS" }
+			]
+    },
+		{
+			"id": "016",
+			"name": "Twiggum",
+			"type": "Nature",
+			"rarity": "Common",
+			"spawns": [
+				{ "place": "Forest", "zone": "ZONE_4", "objects": "ALL_OBJECTS", "level": "Lv 4-7", "days": "ALL_DAYS" }
+			]
+    },
+		{
+			"id": "017",
+			"name": "Shellbee",
+			"type": "Water",
+			"rarity": "Common",
+			"spawns": [
+				{ "place": "Forest", "zone": "ZONE_3", "objects": "ALL_OBJECTS", "level": "Lv 4-7", "days": "ALL_DAYS" }
+			]
+    },
+		{
+			"id": "018",
+			"name": "Squibee",
+			"type": "Water",
+			"rarity": "Common",
+			"spawns": [
+				{ "place": "Forest", "zone": "ZONE_4", "objects": "ALL_OBJECTS", "level": "Lv 4-7", "days": "ALL_DAYS" }
+			]
+    },
+		{
+			"id": "019",
+			"name": "Steamguin",
+			"type": "Fire",
+			"rarity": "Common",
+			"spawns": [
+				{ "place": "Forest", "zone": "ZONE_4", "objects": "ALL_OBJECTS", "level": "Lv 4-7", "days": "ALL_DAYS" }
+			]
+    },
+		{
+			"id": "020",
+			"name": "Waddles",
+			"type": "Water",
+			"rarity": "Rare",
+			"spawns": [
+				{ "place": "Forest", "zone": "ZONE_1", "objects": "WATER_PLANTS", "level": "Lv 4-7", "days": "LUN_JUE_DOM" }
+			]
+    },
+		{
+			"id": "021",
+			"name": "Treemur",
+			"type": "Nature",
+			"rarity": "Rare",
+			"spawns": [
+				{ "place": "Forest", "zone": "ZONE_1", "objects": "DEAD_TREES", "level": "Lv 4-7", "days": "LUN_JUE_DOM" }
+			]
+    },
+		{
+			"id": "022",
+			"name": "Tulipinny",
+			"type": "Nature",
+			"rarity": "Rare",
+			"spawns": [
+				{ "place": "Forest", "zone": "ZONE_3", "objects": "BIG_FLOWER", "level": "Lv 4-7", "days": "MIE_SAB_DOM" }
+			]
+    },
+		{
+			"id": "023",
+			"name": "Dark Flue",
+			"type": "Fire",
+			"rarity": "Rare",
+			"spawns": [
+				{ "place": "Forest", "zone": "ZONE_2", "objects": "PALM_TREE", "level": "Lv 4-7", "days": "MAR_VIE_DOM" }
+			]
+    },
+				{
+			"id": "024",
+			"name": "Dark Flowerpiller",
+			"type": "Nature",
+			"rarity": "Rare",
+			"spawns": [
+				{ "place": "Forest", "zone": "ZONE_2", "objects": "PALM_TREE", "level": "Lv 4-7", "days": "MAR_VIE_DOM" }
+			]
+    },
+				{
+			"id": "025",
+			"name": "Dark Prawnja",
+			"type": "Water",
+			"rarity": "Rare",
+			"spawns": [
+				{ "place": "Forest", "zone": "ZONE_2", "objects": "PALM_TREE", "level": "Lv 4-7", "days": "MAR_VIE_DOM" }
+			]
+    },
+				{
+			"id": "026",
+			"name": "Blazebit",
+			"type": "Fire",
+			"rarity": "Rare",
+			"spawns": [
+				{ "place": "Forest", "zone": "ZONE_4", "objects": "PALM_TREE", "level": "Lv 4-7", "days": "MAR_VIE_DOM" }
+			]
+    },
+				{
+			"id": "027",
+			"name": "Frostmite",
+			"type": "Water",
+			"rarity": "Common",
+			"spawns": [
+				{ "place": "Forest", "zone": "ZONE_2", "objects": "PALM_TREE", "level": "Lv 4-7", "days": "MAR_VIE_DOM" }
+			]
+    },
+						{
+			"id": "028",
+			"name": "Blazertooth",
+			"type": "Fire",
+			"rarity": "Epic",
+			"spawns": [
+				{ "place": "Forest", "zone": "ZONE_2", "objects": "PALM_TREE", "level": "Lv 4-7", "days": "MAR_VIE_DOM" }
+			]
+    },
+		{
+			"id": "029",
+			"name": "Statikat",
+			"type": "Lighting",
+			"rarity": "Common",
+			"spawns": [
+				{ "place": "Mount Gemma", "zone": "ZONE_2", "objects": "PALM_TREE", "level": "Lv 4-7", "days": "MAR_VIE_DOM" }
+			]
+    },
+				{
+			"id": "030",
+			"name": "Equestrion",
+			"type": "Wind",
+			"rarity": "Common",
+			"spawns": [
+				{ "place": "Mount Gemma", "zone": "ZONE_2", "objects": "PALM_TREE", "level": "Lv 4-7", "days": "MAR_VIE_DOM" }
+			]
+    },
+				{
+			"id": "031",
+			"name": "Drilldent",
+			"type": "Earth",
+			"rarity": "Common",
+			"spawns": [
+				{ "place": "Mount Gemma", "zone": "ZONE_2", "objects": "PALM_TREE", "level": "Lv 4-7", "days": "MAR_VIE_DOM" }
+			]
+    },
+				{
+			"id": "032",
+			"name": "Kiloray",
+			"type": "Lighting",
+			"rarity": "Common",
+			"spawns": [
+				{ "place": "Mount Gemma", "zone": "ZONE_2", "objects": "PALM_TREE", "level": "Lv 4-7", "days": "MAR_VIE_DOM" }
+			]
+    },
+						{
+			"id": "032",
+			"name": "Kiloray",
+			"type": "Lighting",
+			"rarity": "Common",
+			"spawns": [
+				{ "place": "Mount Gemma", "zone": "ZONE_2", "objects": "PALM_TREE", "level": "Lv 4-7", "days": "MAR_VIE_DOM" }
+			]
+    },
+		    {
+      "id": "033",
+      "name": "Breezycheeks",
+      "type": "Wind",
+      "rarity": "Common",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "034",
+      "name": "Mumbah",
+      "type": "Earth",
+      "rarity": "Common",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "035",
+      "name": "Aria",
+      "type": "Wind",
+      "rarity": "Common",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "036",
+      "name": "Jellyshock",
+      "type": "Lightning",
+      "rarity": "Common",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "037",
+      "name": "Croaky",
+      "type": "Earth",
+      "rarity": "Common",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "038",
+      "name": "Sparkslug",
+      "type": "Lightning",
+      "rarity": "Common",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "039",
+      "name": "Craggy",
+      "type": "Earth",
+      "rarity": "Common",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "040",
+      "name": "Owlie",
+      "type": "Wind",
+      "rarity": "Common",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "041",
+      "name": "Luna",
+      "type": "Lightning",
+      "rarity": "Rare",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "042",
+      "name": "Poltergust",
+      "type": "Wind",
+      "rarity": "Rare",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "043",
+      "name": "Fossillia",
+      "type": "Earth",
+      "rarity": "Rare",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "044",
+      "name": "Eggy",
+      "type": "Earth",
+      "rarity": "Rare",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "045",
+      "name": "Thundercracker",
+      "type": "Lightning",
+      "rarity": "Rare",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "046",
+      "name": "Mun Kee",
+      "type": "Wind",
+      "rarity": "Rare",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "047",
+      "name": "Microblast",
+      "type": "Lightning",
+      "rarity": "Epic",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "048",
+      "name": "Sledgehog",
+      "type": "Earth",
+      "rarity": "Epic",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "049",
+      "name": "Sapphron",
+      "type": "Earth",
+      "rarity": "Epic",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "050",
+      "name": "Sparkspeck",
+      "type": "Lightning",
+      "rarity": "Common",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "051",
+      "name": "Grubbean",
+      "type": "Nature",
+      "rarity": "Common",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "052",
+      "name": "Echino",
+      "type": "Nature",
+      "rarity": "Common",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "053",
+      "name": "Wavesling",
+      "type": "Water",
+      "rarity": "Common",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "054",
+      "name": "Sparkitten",
+      "type": "Fire",
+      "rarity": "Common",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "055",
+      "name": "Arigato",
+      "type": "Lightning",
+      "rarity": "Common",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "056",
+      "name": "Jack",
+      "type": "Wind",
+      "rarity": "Common",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "057",
+      "name": "Quebble",
+      "type": "Earth",
+      "rarity": "Common",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "058",
+      "name": "Digsy",
+      "type": "Earth",
+      "rarity": "Common",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "059",
+      "name": "Hippoke",
+      "type": "Earth",
+      "rarity": "Common",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "060",
+      "name": "Leggy",
+      "type": "Wind",
+      "rarity": "Common",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "061",
+      "name": "Orcatide",
+      "type": "Water",
+      "rarity": "Common",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "062",
+      "name": "Flutterpat",
+      "type": "Wind",
+      "rarity": "Rare",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "063",
+      "name": "Snorkels",
+      "type": "Water",
+      "rarity": "Rare",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "064",
+      "name": "Kelpa",
+      "type": "Nature",
+      "rarity": "Rare",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "065",
+      "name": "Ignios",
+      "type": "Fire",
+      "rarity": "Rare",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "067",
+      "name": "Beelzebug",
+      "type": "Lightning",
+      "rarity": "Epic",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "068",
+      "name": "Winnebeargo",
+      "type": "Wind",
+      "rarity": "Epic",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "069",
+      "name": "Fennie",
+      "type": "Earth",
+      "rarity": "Epic",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "070",
+      "name": "Patchkin",
+      "type": "Nature",
+      "rarity": "Exotic",
+      "avatar": "",
+      "spawns": [
+				{ "place": "The Shac", "zone": ["1st Floor of The Shack"], "view": "object", "objectImage": "../assets/images/maps/Pumpkin.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "072",
+      "name": "Flurrious",
+      "type": "Water",
+      "rarity": "Exotic",
+      "avatar": "",
+      "spawns": [
+				{ "place": "Shop", "zone": ["Miscrit Shop"], "view": "object", "objectImage": "../assets/images/maps/Shop.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "073",
+      "name": "Fangly",
+      "type": "Wind",
+      "rarity": "Epic",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "074",
+      "name": "Dark Kiloray",
+      "type": "Lightning",
+      "rarity": "Rare",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "075",
+      "name": "Dark Croaky",
+      "type": "Earth",
+      "rarity": "Rare",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "076",
+      "name": "Valentino",
+      "type": "Lightning",
+      "rarity": "Exotic",
+      "avatar": "",
+      "spawns": [
+				{ "place": "Shop", "zone": ["Miscrit Shop"], "view": "object", "objectImage": "../assets/images/maps/shop.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "077",
+      "name": "Dark Cubsprout",
+      "type": "Nature",
+      "rarity": "Rare",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "078",
+      "name": "Dark Sparkitten",
+      "type": "Fire",
+      "rarity": "Rare",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "079",
+      "name": "Dark Snortus",
+      "type": "Water",
+      "rarity": "Epic",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "080",
+      "name": "Boltzee",
+      "type": "Lightning",
+      "rarity": "Epic",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "082",
+      "name": "Dark Owlie",
+      "type": "Wind",
+      "rarity": "Rare",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "083",
+      "name": "Dark Echino",
+      "type": "Nature",
+      "rarity": "Rare",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "085",
+      "name": "Dark Arigato",
+      "type": "Lightning",
+      "rarity": "Rare",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "086",
+      "name": "Dark Hydroseal",
+      "type": "Water",
+      "rarity": "Rare",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "087",
+      "name": "Peepsie",
+      "type": "Wind",
+      "rarity": "Exotic",
+      "avatar": "",
+      "spawns": [
+				{ "place": "Beach", "zone": ["Shores 4"], "view": "object", "objectImage": "../assets/images/maps/ColEggs.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "088",
+      "name": "Dark Eggy",
+      "type": "Earth",
+      "rarity": "Epic",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "090",
+      "name": "Dark Flameling",
+      "type": "Fire",
+      "rarity": "Rare",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "091",
+      "name": "Dark Elefauna",
+      "type": "Nature",
+      "rarity": "Epic",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "093",
+      "name": "Mama",
+      "type": "Nature",
+      "rarity": "Exotic",
+      "avatar": "",
+      "spawns": [
+				{ "place": "Forest", "zone": ["Forest 3"], "view": "object", "objectImage": "../assets/images/maps/Log.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "094",
+      "name": "Dark Nessy",
+      "type": "Water",
+      "rarity": "Exotic",
+      "avatar": "",
+      "spawns": [
+				{ "place": "Forest", "zone": ["Forest 4"], "view": "object", "objectImage": "../assets/images/maps/DCattail.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "095",
+      "name": "Dark Hotfoot",
+      "type": "Fire",
+      "rarity": "Rare",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "097",
+      "name": "Dark Breezycheeks",
+      "type": "Wind",
+      "rarity": "Rare",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "098",
+      "name": "Papa",
+      "type": "Lightning",
+      "rarity": "Exotic",
+      "avatar": "",
+      "spawns": [
+				{ "place": "Mansion", "zone": ["Mansion 2nd Floor"], "view": "object", "objectImage": "../assets/images/maps/PapaFrame.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "101",
+      "name": "Whik",
+      "type": "Fire",
+      "rarity": "Common",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "102",
+      "name": "Slithero",
+      "type": "Fire",
+      "rarity": "Common",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "104",
+      "name": "Spinnerette",
+      "type": "Water",
+      "rarity": "Common",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "108",
+      "name": "Crickin",
+      "type": "Fire",
+      "rarity": "Common",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "111",
+      "name": "Bubbles",
+      "type": "Water",
+      "rarity": "Common",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "112",
+      "name": "Humbug",
+      "type": "Nature",
+      "rarity": "Common",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "115",
+      "name": "Lavarilla",
+      "type": "Fire",
+      "rarity": "Common",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "121",
+      "name": "Bloomple",
+      "type": "Nature",
+      "rarity": "Epic",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "124",
+      "name": "Pamboo",
+      "type": "Nature",
+      "rarity": "Rare",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "125",
+      "name": "Rockodile",
+      "type": "Water",
+      "rarity": "Rare",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "133",
+      "name": "Boneshee",
+      "type": "Wind",
+      "rarity": "Epic",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "134",
+      "name": "Ursiwave",
+      "type": "Water",
+      "rarity": "Epic",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "135",
+      "name": "Bludger",
+      "type": "Earth",
+      "rarity": "Common",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "138",
+      "name": "Zaptor",
+      "type": "Lightning",
+      "rarity": "Common",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "139",
+      "name": "Narlope",
+      "type": "Lightning",
+      "rarity": "Common",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "142",
+      "name": "Vexie",
+      "type": "Earth",
+      "rarity": "Common",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "144",
+      "name": "Tongutail",
+      "type": "Earth",
+      "rarity": "Common",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "151",
+      "name": "Hawkai",
+      "type": "Wind",
+      "rarity": "Common",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "152",
+      "name": "Nero",
+      "type": "Lightning",
+      "rarity": "Common",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "155",
+      "name": "Pollifog",
+      "type": "Wind",
+      "rarity": "Rare",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "156",
+      "name": "Felis",
+      "type": "Lightning",
+      "rarity": "Common",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "158",
+      "name": "Tectonyx",
+      "type": "Earth",
+      "rarity": "Common",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "168",
+      "name": "Nibbles",
+      "type": "Water",
+      "rarity": "Common",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "171",
+      "name": "Skustunk",
+      "type": "Wind",
+      "rarity": "Rare",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "176",
+      "name": "Flintly",
+      "type": "Fire",
+      "rarity": "Rare",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "180",
+      "name": "Gog",
+      "type": "Earth",
+      "rarity": "Epic",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "184",
+      "name": "Octavio",
+      "type": "Wind",
+      "rarity": "Epic",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "192",
+      "name": "Crabbles",
+      "type": "Fire",
+      "rarity": "Rare",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "196",
+      "name": "Inferno",
+      "type": "Fire",
+      "rarity": "Epic",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "197",
+      "name": "Hotdog",
+      "type": "Fire",
+      "rarity": "Epic",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "200",
+      "name": "Rafiery",
+      "type": "Fire",
+      "rarity": "Rare",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "201",
+      "name": "Nanaslug",
+      "type": "WaterWind",
+      "rarity": "Epic",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "202",
+      "name": "Vhisp",
+      "type": "Wind",
+      "rarity": "Common",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "203",
+      "name": "Raldio",
+      "type": "Earth",
+      "rarity": "Rare",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "205",
+      "name": "Freedom",
+      "type": "FireWind",
+      "rarity": "Exotic",
+      "avatar": "",
+      "spawns": [
+				{ "place": "Forest", "zone": ["Hidden Forest"], "view": "object", "objectImage": "../assets/images/maps/Firework.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "206",
+      "name": "Gemix",
+      "type": "Earth",
+      "rarity": "Epic",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "210",
+      "name": "Podo",
+      "type": "Lightning",
+      "rarity": "Epic",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "212",
+      "name": "Lavazard",
+      "type": "Fire",
+      "rarity": "Epic",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "214",
+      "name": "Shurikoon",
+      "type": "FireWind",
+      "rarity": "Epic",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "223",
+      "name": "Skelepup",
+      "type": "Lightning",
+      "rarity": "Exotic",
+      "avatar": "",
+      "spawns": [
+				{ "place": "The Shac", "zone": ["Basement of The Shack"], "view": "object", "objectImage": "../assets/images/maps/DogCollar.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "226",
+      "name": "Foil Waddles",
+      "type": "Water",
+      "rarity": "Exotic",
+      "avatar": "",
+      "spawns": [
+				{ "place": "Cave", "zone": ["Cave 3"], "view": "object", "objectImage": "../assets/images/maps/TreasureChest.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "227",
+      "name": "Foil Fossillia",
+      "type": "Earth",
+      "rarity": "Exotic",
+      "avatar": "",
+      "spawns": [
+				{ "place": "Mount Gemma", "zone": ["Mount Gemma 4"], "view": "object", "objectImage": "../assets/images/maps/GemForm.jpg","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "230",
+      "name": "Foil Thundercracker",
+      "type": "Lightning",
+      "rarity": "Exotic",
+      "avatar": "",
+      "spawns": [
+				{ "place": "Mount Gemma", "zone": ["Mount Gemma 3"], "view": "object", "objectImage": "../assets/images/maps/SmallGem.jpg","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "242",
+      "name": "Hoopty",
+      "type": "Earth",
+      "rarity": "Epic",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "247",
+      "name": "Foil Kiloray",
+      "type": "Lightning",
+      "rarity": "Exotic",
+      "avatar": "",
+      "spawns": [
+				{ "place": "Mount Gemma", "zone": ["Mount Gemma 1"], "view": "object", "objectImage": "../assets/images/maps/RightGem.jpg","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "248",
+      "name": "Spangles",
+      "type": "Lightning",
+      "rarity": "Exotic",
+      "avatar": "",
+      "spawns": [
+				{ "place": "Shop", "zone": ["Miscrit Shop"], "view": "object", "objectImage": "../assets/images/maps/shop.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "312",
+      "name": "Opigum",
+      "type": "Earth",
+      "rarity": "Rare",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "322",
+      "name": "Foil Flintly",
+      "type": "Fire",
+      "rarity": "Exotic",
+      "avatar": "",
+      "spawns": [
+				{ "place": "Cave", "zone": ["Cave 2"], "view": "object", "objectImage": "../assets/images/maps/TreasureChest2.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "326",
+      "name": "Light Tectonyx",
+      "type": "Earth",
+      "rarity": "Exotic",
+      "avatar": "",
+      "spawns": [
+				{ "place": "Beach", "zone": ["Shores 3"], "view": "object", "objectImage": "../assets/images/maps/SpikyStone.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "338",
+      "name": "Flaring",
+      "type": "Fire",
+      "rarity": "Epic",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "341",
+      "name": "Cadbunny",
+      "type": "WaterEarth",
+      "rarity": "Exotic",
+      "avatar": "",
+      "spawns": [
+				{ "place": "Cave", "zone": ["Cave 1"], "view": "object", "objectImage": "../assets/images/maps/EmptyEgg.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "352",
+      "name": "Fiender",
+      "type": "Wind",
+      "rarity": "Rare",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "356",
+      "name": "Pillblaze",
+      "type": "Fire",
+      "rarity": "Rare",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "367",
+      "name": "Blub",
+      "type": "Lightning",
+      "rarity": "Common",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "376",
+      "name": "Cerberuff",
+      "type": "Earth",
+      "rarity": "Common",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "378",
+      "name": "Auger",
+      "type": "Earth",
+      "rarity": "Common",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "380",
+      "name": "Flurfy",
+      "type": "Nature",
+      "rarity": "Common",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "382",
+      "name": "Squirmle",
+      "type": "Water",
+      "rarity": "Common",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "388",
+      "name": "Lil Bubs",
+      "type": "Water",
+      "rarity": "Rare",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "390",
+      "name": "Peekly",
+      "type": "Wind",
+      "rarity": "Common",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "404",
+      "name": "Splender",
+      "type": "NatureEarth",
+      "rarity": "Exotic",
+      "avatar": "",
+      "spawns": [
+				{ "place": "Shop", "zone": ["Miscrit Shop"], "view": "object", "objectImage": "../assets/images/maps/Shop.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "405",
+      "name": "Dorux",
+      "type": "FireLightning",
+      "rarity": "Epic",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "417",
+      "name": "Fubby",
+      "type": "Earth",
+      "rarity": "Exotic",
+      "avatar": "",
+      "spawns": [
+				{ "place": "Mansion", "zone": ["Mansion Outside"], "view": "object", "objectImage": "../assets/images/maps/OddBall.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "419",
+      "name": "Pennon",
+      "type": "Wind",
+      "rarity": "Epic",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "420",
+      "name": "Ekkult",
+      "type": "Water",
+      "rarity": "Exotic",
+      "avatar": "",
+      "spawns": [
+				{ "place": "Mansion", "zone": ["Mansion Attic"], "view": "object", "objectImage": "../assets/images/maps/TreasureChest3.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "425",
+      "name": "Defilio",
+      "type": "NatureEarth",
+      "rarity": "Exotic",
+      "avatar": "",
+      "spawns": [
+				{ "place": "Forest", "zone": ["Forest 3"], "view": "object", "objectImage": "../assets/images/maps/BlightedBush.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "430",
+      "name": "Blighted Cubsprout",
+      "type": "Nature",
+      "rarity": "Exotic",
+      "avatar": "",
+      "spawns": [
+				{ "place": "Forest", "zone": ["Forest 2"], "view": "object", "objectImage": "../assets/images/maps/DBlightedBush.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "433",
+      "name": "Blighted Flue",
+      "type": "Fire",
+      "rarity": "Legendary",
+      "avatar": "blighted_flue_avatar.png",
+      "spawns": [
+        { "place": "Forest", "zone": ["Forest 4"], "view": "object", "objectImage": "../assets/images/maps/BlightedStone.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "438",
+      "name": "Blobroller",
+      "type": "Nature Lightning",
+      "rarity": "Exotic",
+      "avatar": "",
+      "spawns": [
+				{ "place": "Shop", "zone": ["Miscrit Shop"], "view": "object", "objectImage": "../assets/images/maps/Shop.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "451",
+      "name": "Light Nibbles",
+      "type": "WaterLightning",
+      "rarity": "Epic",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "456",
+      "name": "Light Frostmite",
+      "type": "Water",
+      "rarity": "Exotic",
+      "avatar": "",
+      "spawns": [
+				{ "place": "Beach", "zone": ["Shores 1"], "view": "object", "objectImage": "../assets/images/maps/IcyConch.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "457",
+      "name": "Light Bludger",
+      "type": "Earth",
+      "rarity": "Exotic",
+      "avatar": "",
+      "spawns": [
+				{ "place": "Beach", "zone": ["Shores 4"], "view": "object", "objectImage": "../assets/images/maps/BlueCrate.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "458",
+      "name": "Light Zaptor",
+      "type": "NatureLightning",
+      "rarity": "Exotic",
+      "avatar": "",
+      "spawns": [
+				{ "place": "Shop", "zone": ["Miscrit Shop"], "view": "object", "objectImage": "../assets/images/maps/Shop.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "459",
+      "name": "Light Quirk",
+      "type": "Nature",
+      "rarity": "Epic",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "476",
+      "name": "Light Statikat",
+      "type": "FireLightning",
+      "rarity": "Exotic",
+      "avatar": "",
+      "spawns": [
+				{ "place": "Beach", "zone": ["Shores 1"], "view": "object", "objectImage": "../assets/images/maps/PurpleCoral.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "480",
+      "name": "Dark Spinnerette",
+      "type": "Water",
+      "rarity": "Exotic",
+      "avatar": "",
+      "spawns": [
+				{ "place": "Mansion", "zone": ["Mansion 1st Floor"], "view": "object", "objectImage": "../assets/images/maps/OddCage.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "488",
+      "name": "Light Twiggum",
+      "type": "Nature",
+      "rarity": "Exotic",
+      "avatar": "",
+      "spawns": [
+				{ "place": "Beach", "zone": ["Shores 2"], "view": "object", "objectImage": "../assets/images/maps/PalmTree.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "493",
+      "name": "Aquarion",
+      "type": "Water",
+      "rarity": "Legendary",
+      "avatar": "aquarion_avatar.png",
+      "spawns": [
+				{ "place": "Beach", "zone": ["Shores 2"], "view": "object", "objectImage": "../assets/images/maps/AquaEggs.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "500",
+      "name": "Blighted Fiender",
+      "type": "Wind",
+      "rarity": "Exotic",
+      "avatar": "",
+      "spawns": [
+				{ "place": "Shop", "zone": ["Miscrit Shop"], "view": "object", "objectImage": "../assets/images/maps/Shop.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "501",
+      "name": "Blighted Kiloray",
+      "type": "Lightning",
+      "rarity": "Exotic",
+      "avatar": "",
+      "spawns": [
+				{ "place": "Shop", "zone": ["Miscrit Shop"], "view": "object", "objectImage": "../assets/images/maps/Shop.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "502",
+      "name": "Dark Shellbee",
+      "type": "Water",
+      "rarity": "Rare",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "503",
+      "name": "Liothning",
+      "type": "Lightning",
+      "rarity": "Epic",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "504",
+      "name": "Dark Lumera",
+      "type": "Fire",
+      "rarity": "Rare",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "505",
+      "name": "Dark Steamguin",
+      "type": "Fire",
+      "rarity": "Rare",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "506",
+      "name": "Dark Poltergust",
+      "type": "Wind",
+      "rarity": "Legendary",
+      "avatar": "dark_poltergust_avatar.png",
+      "spawns": [
+        { "place": "Mount Gemma", "zone": ["Mount Gemma 4"], "view": "object", "objectImage": "../assets/images/maps/RedGem.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "507",
+      "name": "Dark Treemur",
+      "type": "Nature",
+      "rarity": "Epic",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "508",
+      "name": "Foil Vexie",
+      "type": "Earth",
+      "rarity": "Exotic",
+      "avatar": "",
+      "spawns": [
+				{ "place": "Mount Gemma", "zone": ["Mount Gemma 2"], "view": "object", "objectImage": "../assets/images/maps/GreenGem.jpg","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "509",
+      "name": "Foil Vhisp",
+      "type": "Wind",
+      "rarity": "Exotic",
+      "avatar": "",
+      "spawns": [
+				{ "place": "Mount Gemma", "zone": ["Mount Gemma 3"], "view": "object", "objectImage": "../assets/images/maps/SmallGem2.jpg","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "510",
+      "name": "Dark Sparkupine",
+      "type": "Fire",
+      "rarity": "Rare",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "511",
+      "name": "Dark Squibee",
+      "type": "Water",
+      "rarity": "Rare",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "512",
+      "name": "Dark Waddles",
+      "type": "Water",
+      "rarity": "Epic",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "513",
+      "name": "Dark Twiggum",
+      "type": "Nature",
+      "rarity": "Epic",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "514",
+      "name": "Dark Auger",
+      "type": "Earth",
+      "rarity": "Epic",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "515",
+      "name": "Dark Aria",
+      "type": "Wind",
+      "rarity": "Rare",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "516",
+      "name": "Light Rafiery",
+      "type": "FireLightning",
+      "rarity": "Epic",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "517",
+      "name": "Light Fossillia",
+      "type": "WaterEarth",
+      "rarity": "Epic",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "518",
+      "name": "Light Nanaslug",
+      "type": "Wind",
+      "rarity": "Exotic",
+      "avatar": "",
+      "spawns": [
+				{ "place": "Beach", "zone": ["Shores 3"], "view": "object", "objectImage": "../assets/images/maps/Pound.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "519",
+      "name": "Light Crickin",
+      "type": "Fire",
+      "rarity": "Exotic",
+      "avatar": "",
+      "spawns": [
+				{ "place": "Beach", "zone": ["Shores 2"], "view": "object", "objectImage": "../assets/images/maps/MiniGrass.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "520",
+      "name": "Light Flue",
+      "type": "FireWind",
+      "rarity": "Epic",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "521",
+      "name": "Light Grubbean",
+      "type": "NatureWind",
+      "rarity": "Epic",
+      "avatar": "",
+      "spawns": [
+        { "place": "Beach", "zone": "ZONE_4", "objects": "MYSTERIOUS_EGG", "days": "ALL_DAYS" }
+      ]
+    },
+    {
+      "id": "522",
+      "name": "Ribos",
+      "type": "Water",
+      "rarity": "Rare",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "523",
+      "name": "Light Sparkspeck",
+      "type": "Lightning",
+      "rarity": "Rare",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "524",
+      "name": "Light Wavesling",
+      "type": "WaterWind",
+      "rarity": "Rare",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "525",
+      "name": "Light Jack",
+      "type": "Wind",
+      "rarity": "Rare",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "526",
+      "name": "Light Flurfy",
+      "type": "Nature",
+      "rarity": "Rare",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "527",
+      "name": "Light Slithero",
+      "type": "Fire",
+      "rarity": "Rare",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "528",
+      "name": "Light Squibee",
+      "type": "Water",
+      "rarity": "Rare",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "529",
+      "name": "Light Digsy",
+      "type": "FireEarth",
+      "rarity": "Epic",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "530",
+      "name": "Light Ignios",
+      "type": "Fire Lightning",
+      "rarity": "Legendary",
+      "avatar": "light_ignios_avatar.png",
+      "spawns": [
+				{ "place": "Beach", "zone": ["Shores 4"], "view": "object", "objectImage": "../assets/images/maps/LightingBones.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "531",
+      "name": "Light Mumbah",
+      "type": "Earth",
+      "rarity": "Rare",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "532",
+      "name": "Dark Tongutail",
+      "type": "Earth",
+      "rarity": "Rare",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "533",
+      "name": "Dark Lavarilla",
+      "type": "Fire",
+      "rarity": "Rare",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "534",
+      "name": "Dark Frostmite",
+      "type": "Water",
+      "rarity": "Rare",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "535",
+      "name": "Dark Tulipinny",
+      "type": "Nature",
+      "rarity": "Epic",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "536",
+      "name": "Dark Flutterpat",
+      "type": "Wind",
+      "rarity": "Epic",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "537",
+      "name": "Dark Slithero",
+      "type": "Fire",
+      "rarity": "Exotic",
+      "avatar": "",
+      "spawns": [
+				{ "place": "Mansion", "zone": ["Mansion 1st Floor"], "view": "object", "objectImage": "../assets/images/maps/PyroStatue.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "538",
+      "name": "Keeper",
+      "type": "Nature Earth",
+      "rarity": "Legendary",
+      "avatar": "keeper_avatar.png",
+      "spawns": [
+				{ "place": "Mansion", "zone": ["Mansion Outside"], "view": "object", "objectImage": "../assets/images/maps/SoccerBall.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "539",
+      "name": "Dark Luna",
+      "type": "Lightning",
+      "rarity": "Epic",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "540",
+      "name": "Foil Luna",
+      "type": "Lightning",
+      "rarity": "Exotic",
+      "avatar": "",
+      "spawns": [
+				{ "place": "Mount Gemma", "zone": ["Mount Gemma 2"], "view": "object", "objectImage": "../assets/images/maps/GemForm2.jpg","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "541",
+      "name": "Sol",
+      "type": "Fire",
+      "rarity": "Rare",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "542",
+      "name": "Dreamger",
+      "type": "Wind",
+      "rarity": "Rare",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "543",
+      "name": "Light Weevern",
+      "type": "NatureEarth",
+      "rarity": "Epic",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "544",
+      "name": "Dark Quirk",
+      "type": "Nature",
+      "rarity": "Rare",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "545",
+      "name": "Dark Squirmle",
+      "type": "Water",
+      "rarity": "Rare",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "546",
+      "name": "Blighted Flowerpiller",
+      "type": "Nature",
+      "rarity": "Legendary",
+      "avatar": "blighted_flowerpiller_avatar.png",
+      "spawns": [
+				{ "place": "Forest", "zone": ["Forest 4"], "view": "object", "objectImage": "../assets/images/maps/BlightedFlower.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "547",
+      "name": "Dark Jellyshock",
+      "type": "Lightning",
+      "rarity": "Epic",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "548",
+      "name": "Light Hawkai",
+      "type": "Wind",
+      "rarity": "Rare",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "549",
+      "name": "Dark Vexie",
+      "type": "Earth",
+      "rarity": "Rare",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "550",
+      "name": "Da Windy",
+      "type": "Wind",
+      "rarity": "Legendary",
+      "avatar": "da_windy_avatar.png",
+      "spawns": [
+				{ "place": "Mansion", "zone": ["Mansion 2nd Floor"], "view": "object", "objectImage": "../assets/images/maps/ArtFrame.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "551",
+      "name": "Light Snorkels",
+      "type": "WaterWind",
+      "rarity": "Exotic",
+      "avatar": "",
+      "spawns": [
+				{ "place": "Shop", "zone": ["Miscrit Shop"], "view": "object", "objectImage": "../assets/images/maps/Shop.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "552",
+      "name": "Foil Croaky",
+      "type": "Earth",
+      "rarity": "Legendary",
+      "avatar": "foil_croaky_avatar.png",
+      "spawns": [
+				{ "place": "Mount Gemma", "zone": ["Mount Gemma 3"], "view": "object", "objectImage": "../assets/images/maps/LargeGem.jpg","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "553",
+      "name": "Freezet",
+      "type": "Water",
+      "rarity": "Common",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "554",
+      "name": "Dark Pillblaze",
+      "type": "Fire",
+      "rarity": "Epic",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "555",
+      "name": "Rudy",
+      "type": "Earth",
+      "rarity": "Exotic",
+      "avatar": "",
+      "spawns": [
+				{ "place": "Shop", "zone": ["Miscrit Shop"], "view": "object", "objectImage": "../assets/images/maps/Shop.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "556",
+      "name": "Manio",
+      "type": "Lightning",
+      "rarity": "Legendary",
+      "avatar": "manio_avatar.png",
+      "spawns": [
+				{ "place": "Cave", "zone": ["Cave 1"], "view": "object", "objectImage": "../assets/images/maps/OddStuff.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "557",
+      "name": "Mistraxol",
+      "type": "Wind",
+      "rarity": "Common",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "558",
+      "name": "Orbling",
+      "type": "Earth",
+      "rarity": "Common",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "559",
+      "name": "Zappup",
+      "type": "Lightning",
+      "rarity": "Common",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "560",
+      "name": "Pestling",
+      "type": "Nature",
+      "rarity": "Common",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "561",
+      "name": "Woolly",
+      "type": "Water",
+      "rarity": "Legendary",
+      "avatar": "woolly_avatar.png",
+      "spawns": [
+				{ "place": "Cave", "zone": ["Cave 4"], "view": "object", "objectImage": "../assets/images/maps/IceChest.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "562",
+      "name": "Frozy",
+      "type": "Water",
+      "rarity": "Common",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "563",
+      "name": "Stalkra",
+      "type": "Nature",
+      "rarity": "Common",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "564",
+      "name": "Mech",
+      "type": "Water",
+      "rarity": "Common",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "565",
+      "name": "Rexie",
+      "type": "Fire",
+      "rarity": "Common",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "566",
+      "name": "Warrian",
+      "type": "Fire",
+      "rarity": "Common",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "567",
+      "name": "Aebex",
+      "type": "NatureWind",
+      "rarity": "Common",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "568",
+      "name": "Charix",
+      "type": "Nature",
+      "rarity": "Rare",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "569",
+      "name": "Alpha",
+      "type": "Nature",
+      "rarity": "Exotic",
+      "avatar": "",
+      "spawns": [
+				{ "place": "Forest", "zone": ["Hidden Forest"], "view": "object", "objectImage": "../assets/images/maps/CBush.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "570",
+      "name": "Charpy",
+      "type": "Fire",
+      "rarity": "Legendary",
+      "avatar": "charpy_avatar.png",
+      "spawns": [
+				{ "place": "Forest", "zone": ["Hidden Forest"], "view": "object", "objectImage": "../assets/images/maps/CoalPit.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "571",
+      "name": "Lambolt",
+      "type": "Lightning",
+      "rarity": "Rare",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "572",
+      "name": "Gravitron",
+      "type": "Earth",
+      "rarity": "Exotic",
+      "avatar": "",
+      "spawns": [
+				{ "place": "Moon of Miscria", "zone": ["Moon of Miscria"], "view": "object", "objectImage": "../assets/images/maps/BluePortal.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "573",
+      "name": "Babakku",
+      "type": "Earth",
+      "rarity": "Epic",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "574",
+      "name": "Smolderfry",
+      "type": "Fire",
+      "rarity": "Exotic",
+      "avatar": "",
+      "spawns": [
+				{ "place": "Moon of Miscria", "zone": ["Moon of Miscria"], "view": "object", "objectImage": "../assets/images/maps/Crater.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "575",
+      "name": "Moondrip",
+      "type": "Water",
+      "rarity": "Common",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "576",
+      "name": "Shroolet",
+      "type": "Water",
+      "rarity": "Rare",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "577",
+      "name": "Lumite",
+      "type": "Earth",
+      "rarity": "Common",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "578",
+      "name": "Voidotron",
+      "type": "FireWind",
+      "rarity": "Legendary",
+      "avatar": "voidotron_avatar.png",
+      "spawns": [
+				{ "place": "Moon Cave", "zone": [""], "view": "object", "objectImage": "../assets/images/maps/SmallVoid.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "579",
+      "name": "Niboro",
+      "type": "Wind",
+      "rarity": "Epic",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "580",
+      "name": "Pinplar",
+      "type": "Water",
+      "rarity": "Exotic",
+      "avatar": "",
+      "spawns": [
+				{ "place": "Moon Cave", "zone": ["Moon Cave"], "view": "object", "objectImage": "../assets/images/maps/Skeleton.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "581",
+      "name": "Lithos",
+      "type": "Lightning",
+      "rarity": "Exotic",
+      "avatar": "",
+      "spawns": [
+				{ "place": "Moon of Miscria", "zone": ["Moon of Miscria"], "view": "object", "objectImage": "../assets/images/maps/Artifact.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "582",
+      "name": "Brainzer",
+      "type": "Lightning",
+      "rarity": "Common",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "583",
+      "name": "Pyrex",
+      "type": "Fire",
+      "rarity": "Exotic",
+      "avatar": "",
+      "spawns": [
+				{ "place": "Moon Cave", "zone": ["Moon Cave"], "view": "object", "objectImage": "../assets/images/maps/Void.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "584",
+      "name": "Oozie",
+      "type": "WaterLightning",
+      "rarity": "Rare",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "585",
+      "name": "Lunako",
+      "type": "FireEarth",
+      "rarity": "Rare",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "586",
+      "name": "Rephily",
+      "type": "Wind",
+      "rarity": "Rare",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "587",
+      "name": "Eluzar",
+      "type": "Water",
+      "rarity": "Common",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "588",
+      "name": "Furiko",
+      "type": "Fire",
+      "rarity": "Rare",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "589",
+      "name": "Bunplop",
+      "type": "WaterEarth",
+      "rarity": "Epic",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "590",
+      "name": "Drilune",
+      "type": "Nature",
+      "rarity": "Common",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "591",
+      "name": "Flaclay",
+      "type": "FireEarth",
+      "rarity": "Common",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "592",
+      "name": "Enex",
+      "type": "Fire",
+      "rarity": "Common",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "593",
+      "name": "Voltombra",
+      "type": "Lightning",
+      "rarity": "Common",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "594",
+      "name": "Eclipso",
+      "type": "Wind",
+      "rarity": "Exotic",
+      "avatar": "",
+      "spawns": [
+				{ "place": "Moon Cave", "zone": ["Moon Cave"], "view": "object", "objectImage": "../assets/images/maps/Rock.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "595",
+      "name": "Osmeron",
+      "type": "Water",
+      "rarity": "Rare",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "596",
+      "name": "Mooncrit",
+      "type": "WaterEarth",
+      "rarity": "Rare",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "597",
+      "name": "Beateorite",
+      "type": "Earth",
+      "rarity": "Legendary",
+      "avatar": "beateorite_avatar.png",
+      "spawns": [
+				{ "place": "Moon of Miscria", "zone": [""], "view": "object", "objectImage": "../assets/images/maps/FloatRock.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "598",
+      "name": "Silkire",
+      "type": "Fire",
+      "rarity": "Common",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "599",
+      "name": "Zephry",
+      "type": "Wind",
+      "rarity": "Common",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "600",
+      "name": "Fungask",
+      "type": "Water",
+      "rarity": "Common",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "601",
+      "name": "Larbunni",
+      "type": "Wind",
+      "rarity": "Epic",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "602",
+      "name": "Yuefira",
+      "type": "Nature",
+      "rarity": "Common",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "603",
+      "name": "Mucora",
+      "type": "Wind",
+      "rarity": "Common",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "604",
+      "name": "Goo",
+      "type": "WaterEarth",
+      "rarity": "Common",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "605",
+      "name": "Avarus",
+      "type": "FireWind",
+      "rarity": "Common",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "606",
+      "name": "Beakka",
+      "type": "Wind",
+      "rarity": "Common",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "607",
+      "name": "Whispen",
+      "type": "Wind",
+      "rarity": "Common",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "608",
+      "name": "Fickra",
+      "type": "Lightning",
+      "rarity": "Common",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "609",
+      "name": "Pirate Bludger",
+      "type": "Earth",
+      "rarity": "Rare",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "610",
+      "name": "Lutox",
+      "type": "Earth",
+      "rarity": "Rare",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "611",
+      "name": "Deetlee",
+      "type": "Earth",
+      "rarity": "Rare",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "612",
+      "name": "Ampupine",
+      "type": "Lightning",
+      "rarity": "Rare",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "613",
+      "name": "Hekatom",
+      "type": "NatureWind",
+      "rarity": "Epic",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "614",
+      "name": "Scarecrow Charix",
+      "type": "Nature",
+      "rarity": "Epic",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "615",
+      "name": "Vamp Skustunk",
+      "type": "Wind",
+      "rarity": "Epic",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "616",
+      "name": "Grimm Kiloray",
+      "type": "Lightning",
+      "rarity": "Epic",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "617",
+      "name": "Rocker Octavio",
+      "type": "Wind",
+      "rarity": "Exotic",
+      "avatar": "",
+      "spawns": [
+				{ "place": "The Shac", "zone": ["1st Floor of The Shack"], "view": "object", "objectImage": "../assets/images/maps/Piano.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "618",
+      "name": "Boo Blazertooth",
+      "type": "Fire",
+      "rarity": "Exotic",
+      "avatar": "",
+      "spawns": [
+				{ "place": "The Shac", "zone": ["2nd Floor of The Shack"], "view": "object", "objectImage": "../assets/images/maps/Crate.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "619",
+      "name": "Geneseed",
+      "type": "Nature",
+      "rarity": "Legendary",
+      "avatar": "geneseed_avatar.png",
+      "spawns": [
+				{ "place": "The Shac", "zone": ["Lower Basement of The Shack"], "view": "object", "objectImage": "../assets/images/maps/MysSeed.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "620",
+      "name": "Sora",
+      "type": "Wind",
+      "rarity": "Common",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "621",
+      "name": "Dark Sparkslug",
+      "type": "Lightning",
+      "rarity": "Rare",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "622",
+      "name": "Phoboros",
+      "type": "Fire",
+      "rarity": "Epic",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "623",
+      "name": "Lagoony",
+      "type": "Water",
+      "rarity": "Exotic",
+      "avatar": "",
+      "spawns": [
+				{ "place": "The Shac", "zone": ["Lower Basement of The Shack"], "view": "object", "objectImage": "../assets/images/maps/Guillotine.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "624",
+      "name": "Poppet",
+      "type": "Fire",
+      "rarity": "Common",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "625",
+      "name": "Nubyll",
+      "type": "Lightning",
+      "rarity": "Rare",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "626",
+      "name": "Elphin",
+      "type": "Water",
+      "rarity": "Epic",
+      "avatar": "",
+      "spawns": [
+        {
+          "place": "",
+          "level": "",
+          "days": ""
+        }
+      ]
+    },
+    {
+      "id": "627",
+      "name": "Luvcraft",
+      "type": "Fire",
+      "rarity": "Exotic",
+      "avatar": "",
+      "spawns": [
+				{ "place": "The Shac", "zone": ["Basement of The Shack"], "view": "object", "objectImage": "../assets/images/maps/Statue.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "628",
+      "name": "Damse",
+      "type": "Lightning",
+      "rarity": "Exotic",
+      "avatar": "",
+      "spawns": [
+				{ "place": "The Shac", "zone": ["2nd Floor of The Shack"], "view": "object", "objectImage": "../assets/images/maps/Cross.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "629",
+      "name": "Beldame",
+      "type": "Lightning",
+      "rarity": "Legendary",
+      "avatar": "beldame_avatar.png",
+      "spawns": [
+				{ "place": "The Shac", "zone": ["2nd Floor of The Shack"], "view": "object", "objectImage": "../assets/images/maps/OldBed.png","days": "ALL_DAYS"}
+      ]
+    }
+  ]
+}
