@@ -3,23 +3,21 @@
     "ALL_DAYS": ["Lunes","Martes","Miercoles","Jueves","Viernes","Sabado","Domingo"],
     "WEEKDAYS": ["Lunes","Martes","Miercoles","Jueves","Viernes"],
     "WEEKEND": ["Sabado","Domingo"],
-		"LUN_JUE_DOM": ["Lunes", "Jueves", "Domingo"],
-		"MIE_SAB_DOM": ["Miercoles", "Sabado", "Domingo"],
-		"MAR_VIE_DOM": ["Martes", "Viernes", "Domingo"]
+    "LUN_JUE_DOM": ["Lunes","Jueves","Domingo"],
+    "MIE_SAB_DOM": ["Miercoles","Sabado","Domingo"],
+    "MAR_VIE_DOM": ["Martes","Viernes","Domingo"]
   },
-	"ZONES": {
-  },
-  "OBJECTS": {
-  },
+  "ZONES": {},
+  "OBJECTS": {},
   "miscrits": [
     {
       "id": "001",
       "name": "Flue",
       "type": "Fire",
       "rarity": "Common",
-	    "avatar": "flue_avatar.png",
+      "avatar": "flue_avatar.png",
       "spawns": [
-        { "place": "Forest", "zone": ["Forest 1"], "view": "object", "objectImage": "../assets/images/maps/MAP_FOREST.png","days": "ALL_DAYS"}
+        {"place": "Forest","zone": ["Forest 1"],"view": "object","objectImage": "../assets/images/maps/MAP_FOREST.png","days": "ALL_DAYS"}
       ]
     },
     {
@@ -27,302 +25,329 @@
       "name": "Flowerpiller",
       "type": "Nature",
       "rarity": "Common",
-			"avatar": "flowerpiller_avatar.png",
+      "avatar": "flowerpiller_avatar.png",
       "spawns": [
-        { "place": "Forest", "zone": ["Forest 1"], "view": "object", "objectImage": "../assets/images/maps/MAP_FOREST.png","days": "ALL_DAYS"}
+        {"place": "Forest","zone": ["Forest 1"],"view": "object","objectImage": "../assets/images/maps/MAP_FOREST.png","days": "ALL_DAYS"}
       ]
     },
     {
-			"id": "003",
-			"name": "Prawnja",
-			"type": "Water",
-			"rarity": "Common",
-			"spawns": [
-				{ "place": "Forest", "zone": ["Forest 1"], "view": "object", "objectImage": "../assets/images/maps/MAP_FOREST.png","days": "ALL_DAYS"}
-			]
+      "id": "003",
+      "name": "Prawnja",
+      "type": "Water",
+      "rarity": "Common",
+      "spawns": [
+        {"place": "Forest","zone": ["Forest 1"],"view": "object","objectImage": "../assets/images/maps/MAP_FOREST.png","days": "ALL_DAYS"}
+      ],
+      "avatar": "prawnja_avatar.png"
     },
-		{
-			"id": "004",
-			"name": "Weevern",
-			"type": "Nature",
-			"rarity": "Common",
-			"spawns": [
-				{ "place": "Forest", "zone": ["Forest 1"], "view": "object", "objectImage": "../assets/images/maps/MAP_FOREST.png","days": "ALL_DAYS"}
-			]
+    {
+      "id": "004",
+      "name": "Weevern",
+      "type": "Nature",
+      "rarity": "Common",
+      "spawns": [
+        {"place": "Forest","zone": ["Forest 1"],"view": "object","objectImage": "../assets/images/maps/MAP_FOREST.png","days": "ALL_DAYS"}
+      ],
+      "avatar": "weevern_avatar.png"
     },
-		{
-			"id": "005",
-			"name": "Cubsprout",
-			"type": "Nature",
-			"rarity": "Common",
-			"spawns": [
-				{ "place": "Forest", "zone": ["Forest 1"], "view": "object", "objectImage": "../assets/images/maps/MAP_FOREST.png","days": "ALL_DAYS"}
-			]
+    {
+      "id": "005",
+      "name": "Cubsprout",
+      "type": "Nature",
+      "rarity": "Common",
+      "spawns": [
+        {"place": "Forest","zone": ["Forest 1"],"view": "object","objectImage": "../assets/images/maps/MAP_FOREST.png","days": "ALL_DAYS"}
+      ],
+      "avatar": "cubsprout_avatar.png"
     },
-		{
-			"id": "006",
-			"name": "Sparkupine",
-			"type": "Fire",
-			"rarity": "Common",
-			"spawns": [
-				{ "place": "Forest", "zone": ["Forest 1"], "view": "object", "objectImage": "../assets/images/maps/MAP_FOREST.png","days": "ALL_DAYS"}
-			]
+    {
+      "id": "006",
+      "name": "Sparkupine",
+      "type": "Fire",
+      "rarity": "Common",
+      "spawns": [
+        {"place": "Forest","zone": ["Forest 1"],"view": "object","objectImage": "../assets/images/maps/MAP_FOREST.png","days": "ALL_DAYS"}
+      ],
+      "avatar": "sparkupine_avatar.png"
     },
-		{
-			"id": "007",
-			"name": "Hydroseal",
-			"type": "Water",
-			"rarity": "Common",
-			"spawns": [
-				{ "place": "Forest", "zone": ["Forest 1"], "view": "object", "objectImage": "../assets/images/maps/MAP_FOREST.png","days": "ALL_DAYS"}
-			]
+    {
+      "id": "007",
+      "name": "Hydroseal",
+      "type": "Water",
+      "rarity": "Common",
+      "spawns": [
+        {"place": "Forest","zone": ["Forest 1"],"view": "object","objectImage": "../assets/images/maps/MAP_FOREST.png","days": "ALL_DAYS"}
+      ],
+      "avatar": "hydroseal_avatar.png"
     },
-		{
-			"id": "008",
-			"name": "Snortus",
-			"type": "Water",
-			"rarity": "Common",
-			"spawns": [
-				{ "place": "Forest", "zone": ["Forest 2"], "view": "object", "objectImage": "../assets/images/maps/MAP_FOREST.png","days": "ALL_DAYS"}
-			]
+    {
+      "id": "008",
+      "name": "Snortus",
+      "type": "Water",
+      "rarity": "Common",
+      "spawns": [
+        {"place": "Forest","zone": ["Forest 2"],"view": "object","objectImage": "../assets/images/maps/MAP_FOREST.png","days": "ALL_DAYS"}
+      ],
+      "avatar": "snortus_avatar.png"
     },
-		{
-			"id": "009",
-			"name": "Quirk",
-			"type": "Water",
-			"rarity": "Common",
-			"spawns": [
-				{ "place": "Forest", "zone": ["Forest 2"], "view": "object", "objectImage": "../assets/images/maps/MAP_FOREST.png","days": "ALL_DAYS"}
-			]
+    {
+      "id": "009",
+      "name": "Quirk",
+      "type": "Water",
+      "rarity": "Common",
+      "spawns": [
+        {"place": "Forest","zone": ["Forest 2"],"view": "object","objectImage": "../assets/images/maps/MAP_FOREST.png","days": "ALL_DAYS"}
+      ],
+      "avatar": "quirk_avatar.png"
     },
-		{
-			"id": "010",
-			"name": "Flameling",
-			"type": "Fire",
-			"rarity": "Common",
-			"spawns": [
-				{ "place": "Forest", "zone": ["Forest 2"], "view": "object", "objectImage": "../assets/images/maps/MAP_FOREST.png","days": "ALL_DAYS"}
-			]
+    {
+      "id": "010",
+      "name": "Flameling",
+      "type": "Fire",
+      "rarity": "Common",
+      "spawns": [
+        {"place": "Forest","zone": ["Forest 2"],"view": "object","objectImage": "../assets/images/maps/MAP_FOREST.png","days": "ALL_DAYS"}
+      ],
+      "avatar": "flameling_avatar.png"
     },
-		{
-			"id": "011",
-			"name": "Lumera",
-			"type": "Fire",
-			"rarity": "Common",
-			"spawns": [
-				{ "place": "Forest", "zone": ["Forest 2"], "view": "object", "objectImage": "../assets/images/maps/MAP_FOREST.png","days": "ALL_DAYS"}
-			]
+    {
+      "id": "011",
+      "name": "Lumera",
+      "type": "Fire",
+      "rarity": "Common",
+      "spawns": [
+        {"place": "Forest","zone": ["Forest 2"],"view": "object","objectImage": "../assets/images/maps/MAP_FOREST.png","days": "ALL_DAYS"}
+      ],
+      "avatar": "lumera_avatar.png"
     },
-		{
-			"id": "012",
-			"name": "Snatcher",
-			"type": "Nature",
-			"rarity": "Common",
-			"spawns": [
-				{ "place": "Forest", "zone": ["Forest 3"], "view": "object", "objectImage": "../assets/images/maps/MAP_FOREST.png","days": "ALL_DAYS"}
-			]
+    {
+      "id": "012",
+      "name": "Snatcher",
+      "type": "Nature",
+      "rarity": "Common",
+      "spawns": [
+        {"place": "Forest","zone": ["Forest 3"],"view": "object","objectImage": "../assets/images/maps/MAP_FOREST.png","days": "ALL_DAYS"}
+      ],
+      "avatar": "snatcher_avatar.png"
     },
-		{
-			"id": "013",
-			"name": "Elefauna",
-			"type": "Nature",
-			"rarity": "Common",
-			"spawns": [
-				{ "place": "Forest", "zone": ["Forest 3"], "view": "object", "objectImage": "../assets/images/maps/MAP_FOREST.png","days": "ALL_DAYS"}
-			]
+    {
+      "id": "013",
+      "name": "Elefauna",
+      "type": "Nature",
+      "rarity": "Common",
+      "spawns": [
+        {"place": "Forest","zone": ["Forest 3"],"view": "object","objectImage": "../assets/images/maps/MAP_FOREST.png","days": "ALL_DAYS"}
+      ],
+      "avatar": "elefauna_avatar.png"
     },
-		{
-			"id": "014",
-			"name": "Nessy",
-			"type": "Water",
-			"rarity": "Common",
-			"spawns": [
-				{ "place": "Forest", "zone": ["Forest 4"], "view": "object", "objectImage": "../assets/images/maps/MAP_FOREST.png","days": "ALL_DAYS"}
-			]
+    {
+      "id": "014",
+      "name": "Nessy",
+      "type": "Water",
+      "rarity": "Common",
+      "spawns": [
+        {"place": "Forest","zone": ["Forest 4"],"view": "object","objectImage": "../assets/images/maps/MAP_FOREST.png","days": "ALL_DAYS"}
+      ],
+      "avatar": "nessy_avatar.png"
     },
-		{
-			"id": "015",
-			"name": "Hotfoot",
-			"type": "Fire",
-			"rarity": "Common",
-			"spawns": [
-				{ "place": "Forest", "zone": ["Forest 3"], "view": "object", "objectImage": "../assets/images/maps/MAP_FOREST.png","days": "ALL_DAYS"}
-			]
+    {
+      "id": "015",
+      "name": "Hotfoot",
+      "type": "Fire",
+      "rarity": "Common",
+      "spawns": [
+        {"place": "Forest","zone": ["Forest 3"],"view": "object","objectImage": "../assets/images/maps/MAP_FOREST.png","days": "ALL_DAYS"}
+      ],
+      "avatar": "hotfoot_avatar.png"
     },
-		{
-			"id": "016",
-			"name": "Twiggum",
-			"type": "Nature",
-			"rarity": "Common",
-			"spawns": [
-				{ "place": "Forest", "zone": ["Forest 4"], "view": "object", "objectImage": "../assets/images/maps/MAP_FOREST.png","days": "ALL_DAYS"}
-			]
+    {
+      "id": "016",
+      "name": "Twiggum",
+      "type": "Nature",
+      "rarity": "Common",
+      "spawns": [
+        {"place": "Forest","zone": ["Forest 4"],"view": "object","objectImage": "../assets/images/maps/MAP_FOREST.png","days": "ALL_DAYS"}
+      ],
+      "avatar": "twiggum_avatar.png"
     },
-		{
-			"id": "017",
-			"name": "Shellbee",
-			"type": "Water",
-			"rarity": "Common",
-			"spawns": [
-				{ "place": "Forest", "zone": ["Forest 3"], "view": "object", "objectImage": "../assets/images/maps/MAP_FOREST.png","days": "ALL_DAYS"}
-			]
+    {
+      "id": "017",
+      "name": "Shellbee",
+      "type": "Water",
+      "rarity": "Common",
+      "spawns": [
+        {"place": "Forest","zone": ["Forest 3"],"view": "object","objectImage": "../assets/images/maps/MAP_FOREST.png","days": "ALL_DAYS"}
+      ],
+      "avatar": "shellbee_avatar.png"
     },
-		{
-			"id": "018",
-			"name": "Squibee",
-			"type": "Water",
-			"rarity": "Common",
-			"spawns": [
-				{ "place": "Forest", "zone": ["Forest 4"], "view": "object", "objectImage": "../assets/images/maps/MAP_FOREST.png","days": "ALL_DAYS"}
-			]
+    {
+      "id": "018",
+      "name": "Squibee",
+      "type": "Water",
+      "rarity": "Common",
+      "spawns": [
+        {"place": "Forest","zone": ["Forest 4"],"view": "object","objectImage": "../assets/images/maps/MAP_FOREST.png","days": "ALL_DAYS"}
+      ],
+      "avatar": "squibee_avatar.png"
     },
-		{
-			"id": "019",
-			"name": "Steamguin",
-			"type": "Fire",
-			"rarity": "Common",
-			"spawns": [
-				{ "place": "Forest", "zone": ["Forest 4"], "view": "object", "objectImage": "../assets/images/maps/MAP_FOREST.png","days": "ALL_DAYS"}
-			]
+    {
+      "id": "019",
+      "name": "Steamguin",
+      "type": "Fire",
+      "rarity": "Common",
+      "spawns": [
+        {"place": "Forest","zone": ["Forest 4"],"view": "object","objectImage": "../assets/images/maps/MAP_FOREST.png","days": "ALL_DAYS"}
+      ],
+      "avatar": "steamguin_avatar.png"
     },
-		{
-			"id": "020",
-			"name": "Waddles",
-			"type": "Water",
-			"rarity": "Rare",
-			"spawns": [
-        { "place": "Forest", "zone": ["Forest 1"], "view": "object", "objectImage": "../assets/images/maps/Waddles.png","days": "LUN_JUE_DOM"}
-			]
+    {
+      "id": "020",
+      "name": "Waddles",
+      "type": "Water",
+      "rarity": "Rare",
+      "spawns": [
+        {"place": "Forest","zone": ["Forest 1"],"view": "object","objectImage": "../assets/images/maps/Waddles.png","days": "LUN_JUE_DOM"}
+      ],
+      "avatar": "waddles_avatar.png"
     },
-		{
-			"id": "021",
-			"name": "Treemur",
-			"type": "Nature",
-			"rarity": "Rare",
-			"spawns": [
-				{ "place": "Forest", "zone": ["Forest 1"], "view": "object", "objectImage": "../assets/images/maps/Waddles.png","days": "LUN_JUE_DOM"}
-			]
+    {
+      "id": "021",
+      "name": "Treemur",
+      "type": "Nature",
+      "rarity": "Rare",
+      "spawns": [
+        {"place": "Forest","zone": ["Forest 1"],"view": "object","objectImage": "../assets/images/maps/Waddles.png","days": "LUN_JUE_DOM"}
+      ],
+      "avatar": "treemur_avatar.png"
     },
-		{
-			"id": "022",
-			"name": "Tulipinny",
-			"type": "Nature",
-			"rarity": "Rare",
-			"spawns": [
-				{ "place": "Forest", "zone": ["Forest 3"], "view": "object", "objectImage": "../assets/images/maps/Waddles.png","days": "MIE_SAB_DOM"}
-			]
+    {
+      "id": "022",
+      "name": "Tulipinny",
+      "type": "Nature",
+      "rarity": "Rare",
+      "spawns": [
+        {"place": "Forest","zone": ["Forest 3"],"view": "object","objectImage": "../assets/images/maps/Waddles.png","days": "MIE_SAB_DOM"}
+      ],
+      "avatar": "tulipinny_avatar.png"
     },
-		{
-			"id": "023",
-			"name": "Dark Flue",
-			"type": "Fire",
-			"rarity": "Rare",
-			"spawns": [
-				{ "place": "Forest", "zone": ["Forest 2"], "view": "object", "objectImage": "../assets/images/maps/Waddles.png","days": "MAR_VIE_DOM"}
-			]
+    {
+      "id": "023",
+      "name": "Dark Flue",
+      "type": "Fire",
+      "rarity": "Rare",
+      "spawns": [
+        {"place": "Forest","zone": ["Forest 2"],"view": "object","objectImage": "../assets/images/maps/Waddles.png","days": "MAR_VIE_DOM"}
+      ],
+      "avatar": "dark_flue_avatar.png"
     },
-				{
-			"id": "024",
-			"name": "Dark Flowerpiller",
-			"type": "Nature",
-			"rarity": "Rare",
-			"spawns": [
-				{ "place": "Forest", "zone": ["Forest 1"], "view": "object", "objectImage": "../assets/images/maps/Waddles.png","days": "LUN_JUE_DOM"}
-			]
+    {
+      "id": "024",
+      "name": "Dark Flowerpiller",
+      "type": "Nature",
+      "rarity": "Rare",
+      "spawns": [
+        {"place": "Forest","zone": ["Forest 1"],"view": "object","objectImage": "../assets/images/maps/Waddles.png","days": "LUN_JUE_DOM"}
+      ],
+      "avatar": "dark_flowerpiller_avatar.png"
     },
-				{
-			"id": "025",
-			"name": "Dark Prawnja",
-			"type": "Water",
-			"rarity": "Rare",
-			"spawns": [
-				{ "place": "Forest", "zone": ["Forest 1"], "view": "object", "objectImage": "../assets/images/maps/Waddles.png","days": "LUN_JUE_DOM"}
-			]
+    {
+      "id": "025",
+      "name": "Dark Prawnja",
+      "type": "Water",
+      "rarity": "Rare",
+      "spawns": [
+        {"place": "Forest","zone": ["Forest 1"],"view": "object","objectImage": "../assets/images/maps/Waddles.png","days": "LUN_JUE_DOM"}
+      ],
+      "avatar": "dark_prawnja_avatar.png"
     },
-				{
-			"id": "026",
-			"name": "Blazebit",
-			"type": "Fire",
-			"rarity": "Rare",
-			"spawns": [
-				{ "place": "Forest", "zone": ["Forest 4"], "view": "object", "objectImage": "../assets/images/maps/Waddles.png","days": "LUN_JUE_DOM"}
-			]
+    {
+      "id": "026",
+      "name": "Blazebit",
+      "type": "Fire",
+      "rarity": "Rare",
+      "spawns": [
+        {"place": "Forest","zone": ["Forest 4"],"view": "object","objectImage": "../assets/images/maps/Waddles.png","days": "LUN_JUE_DOM"}
+      ],
+      "avatar": "blazebit_avatar.png"
     },
-				{
-			"id": "027",
-			"name": "Frostmite",
-			"type": "Water",
-			"rarity": "Common",
-			"spawns": [
-				{ "place": "Forest", "zone": ["Forest 1"], "view": "object", "objectImage": "../assets/images/maps/Waddles.png","days": "LUN_JUE_DOM"}
-			]
+    {
+      "id": "027",
+      "name": "Frostmite",
+      "type": "Water",
+      "rarity": "Common",
+      "spawns": [
+        {"place": "Forest","zone": ["Forest 1"],"view": "object","objectImage": "../assets/images/maps/Waddles.png","days": "LUN_JUE_DOM"}
+      ],
+      "avatar": "frostmite_avatar.png"
     },
-						{
-			"id": "028",
-			"name": "Blazertooth",
-			"type": "Fire",
-			"rarity": "Epic",
-			"spawns": [
-				{ "place": "Forest", "zone": ["Forest 1"], "view": "object", "objectImage": "../assets/images/maps/Waddles.png","days": "LUN_JUE_DOM"}
-			]
+    {
+      "id": "028",
+      "name": "Blazertooth",
+      "type": "Fire",
+      "rarity": "Epic",
+      "spawns": [
+        {"place": "Forest","zone": ["Forest 1"],"view": "object","objectImage": "../assets/images/maps/Waddles.png","days": "LUN_JUE_DOM"}
+      ],
+      "avatar": "blazertooth_avatar.png"
     },
-		{
-			"id": "029",
-			"name": "Statikat",
-			"type": "Lighting",
-			"rarity": "Common",
-			"spawns": [
-				{ "place": "Mount Gemma", "zone": ["Mount Gemma 1"], "view": "object", "objectImage": "../assets/images/maps/Waddles.png","days": "ALL_DAYS"}
-			]
+    {
+      "id": "029",
+      "name": "Statikat",
+      "type": "Lighting",
+      "rarity": "Common",
+      "spawns": [
+        {"place": "Mount Gemma","zone": ["Mount Gemma 1"],"view": "object","objectImage": "../assets/images/maps/Waddles.png","days": "ALL_DAYS"}
+      ],
+      "avatar": "statikat_avatar.png"
     },
-				{
-			"id": "030",
-			"name": "Equestrion",
-			"type": "Wind",
-			"rarity": "Common",
-			"spawns": [
-				{ "place": "Mount Gemma", "zone": ["Mount Gemma 1"], "view": "object", "objectImage": "../assets/images/maps/Waddles.png","days": "ALL_DAYS"}
-			]
+    {
+      "id": "030",
+      "name": "Equestrion",
+      "type": "Wind",
+      "rarity": "Common",
+      "spawns": [
+        {"place": "Mount Gemma","zone": ["Mount Gemma 1"],"view": "object","objectImage": "../assets/images/maps/Waddles.png","days": "ALL_DAYS"}
+      ],
+      "avatar": "equestrion_avatar.png"
     },
-				{
-			"id": "031",
-			"name": "Drilldent",
-			"type": "Earth",
-			"rarity": "Common",
-			"spawns": [
-				{ "place": "Mount Gemma", "zone": ["Mount Gemma 1"], "view": "object", "objectImage": "../assets/images/maps/Waddles.png","days": "ALL_DAYS"}
-			]
+    {
+      "id": "031",
+      "name": "Drilldent",
+      "type": "Earth",
+      "rarity": "Common",
+      "spawns": [
+        {"place": "Mount Gemma","zone": ["Mount Gemma 1"],"view": "object","objectImage": "../assets/images/maps/Waddles.png","days": "ALL_DAYS"}
+      ],
+      "avatar": "drilldent_avatar.png"
     },
-				{
-			"id": "032",
-			"name": "Kiloray",
-			"type": "Lighting",
-			"rarity": "Common",
-			"spawns": [
-				{ "place": "Mount Gemma", "zone": ["Mount Gemma 1"], "view": "object", "objectImage": "../assets/images/maps/Waddles.png","days": "ALL_DAYS"}
-			]
+    {
+      "id": "032",
+      "name": "Kiloray",
+      "type": "Lighting",
+      "rarity": "Common",
+      "spawns": [
+        {"place": "Mount Gemma","zone": ["Mount Gemma 1"],"view": "object","objectImage": "../assets/images/maps/Waddles.png","days": "ALL_DAYS"}
+      ],
+      "avatar": "kiloray_avatar.png"
     },
-						{
-			"id": "032",
-			"name": "Kiloray",
-			"type": "Lighting",
-			"rarity": "Common",
-			"spawns": [
-				{ "place": "Mount Gemma", "zone": ["Mount Gemma 1"], "view": "object", "objectImage": "../assets/images/maps/Waddles.png","days": "ALL_DAYS"}
-			]
+    {
+      "id": "032",
+      "name": "Kiloray",
+      "type": "Lighting",
+      "rarity": "Common",
+      "spawns": [
+        {"place": "Mount Gemma","zone": ["Mount Gemma 1"],"view": "object","objectImage": "../assets/images/maps/Waddles.png","days": "ALL_DAYS"}
+      ],
+      "avatar": "kiloray_avatar.png"
     },
-		    {
+    {
       "id": "033",
       "name": "Breezycheeks",
       "type": "Wind",
       "rarity": "Common",
-      "avatar": "",
+      "avatar": "breezycheeks_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -330,13 +355,9 @@
       "name": "Mumbah",
       "type": "Earth",
       "rarity": "Common",
-      "avatar": "",
+      "avatar": "mumbah_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -344,13 +365,9 @@
       "name": "Aria",
       "type": "Wind",
       "rarity": "Common",
-      "avatar": "",
+      "avatar": "aria_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -358,13 +375,9 @@
       "name": "Jellyshock",
       "type": "Lightning",
       "rarity": "Common",
-      "avatar": "",
+      "avatar": "jellyshock_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -372,13 +385,9 @@
       "name": "Croaky",
       "type": "Earth",
       "rarity": "Common",
-      "avatar": "",
+      "avatar": "croaky_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -386,13 +395,9 @@
       "name": "Sparkslug",
       "type": "Lightning",
       "rarity": "Common",
-      "avatar": "",
+      "avatar": "sparkslug_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -400,13 +405,9 @@
       "name": "Craggy",
       "type": "Earth",
       "rarity": "Common",
-      "avatar": "",
+      "avatar": "craggy_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -414,13 +415,9 @@
       "name": "Owlie",
       "type": "Wind",
       "rarity": "Common",
-      "avatar": "",
+      "avatar": "owlie_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -428,13 +425,9 @@
       "name": "Luna",
       "type": "Lightning",
       "rarity": "Rare",
-      "avatar": "",
+      "avatar": "luna_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -442,13 +435,9 @@
       "name": "Poltergust",
       "type": "Wind",
       "rarity": "Rare",
-      "avatar": "",
+      "avatar": "poltergust_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -456,13 +445,9 @@
       "name": "Fossillia",
       "type": "Earth",
       "rarity": "Rare",
-      "avatar": "",
+      "avatar": "fossillia_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -470,13 +455,9 @@
       "name": "Eggy",
       "type": "Earth",
       "rarity": "Rare",
-      "avatar": "",
+      "avatar": "eggy_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -484,13 +465,9 @@
       "name": "Thundercracker",
       "type": "Lightning",
       "rarity": "Rare",
-      "avatar": "",
+      "avatar": "thundercracker_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -498,13 +475,9 @@
       "name": "Mun Kee",
       "type": "Wind",
       "rarity": "Rare",
-      "avatar": "",
+      "avatar": "mun_kee_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -512,13 +485,9 @@
       "name": "Microblast",
       "type": "Lightning",
       "rarity": "Epic",
-      "avatar": "",
+      "avatar": "microblast_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -526,13 +495,9 @@
       "name": "Sledgehog",
       "type": "Earth",
       "rarity": "Epic",
-      "avatar": "",
+      "avatar": "sledgehog_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -540,13 +505,9 @@
       "name": "Sapphron",
       "type": "Earth",
       "rarity": "Epic",
-      "avatar": "",
+      "avatar": "sapphron_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -554,13 +515,9 @@
       "name": "Sparkspeck",
       "type": "Lightning",
       "rarity": "Common",
-      "avatar": "",
+      "avatar": "sparkspeck_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -568,13 +525,9 @@
       "name": "Grubbean",
       "type": "Nature",
       "rarity": "Common",
-      "avatar": "",
+      "avatar": "grubbean_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -582,13 +535,9 @@
       "name": "Echino",
       "type": "Nature",
       "rarity": "Common",
-      "avatar": "",
+      "avatar": "echino_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -596,13 +545,9 @@
       "name": "Wavesling",
       "type": "Water",
       "rarity": "Common",
-      "avatar": "",
+      "avatar": "wavesling_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -610,13 +555,9 @@
       "name": "Sparkitten",
       "type": "Fire",
       "rarity": "Common",
-      "avatar": "",
+      "avatar": "sparkitten_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -624,13 +565,9 @@
       "name": "Arigato",
       "type": "Lightning",
       "rarity": "Common",
-      "avatar": "",
+      "avatar": "arigato_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -638,13 +575,9 @@
       "name": "Jack",
       "type": "Wind",
       "rarity": "Common",
-      "avatar": "",
+      "avatar": "jack_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -652,13 +585,9 @@
       "name": "Quebble",
       "type": "Earth",
       "rarity": "Common",
-      "avatar": "",
+      "avatar": "quebble_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -666,13 +595,9 @@
       "name": "Digsy",
       "type": "Earth",
       "rarity": "Common",
-      "avatar": "",
+      "avatar": "digsy_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -680,13 +605,9 @@
       "name": "Hippoke",
       "type": "Earth",
       "rarity": "Common",
-      "avatar": "",
+      "avatar": "hippoke_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -694,13 +615,9 @@
       "name": "Leggy",
       "type": "Wind",
       "rarity": "Common",
-      "avatar": "",
+      "avatar": "leggy_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -708,13 +625,9 @@
       "name": "Orcatide",
       "type": "Water",
       "rarity": "Common",
-      "avatar": "",
+      "avatar": "orcatide_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -722,13 +635,9 @@
       "name": "Flutterpat",
       "type": "Wind",
       "rarity": "Rare",
-      "avatar": "",
+      "avatar": "flutterpat_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -736,13 +645,9 @@
       "name": "Snorkels",
       "type": "Water",
       "rarity": "Rare",
-      "avatar": "",
+      "avatar": "snorkels_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -750,13 +655,9 @@
       "name": "Kelpa",
       "type": "Nature",
       "rarity": "Rare",
-      "avatar": "",
+      "avatar": "kelpa_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -764,13 +665,9 @@
       "name": "Ignios",
       "type": "Fire",
       "rarity": "Rare",
-      "avatar": "",
+      "avatar": "ignios_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -778,13 +675,9 @@
       "name": "Beelzebug",
       "type": "Lightning",
       "rarity": "Epic",
-      "avatar": "",
+      "avatar": "beelzebug_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -792,13 +685,9 @@
       "name": "Winnebeargo",
       "type": "Wind",
       "rarity": "Epic",
-      "avatar": "",
+      "avatar": "winnebeargo_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -806,13 +695,9 @@
       "name": "Fennie",
       "type": "Earth",
       "rarity": "Epic",
-      "avatar": "",
+      "avatar": "fennie_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -820,9 +705,9 @@
       "name": "Patchkin",
       "type": "Nature",
       "rarity": "Exotic",
-      "avatar": "",
+      "avatar": "patchkin_avatar.png",
       "spawns": [
-				{ "place": "The Shac", "zone": ["1st Floor of The Shack"], "view": "object", "objectImage": "../assets/images/maps/Pumpkin.png","days": "ALL_DAYS"}
+        {"place": "The Shac","zone": ["1st Floor of The Shack"],"view": "object","objectImage": "../assets/images/maps/Pumpkin.png","days": "ALL_DAYS"}
       ]
     },
     {
@@ -830,9 +715,9 @@
       "name": "Flurrious",
       "type": "Water",
       "rarity": "Exotic",
-      "avatar": "",
+      "avatar": "flurrious_avatar.png",
       "spawns": [
-				{ "place": "Shop", "zone": ["Miscrit Shop"], "view": "object", "objectImage": "../assets/images/maps/Shop.png","days": "ALL_DAYS"}
+        {"place": "Shop","zone": ["Miscrit Shop"],"view": "object","objectImage": "../assets/images/maps/Shop.png","days": "ALL_DAYS"}
       ]
     },
     {
@@ -840,13 +725,9 @@
       "name": "Fangly",
       "type": "Wind",
       "rarity": "Epic",
-      "avatar": "",
+      "avatar": "fangly_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -854,13 +735,9 @@
       "name": "Dark Kiloray",
       "type": "Lightning",
       "rarity": "Rare",
-      "avatar": "",
+      "avatar": "dark_kiloray_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -868,13 +745,9 @@
       "name": "Dark Croaky",
       "type": "Earth",
       "rarity": "Rare",
-      "avatar": "",
+      "avatar": "dark_croaky_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -882,9 +755,9 @@
       "name": "Valentino",
       "type": "Lightning",
       "rarity": "Exotic",
-      "avatar": "",
+      "avatar": "valentino_avatar.png",
       "spawns": [
-				{ "place": "Shop", "zone": ["Miscrit Shop"], "view": "object", "objectImage": "../assets/images/maps/shop.png","days": "ALL_DAYS"}
+        {"place": "Shop","zone": ["Miscrit Shop"],"view": "object","objectImage": "../assets/images/maps/shop.png","days": "ALL_DAYS"}
       ]
     },
     {
@@ -892,13 +765,9 @@
       "name": "Dark Cubsprout",
       "type": "Nature",
       "rarity": "Rare",
-      "avatar": "",
+      "avatar": "dark_cubsprout_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -906,13 +775,9 @@
       "name": "Dark Sparkitten",
       "type": "Fire",
       "rarity": "Rare",
-      "avatar": "",
+      "avatar": "dark_sparkitten_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -920,13 +785,9 @@
       "name": "Dark Snortus",
       "type": "Water",
       "rarity": "Epic",
-      "avatar": "",
+      "avatar": "dark_snortus_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -934,13 +795,9 @@
       "name": "Boltzee",
       "type": "Lightning",
       "rarity": "Epic",
-      "avatar": "",
+      "avatar": "boltzee_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -948,13 +805,9 @@
       "name": "Dark Owlie",
       "type": "Wind",
       "rarity": "Rare",
-      "avatar": "",
+      "avatar": "dark_owlie_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -962,13 +815,9 @@
       "name": "Dark Echino",
       "type": "Nature",
       "rarity": "Rare",
-      "avatar": "",
+      "avatar": "dark_echino_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -976,13 +825,9 @@
       "name": "Dark Arigato",
       "type": "Lightning",
       "rarity": "Rare",
-      "avatar": "",
+      "avatar": "dark_arigato_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -990,13 +835,9 @@
       "name": "Dark Hydroseal",
       "type": "Water",
       "rarity": "Rare",
-      "avatar": "",
+      "avatar": "dark_hydroseal_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -1004,9 +845,9 @@
       "name": "Peepsie",
       "type": "Wind",
       "rarity": "Exotic",
-      "avatar": "",
+      "avatar": "peepsie_avatar.png",
       "spawns": [
-				{ "place": "Beach", "zone": ["Shores 4"], "view": "object", "objectImage": "../assets/images/maps/ColEggs.png","days": "ALL_DAYS"}
+        {"place": "Beach","zone": ["Shores 4"],"view": "object","objectImage": "../assets/images/maps/ColEggs.png","days": "ALL_DAYS"}
       ]
     },
     {
@@ -1014,13 +855,9 @@
       "name": "Dark Eggy",
       "type": "Earth",
       "rarity": "Epic",
-      "avatar": "",
+      "avatar": "dark_eggy_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -1028,13 +865,9 @@
       "name": "Dark Flameling",
       "type": "Fire",
       "rarity": "Rare",
-      "avatar": "",
+      "avatar": "dark_flameling_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -1042,13 +875,9 @@
       "name": "Dark Elefauna",
       "type": "Nature",
       "rarity": "Epic",
-      "avatar": "",
+      "avatar": "dark_elefauna_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -1056,9 +885,9 @@
       "name": "Mama",
       "type": "Nature",
       "rarity": "Exotic",
-      "avatar": "",
+      "avatar": "mama_avatar.png",
       "spawns": [
-				{ "place": "Forest", "zone": ["Forest 3"], "view": "object", "objectImage": "../assets/images/maps/Log.png","days": "ALL_DAYS"}
+        {"place": "Forest","zone": ["Forest 3"],"view": "object","objectImage": "../assets/images/maps/Log.png","days": "ALL_DAYS"}
       ]
     },
     {
@@ -1066,9 +895,9 @@
       "name": "Dark Nessy",
       "type": "Water",
       "rarity": "Exotic",
-      "avatar": "",
+      "avatar": "dark_nessy_avatar.png",
       "spawns": [
-				{ "place": "Forest", "zone": ["Forest 4"], "view": "object", "objectImage": "../assets/images/maps/DCattail.png","days": "ALL_DAYS"}
+        {"place": "Forest","zone": ["Forest 4"],"view": "object","objectImage": "../assets/images/maps/DCattail.png","days": "ALL_DAYS"}
       ]
     },
     {
@@ -1076,13 +905,9 @@
       "name": "Dark Hotfoot",
       "type": "Fire",
       "rarity": "Rare",
-      "avatar": "",
+      "avatar": "dark_hotfoot_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -1090,13 +915,9 @@
       "name": "Dark Breezycheeks",
       "type": "Wind",
       "rarity": "Rare",
-      "avatar": "",
+      "avatar": "dark_breezycheeks_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -1104,9 +925,9 @@
       "name": "Papa",
       "type": "Lightning",
       "rarity": "Exotic",
-      "avatar": "",
+      "avatar": "papa_avatar.png",
       "spawns": [
-				{ "place": "Mansion", "zone": ["Mansion 2nd Floor"], "view": "object", "objectImage": "../assets/images/maps/PapaFrame.png","days": "ALL_DAYS"}
+        {"place": "Mansion","zone": ["Mansion 2nd Floor"],"view": "object","objectImage": "../assets/images/maps/PapaFrame.png","days": "ALL_DAYS"}
       ]
     },
     {
@@ -1114,13 +935,9 @@
       "name": "Whik",
       "type": "Fire",
       "rarity": "Common",
-      "avatar": "",
+      "avatar": "whik_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -1128,13 +945,9 @@
       "name": "Slithero",
       "type": "Fire",
       "rarity": "Common",
-      "avatar": "",
+      "avatar": "slithero_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -1142,13 +955,9 @@
       "name": "Spinnerette",
       "type": "Water",
       "rarity": "Common",
-      "avatar": "",
+      "avatar": "spinnerette_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -1156,13 +965,9 @@
       "name": "Crickin",
       "type": "Fire",
       "rarity": "Common",
-      "avatar": "",
+      "avatar": "crickin_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -1170,13 +975,9 @@
       "name": "Bubbles",
       "type": "Water",
       "rarity": "Common",
-      "avatar": "",
+      "avatar": "bubbles_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -1184,13 +985,9 @@
       "name": "Humbug",
       "type": "Nature",
       "rarity": "Common",
-      "avatar": "",
+      "avatar": "humbug_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -1198,13 +995,9 @@
       "name": "Lavarilla",
       "type": "Fire",
       "rarity": "Common",
-      "avatar": "",
+      "avatar": "lavarilla_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -1212,13 +1005,9 @@
       "name": "Bloomple",
       "type": "Nature",
       "rarity": "Epic",
-      "avatar": "",
+      "avatar": "bloomple_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -1226,13 +1015,9 @@
       "name": "Pamboo",
       "type": "Nature",
       "rarity": "Rare",
-      "avatar": "",
+      "avatar": "pamboo_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -1240,13 +1025,9 @@
       "name": "Rockodile",
       "type": "Water",
       "rarity": "Rare",
-      "avatar": "",
+      "avatar": "rockodile_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -1254,13 +1035,9 @@
       "name": "Boneshee",
       "type": "Wind",
       "rarity": "Epic",
-      "avatar": "",
+      "avatar": "boneshee_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -1268,13 +1045,9 @@
       "name": "Ursiwave",
       "type": "Water",
       "rarity": "Epic",
-      "avatar": "",
+      "avatar": "ursiwave_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -1282,13 +1055,9 @@
       "name": "Bludger",
       "type": "Earth",
       "rarity": "Common",
-      "avatar": "",
+      "avatar": "bludger_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -1296,13 +1065,9 @@
       "name": "Zaptor",
       "type": "Lightning",
       "rarity": "Common",
-      "avatar": "",
+      "avatar": "zaptor_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -1310,13 +1075,9 @@
       "name": "Narlope",
       "type": "Lightning",
       "rarity": "Common",
-      "avatar": "",
+      "avatar": "narlope_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -1324,13 +1085,9 @@
       "name": "Vexie",
       "type": "Earth",
       "rarity": "Common",
-      "avatar": "",
+      "avatar": "vexie_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -1338,13 +1095,9 @@
       "name": "Tongutail",
       "type": "Earth",
       "rarity": "Common",
-      "avatar": "",
+      "avatar": "tongutail_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -1352,13 +1105,9 @@
       "name": "Hawkai",
       "type": "Wind",
       "rarity": "Common",
-      "avatar": "",
+      "avatar": "hawkai_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -1366,13 +1115,9 @@
       "name": "Nero",
       "type": "Lightning",
       "rarity": "Common",
-      "avatar": "",
+      "avatar": "nero_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -1380,13 +1125,9 @@
       "name": "Pollifog",
       "type": "Wind",
       "rarity": "Rare",
-      "avatar": "",
+      "avatar": "pollifog_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -1394,13 +1135,9 @@
       "name": "Felis",
       "type": "Lightning",
       "rarity": "Common",
-      "avatar": "",
+      "avatar": "felis_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -1408,13 +1145,9 @@
       "name": "Tectonyx",
       "type": "Earth",
       "rarity": "Common",
-      "avatar": "",
+      "avatar": "tectonyx_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -1422,13 +1155,9 @@
       "name": "Nibbles",
       "type": "Water",
       "rarity": "Common",
-      "avatar": "",
+      "avatar": "nibbles_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -1436,13 +1165,9 @@
       "name": "Skustunk",
       "type": "Wind",
       "rarity": "Rare",
-      "avatar": "",
+      "avatar": "skustunk_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -1450,13 +1175,9 @@
       "name": "Flintly",
       "type": "Fire",
       "rarity": "Rare",
-      "avatar": "",
+      "avatar": "flintly_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -1464,13 +1185,9 @@
       "name": "Gog",
       "type": "Earth",
       "rarity": "Epic",
-      "avatar": "",
+      "avatar": "gog_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -1478,13 +1195,9 @@
       "name": "Octavio",
       "type": "Wind",
       "rarity": "Epic",
-      "avatar": "",
+      "avatar": "octavio_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -1492,13 +1205,9 @@
       "name": "Crabbles",
       "type": "Fire",
       "rarity": "Rare",
-      "avatar": "",
+      "avatar": "crabbles_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -1506,13 +1215,9 @@
       "name": "Inferno",
       "type": "Fire",
       "rarity": "Epic",
-      "avatar": "",
+      "avatar": "inferno_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -1520,13 +1225,9 @@
       "name": "Hotdog",
       "type": "Fire",
       "rarity": "Epic",
-      "avatar": "",
+      "avatar": "hotdog_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -1534,13 +1235,9 @@
       "name": "Rafiery",
       "type": "Fire",
       "rarity": "Rare",
-      "avatar": "",
+      "avatar": "rafiery_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -1548,13 +1245,9 @@
       "name": "Nanaslug",
       "type": "WaterWind",
       "rarity": "Epic",
-      "avatar": "",
+      "avatar": "nanaslug_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -1562,13 +1255,9 @@
       "name": "Vhisp",
       "type": "Wind",
       "rarity": "Common",
-      "avatar": "",
+      "avatar": "vhisp_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -1576,13 +1265,9 @@
       "name": "Raldio",
       "type": "Earth",
       "rarity": "Rare",
-      "avatar": "",
+      "avatar": "raldio_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -1590,9 +1275,9 @@
       "name": "Freedom",
       "type": "FireWind",
       "rarity": "Exotic",
-      "avatar": "",
+      "avatar": "freedom_avatar.png",
       "spawns": [
-				{ "place": "Forest", "zone": ["Hidden Forest"], "view": "object", "objectImage": "../assets/images/maps/Firework.png","days": "ALL_DAYS"}
+        {"place": "Forest","zone": ["Hidden Forest"],"view": "object","objectImage": "../assets/images/maps/Firework.png","days": "ALL_DAYS"}
       ]
     },
     {
@@ -1600,13 +1285,9 @@
       "name": "Gemix",
       "type": "Earth",
       "rarity": "Epic",
-      "avatar": "",
+      "avatar": "gemix_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -1614,13 +1295,9 @@
       "name": "Podo",
       "type": "Lightning",
       "rarity": "Epic",
-      "avatar": "",
+      "avatar": "podo_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -1628,13 +1305,9 @@
       "name": "Lavazard",
       "type": "Fire",
       "rarity": "Epic",
-      "avatar": "",
+      "avatar": "lavazard_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -1642,13 +1315,9 @@
       "name": "Shurikoon",
       "type": "FireWind",
       "rarity": "Epic",
-      "avatar": "",
+      "avatar": "shurikoon_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -1656,9 +1325,9 @@
       "name": "Skelepup",
       "type": "Lightning",
       "rarity": "Exotic",
-      "avatar": "",
+      "avatar": "skelepup_avatar.png",
       "spawns": [
-				{ "place": "The Shac", "zone": ["Basement of The Shack"], "view": "object", "objectImage": "../assets/images/maps/DogCollar.png","days": "ALL_DAYS"}
+        {"place": "The Shac","zone": ["Basement of The Shack"],"view": "object","objectImage": "../assets/images/maps/DogCollar.png","days": "ALL_DAYS"}
       ]
     },
     {
@@ -1666,9 +1335,9 @@
       "name": "Foil Waddles",
       "type": "Water",
       "rarity": "Exotic",
-      "avatar": "",
+      "avatar": "foil_waddles_avatar.png",
       "spawns": [
-				{ "place": "Cave", "zone": ["Cave 3"], "view": "object", "objectImage": "../assets/images/maps/TreasureChest.png","days": "ALL_DAYS"}
+        {"place": "Cave","zone": ["Cave 3"],"view": "object","objectImage": "../assets/images/maps/TreasureChest.png","days": "ALL_DAYS"}
       ]
     },
     {
@@ -1676,9 +1345,9 @@
       "name": "Foil Fossillia",
       "type": "Earth",
       "rarity": "Exotic",
-      "avatar": "",
+      "avatar": "foil_fossillia_avatar.png",
       "spawns": [
-				{ "place": "Mount Gemma", "zone": ["Mount Gemma 4"], "view": "object", "objectImage": "../assets/images/maps/GemForm.jpg","days": "ALL_DAYS"}
+        {"place": "Mount Gemma","zone": ["Mount Gemma 4"],"view": "object","objectImage": "../assets/images/maps/GemForm.jpg","days": "ALL_DAYS"}
       ]
     },
     {
@@ -1686,9 +1355,9 @@
       "name": "Foil Thundercracker",
       "type": "Lightning",
       "rarity": "Exotic",
-      "avatar": "",
+      "avatar": "foil_thundercracker_avatar.png",
       "spawns": [
-				{ "place": "Mount Gemma", "zone": ["Mount Gemma 3"], "view": "object", "objectImage": "../assets/images/maps/SmallGem.jpg","days": "ALL_DAYS"}
+        {"place": "Mount Gemma","zone": ["Mount Gemma 3"],"view": "object","objectImage": "../assets/images/maps/SmallGem.jpg","days": "ALL_DAYS"}
       ]
     },
     {
@@ -1696,13 +1365,9 @@
       "name": "Hoopty",
       "type": "Earth",
       "rarity": "Epic",
-      "avatar": "",
+      "avatar": "hoopty_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -1710,9 +1375,9 @@
       "name": "Foil Kiloray",
       "type": "Lightning",
       "rarity": "Exotic",
-      "avatar": "",
+      "avatar": "foil_kiloray_avatar.png",
       "spawns": [
-				{ "place": "Mount Gemma", "zone": ["Mount Gemma 1"], "view": "object", "objectImage": "../assets/images/maps/RightGem.jpg","days": "ALL_DAYS"}
+        {"place": "Mount Gemma","zone": ["Mount Gemma 1"],"view": "object","objectImage": "../assets/images/maps/RightGem.jpg","days": "ALL_DAYS"}
       ]
     },
     {
@@ -1720,9 +1385,9 @@
       "name": "Spangles",
       "type": "Lightning",
       "rarity": "Exotic",
-      "avatar": "",
+      "avatar": "spangles_avatar.png",
       "spawns": [
-				{ "place": "Shop", "zone": ["Miscrit Shop"], "view": "object", "objectImage": "../assets/images/maps/shop.png","days": "ALL_DAYS"}
+        {"place": "Shop","zone": ["Miscrit Shop"],"view": "object","objectImage": "../assets/images/maps/shop.png","days": "ALL_DAYS"}
       ]
     },
     {
@@ -1730,13 +1395,9 @@
       "name": "Opigum",
       "type": "Earth",
       "rarity": "Rare",
-      "avatar": "",
+      "avatar": "opigum_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -1744,9 +1405,9 @@
       "name": "Foil Flintly",
       "type": "Fire",
       "rarity": "Exotic",
-      "avatar": "",
+      "avatar": "foil_flintly_avatar.png",
       "spawns": [
-				{ "place": "Cave", "zone": ["Cave 2"], "view": "object", "objectImage": "../assets/images/maps/TreasureChest2.png","days": "ALL_DAYS"}
+        {"place": "Cave","zone": ["Cave 2"],"view": "object","objectImage": "../assets/images/maps/TreasureChest2.png","days": "ALL_DAYS"}
       ]
     },
     {
@@ -1754,9 +1415,9 @@
       "name": "Light Tectonyx",
       "type": "Earth",
       "rarity": "Exotic",
-      "avatar": "",
+      "avatar": "light_tectonyx_avatar.png",
       "spawns": [
-				{ "place": "Beach", "zone": ["Shores 3"], "view": "object", "objectImage": "../assets/images/maps/SpikyStone.png","days": "ALL_DAYS"}
+        {"place": "Beach","zone": ["Shores 3"],"view": "object","objectImage": "../assets/images/maps/SpikyStone.png","days": "ALL_DAYS"}
       ]
     },
     {
@@ -1764,13 +1425,9 @@
       "name": "Flaring",
       "type": "Fire",
       "rarity": "Epic",
-      "avatar": "",
+      "avatar": "flaring_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -1778,9 +1435,9 @@
       "name": "Cadbunny",
       "type": "WaterEarth",
       "rarity": "Exotic",
-      "avatar": "",
+      "avatar": "cadbunny_avatar.png",
       "spawns": [
-				{ "place": "Cave", "zone": ["Cave 1"], "view": "object", "objectImage": "../assets/images/maps/EmptyEgg.png","days": "ALL_DAYS"}
+        {"place": "Cave","zone": ["Cave 1"],"view": "object","objectImage": "../assets/images/maps/EmptyEgg.png","days": "ALL_DAYS"}
       ]
     },
     {
@@ -1788,13 +1445,9 @@
       "name": "Fiender",
       "type": "Wind",
       "rarity": "Rare",
-      "avatar": "",
+      "avatar": "fiender_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -1802,13 +1455,9 @@
       "name": "Pillblaze",
       "type": "Fire",
       "rarity": "Rare",
-      "avatar": "",
+      "avatar": "pillblaze_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -1816,13 +1465,9 @@
       "name": "Blub",
       "type": "Lightning",
       "rarity": "Common",
-      "avatar": "",
+      "avatar": "blub_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -1830,13 +1475,9 @@
       "name": "Cerberuff",
       "type": "Earth",
       "rarity": "Common",
-      "avatar": "",
+      "avatar": "cerberuff_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -1844,13 +1485,9 @@
       "name": "Auger",
       "type": "Earth",
       "rarity": "Common",
-      "avatar": "",
+      "avatar": "auger_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -1858,13 +1495,9 @@
       "name": "Flurfy",
       "type": "Nature",
       "rarity": "Common",
-      "avatar": "",
+      "avatar": "flurfy_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -1872,13 +1505,9 @@
       "name": "Squirmle",
       "type": "Water",
       "rarity": "Common",
-      "avatar": "",
+      "avatar": "squirmle_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -1886,13 +1515,9 @@
       "name": "Lil Bubs",
       "type": "Water",
       "rarity": "Rare",
-      "avatar": "",
+      "avatar": "lil_bubs_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -1900,13 +1525,9 @@
       "name": "Peekly",
       "type": "Wind",
       "rarity": "Common",
-      "avatar": "",
+      "avatar": "peekly_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -1914,9 +1535,9 @@
       "name": "Splender",
       "type": "NatureEarth",
       "rarity": "Exotic",
-      "avatar": "",
+      "avatar": "splender_avatar.png",
       "spawns": [
-				{ "place": "Shop", "zone": ["Miscrit Shop"], "view": "object", "objectImage": "../assets/images/maps/Shop.png","days": "ALL_DAYS"}
+        {"place": "Shop","zone": ["Miscrit Shop"],"view": "object","objectImage": "../assets/images/maps/Shop.png","days": "ALL_DAYS"}
       ]
     },
     {
@@ -1924,13 +1545,9 @@
       "name": "Dorux",
       "type": "FireLightning",
       "rarity": "Epic",
-      "avatar": "",
+      "avatar": "dorux_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -1938,9 +1555,9 @@
       "name": "Fubby",
       "type": "Earth",
       "rarity": "Exotic",
-      "avatar": "",
+      "avatar": "fubby_avatar.png",
       "spawns": [
-				{ "place": "Mansion", "zone": ["Mansion Outside"], "view": "object", "objectImage": "../assets/images/maps/OddBall.png","days": "ALL_DAYS"}
+        {"place": "Mansion","zone": ["Mansion Outside"],"view": "object","objectImage": "../assets/images/maps/OddBall.png","days": "ALL_DAYS"}
       ]
     },
     {
@@ -1948,13 +1565,9 @@
       "name": "Pennon",
       "type": "Wind",
       "rarity": "Epic",
-      "avatar": "",
+      "avatar": "pennon_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -1962,9 +1575,9 @@
       "name": "Ekkult",
       "type": "Water",
       "rarity": "Exotic",
-      "avatar": "",
+      "avatar": "ekkult_avatar.png",
       "spawns": [
-				{ "place": "Mansion", "zone": ["Mansion Attic"], "view": "object", "objectImage": "../assets/images/maps/TreasureChest3.png","days": "ALL_DAYS"}
+        {"place": "Mansion","zone": ["Mansion Attic"],"view": "object","objectImage": "../assets/images/maps/TreasureChest3.png","days": "ALL_DAYS"}
       ]
     },
     {
@@ -1972,9 +1585,9 @@
       "name": "Defilio",
       "type": "NatureEarth",
       "rarity": "Exotic",
-      "avatar": "",
+      "avatar": "defilio_avatar.png",
       "spawns": [
-				{ "place": "Forest", "zone": ["Forest 3"], "view": "object", "objectImage": "../assets/images/maps/BlightedBush.png","days": "ALL_DAYS"}
+        {"place": "Forest","zone": ["Forest 3"],"view": "object","objectImage": "../assets/images/maps/BlightedBush.png","days": "ALL_DAYS"}
       ]
     },
     {
@@ -1982,9 +1595,9 @@
       "name": "Blighted Cubsprout",
       "type": "Nature",
       "rarity": "Exotic",
-      "avatar": "",
+      "avatar": "blighted_cubsprout_avatar.png",
       "spawns": [
-				{ "place": "Forest", "zone": ["Forest 2"], "view": "object", "objectImage": "../assets/images/maps/DBlightedBush.png","days": "ALL_DAYS"}
+        {"place": "Forest","zone": ["Forest 2"],"view": "object","objectImage": "../assets/images/maps/DBlightedBush.png","days": "ALL_DAYS"}
       ]
     },
     {
@@ -1994,7 +1607,7 @@
       "rarity": "Legendary",
       "avatar": "blighted_flue_avatar.png",
       "spawns": [
-        { "place": "Forest", "zone": ["Forest 4"], "view": "object", "objectImage": "../assets/images/maps/BlightedStone.png","days": "ALL_DAYS"}
+        {"place": "Forest","zone": ["Forest 4"],"view": "object","objectImage": "../assets/images/maps/BlightedStone.png","days": "ALL_DAYS"}
       ]
     },
     {
@@ -2002,9 +1615,9 @@
       "name": "Blobroller",
       "type": "Nature Lightning",
       "rarity": "Exotic",
-      "avatar": "",
+      "avatar": "blobroller_avatar.png",
       "spawns": [
-				{ "place": "Shop", "zone": ["Miscrit Shop"], "view": "object", "objectImage": "../assets/images/maps/Shop.png","days": "ALL_DAYS"}
+        {"place": "Shop","zone": ["Miscrit Shop"],"view": "object","objectImage": "../assets/images/maps/Shop.png","days": "ALL_DAYS"}
       ]
     },
     {
@@ -2012,13 +1625,9 @@
       "name": "Light Nibbles",
       "type": "WaterLightning",
       "rarity": "Epic",
-      "avatar": "",
+      "avatar": "light_nibbles_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -2026,9 +1635,9 @@
       "name": "Light Frostmite",
       "type": "Water",
       "rarity": "Exotic",
-      "avatar": "",
+      "avatar": "light_frostmite_avatar.png",
       "spawns": [
-				{ "place": "Beach", "zone": ["Shores 1"], "view": "object", "objectImage": "../assets/images/maps/IcyConch.png","days": "ALL_DAYS"}
+        {"place": "Beach","zone": ["Shores 1"],"view": "object","objectImage": "../assets/images/maps/IcyConch.png","days": "ALL_DAYS"}
       ]
     },
     {
@@ -2036,9 +1645,9 @@
       "name": "Light Bludger",
       "type": "Earth",
       "rarity": "Exotic",
-      "avatar": "",
+      "avatar": "light_bludger_avatar.png",
       "spawns": [
-				{ "place": "Beach", "zone": ["Shores 4"], "view": "object", "objectImage": "../assets/images/maps/BlueCrate.png","days": "ALL_DAYS"}
+        {"place": "Beach","zone": ["Shores 4"],"view": "object","objectImage": "../assets/images/maps/BlueCrate.png","days": "ALL_DAYS"}
       ]
     },
     {
@@ -2046,9 +1655,9 @@
       "name": "Light Zaptor",
       "type": "NatureLightning",
       "rarity": "Exotic",
-      "avatar": "",
+      "avatar": "light_zaptor_avatar.png",
       "spawns": [
-				{ "place": "Shop", "zone": ["Miscrit Shop"], "view": "object", "objectImage": "../assets/images/maps/Shop.png","days": "ALL_DAYS"}
+        {"place": "Shop","zone": ["Miscrit Shop"],"view": "object","objectImage": "../assets/images/maps/Shop.png","days": "ALL_DAYS"}
       ]
     },
     {
@@ -2056,13 +1665,9 @@
       "name": "Light Quirk",
       "type": "Nature",
       "rarity": "Epic",
-      "avatar": "",
+      "avatar": "light_quirk_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -2070,9 +1675,9 @@
       "name": "Light Statikat",
       "type": "FireLightning",
       "rarity": "Exotic",
-      "avatar": "",
+      "avatar": "light_statikat_avatar.png",
       "spawns": [
-				{ "place": "Beach", "zone": ["Shores 1"], "view": "object", "objectImage": "../assets/images/maps/PurpleCoral.png","days": "ALL_DAYS"}
+        {"place": "Beach","zone": ["Shores 1"],"view": "object","objectImage": "../assets/images/maps/PurpleCoral.png","days": "ALL_DAYS"}
       ]
     },
     {
@@ -2080,9 +1685,9 @@
       "name": "Dark Spinnerette",
       "type": "Water",
       "rarity": "Exotic",
-      "avatar": "",
+      "avatar": "dark_spinnerette_avatar.png",
       "spawns": [
-				{ "place": "Mansion", "zone": ["Mansion 1st Floor"], "view": "object", "objectImage": "../assets/images/maps/OddCage.png","days": "ALL_DAYS"}
+        {"place": "Mansion","zone": ["Mansion 1st Floor"],"view": "object","objectImage": "../assets/images/maps/OddCage.png","days": "ALL_DAYS"}
       ]
     },
     {
@@ -2090,9 +1695,9 @@
       "name": "Light Twiggum",
       "type": "Nature",
       "rarity": "Exotic",
-      "avatar": "",
+      "avatar": "light_twiggum_avatar.png",
       "spawns": [
-				{ "place": "Beach", "zone": ["Shores 2"], "view": "object", "objectImage": "../assets/images/maps/PalmTree.png","days": "ALL_DAYS"}
+        {"place": "Beach","zone": ["Shores 2"],"view": "object","objectImage": "../assets/images/maps/PalmTree.png","days": "ALL_DAYS"}
       ]
     },
     {
@@ -2102,7 +1707,7 @@
       "rarity": "Legendary",
       "avatar": "aquarion_avatar.png",
       "spawns": [
-				{ "place": "Beach", "zone": ["Shores 2"], "view": "object", "objectImage": "../assets/images/maps/AquaEggs.png","days": "ALL_DAYS"}
+        {"place": "Beach","zone": ["Shores 2"],"view": "object","objectImage": "../assets/images/maps/AquaEggs.png","days": "ALL_DAYS"}
       ]
     },
     {
@@ -2110,9 +1715,9 @@
       "name": "Blighted Fiender",
       "type": "Wind",
       "rarity": "Exotic",
-      "avatar": "",
+      "avatar": "blighted_fiender_avatar.png",
       "spawns": [
-				{ "place": "Shop", "zone": ["Miscrit Shop"], "view": "object", "objectImage": "../assets/images/maps/Shop.png","days": "ALL_DAYS"}
+        {"place": "Shop","zone": ["Miscrit Shop"],"view": "object","objectImage": "../assets/images/maps/Shop.png","days": "ALL_DAYS"}
       ]
     },
     {
@@ -2120,9 +1725,9 @@
       "name": "Blighted Kiloray",
       "type": "Lightning",
       "rarity": "Exotic",
-      "avatar": "",
+      "avatar": "blighted_kiloray_avatar.png",
       "spawns": [
-				{ "place": "Shop", "zone": ["Miscrit Shop"], "view": "object", "objectImage": "../assets/images/maps/Shop.png","days": "ALL_DAYS"}
+        {"place": "Shop","zone": ["Miscrit Shop"],"view": "object","objectImage": "../assets/images/maps/Shop.png","days": "ALL_DAYS"}
       ]
     },
     {
@@ -2130,13 +1735,9 @@
       "name": "Dark Shellbee",
       "type": "Water",
       "rarity": "Rare",
-      "avatar": "",
+      "avatar": "dark_shellbee_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -2144,13 +1745,9 @@
       "name": "Liothning",
       "type": "Lightning",
       "rarity": "Epic",
-      "avatar": "",
+      "avatar": "liothning_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -2158,13 +1755,9 @@
       "name": "Dark Lumera",
       "type": "Fire",
       "rarity": "Rare",
-      "avatar": "",
+      "avatar": "dark_lumera_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -2172,13 +1765,9 @@
       "name": "Dark Steamguin",
       "type": "Fire",
       "rarity": "Rare",
-      "avatar": "",
+      "avatar": "dark_steamguin_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -2188,7 +1777,7 @@
       "rarity": "Legendary",
       "avatar": "dark_poltergust_avatar.png",
       "spawns": [
-        { "place": "Mount Gemma", "zone": ["Mount Gemma 4"], "view": "object", "objectImage": "../assets/images/maps/RedGem.png","days": "ALL_DAYS"}
+        {"place": "Mount Gemma","zone": ["Mount Gemma 4"],"view": "object","objectImage": "../assets/images/maps/RedGem.png","days": "ALL_DAYS"}
       ]
     },
     {
@@ -2196,13 +1785,9 @@
       "name": "Dark Treemur",
       "type": "Nature",
       "rarity": "Epic",
-      "avatar": "",
+      "avatar": "dark_treemur_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -2210,9 +1795,9 @@
       "name": "Foil Vexie",
       "type": "Earth",
       "rarity": "Exotic",
-      "avatar": "",
+      "avatar": "foil_vexie_avatar.png",
       "spawns": [
-				{ "place": "Mount Gemma", "zone": ["Mount Gemma 2"], "view": "object", "objectImage": "../assets/images/maps/GreenGem.jpg","days": "ALL_DAYS"}
+        {"place": "Mount Gemma","zone": ["Mount Gemma 2"],"view": "object","objectImage": "../assets/images/maps/GreenGem.jpg","days": "ALL_DAYS"}
       ]
     },
     {
@@ -2220,9 +1805,9 @@
       "name": "Foil Vhisp",
       "type": "Wind",
       "rarity": "Exotic",
-      "avatar": "",
+      "avatar": "foil_vhisp_avatar.png",
       "spawns": [
-				{ "place": "Mount Gemma", "zone": ["Mount Gemma 3"], "view": "object", "objectImage": "../assets/images/maps/SmallGem2.jpg","days": "ALL_DAYS"}
+        {"place": "Mount Gemma","zone": ["Mount Gemma 3"],"view": "object","objectImage": "../assets/images/maps/SmallGem2.jpg","days": "ALL_DAYS"}
       ]
     },
     {
@@ -2230,13 +1815,9 @@
       "name": "Dark Sparkupine",
       "type": "Fire",
       "rarity": "Rare",
-      "avatar": "",
+      "avatar": "dark_sparkupine_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -2244,13 +1825,9 @@
       "name": "Dark Squibee",
       "type": "Water",
       "rarity": "Rare",
-      "avatar": "",
+      "avatar": "dark_squibee_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -2258,13 +1835,9 @@
       "name": "Dark Waddles",
       "type": "Water",
       "rarity": "Epic",
-      "avatar": "",
+      "avatar": "dark_waddles_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -2272,13 +1845,9 @@
       "name": "Dark Twiggum",
       "type": "Nature",
       "rarity": "Epic",
-      "avatar": "",
+      "avatar": "dark_twiggum_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -2286,13 +1855,9 @@
       "name": "Dark Auger",
       "type": "Earth",
       "rarity": "Epic",
-      "avatar": "",
+      "avatar": "dark_auger_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -2300,13 +1865,9 @@
       "name": "Dark Aria",
       "type": "Wind",
       "rarity": "Rare",
-      "avatar": "",
+      "avatar": "dark_aria_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -2314,13 +1875,9 @@
       "name": "Light Rafiery",
       "type": "FireLightning",
       "rarity": "Epic",
-      "avatar": "",
+      "avatar": "light_rafiery_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -2328,13 +1885,9 @@
       "name": "Light Fossillia",
       "type": "WaterEarth",
       "rarity": "Epic",
-      "avatar": "",
+      "avatar": "light_fossillia_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -2342,9 +1895,9 @@
       "name": "Light Nanaslug",
       "type": "Wind",
       "rarity": "Exotic",
-      "avatar": "",
+      "avatar": "light_nanaslug_avatar.png",
       "spawns": [
-				{ "place": "Beach", "zone": ["Shores 3"], "view": "object", "objectImage": "../assets/images/maps/Pound.png","days": "ALL_DAYS"}
+        {"place": "Beach","zone": ["Shores 3"],"view": "object","objectImage": "../assets/images/maps/Pound.png","days": "ALL_DAYS"}
       ]
     },
     {
@@ -2352,9 +1905,9 @@
       "name": "Light Crickin",
       "type": "Fire",
       "rarity": "Exotic",
-      "avatar": "",
+      "avatar": "light_crickin_avatar.png",
       "spawns": [
-				{ "place": "Beach", "zone": ["Shores 2"], "view": "object", "objectImage": "../assets/images/maps/MiniGrass.png","days": "ALL_DAYS"}
+        {"place": "Beach","zone": ["Shores 2"],"view": "object","objectImage": "../assets/images/maps/MiniGrass.png","days": "ALL_DAYS"}
       ]
     },
     {
@@ -2362,13 +1915,9 @@
       "name": "Light Flue",
       "type": "FireWind",
       "rarity": "Epic",
-      "avatar": "",
+      "avatar": "light_flue_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -2376,9 +1925,9 @@
       "name": "Light Grubbean",
       "type": "NatureWind",
       "rarity": "Epic",
-      "avatar": "",
+      "avatar": "light_grubbean_avatar.png",
       "spawns": [
-        { "place": "Beach", "zone": "ZONE_4", "objects": "MYSTERIOUS_EGG", "days": "ALL_DAYS" }
+        {"place": "Beach","zone": "ZONE_4","objects": "MYSTERIOUS_EGG","days": "ALL_DAYS"}
       ]
     },
     {
@@ -2386,13 +1935,9 @@
       "name": "Ribos",
       "type": "Water",
       "rarity": "Rare",
-      "avatar": "",
+      "avatar": "ribos_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -2400,13 +1945,9 @@
       "name": "Light Sparkspeck",
       "type": "Lightning",
       "rarity": "Rare",
-      "avatar": "",
+      "avatar": "light_sparkspeck_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -2414,13 +1955,9 @@
       "name": "Light Wavesling",
       "type": "WaterWind",
       "rarity": "Rare",
-      "avatar": "",
+      "avatar": "light_wavesling_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -2428,13 +1965,9 @@
       "name": "Light Jack",
       "type": "Wind",
       "rarity": "Rare",
-      "avatar": "",
+      "avatar": "light_jack_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -2442,13 +1975,9 @@
       "name": "Light Flurfy",
       "type": "Nature",
       "rarity": "Rare",
-      "avatar": "",
+      "avatar": "light_flurfy_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -2456,13 +1985,9 @@
       "name": "Light Slithero",
       "type": "Fire",
       "rarity": "Rare",
-      "avatar": "",
+      "avatar": "light_slithero_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -2470,13 +1995,9 @@
       "name": "Light Squibee",
       "type": "Water",
       "rarity": "Rare",
-      "avatar": "",
+      "avatar": "light_squibee_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -2484,13 +2005,9 @@
       "name": "Light Digsy",
       "type": "FireEarth",
       "rarity": "Epic",
-      "avatar": "",
+      "avatar": "light_digsy_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -2500,7 +2017,7 @@
       "rarity": "Legendary",
       "avatar": "light_ignios_avatar.png",
       "spawns": [
-				{ "place": "Beach", "zone": ["Shores 4"], "view": "object", "objectImage": "../assets/images/maps/LightingBones.png","days": "ALL_DAYS"}
+        {"place": "Beach","zone": ["Shores 4"],"view": "object","objectImage": "../assets/images/maps/LightingBones.png","days": "ALL_DAYS"}
       ]
     },
     {
@@ -2508,13 +2025,9 @@
       "name": "Light Mumbah",
       "type": "Earth",
       "rarity": "Rare",
-      "avatar": "",
+      "avatar": "light_mumbah_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -2522,13 +2035,9 @@
       "name": "Dark Tongutail",
       "type": "Earth",
       "rarity": "Rare",
-      "avatar": "",
+      "avatar": "dark_tongutail_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -2536,13 +2045,9 @@
       "name": "Dark Lavarilla",
       "type": "Fire",
       "rarity": "Rare",
-      "avatar": "",
+      "avatar": "dark_lavarilla_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -2550,13 +2055,9 @@
       "name": "Dark Frostmite",
       "type": "Water",
       "rarity": "Rare",
-      "avatar": "",
+      "avatar": "dark_frostmite_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -2564,13 +2065,9 @@
       "name": "Dark Tulipinny",
       "type": "Nature",
       "rarity": "Epic",
-      "avatar": "",
+      "avatar": "dark_tulipinny_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -2578,13 +2075,9 @@
       "name": "Dark Flutterpat",
       "type": "Wind",
       "rarity": "Epic",
-      "avatar": "",
+      "avatar": "dark_flutterpat_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -2592,9 +2085,9 @@
       "name": "Dark Slithero",
       "type": "Fire",
       "rarity": "Exotic",
-      "avatar": "",
+      "avatar": "dark_slithero_avatar.png",
       "spawns": [
-				{ "place": "Mansion", "zone": ["Mansion 1st Floor"], "view": "object", "objectImage": "../assets/images/maps/PyroStatue.png","days": "ALL_DAYS"}
+        {"place": "Mansion","zone": ["Mansion 1st Floor"],"view": "object","objectImage": "../assets/images/maps/PyroStatue.png","days": "ALL_DAYS"}
       ]
     },
     {
@@ -2604,7 +2097,7 @@
       "rarity": "Legendary",
       "avatar": "keeper_avatar.png",
       "spawns": [
-				{ "place": "Mansion", "zone": ["Mansion Outside"], "view": "object", "objectImage": "../assets/images/maps/SoccerBall.png","days": "ALL_DAYS"}
+        {"place": "Mansion","zone": ["Mansion Outside"],"view": "object","objectImage": "../assets/images/maps/SoccerBall.png","days": "ALL_DAYS"}
       ]
     },
     {
@@ -2612,13 +2105,9 @@
       "name": "Dark Luna",
       "type": "Lightning",
       "rarity": "Epic",
-      "avatar": "",
+      "avatar": "dark_luna_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -2626,9 +2115,9 @@
       "name": "Foil Luna",
       "type": "Lightning",
       "rarity": "Exotic",
-      "avatar": "",
+      "avatar": "foil_luna_avatar.png",
       "spawns": [
-				{ "place": "Mount Gemma", "zone": ["Mount Gemma 2"], "view": "object", "objectImage": "../assets/images/maps/GemForm2.jpg","days": "ALL_DAYS"}
+        {"place": "Mount Gemma","zone": ["Mount Gemma 2"],"view": "object","objectImage": "../assets/images/maps/GemForm2.jpg","days": "ALL_DAYS"}
       ]
     },
     {
@@ -2636,13 +2125,9 @@
       "name": "Sol",
       "type": "Fire",
       "rarity": "Rare",
-      "avatar": "",
+      "avatar": "sol_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -2650,13 +2135,9 @@
       "name": "Dreamger",
       "type": "Wind",
       "rarity": "Rare",
-      "avatar": "",
+      "avatar": "dreamger_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -2664,13 +2145,9 @@
       "name": "Light Weevern",
       "type": "NatureEarth",
       "rarity": "Epic",
-      "avatar": "",
+      "avatar": "light_weevern_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -2678,13 +2155,9 @@
       "name": "Dark Quirk",
       "type": "Nature",
       "rarity": "Rare",
-      "avatar": "",
+      "avatar": "dark_quirk_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -2692,13 +2165,9 @@
       "name": "Dark Squirmle",
       "type": "Water",
       "rarity": "Rare",
-      "avatar": "",
+      "avatar": "dark_squirmle_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -2708,7 +2177,7 @@
       "rarity": "Legendary",
       "avatar": "blighted_flowerpiller_avatar.png",
       "spawns": [
-				{ "place": "Forest", "zone": ["Forest 4"], "view": "object", "objectImage": "../assets/images/maps/BlightedFlower.png","days": "ALL_DAYS"}
+        {"place": "Forest","zone": ["Forest 4"],"view": "object","objectImage": "../assets/images/maps/BlightedFlower.png","days": "ALL_DAYS"}
       ]
     },
     {
@@ -2716,13 +2185,9 @@
       "name": "Dark Jellyshock",
       "type": "Lightning",
       "rarity": "Epic",
-      "avatar": "",
+      "avatar": "dark_jellyshock_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -2730,13 +2195,9 @@
       "name": "Light Hawkai",
       "type": "Wind",
       "rarity": "Rare",
-      "avatar": "",
+      "avatar": "light_hawkai_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -2744,13 +2205,9 @@
       "name": "Dark Vexie",
       "type": "Earth",
       "rarity": "Rare",
-      "avatar": "",
+      "avatar": "dark_vexie_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -2760,7 +2217,7 @@
       "rarity": "Legendary",
       "avatar": "da_windy_avatar.png",
       "spawns": [
-				{ "place": "Mansion", "zone": ["Mansion 2nd Floor"], "view": "object", "objectImage": "../assets/images/maps/ArtFrame.png","days": "ALL_DAYS"}
+        {"place": "Mansion","zone": ["Mansion 2nd Floor"],"view": "object","objectImage": "../assets/images/maps/ArtFrame.png","days": "ALL_DAYS"}
       ]
     },
     {
@@ -2768,9 +2225,9 @@
       "name": "Light Snorkels",
       "type": "WaterWind",
       "rarity": "Exotic",
-      "avatar": "",
+      "avatar": "light_snorkels_avatar.png",
       "spawns": [
-				{ "place": "Shop", "zone": ["Miscrit Shop"], "view": "object", "objectImage": "../assets/images/maps/Shop.png","days": "ALL_DAYS"}
+        {"place": "Shop","zone": ["Miscrit Shop"],"view": "object","objectImage": "../assets/images/maps/Shop.png","days": "ALL_DAYS"}
       ]
     },
     {
@@ -2780,7 +2237,7 @@
       "rarity": "Legendary",
       "avatar": "foil_croaky_avatar.png",
       "spawns": [
-				{ "place": "Mount Gemma", "zone": ["Mount Gemma 3"], "view": "object", "objectImage": "../assets/images/maps/LargeGem.jpg","days": "ALL_DAYS"}
+        {"place": "Mount Gemma","zone": ["Mount Gemma 3"],"view": "object","objectImage": "../assets/images/maps/LargeGem.jpg","days": "ALL_DAYS"}
       ]
     },
     {
@@ -2788,13 +2245,9 @@
       "name": "Freezet",
       "type": "Water",
       "rarity": "Common",
-      "avatar": "",
+      "avatar": "freezet_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -2802,13 +2255,9 @@
       "name": "Dark Pillblaze",
       "type": "Fire",
       "rarity": "Epic",
-      "avatar": "",
+      "avatar": "dark_pillblaze_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -2816,9 +2265,9 @@
       "name": "Rudy",
       "type": "Earth",
       "rarity": "Exotic",
-      "avatar": "",
+      "avatar": "rudy_avatar.png",
       "spawns": [
-				{ "place": "Shop", "zone": ["Miscrit Shop"], "view": "object", "objectImage": "../assets/images/maps/Shop.png","days": "ALL_DAYS"}
+        {"place": "Shop","zone": ["Miscrit Shop"],"view": "object","objectImage": "../assets/images/maps/Shop.png","days": "ALL_DAYS"}
       ]
     },
     {
@@ -2828,7 +2277,7 @@
       "rarity": "Legendary",
       "avatar": "manio_avatar.png",
       "spawns": [
-				{ "place": "Cave", "zone": ["Cave 1"], "view": "object", "objectImage": "../assets/images/maps/OddStuff.png","days": "ALL_DAYS"}
+        {"place": "Cave","zone": ["Cave 1"],"view": "object","objectImage": "../assets/images/maps/OddStuff.png","days": "ALL_DAYS"}
       ]
     },
     {
@@ -2836,13 +2285,9 @@
       "name": "Mistraxol",
       "type": "Wind",
       "rarity": "Common",
-      "avatar": "",
+      "avatar": "mistraxol_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -2850,13 +2295,9 @@
       "name": "Orbling",
       "type": "Earth",
       "rarity": "Common",
-      "avatar": "",
+      "avatar": "orbling_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -2864,13 +2305,9 @@
       "name": "Zappup",
       "type": "Lightning",
       "rarity": "Common",
-      "avatar": "",
+      "avatar": "zappup_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -2878,13 +2315,9 @@
       "name": "Pestling",
       "type": "Nature",
       "rarity": "Common",
-      "avatar": "",
+      "avatar": "pestling_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -2894,7 +2327,7 @@
       "rarity": "Legendary",
       "avatar": "woolly_avatar.png",
       "spawns": [
-				{ "place": "Cave", "zone": ["Cave 4"], "view": "object", "objectImage": "../assets/images/maps/IceChest.png","days": "ALL_DAYS"}
+        {"place": "Cave","zone": ["Cave 4"],"view": "object","objectImage": "../assets/images/maps/IceChest.png","days": "ALL_DAYS"}
       ]
     },
     {
@@ -2902,13 +2335,9 @@
       "name": "Frozy",
       "type": "Water",
       "rarity": "Common",
-      "avatar": "",
+      "avatar": "frozy_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -2916,13 +2345,9 @@
       "name": "Stalkra",
       "type": "Nature",
       "rarity": "Common",
-      "avatar": "",
+      "avatar": "stalkra_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -2930,13 +2355,9 @@
       "name": "Mech",
       "type": "Water",
       "rarity": "Common",
-      "avatar": "",
+      "avatar": "mech_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -2944,13 +2365,9 @@
       "name": "Rexie",
       "type": "Fire",
       "rarity": "Common",
-      "avatar": "",
+      "avatar": "rexie_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -2958,13 +2375,9 @@
       "name": "Warrian",
       "type": "Fire",
       "rarity": "Common",
-      "avatar": "",
+      "avatar": "warrian_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -2972,13 +2385,9 @@
       "name": "Aebex",
       "type": "NatureWind",
       "rarity": "Common",
-      "avatar": "",
+      "avatar": "aebex_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -2986,13 +2395,9 @@
       "name": "Charix",
       "type": "Nature",
       "rarity": "Rare",
-      "avatar": "",
+      "avatar": "charix_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -3000,9 +2405,9 @@
       "name": "Alpha",
       "type": "Nature",
       "rarity": "Exotic",
-      "avatar": "",
+      "avatar": "alpha_avatar.png",
       "spawns": [
-				{ "place": "Forest", "zone": ["Hidden Forest"], "view": "object", "objectImage": "../assets/images/maps/CBush.png","days": "ALL_DAYS"}
+        {"place": "Forest","zone": ["Hidden Forest"],"view": "object","objectImage": "../assets/images/maps/CBush.png","days": "ALL_DAYS"}
       ]
     },
     {
@@ -3012,7 +2417,7 @@
       "rarity": "Legendary",
       "avatar": "charpy_avatar.png",
       "spawns": [
-				{ "place": "Forest", "zone": ["Hidden Forest"], "view": "object", "objectImage": "../assets/images/maps/CoalPit.png","days": "ALL_DAYS"}
+        {"place": "Forest","zone": ["Hidden Forest"],"view": "object","objectImage": "../assets/images/maps/CoalPit.png","days": "ALL_DAYS"}
       ]
     },
     {
@@ -3020,13 +2425,9 @@
       "name": "Lambolt",
       "type": "Lightning",
       "rarity": "Rare",
-      "avatar": "",
+      "avatar": "lambolt_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -3034,9 +2435,9 @@
       "name": "Gravitron",
       "type": "Earth",
       "rarity": "Exotic",
-      "avatar": "",
+      "avatar": "gravitron_avatar.png",
       "spawns": [
-				{ "place": "Moon of Miscria", "zone": ["Moon of Miscria"], "view": "object", "objectImage": "../assets/images/maps/BluePortal.png","days": "ALL_DAYS"}
+        {"place": "Moon of Miscria","zone": ["Moon of Miscria"],"view": "object","objectImage": "../assets/images/maps/BluePortal.png","days": "ALL_DAYS"}
       ]
     },
     {
@@ -3044,13 +2445,9 @@
       "name": "Babakku",
       "type": "Earth",
       "rarity": "Epic",
-      "avatar": "",
+      "avatar": "babakku_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -3058,9 +2455,9 @@
       "name": "Smolderfry",
       "type": "Fire",
       "rarity": "Exotic",
-      "avatar": "",
+      "avatar": "smolderfry_avatar.png",
       "spawns": [
-				{ "place": "Moon of Miscria", "zone": ["Moon of Miscria"], "view": "object", "objectImage": "../assets/images/maps/Crater.png","days": "ALL_DAYS"}
+        {"place": "Moon of Miscria","zone": ["Moon of Miscria"],"view": "object","objectImage": "../assets/images/maps/Crater.png","days": "ALL_DAYS"}
       ]
     },
     {
@@ -3068,13 +2465,9 @@
       "name": "Moondrip",
       "type": "Water",
       "rarity": "Common",
-      "avatar": "",
+      "avatar": "moondrip_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -3082,13 +2475,9 @@
       "name": "Shroolet",
       "type": "Water",
       "rarity": "Rare",
-      "avatar": "",
+      "avatar": "shroolet_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -3096,13 +2485,9 @@
       "name": "Lumite",
       "type": "Earth",
       "rarity": "Common",
-      "avatar": "",
+      "avatar": "lumite_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -3112,7 +2497,7 @@
       "rarity": "Legendary",
       "avatar": "voidotron_avatar.png",
       "spawns": [
-				{ "place": "Moon Cave", "zone": [""], "view": "object", "objectImage": "../assets/images/maps/SmallVoid.png","days": "ALL_DAYS"}
+        {"place": "Moon Cave","zone": [""],"view": "object","objectImage": "../assets/images/maps/SmallVoid.png","days": "ALL_DAYS"}
       ]
     },
     {
@@ -3120,13 +2505,9 @@
       "name": "Niboro",
       "type": "Wind",
       "rarity": "Epic",
-      "avatar": "",
+      "avatar": "niboro_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -3134,9 +2515,9 @@
       "name": "Pinplar",
       "type": "Water",
       "rarity": "Exotic",
-      "avatar": "",
+      "avatar": "pinplar_avatar.png",
       "spawns": [
-				{ "place": "Moon Cave", "zone": ["Moon Cave"], "view": "object", "objectImage": "../assets/images/maps/Skeleton.png","days": "ALL_DAYS"}
+        {"place": "Moon Cave","zone": ["Moon Cave"],"view": "object","objectImage": "../assets/images/maps/Skeleton.png","days": "ALL_DAYS"}
       ]
     },
     {
@@ -3144,9 +2525,9 @@
       "name": "Lithos",
       "type": "Lightning",
       "rarity": "Exotic",
-      "avatar": "",
+      "avatar": "lithos_avatar.png",
       "spawns": [
-				{ "place": "Moon of Miscria", "zone": ["Moon of Miscria"], "view": "object", "objectImage": "../assets/images/maps/Artifact.png","days": "ALL_DAYS"}
+        {"place": "Moon of Miscria","zone": ["Moon of Miscria"],"view": "object","objectImage": "../assets/images/maps/Artifact.png","days": "ALL_DAYS"}
       ]
     },
     {
@@ -3154,13 +2535,9 @@
       "name": "Brainzer",
       "type": "Lightning",
       "rarity": "Common",
-      "avatar": "",
+      "avatar": "brainzer_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -3168,9 +2545,9 @@
       "name": "Pyrex",
       "type": "Fire",
       "rarity": "Exotic",
-      "avatar": "",
+      "avatar": "pyrex_avatar.png",
       "spawns": [
-				{ "place": "Moon Cave", "zone": ["Moon Cave"], "view": "object", "objectImage": "../assets/images/maps/Void.png","days": "ALL_DAYS"}
+        {"place": "Moon Cave","zone": ["Moon Cave"],"view": "object","objectImage": "../assets/images/maps/Void.png","days": "ALL_DAYS"}
       ]
     },
     {
@@ -3178,13 +2555,9 @@
       "name": "Oozie",
       "type": "WaterLightning",
       "rarity": "Rare",
-      "avatar": "",
+      "avatar": "oozie_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -3192,13 +2565,9 @@
       "name": "Lunako",
       "type": "FireEarth",
       "rarity": "Rare",
-      "avatar": "",
+      "avatar": "lunako_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -3206,13 +2575,9 @@
       "name": "Rephily",
       "type": "Wind",
       "rarity": "Rare",
-      "avatar": "",
+      "avatar": "rephily_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -3220,13 +2585,9 @@
       "name": "Eluzar",
       "type": "Water",
       "rarity": "Common",
-      "avatar": "",
+      "avatar": "eluzar_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -3234,13 +2595,9 @@
       "name": "Furiko",
       "type": "Fire",
       "rarity": "Rare",
-      "avatar": "",
+      "avatar": "furiko_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -3248,13 +2605,9 @@
       "name": "Bunplop",
       "type": "WaterEarth",
       "rarity": "Epic",
-      "avatar": "",
+      "avatar": "bunplop_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -3262,13 +2615,9 @@
       "name": "Drilune",
       "type": "Nature",
       "rarity": "Common",
-      "avatar": "",
+      "avatar": "drilune_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -3276,13 +2625,9 @@
       "name": "Flaclay",
       "type": "FireEarth",
       "rarity": "Common",
-      "avatar": "",
+      "avatar": "flaclay_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -3290,13 +2635,9 @@
       "name": "Enex",
       "type": "Fire",
       "rarity": "Common",
-      "avatar": "",
+      "avatar": "enex_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -3304,13 +2645,9 @@
       "name": "Voltombra",
       "type": "Lightning",
       "rarity": "Common",
-      "avatar": "",
+      "avatar": "voltombra_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -3318,9 +2655,9 @@
       "name": "Eclipso",
       "type": "Wind",
       "rarity": "Exotic",
-      "avatar": "",
+      "avatar": "eclipso_avatar.png",
       "spawns": [
-				{ "place": "Moon Cave", "zone": ["Moon Cave"], "view": "object", "objectImage": "../assets/images/maps/Rock.png","days": "ALL_DAYS"}
+        {"place": "Moon Cave","zone": ["Moon Cave"],"view": "object","objectImage": "../assets/images/maps/Rock.png","days": "ALL_DAYS"}
       ]
     },
     {
@@ -3328,13 +2665,9 @@
       "name": "Osmeron",
       "type": "Water",
       "rarity": "Rare",
-      "avatar": "",
+      "avatar": "osmeron_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -3342,13 +2675,9 @@
       "name": "Mooncrit",
       "type": "WaterEarth",
       "rarity": "Rare",
-      "avatar": "",
+      "avatar": "mooncrit_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -3358,7 +2687,7 @@
       "rarity": "Legendary",
       "avatar": "beateorite_avatar.png",
       "spawns": [
-				{ "place": "Moon of Miscria", "zone": [""], "view": "object", "objectImage": "../assets/images/maps/FloatRock.png","days": "ALL_DAYS"}
+        {"place": "Moon of Miscria","zone": [""],"view": "object","objectImage": "../assets/images/maps/FloatRock.png","days": "ALL_DAYS"}
       ]
     },
     {
@@ -3366,13 +2695,9 @@
       "name": "Silkire",
       "type": "Fire",
       "rarity": "Common",
-      "avatar": "",
+      "avatar": "silkire_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -3380,13 +2705,9 @@
       "name": "Zephry",
       "type": "Wind",
       "rarity": "Common",
-      "avatar": "",
+      "avatar": "zephry_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -3394,13 +2715,9 @@
       "name": "Fungask",
       "type": "Water",
       "rarity": "Common",
-      "avatar": "",
+      "avatar": "fungask_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -3408,13 +2725,9 @@
       "name": "Larbunni",
       "type": "Wind",
       "rarity": "Epic",
-      "avatar": "",
+      "avatar": "larbunni_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -3422,13 +2735,9 @@
       "name": "Yuefira",
       "type": "Nature",
       "rarity": "Common",
-      "avatar": "",
+      "avatar": "yuefira_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -3436,13 +2745,9 @@
       "name": "Mucora",
       "type": "Wind",
       "rarity": "Common",
-      "avatar": "",
+      "avatar": "mucora_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -3450,13 +2755,9 @@
       "name": "Goo",
       "type": "WaterEarth",
       "rarity": "Common",
-      "avatar": "",
+      "avatar": "goo_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -3464,13 +2765,9 @@
       "name": "Avarus",
       "type": "FireWind",
       "rarity": "Common",
-      "avatar": "",
+      "avatar": "avarus_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -3478,13 +2775,9 @@
       "name": "Beakka",
       "type": "Wind",
       "rarity": "Common",
-      "avatar": "",
+      "avatar": "beakka_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -3492,13 +2785,9 @@
       "name": "Whispen",
       "type": "Wind",
       "rarity": "Common",
-      "avatar": "",
+      "avatar": "whispen_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -3506,13 +2795,9 @@
       "name": "Fickra",
       "type": "Lightning",
       "rarity": "Common",
-      "avatar": "",
+      "avatar": "fickra_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -3520,13 +2805,9 @@
       "name": "Pirate Bludger",
       "type": "Earth",
       "rarity": "Rare",
-      "avatar": "",
+      "avatar": "pirate_bludger_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -3534,13 +2815,9 @@
       "name": "Lutox",
       "type": "Earth",
       "rarity": "Rare",
-      "avatar": "",
+      "avatar": "lutox_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -3548,13 +2825,9 @@
       "name": "Deetlee",
       "type": "Earth",
       "rarity": "Rare",
-      "avatar": "",
+      "avatar": "deetlee_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -3562,13 +2835,9 @@
       "name": "Ampupine",
       "type": "Lightning",
       "rarity": "Rare",
-      "avatar": "",
+      "avatar": "ampupine_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -3576,13 +2845,9 @@
       "name": "Hekatom",
       "type": "NatureWind",
       "rarity": "Epic",
-      "avatar": "",
+      "avatar": "hekatom_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -3590,13 +2855,9 @@
       "name": "Scarecrow Charix",
       "type": "Nature",
       "rarity": "Epic",
-      "avatar": "",
+      "avatar": "scarecrow_charix_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -3604,13 +2865,9 @@
       "name": "Vamp Skustunk",
       "type": "Wind",
       "rarity": "Epic",
-      "avatar": "",
+      "avatar": "vamp_skustunk_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -3618,13 +2875,9 @@
       "name": "Grimm Kiloray",
       "type": "Lightning",
       "rarity": "Epic",
-      "avatar": "",
+      "avatar": "grimm_kiloray_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -3632,9 +2885,9 @@
       "name": "Rocker Octavio",
       "type": "Wind",
       "rarity": "Exotic",
-      "avatar": "",
+      "avatar": "rocker_octavio_avatar.png",
       "spawns": [
-				{ "place": "The Shac", "zone": ["1st Floor of The Shack"], "view": "object", "objectImage": "../assets/images/maps/Piano.png","days": "ALL_DAYS"}
+        {"place": "The Shac","zone": ["1st Floor of The Shack"],"view": "object","objectImage": "../assets/images/maps/Piano.png","days": "ALL_DAYS"}
       ]
     },
     {
@@ -3642,9 +2895,9 @@
       "name": "Boo Blazertooth",
       "type": "Fire",
       "rarity": "Exotic",
-      "avatar": "",
+      "avatar": "boo_blazertooth_avatar.png",
       "spawns": [
-				{ "place": "The Shac", "zone": ["2nd Floor of The Shack"], "view": "object", "objectImage": "../assets/images/maps/Crate.png","days": "ALL_DAYS"}
+        {"place": "The Shac","zone": ["2nd Floor of The Shack"],"view": "object","objectImage": "../assets/images/maps/Crate.png","days": "ALL_DAYS"}
       ]
     },
     {
@@ -3654,7 +2907,7 @@
       "rarity": "Legendary",
       "avatar": "geneseed_avatar.png",
       "spawns": [
-				{ "place": "The Shac", "zone": ["Lower Basement of The Shack"], "view": "object", "objectImage": "../assets/images/maps/MysSeed.png","days": "ALL_DAYS"}
+        {"place": "The Shac","zone": ["Lower Basement of The Shack"],"view": "object","objectImage": "../assets/images/maps/MysSeed.png","days": "ALL_DAYS"}
       ]
     },
     {
@@ -3662,13 +2915,9 @@
       "name": "Sora",
       "type": "Wind",
       "rarity": "Common",
-      "avatar": "",
+      "avatar": "sora_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -3676,13 +2925,9 @@
       "name": "Dark Sparkslug",
       "type": "Lightning",
       "rarity": "Rare",
-      "avatar": "",
+      "avatar": "dark_sparkslug_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -3690,13 +2935,9 @@
       "name": "Phoboros",
       "type": "Fire",
       "rarity": "Epic",
-      "avatar": "",
+      "avatar": "phoboros_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -3704,9 +2945,9 @@
       "name": "Lagoony",
       "type": "Water",
       "rarity": "Exotic",
-      "avatar": "",
+      "avatar": "lagoony_avatar.png",
       "spawns": [
-				{ "place": "The Shac", "zone": ["Lower Basement of The Shack"], "view": "object", "objectImage": "../assets/images/maps/Guillotine.png","days": "ALL_DAYS"}
+        {"place": "The Shac","zone": ["Lower Basement of The Shack"],"view": "object","objectImage": "../assets/images/maps/Guillotine.png","days": "ALL_DAYS"}
       ]
     },
     {
@@ -3714,13 +2955,9 @@
       "name": "Poppet",
       "type": "Fire",
       "rarity": "Common",
-      "avatar": "",
+      "avatar": "poppet_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -3728,13 +2965,9 @@
       "name": "Nubyll",
       "type": "Lightning",
       "rarity": "Rare",
-      "avatar": "",
+      "avatar": "nubyll_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -3742,13 +2975,9 @@
       "name": "Elphin",
       "type": "Water",
       "rarity": "Epic",
-      "avatar": "",
+      "avatar": "elphin_avatar.png",
       "spawns": [
-        {
-          "place": "",
-          "level": "",
-          "days": ""
-        }
+        {"place": "","level": "","days": ""}
       ]
     },
     {
@@ -3756,9 +2985,9 @@
       "name": "Luvcraft",
       "type": "Fire",
       "rarity": "Exotic",
-      "avatar": "",
+      "avatar": "luvcraft_avatar.png",
       "spawns": [
-				{ "place": "The Shac", "zone": ["Basement of The Shack"], "view": "object", "objectImage": "../assets/images/maps/Statue.png","days": "ALL_DAYS"}
+        {"place": "The Shac","zone": ["Basement of The Shack"],"view": "object","objectImage": "../assets/images/maps/Statue.png","days": "ALL_DAYS"}
       ]
     },
     {
@@ -3766,9 +2995,9 @@
       "name": "Damse",
       "type": "Lightning",
       "rarity": "Exotic",
-      "avatar": "",
+      "avatar": "damse_avatar.png",
       "spawns": [
-				{ "place": "The Shac", "zone": ["2nd Floor of The Shack"], "view": "object", "objectImage": "../assets/images/maps/Cross.png","days": "ALL_DAYS"}
+        {"place": "The Shac","zone": ["2nd Floor of The Shack"],"view": "object","objectImage": "../assets/images/maps/Cross.png","days": "ALL_DAYS"}
       ]
     },
     {
@@ -3778,7 +3007,7 @@
       "rarity": "Legendary",
       "avatar": "beldame_avatar.png",
       "spawns": [
-				{ "place": "The Shac", "zone": ["2nd Floor of The Shack"], "view": "object", "objectImage": "../assets/images/maps/OldBed.png","days": "ALL_DAYS"}
+        {"place": "The Shac","zone": ["2nd Floor of The Shack"],"view": "object","objectImage": "../assets/images/maps/OldBed.png","days": "ALL_DAYS"}
       ]
     }
   ]
