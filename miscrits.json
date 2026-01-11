@@ -427,7 +427,7 @@
       "rarity": "Rare",
       "avatar": "luna_avatar.png",
       "spawns": [
-        {"place": "","level": "","days": ""}
+        {"place": "Mount Gemma","zone": ["Mount Gemma 1"],"view": "object","objectImage": "../assets/images/maps/SmallRock.jpg","days": ["Lunes", "Jueves", "Domingo"]}
       ]
     },
     {
@@ -437,7 +437,7 @@
       "rarity": "Rare",
       "avatar": "poltergust_avatar.png",
       "spawns": [
-        {"place": "","level": "","days": ""}
+        {"place": "Mount Gemma","zone": ["Cualquier Objeto en el Area 1 del MT Gemma"],"view": "object","objectImage": "../assets/images/maps/mount_gemma.jpg","days": ["Martes", "Viernes"]}
       ]
     },
     {
@@ -447,7 +447,7 @@
       "rarity": "Rare",
       "avatar": "fossillia_avatar.png",
       "spawns": [
-        {"place": "","level": "","days": ""}
+        {"place": "Mount Gemma","zone": ["Mount Gemma 4"],"view": "object","objectImage": "../assets/images/maps/LargeGem2.jpg","days": ["Lunes", "Martes", "Miercoles", "Jueves", "Viernes"]}
       ]
     },
     {
@@ -457,7 +457,7 @@
       "rarity": "Rare",
       "avatar": "eggy_avatar.png",
       "spawns": [
-        {"place": "","level": "","days": ""}
+        {"place": "Mount Gemma","zone": ["Mount Gemma 3"],"view": "object","objectImage": "../assets/images/maps/SmallTree.jpg","days": ["Lunes", "Jueves", "Domingo"]}
       ]
     },
     {
@@ -467,7 +467,7 @@
       "rarity": "Rare",
       "avatar": "thundercracker_avatar.png",
       "spawns": [
-        {"place": "","level": "","days": ""}
+        {"place": "Mount Gemma","zone": ["Mount Gemma 2"],"view": "object","objectImage": "../assets/images/maps/FourObj.jpg","days": ["Miercoles", "Sabado", "Domingo"]}
       ]
     },
     {
@@ -477,7 +477,7 @@
       "rarity": "Rare",
       "avatar": "mun_kee_avatar.png",
       "spawns": [
-        {"place": "","level": "","days": ""}
+        {"place": "Mount Gemma","zone": ["Mount Gemma 4"],"view": "object","objectImage": "../assets/images/maps/GoldGem.jpg","days": ["Sabado", "Domingo"]}
       ]
     },
     {
@@ -727,7 +727,7 @@
       "rarity": "Epic",
       "avatar": "fangly_avatar.png",
       "spawns": [
-        {"place": "","level": "","days": ""}
+        {"place": "Mount Gemma","zone": ["Mount Gemma 4"],"view": "object","objectImage": "../assets/images/maps/BlueGem2.jpg","days": ["Jueves", "Viernes", "Sabado"]}
       ]
     },
     {
@@ -797,7 +797,7 @@
       "rarity": "Epic",
       "avatar": "boltzee_avatar.png",
       "spawns": [
-        {"place": "","level": "","days": ""}
+        {"place": "Mount Gemma","zone": ["Mount Gemma 3"],"view": "object","objectImage": "../assets/images/maps/TallRock.jpg","days": ["Lunes", "Martes", "Miercoles"]}
       ]
     },
     {
@@ -1127,7 +1127,7 @@
       "rarity": "Rare",
       "avatar": "pollifog_avatar.png",
       "spawns": [
-        {"place": "","level": "","days": ""}
+        {"place": "Mount Gemma","zone": ["Cualquier Objeto en el Area 3 del MT Gemma"],"view": "object","objectImage": "../assets/images/maps/mount_gemma.jpg","days": ["Miercoles", "Sabado"]}
       ]
     },
     {
@@ -1187,7 +1187,7 @@
       "rarity": "Epic",
       "avatar": "gog_avatar.png",
       "spawns": [
-        {"place": "","level": "","days": ""}
+        {"place": "Mount Gemma","zone": ["Mount Gemma 2"],"view": "object","objectImage": "../assets/images/maps/MediumRock.jpg","days": ["Lunes", "Martes", "Miercoles"]}
       ]
     },
     {
@@ -1197,7 +1197,7 @@
       "rarity": "Epic",
       "avatar": "octavio_avatar.png",
       "spawns": [
-        {"place": "","level": "","days": ""}
+        {"place": "Mount Gemma","zone": ["Mount Gemma 1"],"view": "object","objectImage": "../assets/images/maps/Rock2.jpg","days": ["Lunes", "Martes", "Miercoles"]}
       ]
     },
     {
@@ -1287,7 +1287,7 @@
       "rarity": "Epic",
       "avatar": "gemix_avatar.png",
       "spawns": [
-        {"place": "","level": "","days": ""}
+        {"place": "Mount Gemma","zone": ["Mount Gemma 4"],"view": "object","objectImage": "../assets/images/maps/BlueGem.jpg","days": ["Lunes", "Martes", "Miercoles"]}
       ]
     },
     {
@@ -1397,7 +1397,7 @@
       "rarity": "Rare",
       "avatar": "opigum_avatar.png",
       "spawns": [
-        {"place": "","level": "","days": ""}
+        {"place": "Mount Gemma","zone": ["Cualquier Objeto en el Area 1 del MT Gemma"],"view": "object","objectImage": "../assets/images/maps/mount_gemma.jpg","days": ["Miercoles", "Sabado"]}
       ]
     },
     {
@@ -1447,7 +1447,7 @@
       "rarity": "Rare",
       "avatar": "fiender_avatar.png",
       "spawns": [
-        {"place": "","level": "","days": ""}
+        {"place": "Mount Gemma","zone": ["Cualquier Objeto en el Area 2 del MT Gemma"],"view": "object","objectImage": "../assets/images/maps/mount_gemma.jpg","days": ["Lunes", "Jueves"]}
       ]
     },
     {
@@ -1857,7 +1857,7 @@
       "rarity": "Epic",
       "avatar": "dark_auger_avatar.png",
       "spawns": [
-        {"place": "","level": "","days": ""}
+        {"place": "Mount Gemma","zone": ["Mount Gemma 2"],"view": "object","objectImage": "../assets/images/maps/GlowCactus.jpg","days": ["Jueves", "Viernes", "Sabado"]}
       ]
     },
     {
@@ -1867,7 +1867,7 @@
       "rarity": "Rare",
       "avatar": "dark_aria_avatar.png",
       "spawns": [
-        {"place": "","level": "","days": ""}
+        {"place": "Mount Gemma","zone": ["Cualquier Objeto en el Area 3 del MT Gemma"],"view": "object","objectImage": "../assets/images/maps/mount_gemma.jpg","days": ["Martes", "Viernes"]}
       ]
     },
     {
@@ -2017,7 +2017,7 @@
       "rarity": "Legendary",
       "avatar": "light_ignios_avatar.png",
       "spawns": [
-        {"place": "Beach","zone": ["Shores 4"],"view": "object","objectImage": "../assets/images/maps/LightningBones.png","days": "ALL_DAYS"}
+        {"place": "Beach","zone": ["Shores 4"],"view": "object","objectImage": "../assets/images/maps/LightingBones.png","days": "ALL_DAYS"}
       ]
     },
     {
@@ -2107,7 +2107,7 @@
       "rarity": "Epic",
       "avatar": "dark_luna_avatar.png",
       "spawns": [
-        {"place": "","level": "","days": ""}
+        {"place": "Mount Gemma","zone": ["Mount Gemma 1"],"view": "object","objectImage": "../assets/images/maps/GreenPup.jpg","days": ["Jueves", "Viernes", "Sabado"]}
       ]
     },
     {
@@ -2187,7 +2187,7 @@
       "rarity": "Epic",
       "avatar": "dark_jellyshock_avatar.png",
       "spawns": [
-        {"place": "","level": "","days": ""}
+        {"place": "Mount Gemma","zone": ["Mount Gemma 3"],"view": "object","objectImage": "../assets/images/maps/TinyTree.jpg","days": ["Jueves", "Viernes", "Sabado"]}
       ]
     },
     {
@@ -2207,7 +2207,7 @@
       "rarity": "Rare",
       "avatar": "dark_vexie_avatar.png",
       "spawns": [
-        {"place": "","level": "","days": ""}
+        {"place": "Mount Gemma","zone": ["Cualquier Objeto en el Area 2 del MT Gemma"],"view": "object","objectImage": "../assets/images/maps/mount_gemma.jpg","days": ["Martes", "Viernes"]}
       ]
     },
     {
