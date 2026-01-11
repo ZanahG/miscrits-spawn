@@ -216,7 +216,7 @@
       "type": "Nature",
       "rarity": "Rare",
       "spawns": [
-        {"place": "Forest","zone": ["Forest 1"],"view": "object","objectImage": "../assets/images/maps/Waddles.png","days": "LUN_JUE_DOM"}
+        {"place": "Forest","zone": ["Forest 1"],"view": "object","objectImage": "../assets/images/maps/DeadTree.png","days": "LUN_JUE_DOM"}
       ],
       "avatar": "treemur_avatar.png"
     },
@@ -226,7 +226,7 @@
       "type": "Nature",
       "rarity": "Rare",
       "spawns": [
-        {"place": "Forest","zone": ["Forest 3"],"view": "object","objectImage": "../assets/images/maps/Waddles.png","days": "MIE_SAB_DOM"}
+        {"place": "Forest","zone": ["Forest 3"],"view": "object","objectImage": "../assets/images/maps/Tulipinny.png","days": "MIE_SAB_DOM"}
       ],
       "avatar": "tulipinny_avatar.png"
     },
@@ -236,7 +236,7 @@
       "type": "Fire",
       "rarity": "Rare",
       "spawns": [
-        {"place": "Forest","zone": ["Forest 2"],"view": "object","objectImage": "../assets/images/maps/Waddles.png","days": "MAR_VIE_DOM"}
+        {"place": "Forest","zone": ["Forest 2"],"view": "object","objectImage": "../assets/images/maps/PalmTree2.png","days": "MAR_VIE_DOM"}
       ],
       "avatar": "dark_flue_avatar.png"
     },
@@ -246,7 +246,7 @@
       "type": "Nature",
       "rarity": "Rare",
       "spawns": [
-        {"place": "Forest","zone": ["Forest 1"],"view": "object","objectImage": "../assets/images/maps/Waddles.png","days": "LUN_JUE_DOM"}
+        {"place": "Forest","zone": ["Forest 1"],"view": "object","objectImage": "../assets/images/maps/MAP_FOREST.png","days": ["Martes", "Viernes"]}
       ],
       "avatar": "dark_flowerpiller_avatar.png"
     },
@@ -256,7 +256,7 @@
       "type": "Water",
       "rarity": "Rare",
       "spawns": [
-        {"place": "Forest","zone": ["Forest 1"],"view": "object","objectImage": "../assets/images/maps/Waddles.png","days": "LUN_JUE_DOM"}
+        {"place": "Forest","zone": ["Forest 1"],"view": "object","objectImage": "../assets/images/maps/MAP_FOREST.png","days": ["Miercoles", "Sabado"]}
       ],
       "avatar": "dark_prawnja_avatar.png"
     },
@@ -266,7 +266,7 @@
       "type": "Fire",
       "rarity": "Rare",
       "spawns": [
-        {"place": "Forest","zone": ["Forest 4"],"view": "object","objectImage": "../assets/images/maps/Waddles.png","days": "LUN_JUE_DOM"}
+        {"place": "Forest","zone": ["Forest 4"],"view": "object","objectImage": "../assets/images/maps/HugeTree.png","days": "LUN_JUE_DOM"}
       ],
       "avatar": "blazebit_avatar.png"
     },
