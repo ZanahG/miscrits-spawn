@@ -48,6 +48,7 @@ body{
 }
 
 .field label{
+  border-radius:12px;
   display:block;
   font-size:12px;
   color:var(--muted);
@@ -493,6 +494,7 @@ input::placeholder{color:#6b778b}
   gap:12px;
   padding:12px 14px;
   margin: 10px 0 16px;
+  flex-wrap: wrap; 
 }
 
 .pager__mid{
@@ -501,12 +503,14 @@ input::placeholder{color:#6b778b}
   gap:14px;
   color: var(--muted);
   font-size: 13px;
+  flex-wrap: wrap; 
 }
 
 .pager__label{
   display:flex;
   align-items:center;
   gap:8px;
+  flex-wrap: wrap; 
 }
 .pager select{
   width:auto;
@@ -545,3 +549,93 @@ input::placeholder{color:#6b778b}
   gap:6px;
 }
 
+.today-toggle{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.today-pill{
+  display:inline-flex;
+  align-items:center;
+  cursor:pointer;
+  user-select:none;
+}
+
+.today-pill input{
+  position:absolute;
+  opacity:0;
+  pointer-events:none;
+}
+
+.today-pill__ui{
+  display:flex;
+  align-items:center;
+  gap:12px;
+
+  height:48px;
+  min-width:210px;
+  padding:0 18px;
+  border-radius:999px;
+
+  background:linear-gradient(180deg, #182339, #0f1624);
+  border:1px solid rgba(255,255,255,.12);
+  box-shadow:
+    0 10px 24px rgba(0,0,0,.35),
+    inset 0 1px 0 rgba(255,255,255,.06);
+
+  transition:transform .15s ease, border-color .15s ease, box-shadow .15s ease, filter .15s ease;
+}
+
+.today-pill__text{
+  text-align: center;
+  font-weight:800;
+  letter-spacing:.6px;
+  color:#d6e3ff;
+}
+
+.today-pill__icon{
+  border-radius:12px;
+  width:44px;
+  height:44px;
+  display:grid;
+  place-items:center;
+
+  border-radius:14px;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.10);
+}
+
+/* hover */
+.today-pill:hover .today-pill__ui{
+  
+  transform:translateY(-1px);
+  border-color:rgba(96,165,250,.35);
+  filter:brightness(1.05);
+}
+
+/* ON state */
+.today-pill input:checked + .today-pill__ui{
+  background:linear-gradient(90deg, rgba(59,130,246,.95), rgba(99,102,241,.95));
+  border-color:rgba(96,165,250,.65);
+  box-shadow:
+    0 12px 28px rgba(0,0,0,.45),
+    0 0 0 3px rgba(59,130,246,.18),
+    inset 0 1px 0 rgba(255,255,255,.14);
+}
+
+.today-pill input:checked + .today-pill__ui .today-pill__text{
+  color:#ffffff;
+}
+
+.today-pill input:checked + .today-pill__ui .today-pill__icon{
+  background:rgba(255,255,255,.18);
+  border-color:rgba(255,255,255,.25);
+}
+
+/* accesibilidad */
+.today-pill input:focus-visible + .today-pill__ui{
+  outline:3px solid rgba(96,165,250,.5);
+  outline-offset:2px;
+}
+html, body { overflow-x: hidden; }

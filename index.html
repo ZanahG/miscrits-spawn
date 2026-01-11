@@ -9,7 +9,7 @@
 <body>
   <header class="top">
     <div class="wrap">
-      <h1>Miscrits Wiki</h1>
+      <h1>Miscrits Spawn Wiki</h1>
       <p>Filtra por Miscrit y descubre qué día y dónde aparece.</p>
     </div>
   </header>
@@ -35,6 +35,20 @@
         </select>
       </div>
 
+      <div class="field today-field">
+        <label>Hoy</label>
+
+        <label class="today-pill">
+          <input type="checkbox" id="todayOnly" />
+          <span class="today-pill__ui">
+            <span class="today-pill__text">HOY</span>
+
+          </span>
+        </label>
+      </div>
+
+
+
       <div class="field">
         <label for="rarity">Rareza</label>
         <select id="rarity">
@@ -50,8 +64,18 @@
 
       <div class="field">
         <label for="place">Lugar</label>
-        <input id="place" type="text" placeholder="Ej: Hidden Cave" autocomplete="off" />
+        <select id="place">
+          <option value="">Todos</option>
+          <option value="Forest">Forest</option>
+          <option value="Mount Gemma">Mount Gemma</option>
+          <option value="The Shac">The Shac</option>
+          <option value="Mansion">Mansion</option>
+          <option value="Beach">Beach</option>
+          <option value="Moon of Miscria">Moon of Miscria</option>
+          <option value="Cave">Cave</option>
+        </select>
       </div>
+
 
       <div class="actions">
         <button id="btnClear" class="btn ghost">Limpiar</button>

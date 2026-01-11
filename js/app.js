@@ -22,6 +22,17 @@ function stripDiacritics(str) {
     .replace(/[\u0300-\u036f]/g, "");
 }
 
+function getTodayNameEs() {
+  const days = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
+  return days[new Date().getDay()];
+}
+
+function isRarePlus(rarityRaw) {
+  const r = normalize(rarityRaw);
+  return ["rare", "epic", "exotic", "legendary"].includes(r);
+}
+
+
 function normalize(str) {
   return stripDiacritics(str).trim().toLowerCase();
 }
@@ -63,9 +74,9 @@ function includesDay(daysArray, selectedDay) {
 }
 
 // ===============================
-// URL Filters (PRO) + paginación
+// URL Filters + paginación
 // ===============================
-const FILTER_KEYS = ["q", "day", "place", "rarity", "page", "perPage"];
+const FILTER_KEYS = ["q", "day", "place", "rarity", "page", "perPage", "today"];
 
 function getFiltersFromUI() {
   return {
@@ -73,6 +84,7 @@ function getFiltersFromUI() {
     day: $("#day")?.value ?? "",
     place: $("#place")?.value ?? "",
     rarity: $("#rarity")?.value ?? "",
+    today: $("#todayOnly")?.checked ? "1" : "",
     page: String(PAGE),
     perPage: String(PER_PAGE),
   };
@@ -84,6 +96,7 @@ function setFiltersToUI(f) {
   if ($("#day")) $("#day").value = f.day ?? "";
   if ($("#place")) $("#place").value = f.place ?? "";
   if ($("#rarity")) $("#rarity").value = f.rarity ?? "";
+  if ($("#todayOnly")) $("#todayOnly").checked = (f.today ?? "") === "1";
   if ($("#perPage") && f.perPage) $("#perPage").value = f.perPage;
 }
 
@@ -129,8 +142,7 @@ function applySpawnBackground(box, place) {
 }
 
 // ===============================
-// Badge rareza (clases de TU CSS)
-// .badge--common / --rare / --epic / --exotic / --legendary
+// Badge rareza
 // ===============================
 function rarityToBadgeClass(rarityRaw) {
   const r = (rarityRaw ?? "").toString().trim().toLowerCase();
@@ -230,8 +242,6 @@ function render(listPaged, total, totalPages, startIdx, endIdx) {
 
   for (const m of listPaged) {
     const node = tpl.content.cloneNode(true);
-
-    // Avatar
     const avatarEl = node.querySelector(".miscrit__avatar");
     if (avatarEl) {
       avatarEl.src = `./assets/images/miscrits_avatar/${m.avatar ?? "preset_avatar.png"}`;
@@ -242,7 +252,6 @@ function render(listPaged, total, totalPages, startIdx, endIdx) {
       };
     }
 
-    // ✅ ICON + NOMBRE
     const nameEl = node.querySelector(".miscrit__name");
     if (nameEl) {
       const wrap = document.createElement("div");
@@ -252,11 +261,9 @@ function render(listPaged, total, totalPages, startIdx, endIdx) {
       nameEl.replaceWith(wrap);
     }
 
-    // Opcional: limpiar el texto tipo si ya no lo quieres
     const typeEl = node.querySelector(".miscrit__type");
     if (typeEl) typeEl.textContent = "";
 
-    // Rareza (badge + color)
     const badgeEl = node.querySelector(".badge");
     if (badgeEl) {
       badgeEl.textContent = m.rarity ?? "-";
@@ -271,7 +278,6 @@ function render(listPaged, total, totalPages, startIdx, endIdx) {
       if (cls) badgeEl.classList.add(cls);
     }
 
-    // Spawns (solo días)
     const spawnsWrap = node.querySelector(".spawns");
     if (spawnsWrap) {
       spawnsWrap.innerHTML = "";
@@ -310,7 +316,6 @@ function render(listPaged, total, totalPages, startIdx, endIdx) {
       }
     }
 
-    // Click a detalle (mantiene filtros en URL)
     const cardEl = node.querySelector(".miscrit");
     if (cardEl) {
       cardEl.style.cursor = "pointer";
@@ -333,13 +338,18 @@ function applyFilters(resetPage = false) {
   if (resetPage) PAGE = 1;
 
   const q = $("#q")?.value ?? "";
-  const day = $("#day")?.value ?? "";
   const place = $("#place")?.value ?? "";
   const rarity = $("#rarity")?.value ?? "";
+  const todayOn = $("#todayOnly")?.checked ?? false;
+
+  const day = todayOn ? getTodayNameEs() : ($("#day")?.value ?? "");
 
   FILTERED = MISCRITS.filter((m) => {
     if (!matchesText(m.name, q)) return false;
-    if (rarity && !equalsNormalized(m.rarity, rarity)) return false;
+
+    if (todayOn && !isRarePlus(m.rarity)) return false;
+
+    if (!todayOn && rarity && !equalsNormalized(m.rarity, rarity)) return false;
 
     const placeOk = !place
       ? true
@@ -353,10 +363,7 @@ function applyFilters(resetPage = false) {
   });
 
   const { slice, total, totalPages, startIdx, endIdx } = getPaged(FILTERED);
-
-  // Persistir filtros + página en URL
   updateURLFromFilters(getFiltersFromUI());
-
   render(slice, total, totalPages, startIdx, endIdx);
 }
 
@@ -372,9 +379,32 @@ async function init() {
     return;
   }
 
+  const todayCb = $("#todayOnly");
+  const daySel = $("#day");
+
+  function syncTodayUI() {
+    const on = todayCb?.checked ?? false;
+    if (!daySel) return;
+
+    if (on) {
+      daySel.value = getTodayNameEs();
+      daySel.disabled = true; // para que no confunda al usuario
+    } else {
+      daySel.disabled = false;
+    }
+  }
+
+  todayCb?.addEventListener("change", () => {
+    PAGE = 1;
+    syncTodayUI();
+    updateURLFromFilters(getFiltersFromUI());
+    applyFilters(false);
+  });
+
   // Restaurar desde URL
   const fromURL = getFiltersFromURL();
   setFiltersToUI(fromURL);
+  syncTodayUI();
 
   // Restaurar page/perPage
   const urlPage = parseInt(fromURL.page || "1", 10);
@@ -384,10 +414,8 @@ async function init() {
 
   if ($("#perPage")) $("#perPage").value = String(PER_PAGE);
 
-  // Render inicial
   applyFilters(false);
 
-  // Listeners: cambios de filtro resetean página
   const onFilterChange = () => applyFilters(true);
 
   $("#q")?.addEventListener("input", onFilterChange);
@@ -395,7 +423,6 @@ async function init() {
   $("#place")?.addEventListener("input", onFilterChange);
   $("#rarity")?.addEventListener("change", onFilterChange);
 
-  // perPage cambia página a 1
   $("#perPage")?.addEventListener("change", () => {
     const v = parseInt($("#perPage").value, 10);
     PER_PAGE = Number.isFinite(v) && v > 0 ? v : 30;
@@ -403,7 +430,6 @@ async function init() {
     applyFilters(false);
   });
 
-  // Prev / Next
   $("#btnPrev")?.addEventListener("click", () => {
     PAGE = Math.max(1, PAGE - 1);
     applyFilters(false);
@@ -414,13 +440,16 @@ async function init() {
     applyFilters(false);
   });
 
-  // Limpiar
+
   $("#btnClear")?.addEventListener("click", () => {
     if ($("#q")) $("#q").value = "";
     if ($("#day")) $("#day").value = "";
     if ($("#place")) $("#place").value = "";
     if ($("#rarity")) $("#rarity").value = "";
+    if ($("#todayOnly")) $("#todayOnly").checked = false;
+
     PAGE = 1;
+    syncTodayUI();
     applyFilters(false);
   });
 
