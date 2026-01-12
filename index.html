@@ -5,14 +5,28 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Miscrits Spawns Wiki</title>
   <link rel="stylesheet" href="./styles.css" />
+  <link rel="icon" href="./assets/images/logo.png" sizes="32x32">
+  <link rel="apple-touch-icon" href="./assets/images/logo.png">
 </head>
 <body>
   <header class="top">
-    <div class="wrap">
-      <h1>Miscrits Spawn Wiki</h1>
-      <p>Filtra por Miscrit y descubre qué día y dónde aparece.</p>
+    <div class="wrap topbar">
+      <a class="brand" href="./index.html" aria-label="Ir a Miscrits Hub">
+        <img
+          src="./assets/images/logo.png"
+          alt="Miscrits Hub"
+          class="brand__logo"
+          draggable="false"
+        />
+      </a>
+
+      <nav class="topnav topnav--header" aria-label="Navegación principal">
+        <a class="topnav__link is-active" href="./index.html">Spawns</a>
+        <a class="topnav__link" href="./html/pvp.html">PVP Teams</a>
+      </nav>
     </div>
   </header>
+
 
   <main class="wrap">
     <section class="filters card">
@@ -23,7 +37,8 @@
 
       <div class="field">
         <label for="day">Día</label>
-        <select id="day">
+        <select id="day" class="day-select">
+          <option value="__today__">🔥 HOY 🔥</option>
           <option value="">Todos</option>
           <option value="Lunes">Lunes</option>
           <option value="Martes">Martes</option>
@@ -34,33 +49,6 @@
           <option value="Domingo">Domingo</option>
         </select>
       </div>
-
-      <div class="field today-field">
-        <label>Hoy</label>
-
-        <label class="today-pill">
-          <input type="checkbox" id="todayOnly" />
-          <span class="today-pill__ui">
-            <span class="today-pill__text">HOY</span>
-
-          </span>
-        </label>
-      </div>
-
-
-
-      <div class="field">
-        <label for="rarity">Rareza</label>
-        <select id="rarity">
-          <option value="">Todas</option>
-          <option value="Common">Common</option>
-          <option value="Rare">Rare</option>
-          <option value="Epic">Epic</option>
-          <option value="Exotic">Exotic</option>
-          <option value="Legendary">Legendary</option>
-        </select>
-      </div>
-
 
       <div class="field">
         <label for="place">Lugar</label>
@@ -76,6 +64,17 @@
         </select>
       </div>
 
+      <div class="field">
+        <label for="rarity">Rareza</label>
+        <select id="rarity">
+          <option value="">Todas</option>
+          <option value="Common">Common</option>
+          <option value="Rare">Rare</option>
+          <option value="Epic">Epic</option>
+          <option value="Exotic">Exotic</option>
+          <option value="Legendary">Legendary</option>
+        </select>
+      </div>
 
       <div class="actions">
         <button id="btnClear" class="btn ghost">Limpiar</button>

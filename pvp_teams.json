@@ -1,0 +1,64 @@
+{
+	"RELICS": {
+    "MOLTEN_COIN": "../assets/images/relics/relic.png",
+    "RELIC_STUN": "../assets/images/relics/stun.png",
+    "RELIC_SPEED": "../assets/images/relics/speed.png"
+  },
+  "teams": [
+    {
+      "id": "t001",
+      "title": "",
+      "format": "Platinum Arena",
+      "patch": "1.0.4",
+      "tags": ["control", "anti-water", "stun"],
+      "miscrits": [
+				{"id":"030","name":"Equestrion",
+        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
+        {"id":"530","name":"Light Ignios",
+        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
+        {"id":"619","name":"Geneseed",
+        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
+        {"id":"604","name":"Goo",
+        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]}
+      ],
+      "summary": ""
+    },
+		{
+      "id": "t002",
+      "title": "",
+      "format": "Platinum Arena",
+      "patch": "1.0.4",
+      "tags": ["control", "anti-water", "stun"],
+      "miscrits": [
+				{"id":"533","name":"Dark Lavarilla",
+        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
+        {"id":"546","name":"Blighted Flowerpiller",
+        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
+        {"id":"212","name":"Lavazard",
+        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
+        {"id":"196","name":"Inferno",
+        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]}
+      ],
+      "summary": ""
+    },
+    		{
+      "id": "t003",
+      "title": "",
+      "format": "Platinum Arena",
+      "patch": "1.0.4",
+      "tags": ["control", "anti-water", "stun"],
+      "miscrits": [
+        {"id":"139","name":"Narlope",
+        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
+        {"id":"506","name":"Dark Poltergust",
+        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
+        {"id":"596","name":"Mooncrit",
+        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
+        {"id":"223","name":"Skelepup",
+        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]}
+      ],
+      "summary": ""
+    }
+
+  ]
+}

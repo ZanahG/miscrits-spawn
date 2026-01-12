@@ -64,7 +64,6 @@
     const tbody = table.querySelector("tbody");
 
     for (const r of RATING_ROWS) {
-      // si esa rareza no aplica para ese rating (ej Legend null)
       const value = r[activeKey];
       if (value == null) continue;
 

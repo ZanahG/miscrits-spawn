@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>PVP Teams</title>
+  <link rel="stylesheet" href="../styles.css" />
+  <link rel="icon" href="../assets/images/logo.png" sizes="32x32">
+  <link rel="apple-touch-icon" href="../assets/images/logo.png">
+</head>
+<body>
+
+  <header class="top">
+    <div class="wrap topbar">
+      <a class="brand" href="../index.html" aria-label="Ir a Miscrits Hub">
+        <img
+          src="../assets/images/logo.png"
+          alt="Miscrits Hub"
+          class="brand__logo"
+          draggable="false"
+        />
+      </a>
+
+      <nav class="topnav topnav--header" aria-label="Navegación principal">
+        <a class="topnav__link" href="../index.html">Spawns</a>
+        <a class="topnav__link is-active" href="../html/pvp.html">PVP Teams</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="card pvp">
+      <div class="pvp__left">
+        <div id="rarityAccordions"></div>
+      </div>
+
+      <div class="pvp__right">
+        <div class="card pvp__panel" id="teamPanel">
+          <div class="pvp__panelHead">
+            <div class="pvp__panelTitle" id="panelTitle">Selecciona un Miscrit</div>
+            <div class="pvp__panelMeta" id="panelMeta">Se mostrarán los equipos aquí.</div>
+          </div>
+
+          <div id="teamsList"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="../js/pvp.js"></script>
+</body>
+</html>

@@ -1,9 +1,3 @@
-// miscrits.js (completo corregido)
-// - Soporta objects como: preset string ("BUSHES"), array ["Blighted Stone"], o string directo "Blighted Stone"
-// - Soporta vista "object": muestra imagen del objeto (spawn.objectImage) en vez de pines
-// - Mantiene mapa normal con pines para el resto
-// - No rompe si falta algún elemento del DOM
-
 const $ = (sel) => document.querySelector(sel);
 
 function stripDiacritics(str) {
@@ -29,7 +23,6 @@ async function loadMiscrits() {
   MISCRITS = data.miscrits ?? [];
 }
 
-// Preset genérico: si viene string => busca en presets, si viene array => devuelve array
 function resolvePreset(value, presets) {
   if (typeof value === "string") return presets[value] ?? [];
   return Array.isArray(value) ? value : [];
@@ -38,12 +31,11 @@ function resolvePreset(value, presets) {
 function resolveDays(d) { return resolvePreset(d, DAY_PRESETS); }
 function resolveZones(z) { return resolvePreset(z, ZONE_PRESETS); }
 
-// Objects especial: si es string y NO existe en presets, lo trata como texto directo
 function resolveObjects(o) {
   if (Array.isArray(o)) return o;
   if (typeof o === "string") {
     const preset = OBJECT_PRESETS[o];
-    return Array.isArray(preset) ? preset : [o]; // <- clave: permite strings directos
+    return Array.isArray(preset) ? preset : [o];
   }
   return [];
 }
@@ -52,13 +44,8 @@ function getQueryParam(name) {
   return new URL(window.location.href).searchParams.get(name);
 }
 
-/**
- * MAPS viene desde maps.js (recomendado):
- * window.MAPS = { Forest: { title, image, zones: { "Zona 1": {x,y}... } } ... }
- */
 const MAPS = window.MAPS ?? {};
 
-// Pin icon
 const PIN_ICON = "../assets/images/ui/pin_question.png";
 const FALLBACK_PIN =
   "data:image/svg+xml;utf8," +
@@ -108,10 +95,6 @@ function buildSpawnList(m) {
   }
 }
 
-/**
- * Decide qué spawn usar en el detalle.
- * (primer spawn por ahora)
- */
 function getPrimarySpawn(m) {
   return (m.spawns ?? [])[0] ?? null;
 }
@@ -181,7 +164,6 @@ function spawnZoneLabel(spawn) {
   return "";
 }
 
-
 function setMapFromSpawn(spawn) {
   const mapImg = $("#mapImg");
   const mapTitle = $("#mapTitle");
@@ -212,7 +194,6 @@ function setMapFromSpawn(spawn) {
     return { mode: "object" };
   }
 
-  // ✅ Vista normal (mapa por place)
   const cfg = MAPS[spawn?.place] ?? null;
 
   if (!cfg?.image) {
@@ -225,9 +206,6 @@ function setMapFromSpawn(spawn) {
   return cfg;
 }
 
-
-
-// Card flotante de pin
 function showPinCard({ title, objects, anchorEl, imageOverride = null }) {
   const card = $("#pinCard");
   const cardTitle = $("#pinCardTitle");
@@ -239,7 +217,6 @@ function showPinCard({ title, objects, anchorEl, imageOverride = null }) {
   cardTitle.textContent = title;
   chips.innerHTML = "";
 
-  // Imagen de objeto (si viene override, úsalo)
   const imgSrc = imageOverride || "../assets/images/objects/default_object.png";
   cardImg.src = imgSrc;
   cardImg.onerror = () => {
@@ -267,7 +244,6 @@ function showPinCard({ title, objects, anchorEl, imageOverride = null }) {
     }
   }
 
-  // Posicionar card cerca del pin (dentro del map-frame)
   const pinRect = anchorEl.getBoundingClientRect();
   const frameRect = mapFrame.getBoundingClientRect();
 
@@ -322,21 +298,15 @@ function renderPinsForSpawn(spawn, mapCfg) {
         title,
         objects: objects.length ? objects : ["Cualquier objeto"],
         anchorEl: pin,
-        imageOverride: spawn.objectImage ?? null, // por si quieres reutilizar esto en mapa también
+        imageOverride: spawn.objectImage ?? null,
       });
     });
 
     pinsWrap.appendChild(pin);
   }
-
-  // click afuera cierra
   mapFrame.addEventListener("click", () => hidePinCard(), { once: true });
 }
 
-/**
- * Vista "object": en vez de pines, muestra una imagen del objeto en el map-frame
- * usando spawn.objectImage
- */
 function renderObjectView(spawn, mapCfg) {
   const pinsWrap = $("#pins");
   const mapFrame = $("#mapFrame");
@@ -345,10 +315,6 @@ function renderObjectView(spawn, mapCfg) {
 
   if (pinsWrap) pinsWrap.innerHTML = "";
   hidePinCard();
-
-  // Mantén el título del mapa como el lugar real (Forest, etc.)
-  // y el mapa base como el de place (Forest) para conservar el contexto:
-  // pero en vez de pines, reemplazamos la imagen principal por la del objeto.
   if (mapImg) {
     const original = mapCfg?.image ?? mapImg.src;
     const objectImg = spawn.objectImage;
@@ -395,19 +361,16 @@ async function init() {
 
   const view = (spawn.view ?? "").toString().trim().toLowerCase();
 
-  // Vista object: solo imagen (sin pines)
   if (view === "object") {
     const pinsWrap = $("#pins");
     if (pinsWrap) pinsWrap.innerHTML = "";
     hidePinCard();
 
-    // Si además quieres el texto hint especial:
     const hint = document.querySelector(".hint");
     if (hint) hint.textContent = "Este Miscrit SOLO aparece en el objeto mostrado en la imágen.";
     return;
   }
 
-  // Vista normal: pines
   if (mapCfg) renderPinsForSpawn(spawn, mapCfg);
 }
 

@@ -2047,7 +2047,7 @@
       "rarity": "Rare",
       "avatar": "dark_lavarilla_avatar.png",
       "spawns": [
-        {"place": "","level": "","days": ""}
+        {"place": "Mansion","zone": ["Cualquier Objeto fuera de la Mansion"],"view": "object","objectImage": "../assets/images/maps/mansion_outside.png","days": ["Lunes", "Jueves", "Sabado"]}
       ]
     },
     {

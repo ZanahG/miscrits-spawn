@@ -8,7 +8,7 @@ let OBJECT_PRESETS = {};
 
 let FILTERED = [];
 let PAGE = 1;
-let PER_PAGE = 30;
+let PER_PAGE = 36;
 
 // ===============================
 // Helpers DOM / texto
@@ -22,14 +22,30 @@ function stripDiacritics(str) {
     .replace(/[\u0300-\u036f]/g, "");
 }
 
-function getTodayNameEs() {
-  const days = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
-  return days[new Date().getDay()];
-}
+function getServerDayName() {
+  const now = new Date(
+    new Date().toLocaleString("en-US", {
+      timeZone: "America/Santiago"
+    })
+  );
 
-function isRarePlus(rarityRaw) {
-  const r = normalize(rarityRaw);
-  return ["rare", "epic", "exotic", "legendary"].includes(r);
+  const resetHour = 21;
+
+  if (now.getHours() >= resetHour) {
+    now.setDate(now.getDate() + 1);
+  }
+
+  const days = [
+    "Domingo",
+    "Lunes",
+    "Martes",
+    "Miércoles",
+    "Jueves",
+    "Viernes",
+    "Sábado"
+  ];
+
+  return days[now.getDay()];
 }
 
 
@@ -44,6 +60,11 @@ function matchesText(haystack, needle) {
 
 function equalsNormalized(a, b) {
   return normalize(a) === normalize(b);
+}
+
+function isRarePlus(rarityRaw) {
+  const r = normalize(rarityRaw);
+  return ["rare", "epic", "exotic", "legendary"].includes(r);
 }
 
 // ===============================
@@ -76,15 +97,25 @@ function includesDay(daysArray, selectedDay) {
 // ===============================
 // URL Filters + paginación
 // ===============================
-const FILTER_KEYS = ["q", "day", "place", "rarity", "page", "perPage", "today"];
+const FILTER_KEYS = ["q", "day", "place", "rarity", "page", "perPage"];
+
+function defaultFilters() {
+  return {
+    q: "",
+    day: "__today__",
+    place: "",
+    rarity: "",
+    page: "1",
+    perPage: "36",
+  };
+}
 
 function getFiltersFromUI() {
   return {
     q: $("#q")?.value ?? "",
-    day: $("#day")?.value ?? "",
+    day: $("#day")?.value ?? "__today__",
     place: $("#place")?.value ?? "",
     rarity: $("#rarity")?.value ?? "",
-    today: $("#todayOnly")?.checked ? "1" : "",
     page: String(PAGE),
     perPage: String(PER_PAGE),
   };
@@ -93,11 +124,10 @@ function getFiltersFromUI() {
 function setFiltersToUI(f) {
   if (!f) return;
   if ($("#q")) $("#q").value = f.q ?? "";
-  if ($("#day")) $("#day").value = f.day ?? "";
+  if ($("#day")) $("#day").value = f.day ?? "__today__";
   if ($("#place")) $("#place").value = f.place ?? "";
   if ($("#rarity")) $("#rarity").value = f.rarity ?? "";
-  if ($("#todayOnly")) $("#todayOnly").checked = (f.today ?? "") === "1";
-  if ($("#perPage") && f.perPage) $("#perPage").value = f.perPage;
+  if ($("#pageSize") && f.perPage) $("#pageSize").value = f.perPage;
 }
 
 function getFiltersFromURL() {
@@ -108,12 +138,14 @@ function getFiltersFromURL() {
 }
 
 function updateURLFromFilters(filters) {
-  const sp = new URLSearchParams(window.location.search);
+  const d = defaultFilters();
+  const sp = new URLSearchParams();
 
   for (const k of FILTER_KEYS) {
     const v = (filters?.[k] ?? "").toString().trim();
-    if (v) sp.set(k, v);
-    else sp.delete(k);
+    const dv = (d?.[k] ?? "").toString().trim();
+    if (!v || v === dv) continue;
+    sp.set(k, v);
   }
 
   const newQuery = sp.toString();
@@ -200,7 +232,7 @@ function getPaged(list) {
 }
 
 function updatePagerUI(total, totalPages, startIdx, endIdx) {
-  const info = $("#pagerInfo");
+  const info = $("#pageInfo");
   const btnPrev = $("#btnPrev");
   const btnNext = $("#btnNext");
 
@@ -214,7 +246,7 @@ function updatePagerUI(total, totalPages, startIdx, endIdx) {
 }
 
 // ===============================
-// Render (recibe lista YA paginada)
+// Render
 // ===============================
 function render(listPaged, total, totalPages, startIdx, endIdx) {
   const results = $("#results");
@@ -340,16 +372,16 @@ function applyFilters(resetPage = false) {
   const q = $("#q")?.value ?? "";
   const place = $("#place")?.value ?? "";
   const rarity = $("#rarity")?.value ?? "";
-  const todayOn = $("#todayOnly")?.checked ?? false;
 
-  const day = todayOn ? getTodayNameEs() : ($("#day")?.value ?? "");
+  const dayRaw = $("#day")?.value ?? "__today__";
+  const day = dayRaw === "__today__" ? getServerDayName() : dayRaw;
 
   FILTERED = MISCRITS.filter((m) => {
     if (!matchesText(m.name, q)) return false;
 
-    if (todayOn && !isRarePlus(m.rarity)) return false;
+    if (dayRaw === "__today__" && !isRarePlus(m.rarity)) return false;
 
-    if (!todayOn && rarity && !equalsNormalized(m.rarity, rarity)) return false;
+    if (rarity && !equalsNormalized(m.rarity, rarity)) return false;
 
     const placeOk = !place
       ? true
@@ -379,53 +411,53 @@ async function init() {
     return;
   }
 
-  const todayCb = $("#todayOnly");
-  const daySel = $("#day");
-
-  function syncTodayUI() {
-    const on = todayCb?.checked ?? false;
-    if (!daySel) return;
-
-    if (on) {
-      daySel.value = getTodayNameEs();
-      daySel.disabled = true; // para que no confunda al usuario
-    } else {
-      daySel.disabled = false;
-    }
-  }
-
-  todayCb?.addEventListener("change", () => {
-    PAGE = 1;
-    syncTodayUI();
-    updateURLFromFilters(getFiltersFromUI());
-    applyFilters(false);
-  });
-
-  // Restaurar desde URL
   const fromURL = getFiltersFromURL();
-  setFiltersToUI(fromURL);
-  syncTodayUI();
+  const d = defaultFilters();
 
-  // Restaurar page/perPage
-  const urlPage = parseInt(fromURL.page || "1", 10);
-  const urlPer = parseInt(fromURL.perPage || "30", 10);
+  const restored = {
+    q: fromURL.q || d.q,
+    day: fromURL.day || d.day,
+    place: fromURL.place || d.place,
+    rarity: fromURL.rarity || d.rarity,
+    page: fromURL.page || d.page,
+    perPage: fromURL.perPage || d.perPage,
+  };
+
+  const urlPage = parseInt(restored.page || "1", 10);
+  const urlPer = parseInt(restored.perPage || String(PER_PAGE), 10);
+
   PAGE = Number.isFinite(urlPage) && urlPage > 0 ? urlPage : 1;
-  PER_PAGE = Number.isFinite(urlPer) && urlPer > 0 ? urlPer : 30;
+  PER_PAGE = Number.isFinite(urlPer) && urlPer > 0 ? urlPer : PER_PAGE;
 
-  if ($("#perPage")) $("#perPage").value = String(PER_PAGE);
+  setFiltersToUI(restored);
+
+  if ($("#pageSize")) $("#pageSize").value = String(PER_PAGE);
+
+  const daySelect = $("#day");
+  function syncDayHighlight() {
+    if (!daySelect) return;
+    daySelect.classList.toggle("is-today", daySelect.value === "__today__");
+  }
+  syncDayHighlight();
 
   applyFilters(false);
 
   const onFilterChange = () => applyFilters(true);
 
   $("#q")?.addEventListener("input", onFilterChange);
-  $("#day")?.addEventListener("change", onFilterChange);
-  $("#place")?.addEventListener("input", onFilterChange);
+
+  $("#day")?.addEventListener("change", () => {
+    PAGE = 1;
+    syncDayHighlight();
+    applyFilters(false);
+  });
+
+  $("#place")?.addEventListener("change", onFilterChange);
   $("#rarity")?.addEventListener("change", onFilterChange);
 
-  $("#perPage")?.addEventListener("change", () => {
-    const v = parseInt($("#perPage").value, 10);
-    PER_PAGE = Number.isFinite(v) && v > 0 ? v : 30;
+  $("#pageSize")?.addEventListener("change", () => {
+    const v = parseInt($("#pageSize").value, 10);
+    PER_PAGE = Number.isFinite(v) && v > 0 ? v : PER_PAGE;
     PAGE = 1;
     applyFilters(false);
   });
@@ -440,30 +472,30 @@ async function init() {
     applyFilters(false);
   });
 
-
   $("#btnClear")?.addEventListener("click", () => {
     if ($("#q")) $("#q").value = "";
-    if ($("#day")) $("#day").value = "";
+    if ($("#day")) $("#day").value = "__today__";
     if ($("#place")) $("#place").value = "";
     if ($("#rarity")) $("#rarity").value = "";
-    if ($("#todayOnly")) $("#todayOnly").checked = false;
 
     PAGE = 1;
-    syncTodayUI();
+    PER_PAGE = parseInt($("#pageSize")?.value || "36", 10) || 36;
+
+    syncDayHighlight();
     applyFilters(false);
   });
 
-  // Random
   $("#btnRandom")?.addEventListener("click", () => {
     if (!MISCRITS.length) return;
     const i = Math.floor(Math.random() * MISCRITS.length);
     const pick = MISCRITS[i];
 
     if ($("#q")) $("#q").value = pick.name ?? "";
-    if ($("#day")) $("#day").value = "";
+    if ($("#day")) $("#day").value = "__today__";
     if ($("#place")) $("#place").value = "";
     if ($("#rarity")) $("#rarity").value = "";
     PAGE = 1;
+    syncDayHighlight();
     applyFilters(false);
   });
 }
