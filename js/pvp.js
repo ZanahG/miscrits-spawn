@@ -5,6 +5,7 @@ let TEAMS = [];
 let TEAMS_BY_MISCRIT = {};
 let selectedId = null;
 let RELIC_MAP = {};
+let TRENDING_IDS = [];
 
 const RARITIES = ["Common", "Rare", "Epic", "Exotic", "Legendary"];
 
@@ -44,6 +45,7 @@ async function loadTeams() {
 
   TEAMS = data.teams ?? [];
   RELIC_MAP = data.RELICS ?? {};
+  TRENDING_IDS = Array.isArray(data.trendingTeams) ? data.trendingTeams : [];
   TEAMS_BY_MISCRIT = indexTeamsByMiscrit(TEAMS);
 }
 
@@ -109,6 +111,56 @@ function getRelicsArray(mm) {
 
 function goToSpawnDetail(miscritId) {
   window.location.href = `./miscrits.html?id=${encodeURIComponent(miscritId)}`;
+}
+
+function teamDisplayTitle(t) {
+  const raw = (t?.title ?? "").toString().trim();
+  if (raw) return raw;
+  const id = (t?.id ?? "").toString().trim().toUpperCase();
+  return id ? `TEAM ${id}` : "TEAM";
+}
+
+function buildTeamCardEl(t, extraClass = "") {
+  const card = document.createElement("div");
+  card.className = `team-card ${extraClass}`.trim();
+
+  const slotsHTML = (t.miscrits ?? []).slice(0, 4).map((mm) => {
+    const full = findMiscritById(mm.id);
+    const name = mm.name ?? full?.name ?? mm.id;
+    const src = full ? avatarSrc(full) : "../assets/images/miscrits_avatar/preset_avatar.png";
+    const relics = getRelicsArray(mm);
+
+    const relicsHTML = relics.map((r) => `
+      <button class="relic-btn" type="button" data-mid="${mm.id}">
+        <img src="${safeImgSrc(r)}" alt="Relic" onerror="this.src='../assets/images/ui/placeholder.png'">
+      </button>
+    `).join("");
+
+    return `
+      <div class="team-slot">
+        <button class="team-miscrit" type="button" data-mid="${mm.id}" title="Ver dónde capturar ${name}">
+          <img src="${src}" alt="${name}" onerror="this.src='../assets/images/miscrits_avatar/preset_avatar.png'">
+        </button>
+        <div class="relic-grid">
+          ${relicsHTML}
+        </div>
+      </div>
+    `;
+  }).join("");
+
+  const title = teamDisplayTitle(t);
+  const meta = [t.format].filter(Boolean).join(" • ");
+
+  card.innerHTML = `
+    <div class="team-title">${title}</div>
+    <div class="team-subtitle">${meta}</div>
+    <div class="team-grid">
+      ${slotsHTML}
+    </div>
+    ${t.summary ? `<div class="team-notes">${t.summary}</div>` : ""}
+  `;
+
+  return card;
 }
 
 /**
@@ -182,9 +234,6 @@ function openSectionForMiscrit(id) {
   section.classList.add("is-open");
 }
 
-/**
- * Panel: equipos donde aparece el Miscrit seleccionado
- */
 function renderTeamsFor(selectedMiscritId) {
   const panelTitle = $("#panelTitle");
   const panelMeta = $("#panelMeta");
@@ -206,44 +255,23 @@ function renderTeamsFor(selectedMiscritId) {
   }
 
   for (const t of teams) {
-    const card = document.createElement("div");
-    card.className = "team-card";
-
-    const slotsHTML = (t.miscrits ?? []).slice(0, 4).map((mm) => {
-      const full = findMiscritById(mm.id);
-      const name = mm.name ?? full?.name ?? mm.id;
-      const src = full ? avatarSrc(full) : "../assets/images/miscrits_avatar/preset_avatar.png";
-      const relics = getRelicsArray(mm);
-
-      const relicsHTML = relics.map((r) => `
-        <button class="relic-btn" type="button" data-mid="${mm.id}">
-          <img src="${safeImgSrc(r)}" alt="Relic" onerror="this.src='../assets/images/ui/placeholder.png'">
-        </button>
-      `).join("");
-
-      return `
-        <div class="team-slot">
-          <button class="team-miscrit" type="button" data-mid="${mm.id}" title="Ver dónde capturar ${name}">
-            <img src="${src}" alt="${name}" onerror="this.src='../assets/images/miscrits_avatar/preset_avatar.png'">
-          </button>
-          <div class="relic-grid">
-            ${relicsHTML}
-          </div>
-        </div>
-      `;
-    }).join("");
-
-    card.innerHTML = `
-      <div class="team-title">${t.title ?? "Equipo"}</div>
-      <div class="team-subtitle">${t.format ?? ""}</div>
-      <div class="team-grid">
-        ${slotsHTML}
-      </div>
-      ${t.summary ? `<div class="team-notes">${t.summary}</div>` : ""}
-    `;
-
-    teamsList.appendChild(card);
+    teamsList.appendChild(buildTeamCardEl(t, ""));
   }
+}
+
+function renderSingleTeam(t) {
+  const panelTitle = $("#panelTitle");
+  const panelMeta = $("#panelMeta");
+  const teamsList = $("#teamsList");
+
+  if (!panelTitle || !panelMeta || !teamsList) return;
+
+  panelTitle.textContent = teamDisplayTitle(t);
+  const meta = [t.format, t.patch ? `Patch ${t.patch}` : ""].filter(Boolean).join(" • ");
+  panelMeta.textContent = meta || "—";
+
+  teamsList.innerHTML = "";
+  teamsList.appendChild(buildTeamCardEl(t, ""));
 }
 
 function selectMiscrit(id) {
@@ -251,6 +279,63 @@ function selectMiscrit(id) {
   setActiveAvatar(id);
   openSectionForMiscrit(id);
   renderTeamsFor(id);
+}
+
+function pickTopTeams(max = 5) {
+  const byId = new Map(TEAMS.map(t => [String(t.id), t]));
+  const picked = [];
+
+  for (const id of TRENDING_IDS) {
+    const t = byId.get(String(id));
+    if (t) picked.push(t);
+    if (picked.length >= max) break;
+  }
+
+  if (picked.length < max) {
+    for (const t of TEAMS) {
+      if (picked.length >= max) break;
+      if (picked.some(x => String(x.id) === String(t.id))) continue;
+      picked.push(t);
+    }
+  }
+
+  return picked.slice(0, max);
+}
+
+function renderTopCarousel() {
+  const track = $("#topTrack");
+  if (!track) return;
+
+  const topTeams = pickTopTeams(5);
+  track.innerHTML = "";
+
+  const marquee = document.createElement("div");
+  marquee.className = "pvp-marquee";
+
+  const makeCard = (t) => {
+    const c = buildTeamCardEl(t, "topteam-card");
+    c.dataset.teamid = String(t.id);
+    c.style.cursor = "pointer";
+    return c;
+  };
+
+  for (const t of topTeams) marquee.appendChild(makeCard(t));
+  for (const t of topTeams) marquee.appendChild(makeCard(t));
+
+  track.appendChild(marquee);
+
+  const prev = $("#topPrev");
+  const next = $("#topNext");
+
+  const scrollByCard = (dir) => {
+    const firstCard = track.querySelector(".topteam-card");
+    if (!firstCard) return;
+    const w = firstCard.getBoundingClientRect().width + 14;
+    track.scrollBy({ left: dir * w, behavior: "smooth" });
+  };
+
+  if (prev) prev.addEventListener("click", () => scrollByCard(-1));
+  if (next) next.addEventListener("click", () => scrollByCard(1));
 }
 
 /**
@@ -284,6 +369,19 @@ function bindDelegatedEvents() {
       return;
     }
 
+    const teamCard = e.target.closest("[data-teamid]");
+    if (teamCard) {
+      e.preventDefault();
+      const tid = teamCard.getAttribute("data-teamid");
+      if (!tid) return;
+
+      const t = TEAMS.find(x => String(x.id) === String(tid));
+      if (!t) return;
+
+      renderSingleTeam(t);
+      return;
+    }
+
     const midEl = e.target.closest("[data-mid]");
     if (midEl) {
       e.preventDefault();
@@ -295,9 +393,13 @@ function bindDelegatedEvents() {
   });
 }
 
+/**
+ * Init
+ */
 async function init() {
   await Promise.all([loadMiscrits(), loadTeams()]);
   renderAccordions();
+  renderTopCarousel();
   bindDelegatedEvents();
   clearSelection();
 }

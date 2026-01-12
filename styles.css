@@ -867,6 +867,94 @@ input::placeholder{ color:#6b778b; }
   clip:rect(0 0 0 0);
 }
 
+.pvp-carousel{
+  margin-top:14px;
+  padding:14px;
+  position:relative;
+  overflow:hidden;
+}
+
+.pvp-carousel__head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:12px;
+  flex-wrap:wrap;
+}
+
+.pvp-carousel__title{
+  font-weight:900;
+  font-size:16px;
+}
+
+.pvp-carousel__controls{
+  display:flex;
+  gap:10px;
+}
+
+.pvp-carousel__viewport{
+  overflow:hidden;
+  border-radius: var(--radius);
+}
+
+.pvp-marquee{
+  display:flex;
+  gap:14px;
+  width:max-content;
+  will-change: transform;
+  animation: pvp-marquee 20s linear infinite;
+  padding:4px 2px 8px;
+}
+
+@keyframes pvp-marquee{
+  from{ transform: translateX(0); }
+  to{ transform: translateX(-50%); }
+}
+
+.topteam-card{
+  flex:0 0 auto;
+  width: 380px;
+  max-width: 92vw;
+  border:2px solid rgba(34,211,238,.85);
+  box-shadow: 0 0 0 3px rgba(34,211,238,.10), 0 12px 30px rgba(0,0,0,.35);
+}
+
+.topteam-card:hover{
+  border-color: rgba(34,211,238,1);
+  box-shadow: 0 0 0 3px rgba(34,211,238,.14), 0 14px 34px rgba(0,0,0,.40);
+}
+
+.topteam-card .team-title{
+  font-size:22px;
+  letter-spacing:1px;
+}
+
+.topteam-card .team-subtitle{
+  margin-bottom:12px;
+}
+
+.pvp-carousel__fade{
+  pointer-events:none;
+  position:absolute;
+  top:56px;
+  bottom:14px;
+  width:80px;
+  z-index:2;
+}
+
+.pvp-carousel__fade.left{
+  left:14px;
+  background: linear-gradient(90deg, rgba(11,15,20,1), rgba(11,15,20,0));
+}
+
+.pvp-carousel__fade.right{
+  right:14px;
+  background: linear-gradient(270deg, rgba(11,15,20,1), rgba(11,15,20,0));
+}
+
+
+
 /* ===============================
    Responsive
 ================================ */
