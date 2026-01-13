@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Damage Calculator</title>
+  <link rel="stylesheet" href="../styles.css" />
+  <link rel="icon" href="../assets/images/logo.png" sizes="32x32">
+  <link rel="apple-touch-icon" href="../assets/images/logo.png">
+</head>
+<body>
+
+  <header class="top">
+    <div class="wrap topbar">
+      <a class="brand" href="../index.html" aria-label="Ir a Miscrits Hub">
+        <img
+          src="../assets/images/logo.png"
+          alt="Miscrits Hub"
+          class="brand__logo"
+          draggable="false"
+        />
+      </a>
+
+      <nav class="topnav topnav--header" aria-label="Navegación principal">
+        <a class="topnav__link" href="../index.html">Spawns</a>
+        <a class="topnav__link" href="../html/pvp.html">PVP Teams</a>
+        <a class="topnav__link is-active" href="../html/damage.html">Damage</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="card dmg">
+      <div class="dmg__grid">
+        <div class="dmg__col">
+          <div class="dmg__title">Attacker</div>
+
+          <div class="field">
+            <label for="atkMiscrit">Miscrit</label>
+            <select id="atkMiscrit"></select>
+          </div>
+
+          <div class="field">
+            <label for="atkAttack">Attack</label>
+            <select id="atkAttack"></select>
+          </div>
+
+          <div class="dmg__stats card">
+            <div class="dmg__statsTitle">Stats</div>
+            <div class="dmg__statsGrid" id="atkStats"></div>
+          </div>
+        </div>
+
+        <div class="dmg__col">
+          <div class="dmg__title">Defender</div>
+
+          <div class="field">
+            <label for="defMiscrit">Miscrit</label>
+            <select id="defMiscrit"></select>
+          </div>
+
+          <div class="dmg__stats card">
+            <div class="dmg__statsTitle">Stats</div>
+            <div class="dmg__statsGrid" id="defStats"></div>
+          </div>
+        </div>
+
+        <div class="dmg__col dmg__resultCol">
+          <div class="dmg__title">Result</div>
+
+          <div class="card dmg__result" id="resultBox">
+            <div class="dmg__resultTop">
+              <div class="dmg__resultName" id="resultName">—</div>
+              <div class="dmg__resultMeta" id="resultMeta">—</div>
+            </div>
+
+            <div class="dmg__numbers" id="resultNumbers"></div>
+
+            <div class="dmg__note" id="resultNote"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="../js/damage.js"></script>
+</body>
+</html>

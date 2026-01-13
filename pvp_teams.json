@@ -1,8 +1,83 @@
 {
 	"RELICS": {
-    "MOLTEN_COIN": "../assets/images/relics/relic.png",
-    "RELIC_STUN": "../assets/images/relics/stun.png",
-    "RELIC_SPEED": "../assets/images/relics/speed.png"
+    //LVL 10
+    "BLESSED_POLLEN": "../assets/images/relics/blessed_pollen.png",
+    "CLOUD_CAKE": "../assets/images/relics/cloud_cake.png",
+    "DARK_OWLIE_FEATHER": "../assets/images/relics/dark_owlie_feather.png",
+    "ELEFAUNA_FLOWER": "../assets/images/relics/elefauna_flower.png",
+    "PAMBOO_CANE": "../assets/images/relics/pamboo_cane.png",
+    "LAKE_AZORE_PEARL": "../assets/images/relics/lake_azore_pearl.png",
+    "GKS_SLIPPERS": "../assets/images/relics/gks_slippers.png",
+    "SKELEPUPS_SPARK": "../assets/images/relics/skelepups_spark.png",
+    "ETERNAL_FALL_MUSHROOM": "../assets/images/relics/eternal_fall_mushroom.png",
+    "WOODMANS_AXE_HEAD": "../assets/images/relics/woodmans_axe_head.png",
+    "QUARTEX_CRYSTAL": "../assets/images/relics/quartex_crystal.png",
+    "FROOST_ROOT": "../assets/images/relics/froost_root.png",
+    //LVL 20
+    "MT_GEMMA_BANNER": "../assets/images/relics/mt_gemma_banner.png",
+    "SUNFALL_SHORES_BANNER": "../assets/images/relics/sunfall_shores_banner.png",
+    "MONKS_BANNER": "../assets/images/relics/monks_banner.png",
+    "FOREST_BANNER": "../assets/images/relics/forest_banner.png",
+    "VOLCANO_BANNER": "../assets/images/relics/volcano_banner.png",
+    "HELZBELZ_BELLS": "../assets/images/relics/helzbelz_bells.png",
+    "EMERALD_SCALES": "../assets/images/relics/emerald_scales.png",
+    "ELEMENTAL_EXPLOSION": "../assets/images/relics/elemental_explosion.png",
+    "FLOWER_OF_DESPAIR": "../assets/images/relics/flower_of_despair.png",
+    "JUNGLE_BANNER": "../assets/images/relics/jungle_banner.png",
+    "FROZEN_CLAWS": "../assets/images/relics/frozen_claws.png",
+    "SHIP_CAPTAINS_LOG": "../assets/images/relics/ship_captains_log.png",
+    "FORGING_HAMMER": "../assets/images/relics/forging_hammer.png",
+    "STONY_SHIELD": "../assets/images/relics/stony_shield.png",
+    "SKYLINE_PEAK_GEM": "../assets/images/relics/skyline_peak_gem.png",
+    "OBSIDIAN_LAVA": "../assets/images/relics/obsidian_lava.png",
+    "BEAN_STALK": "../assets/images/relics/bean_stalk.png",
+    "MONKS_ROBE": "../assets/images/relics/monks_robe.png",
+    "NEROS_ORB": "../assets/images/relics/neros_orb.png",
+    //LVL 30
+    "GOLD_PIECE_DIE": "../assets/images/relics/gold_piece_die.png",
+    "PALMDAS_TALON": "../assets/images/relics/palmdas_talon.png",
+    "NOXS_NIGHTMARE": "../assets/images/relics/noxs_nightmare.png",
+    "CACTUS_FLOWER": "../assets/images/relics/cactus_flower.png",
+    "EVERLASTING_SNOWBALL": "../assets/images/relics/everlasting_snowball.png",
+    "MYSTIC_MAP": "../assets/images/relics/mystic_map.png",
+    "ECHINO_SHELL": "../assets/images/relics/echino_shell.png",
+    "FRACTURED_SHELL": "../assets/images/relics/fractured_shell.png",
+    "VANQUISHED_SOUL": "../assets/images/relics/vanquished_soul.png",
+    "MONASTERY_IDOL": "../assets/images/relics/monastery_idol.png",
+    "DARK_WARRO_THORN": "../assets/images/relics/dark_warro_thorn.png",
+    "TEMPLE_STONE": "../assets/images/relics/temple_stone.png",
+    "MAGICITE_STAFF": "../assets/images/relics/magicite_staff.png",
+    "PEEPSIE_EGGS": "../assets/images/relics/peepsie_eggs.png",
+    "TRUNCHEROUS_HAMMER": "../assets/images/relics/truncherous_hammer.png",
+    "MUSHLES": "../assets/images/relics/mushles.png",
+    "SHACKLERS_GEM": "../assets/images/relics/shacklers_gem.png",
+    "BAUBLE_OF_THE_DAWN": "../assets/images/relics/bauble_of_the_dawn.png",
+    "PAPAS_ANTLERS": "../assets/images/relics/papas_antlers.png",
+    "NANASLUGS_HORN": "../assets/images/relics/nanaslugs_horn.png",
+    "GEOTOAD_TEETH": "../assets/images/relics/geotoad_teeth.png",
+    "PATCHKINS_RIND": "../assets/images/relics/patchkins_rind.png",
+    "TIKI_IDOL": "../assets/images/relics/tiki_idol.png",
+    "LOST_SWORDS": "../assets/images/relics/lost_swords.png",
+    "GRAVITRON_PEBBLE": "../assets/images/relics/gravitron_pebble.png",
+    "ARROW_OF_LOVE": "../assets/images/relics/arrow_of_love.png",
+    "SHARD_OF_DAWNS_LANDING": "../assets/images/relics/shard_of_dawns_landing.png",
+    "SHATTERED_GATESTONE": "../assets/images/relics/shattered_gatestone.png",
+    "DRAGON_SHACKLE": "../assets/images/relics/dragon_shackle.png",
+    //LVL 35
+    "MOON_ROCK": "../assets/images/relics/moon_rock.png",
+    "FLYING_CARPET_FRAGMENT": "../assets/images/relics/flying_carpet_fragment.png",
+    "GOGS_COG": "../assets/images/relics/gogs_cog.png",
+    "SHARD_OF_RUDOLFE": "../assets/images/relics/shard_of_rudolfe.png",
+    "SAYAMS_TRIDENT": "../assets/images/relics/sayams_trident.png",
+    "CAGE_OF_DESPAIR": "../assets/images/relics/cage_of_despair.png",
+    "FROZEN_COIN": "../assets/images/relics/frozen_coin.png",
+    "MOLTEN_COIN": "../assets/images/relics/molten_coin.png",
+    "PETRIFIED_DRAGON_EGG": "../assets/images/relics/petrified_dragon_egg.png",
+    "PETRIFIED_MAMA_BABY": "../assets/images/relics/petrified_mama_baby.png",
+    "LEGGY_EGGS": "../assets/images/relics/leggy_eggs.png",
+    "DARK_WINDS_VENOM": "../assets/images/relics/dark_winds_venom.png",
+    "SCENT_OF_SKUSTUNK": "../assets/images/relics/scent_of_skustunk.png",
+    "CHARCOAL_IDOL": "../assets/images/relics/charcoal_idol.png"
   },
   "trendingTeams": ["t001", "t002", "t003", "t006", "t007"],
   "teams": [
@@ -13,13 +88,13 @@
       "patch": "1.0.4",
       "miscrits": [
 				{"id":"030","name":"Equestrion",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
+        "relics": ["BLESSED_POLLEN","MT_GEMMA_BANNER","GOLD_PIECE_DIE","MOLTEN_COIN"]},
         {"id":"530","name":"Light Ignios",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
+        "relics": ["BLESSED_POLLEN","MT_GEMMA_BANNER","GOLD_PIECE_DIE","MOLTEN_COIN"]},
         {"id":"619","name":"Geneseed",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
+        "relics": ["BLESSED_POLLEN","MT_GEMMA_BANNER","GOLD_PIECE_DIE","MOLTEN_COIN"]},
         {"id":"604","name":"Goo",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]}
+        "relics": ["BLESSED_POLLEN","MT_GEMMA_BANNER","GOLD_PIECE_DIE","MOLTEN_COIN"]}
       ],
       "summary": ""
     },
@@ -30,13 +105,13 @@
       "patch": "1.0.4",
       "miscrits": [
 				{"id":"533","name":"Dark Lavarilla",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
+        "relics": ["BLESSED_POLLEN","MT_GEMMA_BANNER","GOLD_PIECE_DIE","MOLTEN_COIN"]},
         {"id":"546","name":"Blighted Flowerpiller",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
+        "relics": ["BLESSED_POLLEN","MT_GEMMA_BANNER","GOLD_PIECE_DIE","MOLTEN_COIN"]},
         {"id":"212","name":"Lavazard",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
+        "relics": ["BLESSED_POLLEN","MT_GEMMA_BANNER","GOLD_PIECE_DIE","MOLTEN_COIN"]},
         {"id":"196","name":"Inferno",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]}
+        "relics": ["BLESSED_POLLEN","MT_GEMMA_BANNER","GOLD_PIECE_DIE","MOLTEN_COIN"]}
       ],
       "summary": ""
     },
@@ -47,13 +122,13 @@
       "patch": "1.0.4",
       "miscrits": [
         {"id":"139","name":"Narlope",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
+        "relics": ["BLESSED_POLLEN","MT_GEMMA_BANNER","GOLD_PIECE_DIE","MOLTEN_COIN"]},
         {"id":"506","name":"Dark Poltergust",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
+        "relics": ["BLESSED_POLLEN","MT_GEMMA_BANNER","GOLD_PIECE_DIE","MOLTEN_COIN"]},
         {"id":"596","name":"Mooncrit",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
+        "relics": ["BLESSED_POLLEN","MT_GEMMA_BANNER","GOLD_PIECE_DIE","MOLTEN_COIN"]},
         {"id":"223","name":"Skelepup",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]}
+        "relics": ["BLESSED_POLLEN","MT_GEMMA_BANNER","GOLD_PIECE_DIE","MOLTEN_COIN"]}
       ],
       "summary": ""
     },
@@ -98,13 +173,13 @@
       "patch": "1.0.4",
       "miscrits": [
         {"id":"542","name":"Dreamger",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
+        "relics": ["BLESSED_POLLEN","MT_GEMMA_BANNER","GOLD_PIECE_DIE","MOLTEN_COIN"]},
         {"id":"580","name":"Pinplar",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
+        "relics": ["BLESSED_POLLEN","MT_GEMMA_BANNER","GOLD_PIECE_DIE","MOLTEN_COIN"]},
         {"id":"433","name":"Blight Flue",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
+        "relics": ["BLESSED_POLLEN","MT_GEMMA_BANNER","GOLD_PIECE_DIE","MOLTEN_COIN"]},
         {"id":"152","Name":"Nero",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]}
+        "relics": ["BLESSED_POLLEN","MT_GEMMA_BANNER","GOLD_PIECE_DIE","MOLTEN_COIN"]}
       ],
       "summary": ""
     },
@@ -115,13 +190,13 @@
       "patch": "1.0.4",
       "miscrits": [
         {"id":"196","name":"Inferno",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
+        "relics": ["BLESSED_POLLEN","MT_GEMMA_BANNER","GOLD_PIECE_DIE","MOLTEN_COIN"]},
         {"id":"533","name":"Dark Lavarilla",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
+        "relics": ["BLESSED_POLLEN","MT_GEMMA_BANNER","GOLD_PIECE_DIE","MOLTEN_COIN"]},
         {"id":"546","name":"Blighted Flowerpiller",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
+        "relics": ["BLESSED_POLLEN","MT_GEMMA_BANNER","GOLD_PIECE_DIE","MOLTEN_COIN"]},
         {"id":"023","name":"Dark Flue",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]}
+        "relics": ["BLESSED_POLLEN","MT_GEMMA_BANNER","GOLD_PIECE_DIE","MOLTEN_COIN"]}
       ],
       "summary": ""
     },
