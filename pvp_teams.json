@@ -1,6 +1,5 @@
 {
 	"RELICS": {
-    //LVL 10
     "BLESSED_POLLEN": "../assets/images/relics/blessed_pollen.png",
     "CLOUD_CAKE": "../assets/images/relics/cloud_cake.png",
     "DARK_OWLIE_FEATHER": "../assets/images/relics/dark_owlie_feather.png",
@@ -13,7 +12,6 @@
     "WOODMANS_AXE_HEAD": "../assets/images/relics/woodmans_axe_head.png",
     "QUARTEX_CRYSTAL": "../assets/images/relics/quartex_crystal.png",
     "FROOST_ROOT": "../assets/images/relics/froost_root.png",
-    //LVL 20
     "MT_GEMMA_BANNER": "../assets/images/relics/mt_gemma_banner.png",
     "SUNFALL_SHORES_BANNER": "../assets/images/relics/sunfall_shores_banner.png",
     "MONKS_BANNER": "../assets/images/relics/monks_banner.png",
@@ -33,7 +31,6 @@
     "BEAN_STALK": "../assets/images/relics/bean_stalk.png",
     "MONKS_ROBE": "../assets/images/relics/monks_robe.png",
     "NEROS_ORB": "../assets/images/relics/neros_orb.png",
-    //LVL 30
     "GOLD_PIECE_DIE": "../assets/images/relics/gold_piece_die.png",
     "PALMDAS_TALON": "../assets/images/relics/palmdas_talon.png",
     "NOXS_NIGHTMARE": "../assets/images/relics/noxs_nightmare.png",
@@ -63,7 +60,6 @@
     "SHARD_OF_DAWNS_LANDING": "../assets/images/relics/shard_of_dawns_landing.png",
     "SHATTERED_GATESTONE": "../assets/images/relics/shattered_gatestone.png",
     "DRAGON_SHACKLE": "../assets/images/relics/dragon_shackle.png",
-    //LVL 35
     "MOON_ROCK": "../assets/images/relics/moon_rock.png",
     "FLYING_CARPET_FRAGMENT": "../assets/images/relics/flying_carpet_fragment.png",
     "GOGS_COG": "../assets/images/relics/gogs_cog.png",
