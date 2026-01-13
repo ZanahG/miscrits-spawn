@@ -8,6 +8,7 @@
   <link rel="icon" href="../assets/images/logo.png" sizes="32x32">
   <link rel="apple-touch-icon" href="../assets/images/logo.png">
 </head>
+
 <body>
   <header class="top">
     <div class="wrap topbar">
@@ -18,158 +19,256 @@
       <nav class="topnav topnav--header" aria-label="Navegación principal">
         <a class="topnav__link" href="../index.html">Spawns</a>
         <a class="topnav__link" href="../html/pvp.html">PVP Teams</a>
-        <a class="topnav__link is-active" href="../html/damage.html">Damage</a>
+        <a class="topnav__link is-active" href="../html/damage.html">Damage Calculator</a>
       </nav>
     </div>
   </header>
 
   <main class="wrap">
-    <section class="card" style="padding:14px; margin-top:14px;">
-      <div class="filters" style="grid-template-columns: 1fr 1fr; align-items:start;">
-        <div class="card" style="padding:14px;">
-          <div class="pvp__panelHead">
-            <div class="pvp__panelTitle">Attacker</div>
-            <div class="pvp__panelMeta" id="atkMeta">—</div>
-          </div>
+    <section class="dmgx">
+      <div class="dmgx__grid">
 
-					<div class="field">
-					<label for="atkMiscritSearch">Miscrit</label>
-					<input id="atkMiscritSearch" list="miscritsList" placeholder="Escribe nombre o ID..." />
-					<datalist id="miscritsList"></datalist>
-					<input id="atkMiscrit" type="hidden" />
-					</div>
+        <!-- ============== LEFT: ATTACKER ============== -->
+        <div class="dmgx__col">
+          <div class="dmgx__label">Attacker</div>
 
+          <input id="atkMiscritSearch" class="dmgx__search" list="miscritsList" placeholder="Escribe Miscrit..." />
+          <datalist id="miscritsList"></datalist>
+          <input id="atkMiscrit" type="hidden" />
 
-          <div class="field">
-            <label for="atkAttack">Attack</label>
-            <select id="atkAttack"></select>
-          </div>
-
-          <div class="filters" style="grid-template-columns: repeat(3, 1fr); padding:0; margin-top:10px;">
-            <div class="field"><label for="atkPA">PA</label><input id="atkPA" type="number" min="0" /></div>
-            <div class="field"><label for="atkEA">EA</label><input id="atkEA" type="number" min="0" /></div>
-            <div class="field"><label for="atkSPD">SPD</label><input id="atkSPD" type="number" min="0" /></div>
-            <div class="field"><label for="atkPD">PD</label><input id="atkPD" type="number" min="0" /></div>
-            <div class="field"><label for="atkED">ED</label><input id="atkED" type="number" min="0" /></div>
-            <div class="field"><label for="atkHP">HP</label><input id="atkHP" type="number" min="0" /></div>
-          </div>
-
-          <div class="field" style="margin-top:10px;">
-						<label>Relics (aplican bonus a stats)</label>
-
-						<div class="relic-slots" id="atkRelicSlots">
-							<button class="relic-slot" type="button" data-side="atk" data-slot="0"></button>
-							<button class="relic-slot" type="button" data-side="atk" data-slot="1"></button>
-							<button class="relic-slot" type="button" data-side="atk" data-slot="2"></button>
-							<button class="relic-slot" type="button" data-side="atk" data-slot="3"></button>
-						</div>
-
-						<div style="display:none">
-							<select class="atkRelic" data-slot="0"></select>
-							<select class="atkRelic" data-slot="1"></select>
-							<select class="atkRelic" data-slot="2"></select>
-							<select class="atkRelic" data-slot="3"></select>
-						</div>
-					</div>
-
-
-          <div class="filters" style="grid-template-columns: 1fr 1fr; padding:0; margin-top:10px;">
-            <div class="field">
-              <label for="atkRelicLvl">Relic level</label>
-              <select id="atkRelicLvl">
-                <option value="10">10</option>
-                <option value="20">20</option>
-                <option value="30">30</option>
-                <option value="35" selected>35</option>
-              </select>
+          <div class="dmgx__card">
+            <div class="dmgx__avatarRow">
+              <img id="atkAvatar" class="dmgx__avatar" src="../assets/images/miscrits_avatar/preset_avatar.png" alt="">
             </div>
-            <div class="field">
-              <label for="atkMode">Attack stat</label>
+
+            <div class="dmgx__stats">
+              <div class="dmgx__stat">
+                <div class="dmgx__statK dmgx__k--hp">HP</div>
+                <input id="atkHP" class="dmgx__statV" type="number" min="0" />
+              </div>
+
+              <div class="dmgx__stat">
+                <div class="dmgx__statK dmgx__k--spd">SPEED</div>
+                <input id="atkSPD" class="dmgx__statV" type="number" min="0" />
+              </div>
+
+              <div class="dmgx__stat">
+                <div class="dmgx__statK dmgx__k--ea">ELEMENTAL ATTACK</div>
+                <input id="atkEA" class="dmgx__statV" type="number" min="0" />
+              </div>
+
+              <div class="dmgx__stat">
+                <div class="dmgx__statK dmgx__k--pa">PHYSICAL ATTACK</div>
+                <input id="atkPA" class="dmgx__statV" type="number" min="0" />
+              </div>
+
+              <div class="dmgx__stat">
+                <div class="dmgx__statK dmgx__k--ed">ELEMENTAL DEFENSE</div>
+                <input id="atkED" class="dmgx__statV" type="number" min="0" />
+              </div>
+
+              <div class="dmgx__stat">
+                <div class="dmgx__statK dmgx__k--pd">PHYSICAL DEFENSE</div>
+                <input id="atkPD" class="dmgx__statV" type="number" min="0" />
+              </div>
+            </div>
+
+            <button id="openMoveList" class="dmgx__btn" type="button">Move list</button>
+
+            <!-- Select real del ataque (tu JS lo usa) -->
+            <div style="display:none">
+              <select id="atkAttack"></select>
               <select id="atkMode">
-                <option value="auto" selected>Auto (según elemento)</option>
-                <option value="physical">Physical (PA vs PD)</option>
-                <option value="elemental">Elemental (EA vs ED)</option>
+                <option value="auto" selected>auto</option>
+                <option value="physical">physical</option>
+                <option value="elemental">elemental</option>
               </select>
+            </div>
+
+            <!-- Relics/Bonus panel -->
+            <div class="dmgx__subpanel">
+              <div class="dmgx__tabs">
+                <button class="dmgx__tab is-active" type="button">RELICS</button>
+                <button class="dmgx__tab" type="button">BONUS</button>
+              </div>
+
+              <div class="dmgx__slots">
+                <button class="dmgx__slot relic-slot" type="button" data-side="atk" data-slot="0"></button>
+                <button class="dmgx__slot relic-slot" type="button" data-side="atk" data-slot="1"></button>
+                <button class="dmgx__slot relic-slot" type="button" data-side="atk" data-slot="2"></button>
+                <button class="dmgx__slot relic-slot" type="button" data-side="atk" data-slot="3"></button>
+              </div>
+
+              <!-- selects reales ocultos -->
+              <div style="display:none">
+                <select class="atkRelic" data-slot="0"></select>
+                <select class="atkRelic" data-slot="1"></select>
+                <select class="atkRelic" data-slot="2"></select>
+                <select class="atkRelic" data-slot="3"></select>
+
+                <select id="atkRelicLvl">
+                  <option value="10">10</option>
+                  <option value="20">20</option>
+                  <option value="30">30</option>
+                  <option value="35" selected>35</option>
+                </select>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ============== MIDDLE: VS + DEFENDER ============== -->
+        <div class="dmgx__mid">
+          <div class="dmgx__col">
+            <div class="dmgx__label dmgx__label--center">Defender</div>
+
+            <input id="defMiscritSearch" class="dmgx__search" list="miscritsList" placeholder="Escribe Miscrit..." />
+            <input id="defMiscrit" type="hidden" />
+
+            <div class="dmgx__card dmgx__card--compact">
+              <div class="dmgx__avatarRow">
+                <img id="defAvatar" class="dmgx__avatar" src="../assets/images/miscrits_avatar/preset_avatar.png" alt="">
+              </div>
+
+              <div class="dmgx__stats dmgx__stats--def">
+                <div class="dmgx__stat">
+                  <div class="dmgx__statK dmgx__k--hp">HP</div>
+                  <input id="defHP" class="dmgx__statV" type="number" min="0" />
+                </div>
+
+                <div class="dmgx__stat">
+                  <div class="dmgx__statK dmgx__k--spd">SPEED</div>
+                  <input id="defSPD" class="dmgx__statV" type="number" min="0" />
+                </div>
+
+                <div class="dmgx__stat">
+                  <div class="dmgx__statK dmgx__k--ea">ELEMENTAL ATTACK</div>
+                  <input id="defEA" class="dmgx__statV" type="number" min="0" />
+                </div>
+
+                <div class="dmgx__stat">
+                  <div class="dmgx__statK dmgx__k--pa">PHYSICAL ATTACK</div>
+                  <input id="defPA" class="dmgx__statV" type="number" min="0" />
+                </div>
+
+                <div class="dmgx__stat">
+                  <div class="dmgx__statK dmgx__k--ed">ELEMENTAL DEFENSE</div>
+                  <input id="defED" class="dmgx__statV" type="number" min="0" />
+                </div>
+
+                <div class="dmgx__stat">
+                  <div class="dmgx__statK dmgx__k--pd">PHYSICAL DEFENSE</div>
+                  <input id="defPD" class="dmgx__statV" type="number" min="0" />
+                </div>
+              </div>
+
+              <div class="dmgx__subpanel">
+                <div class="dmgx__tabs">
+                  <button class="dmgx__tab is-active" type="button">RELICS</button>
+                  <button class="dmgx__tab" type="button">BONUS</button>
+                </div>
+
+                <div class="dmgx__slots">
+                  <button class="dmgx__slot relic-slot" type="button" data-side="def" data-slot="0"></button>
+                  <button class="dmgx__slot relic-slot" type="button" data-side="def" data-slot="1"></button>
+                  <button class="dmgx__slot relic-slot" type="button" data-side="def" data-slot="2"></button>
+                  <button class="dmgx__slot relic-slot" type="button" data-side="def" data-slot="3"></button>
+                </div>
+
+                <div style="display:none">
+                  <select class="defRelic" data-slot="0"></select>
+                  <select class="defRelic" data-slot="1"></select>
+                  <select class="defRelic" data-slot="2"></select>
+                  <select class="defRelic" data-slot="3"></select>
+
+                  <select id="defRelicLvl">
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="30">30</option>
+                    <option value="35" selected>35</option>
+                  </select>
+                </div>
+              </div>
+
             </div>
           </div>
         </div>
 
-        <div class="card" style="padding:14px;">
-          <div class="pvp__panelHead">
-            <div class="pvp__panelTitle">Defender</div>
-            <div class="pvp__panelMeta" id="defMeta">—</div>
-          </div>
+        <!-- ============== RIGHT: RESULT ============== -->
+        <div class="dmgx__col dmgx__col--result">
+          <div class="dmgx__resultTitle">RESULT</div>
 
-          <div class="field">
-						<label for="defMiscritSearch">Miscrit</label>
-						<input id="defMiscritSearch" list="miscritsList" placeholder="Escribe nombre o ID..." />
-						<input id="defMiscrit" type="hidden" />
-					</div>
+          <div class="dmgx__resultBox">
+            <div class="dmgx__resultHead">DAMAGE RESULTS</div>
 
+            <div class="dmgx__resultLine">
+              <span>Min damage:</span>
+              <strong id="outMin">—</strong>
+            </div>
 
-          <div class="filters" style="grid-template-columns: repeat(3, 1fr); padding:0; margin-top:10px;">
-            <div class="field"><label for="defPA">PA</label><input id="defPA" type="number" min="0" /></div>
-            <div class="field"><label for="defEA">EA</label><input id="defEA" type="number" min="0" /></div>
-            <div class="field"><label for="defSPD">SPD</label><input id="defSPD" type="number" min="0" /></div>
-            <div class="field"><label for="defPD">PD</label><input id="defPD" type="number" min="0" /></div>
-            <div class="field"><label for="defED">ED</label><input id="defED" type="number" min="0" /></div>
-            <div class="field"><label for="defHP">HP</label><input id="defHP" type="number" min="0" /></div>
-          </div>
+            <div class="dmgx__resultLine">
+              <span>Max damage:</span>
+              <strong id="outMax">—</strong>
+            </div>
 
-          <div class="field" style="margin-top:10px;">
-						<label>Relics</label>
+            <div class="dmgx__resultLine">
+              <span>Average damage:</span>
+              <strong id="outAvg">—</strong>
+            </div>
 
-						<div class="relic-slots" id="defRelicSlots">
-							<button class="relic-slot" type="button" data-side="def" data-slot="0"></button>
-							<button class="relic-slot" type="button" data-side="def" data-slot="1"></button>
-							<button class="relic-slot" type="button" data-side="def" data-slot="2"></button>
-							<button class="relic-slot" type="button" data-side="def" data-slot="3"></button>
-						</div>
+            <div class="dmgx__resultLine dmgx__resultLine--space">
+              <span>Hits to KO:</span>
+              <strong id="outKO">—</strong>
+            </div>
 
-						<div style="display:none">
-							<select class="defRelic" data-slot="0"></select>
-							<select class="defRelic" data-slot="1"></select>
-							<select class="defRelic" data-slot="2"></select>
-							<select class="defRelic" data-slot="3"></select>
-						</div>
-					</div>
-
-
-          <div class="field" style="margin-top:10px;">
-            <label for="defRelicLvl">Relic level</label>
-            <select id="defRelicLvl">
-              <option value="10">10</option>
-              <option value="20">20</option>
-              <option value="30">30</option>
-              <option value="35" selected>35</option>
-            </select>
-          </div>
-
-          <div class="card" style="padding:14px; margin-top:14px;">
-            <div class="pvp__panelTitle" style="font-size:16px;">Result</div>
-            <div class="pvp__panelMeta" id="resultMeta">—</div>
-            <div id="resultBox" style="margin-top:10px; color:var(--text); font-weight:800;"></div>
-            <div id="resultNotes" style="margin-top:8px; color:var(--muted); font-size:12px;"></div>
+            <!-- (Opcional) metadata textual -->
+            <div id="resultMeta" style="display:none"></div>
+            <div id="resultBox" style="display:none"></div>
+            <div id="resultNotes" style="display:none"></div>
           </div>
         </div>
+
       </div>
     </section>
-		<div class="relic-modal" id="relicModal" hidden>
-			<div class="relic-modal__overlay" data-action="close-relic"></div>
 
-			<div class="relic-modal__card">
-				<div class="relic-modal__head">
-					<div class="relic-modal__title" id="relicModalTitle">Relics</div>
-					<button class="btn ghost" type="button" data-action="close-relic">Cerrar</button>
-				</div>
+    <!-- MODAL RELICS (tu mismo) -->
+    <div class="relic-modal" id="relicModal" hidden>
+      <div class="relic-modal__overlay" data-action="close-relic"></div>
 
-				<div class="relic-modal__search">
-					<input id="relicSearch" type="text" placeholder="Buscar relic..." />
-				</div>
+      <div class="relic-modal__card">
+        <div class="relic-modal__head">
+          <div class="relic-modal__title" id="relicModalTitle">Relics</div>
+          <button class="btn ghost" type="button" data-action="close-relic">Cerrar</button>
+        </div>
 
-				<div class="relic-modal__grid" id="relicGrid"></div>
-			</div>
-		</div>
+        <div class="relic-modal__search">
+          <input id="relicSearch" type="text" placeholder="Buscar relic..." />
+        </div>
+
+        <div class="relic-modal__grid" id="relicGrid"></div>
+      </div>
+    </div>
+
+    <!-- MODAL MOVE LIST (simple) -->
+    <div class="relic-modal" id="moveModal" hidden>
+      <div class="relic-modal__overlay" data-action="close-moves"></div>
+
+      <div class="relic-modal__card" style="max-width:740px;">
+        <div class="relic-modal__head">
+          <div class="relic-modal__title">Move list</div>
+          <button class="btn ghost" type="button" data-action="close-moves">Cerrar</button>
+        </div>
+
+        <div class="relic-modal__search">
+          <select id="atkAttackPicker"></select>
+        </div>
+
+        <div style="padding:14px 16px; color:var(--muted); font-size:12px;">
+          Selecciona un ataque. (Esto sincroniza con tu cálculo.)
+        </div>
+      </div>
+    </div>
 
   </main>
 
