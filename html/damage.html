@@ -32,9 +32,12 @@
         <div class="dmgx__col">
           <div class="dmgx__label">Attacker</div>
 
-          <input id="atkMiscritSearch" class="dmgx__search" list="miscritsList" placeholder="Escribe Miscrit..." />
-          <datalist id="miscritsList"></datalist>
+          <div class="miscritpicker">
+            <input id="atkMiscritSearch" class="dmgx__search" placeholder="Escribe Miscrit..." autocomplete="off" />
+            <div id="atkMiscritDropdown" class="miscritpicker__dropdown" hidden></div>
+          </div>
           <input id="atkMiscrit" type="hidden" />
+
 
           <div class="dmgx__card">
             <div class="dmgx__avatarRow">
@@ -123,8 +126,12 @@
           <div class="dmgx__col">
             <div class="dmgx__label dmgx__label--center">Defender</div>
 
-            <input id="defMiscritSearch" class="dmgx__search" list="miscritsList" placeholder="Escribe Miscrit..." />
+            <div class="miscritpicker">
+              <input id="defMiscritSearch" class="dmgx__search" placeholder="Escribe Miscrit..." autocomplete="off" />
+              <div id="defMiscritDropdown" class="miscritpicker__dropdown" hidden></div>
+            </div>
             <input id="defMiscrit" type="hidden" />
+
 
             <div class="dmgx__card dmgx__card--compact">
               <div class="dmgx__avatarRow">
@@ -195,7 +202,6 @@
           </div>
         </div>
 
-        <!-- ============== RIGHT: RESULT ============== -->
         <div class="dmgx__col dmgx__col--result">
           <div class="dmgx__resultTitle">RESULT</div>
 
@@ -222,7 +228,6 @@
               <strong id="outKO">—</strong>
             </div>
 
-            <!-- (Opcional) metadata textual -->
             <div id="resultMeta" style="display:none"></div>
             <div id="resultBox" style="display:none"></div>
             <div id="resultNotes" style="display:none"></div>
@@ -232,7 +237,6 @@
       </div>
     </section>
 
-    <!-- MODAL RELICS (tu mismo) -->
     <div class="relic-modal" id="relicModal" hidden>
       <div class="relic-modal__overlay" data-action="close-relic"></div>
 
@@ -250,7 +254,8 @@
       </div>
     </div>
 
-    <!-- MODAL MOVE LIST (simple) -->
+    </div>
+
     <div class="relic-modal" id="moveModal" hidden>
       <div class="relic-modal__overlay" data-action="close-moves"></div>
 
@@ -260,14 +265,23 @@
           <button class="btn ghost" type="button" data-action="close-moves">Cerrar</button>
         </div>
 
-        <div class="relic-modal__search">
-          <select id="atkAttackPicker"></select>
+        <div class="relic-modal__search" style="display:flex; gap:12px; align-items:center;">
+          <label style="display:flex; gap:8px; align-items:center; color:var(--text); font-size:12px;">
+            <input type="checkbox" id="atkEnhancedToggle">
+            Enhanced attacks
+          </label>
         </div>
+
+        <div id="moveListGrid" class="movegrid"></div>
+
+        <select id="atkAttackPicker" style="display:none"></select>
 
         <div style="padding:14px 16px; color:var(--muted); font-size:12px;">
           Selecciona un ataque. (Esto sincroniza con tu cálculo.)
         </div>
       </div>
+    </div>
+
     </div>
 
   </main>

@@ -13,6 +13,16 @@ let AVATAR_BY_NAME = new Map();
 let atkId = null;
 let defId = null;
 let atkAttackIndex = 0;
+let atkUseEnhanced = false;
+
+function getAtkMoves(atk) {
+  if (!atk) return [];
+  if (atkUseEnhanced && Array.isArray(atk.enhancedAttacks) && atk.enhancedAttacks.length) {
+    return atk.enhancedAttacks;
+  }
+  return atk.attacks ?? [];
+}
+
 
 const SLOT_LEVELS = [10, 20, 30, 35];
 
@@ -49,6 +59,96 @@ function toNum(v) {
   const n = Number(v);
   return Number.isFinite(n) ? n : 0;
 }
+
+function getMiscritPrimaryElement(m) {
+  const el = Array.isArray(m?.elements) ? m.elements[0] : "";
+  return normalize(el);
+}
+
+function miscritElementIconSrc(m) {
+  const el = getMiscritPrimaryElement(m) || "physical";
+  return `../assets/images/type/${el}.png`;
+}
+
+function renderMiscritDropdown(side, query) {
+  const dd = side === "atk" ? $("#atkMiscritDropdown") : $("#defMiscritDropdown");
+  if (!dd) return;
+
+  const q = normalize(query);
+  const matches = DB
+    .filter(m => !q || normalize(m.name).includes(q))
+    .slice(0, 50);
+
+  if (!matches.length) {
+    dd.hidden = true;
+    dd.innerHTML = "";
+    return;
+  }
+
+  dd.hidden = false;
+  dd.innerHTML = matches.map(m => {
+    const el = getMiscritPrimaryElement(m);
+    const icon = miscritElementIconSrc(m);
+
+    return `
+      <button type="button" class="miscritpicker__item" data-name="${m.name}">
+        <div class="miscritpicker__left">
+          <img class="miscritpicker__elem" src="${icon}" alt="${el}">
+          <div class="miscritpicker__name">${m.name}</div>
+        </div>
+      </button>
+    `;
+  }).join("");
+
+  dd.querySelectorAll(".miscritpicker__item").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const name = btn.getAttribute("data-name");
+      const input = side === "atk" ? $("#atkMiscritSearch") : $("#defMiscritSearch");
+      if (input) input.value = name;
+
+      applyMiscritSelection(side, name);
+      dd.hidden = true;
+    });
+  });
+}
+
+function bindMiscritPicker(side) {
+  const input = side === "atk" ? $("#atkMiscritSearch") : $("#defMiscritSearch");
+  const dd = side === "atk" ? $("#atkMiscritDropdown") : $("#defMiscritDropdown");
+  if (!input || !dd) return;
+
+  const close = () => { dd.hidden = true; };
+  const open = () => renderMiscritDropdown(side, input.value);
+
+  input.addEventListener("focus", open);
+  input.addEventListener("input", open);
+
+  input.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") close();
+
+    if (e.key === "Enter") {
+      e.preventDefault();
+      const v = normalize(input.value);
+      const exact = DB.find(m => normalize(m.name) === v);
+      if (exact) {
+        applyMiscritSelection(side, exact.name);
+        close();
+        return;
+      }
+      const firstBtn = dd.querySelector(".miscritpicker__item");
+      if (firstBtn) {
+        firstBtn.click();
+      }
+    }
+  });
+
+  document.addEventListener("click", (e) => {
+    const host = input.closest(".miscritpicker");
+    if (!host) return;
+    if (!host.contains(e.target)) close();
+  });
+}
+
 
 function elementMultiplier(atkElem, defElems) {
   const a = normalize(atkElem);
@@ -227,6 +327,7 @@ function applyMiscritSelection(side, idOrName) {
     setMeta(atkId, $("#atkMeta"));
     fillAttackSelect();
     syncMoveListPicker();
+    renderSelectedMoveButton();
     setAvatarFromMiscrit("atk", m);
 
     renderResult();
@@ -248,24 +349,95 @@ function applyMiscritSelection(side, idOrName) {
   }
 }
 
-
-
 function syncMoveListPicker() {
   const atk = findById(atkId);
   const picker = $("#atkAttackPicker");
   const sel = $("#atkAttack");
+  const grid = $("#moveListGrid");
   if (!picker || !sel) return;
 
-  const attacks = atk?.attacks ?? [];
+  const attacks = getAtkMoves(atk);
 
-  picker.innerHTML = attacks.map((a, i) => {
-    const ap = a?.ap ?? "";
-    const el = a?.element ?? "";
-    const hits = a?.hits ?? 1;
-    return `<option value="${i}">${a.name} • ${String(el).toUpperCase()} • AP ${ap} • x${hits}</option>`;
-  }).join("");
+  const ordered = attacks
+    .map((a, idx) => ({ a, idx }))
+    .sort((x, y) => toNum(y.a?.ap) - toNum(x.a?.ap));
+
+
+  picker.innerHTML = ordered.map(({ a, idx }) =>
+    `<option value="${idx}">${a.name} • AP ${toNum(a.ap)}</option>`
+  ).join("");
 
   picker.value = sel.value || "0";
+
+
+  if (!grid) return;
+  grid.innerHTML = "";
+
+  const bg = atkUseEnhanced
+    ? "../assets/images/ui/enchanted_attack.png"
+    : "../assets/images/ui/unchanted_attack.png";
+
+  ordered.forEach(({ a, idx }) => {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className =
+      "move-card" +
+      (atkUseEnhanced ? " is-enhanced" : "") +
+      (String(idx) === String(sel.value) ? " is-selected" : "");
+
+    const icon = normalize(a.element || "physical");
+    const iconSrc = `../assets/images/type/${icon}.png`;
+
+    btn.innerHTML = `
+      <div class="move-card__bg" style="background-image:url('${bg}')"></div>
+      <img class="move-card__icon" src="${iconSrc}" alt="">
+      <div class="move-card__name">${a.name ?? ""}</div>
+      <div class="move-card__ap">${toNum(a.ap)}</div>
+    `;
+
+    btn.addEventListener("click", () => {
+      atkAttackIndex = idx;
+      sel.value = String(idx);
+      picker.value = String(idx);
+      syncMoveListPicker();
+      renderSelectedMoveButton();
+      renderResult();
+    });
+
+    grid.appendChild(btn);
+  });
+
+  renderSelectedMoveButton();
+}
+
+function renderSelectedMoveButton() {
+  const btn = $("#openMoveList");
+  if (!btn) return;
+
+  const atk = findById(atkId);
+  const moves = getAtkMoves(atk);
+  const a = moves[atkAttackIndex];
+
+  if (!a) {
+    btn.classList.remove("move-btn");
+    btn.innerHTML = "Move list";
+    return;
+  }
+
+  const bg = atkUseEnhanced
+    ? "../assets/images/ui/enchanted_attack.png"
+    : "../assets/images/ui/unchanted_attack.png";
+
+  const icon = normalize(a.element || "physical");
+  const iconSrc = `../assets/images/type/${icon}.png`;
+
+  btn.classList.add("move-btn");
+  btn.innerHTML = `
+    <span class="move-btn__bg" style="background-image:url('${bg}')"></span>
+    <img class="move-btn__icon" src="${iconSrc}" alt="">
+    <span class="move-btn__name">${a.name ?? ""}</span>
+    <span class="move-btn__ap">${toNum(a.ap)}</span>
+  `;
 }
 
 function setAvatarFromMiscrit(side, m) {
@@ -275,17 +447,13 @@ function setAvatarFromMiscrit(side, m) {
   const avatarFile = AVATAR_BY_NAME.get(normalize(m.name));
   const src = avatarFile
     ? `../assets/images/miscrits_avatar/${avatarFile}`
-    : `../assets/images/miscrits_avatar/preset_avatar.png`;
+    : `../assets/images/miscrits_avatar/flue_avatar.png`;
 
   imgEl.src = src;
   imgEl.onerror = () => {
-    imgEl.src = `../assets/images/miscrits_avatar/preset_avatar.png`;
+    imgEl.src = `../assets/images/miscrits_avatar/flue_avatar.png`;
   };
 }
-
-
-
-
 
 function parseMiscritInput(value) {
   const v = (value ?? "").toString().trim();
@@ -301,8 +469,6 @@ function parseMiscritInput(value) {
 
   return null;
 }
-
-
 
 function setSearchValueFromId(inputEl, idOrName) {
   const m = findById(idOrName);
@@ -334,13 +500,9 @@ function fillAttackSelect() {
   const sel = $("#atkAttack");
   if (!sel) return;
 
-  const attacks = atk?.attacks ?? [];
-  sel.innerHTML = attacks.map((a, i) => {
-    const ap = a?.ap ?? "";
-    const el = a?.element ?? "";
-    const hits = a?.hits ?? 1;
-    return `<option value="${i}">${a.name} • ${String(el).toUpperCase()} • AP ${ap} • x${hits}</option>`;
-  }).join("");
+  const attacks = getAtkMoves(atk);
+
+  sel.innerHTML = attacks.map((a, i) => `<option value="${i}">${a.name}</option>`).join("");
 
   if (!attacks.length) {
     sel.innerHTML = `<option value="0">(Sin ataques)</option>`;
@@ -351,7 +513,9 @@ function fillAttackSelect() {
 
   atkAttackIndex = Math.min(atkAttackIndex, attacks.length - 1);
   sel.value = String(atkAttackIndex);
+  renderSelectedMoveButton();
 }
+
 
 /* =========================================================
    RELICS
@@ -566,7 +730,7 @@ function renderResult() {
     return;
   }
 
-  const attacks = atk.attacks ?? [];
+  const attacks = getAtkMoves(atk);
   const a = attacks[atkAttackIndex] ?? null;
 
   if (!a) {
@@ -676,8 +840,8 @@ function bindMiscritSearch(side) {
 }
 
 function bindAll() {
-  bindMiscritSearch("atk");
-  bindMiscritSearch("def");
+  bindMiscritPicker("atk");
+  bindMiscritPicker("def");
 
   $("#atkAttack")?.addEventListener("change", () => {
     atkAttackIndex = toNum($("#atkAttack")?.value);
@@ -690,14 +854,6 @@ function bindAll() {
     if (!modal) return;
     syncMoveListPicker();
     modal.hidden = false;
-  });
-
-  $("#atkAttackPicker")?.addEventListener("change", () => {
-    const v = $("#atkAttackPicker")?.value ?? "0";
-    const sel = $("#atkAttack");
-    if (sel) sel.value = v;
-    atkAttackIndex = toNum(v);
-    renderResult();
   });
 
   document.addEventListener("click", (e) => {
@@ -736,8 +892,17 @@ function bindAll() {
       openRelicModal(side, slot);
     });
   });
-}
 
+  $("#atkEnhancedToggle")?.addEventListener("change", (e) => {
+    atkUseEnhanced = !!e.target.checked;
+    atkAttackIndex = 0;
+    fillAttackSelect();
+    syncMoveListPicker();
+    renderSelectedMoveButton();
+    renderResult();
+  });
+
+}
 
 async function init() {
   await loadAll();
@@ -774,6 +939,7 @@ async function init() {
 
   fillAttackSelect();
 	syncMoveListPicker();
+  renderSelectedMoveButton();
   bindAll();
   renderResult();
 }

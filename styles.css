@@ -10,6 +10,15 @@
   --radius:16px;
 }
 
+@font-face {
+  font-family: "Miscrits";
+  src: url("../assets/fonts/Miscrits.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+
 /* ===============================
    Base / Reset
 ================================ */
@@ -1262,7 +1271,7 @@ input::placeholder{ color:#6b778b; }
   border-radius: 12px;
   border: 1px solid rgba(255,255,255,.14);
   background: rgba(0,0,0,.22);
-  font-weight: 900;
+  font-weight: 600;
   font-style: italic;
   font-size: 16px;
 }
@@ -1415,6 +1424,209 @@ input::placeholder{ color:#6b778b; }
   .dmgx__grid{ grid-template-columns: 1fr; }
   .dmgx__vs{ margin: 0; font-size: 54px; }
 }
+
+.movegrid{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  padding:14px 16px;
+}
+
+.move-card{
+  width:260px;
+  height:72px;
+  border:0;
+  padding:0;
+  background:transparent;
+  cursor:pointer;
+  position:relative;
+  color:#ffffff;
+  -webkit-text-stroke: 1px #5a3a00;
+  font-size: 20px;
+  font-family: "Miscrits", sans-serif;
+  text-transform: uppercase;
+}
+
+.move-card__bg{
+  position:absolute;
+  inset:0;
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+  border-radius:14px;
+}
+
+.move-card__icon{
+  position:absolute;
+  left:16px;
+  top:50%;
+  transform:translateY(-50%);
+  width:28px;
+  height:28px;
+}
+
+.move-card__name{
+  position:absolute;
+  left:58px;
+  right:14px;
+  top:14px;
+  font-weight:800;
+  font-style:italic;
+  letter-spacing:.4px;
+  text-align:left;
+  color:#eaf3ff;
+}
+
+.move-card__ap{
+  position:absolute;
+  left:58px;
+  right:14px;
+  bottom:12px;
+  font-weight:900;
+  font-style:italic;
+  text-align:left;
+  color:#eaf3ff;
+}
+
+.move-card.is-enhanced .move-card__name,
+.move-card.is-enhanced .move-card__ap{
+  color:#ffffff;
+  -webkit-text-stroke: 1px #5a3a00;
+  font-size: 20px;
+  font-family: "Miscrits", sans-serif;
+  text-transform: uppercase;
+}
+
+.move-card.is-selected{
+  outline:2px solid rgba(140,220,255,.9);
+  outline-offset:2px;
+  border-radius:10px;
+  text-transform: uppercase;
+}
+
+#openMoveList.move-btn{
+  font-family: "Miscrits", sans-serif;
+  font-size: 20px;
+  position: relative;
+  height: 85px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+  cursor: pointer;
+}
+
+#openMoveList .move-btn__bg{
+  position: absolute;
+  inset: 0;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 14px;
+}
+
+#openMoveList .move-btn__icon{
+  position: relative;
+  width: 28px;
+  height: 28px;
+  margin-left: 18px;
+}
+
+#openMoveList .move-btn__name{
+  position: relative;
+  margin-top: -25px;
+  letter-spacing: .5px;
+  text-transform: uppercase;
+  color: #ffffff;
+  -webkit-text-stroke: 1px #000000;
+  text-align: center;
+}
+
+#openMoveList .move-btn__ap{
+  position: absolute;
+  left: 58px;
+  bottom: 10px;
+  font-weight: 900;
+  color: #ffffff;
+  -webkit-text-stroke: 1px #000000;
+}
+
+.miscritpicker {
+  position: relative;
+}
+
+.miscritpicker__dropdown {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(100% + 8px);
+  z-index: 9999;
+
+  background: rgba(10, 12, 16, 0.95);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 14px;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.45);
+
+  max-height: 280px;
+  overflow-y: auto;
+  padding: 8px;
+}
+
+.miscritpicker__item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  text-align: left;
+}
+
+.miscritpicker__item:hover,
+.miscritpicker__item.is-active {
+  background: rgba(255,255,255,0.06);
+}
+
+.miscritpicker__left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.miscritpicker__name {
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.miscritpicker__elem {
+  width: 22px;
+  height: 22px;
+  flex: 0 0 22px;
+  border-radius: 999px;
+}
+
+.miscritpicker__badge {
+  font-size: 11px;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 999px;
+  text-transform: lowercase;
+  border: 1px solid rgba(255,255,255,0.14);
+  opacity: 0.95;
+}
+
 
 /* ===============================
    Responsive (global)
