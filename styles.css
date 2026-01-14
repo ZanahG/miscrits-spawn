@@ -1426,10 +1426,23 @@ input::placeholder{ color:#6b778b; }
 }
 
 .movegrid{
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-  padding:14px 16px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px 34px;
+  align-items: start;
+  padding: 14px 16px;
+}
+
+.movegrid__col{
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-width: 0;
+}
+
+#moveModal .relic-modal__card{
+  max-height: 80vh;
+  overflow: auto;
 }
 
 .move-card{

@@ -5,15 +5,26 @@ let RELICS = [];
 let RELIC_BY_NAME = new Map();
 let ATK_BASE = null;
 let DEF_BASE = null;
-let MISCRITS_META = [];           
+let MISCRITS_META = [];
 let AVATAR_BY_NAME = new Map();
-
-
 
 let atkId = null;
 let defId = null;
 let atkAttackIndex = 0;
 let atkUseEnhanced = false;
+
+function normalize(str) {
+  return (str ?? "").toString().trim().toLowerCase();
+}
+
+function toNum(v) {
+  const n = Number(v);
+  return Number.isFinite(n) ? n : 0;
+}
+
+/* =========================================================
+   MOVES
+========================================================= */
 
 function getAtkMoves(atk) {
   if (!atk) return [];
@@ -23,6 +34,28 @@ function getAtkMoves(atk) {
   return atk.attacks ?? [];
 }
 
+function getAtkMovesSorted(atk) {
+  const raw = getAtkMoves(atk).slice();
+  raw.sort((a, b) => {
+    const d = toNum(b?.ap) - toNum(a?.ap);
+    if (d !== 0) return d;
+    return (a?.name ?? "").localeCompare((b?.name ?? ""), "es");
+  });
+  return raw;
+}
+
+function moveKey(a) {
+  return [
+    normalize(a?.name),
+    normalize(a?.element),
+    toNum(a?.ap),
+    toNum(a?.hits ?? 1)
+  ].join("|");
+}
+
+/* =========================================================
+   ELEMENT MULTIPLIER
+========================================================= */
 
 const SLOT_LEVELS = [10, 20, 30, 35];
 
@@ -38,6 +71,7 @@ const STRONG = {
   physical: ["undead"],
   undead: ["physical"]
 };
+
 const WEAK = {
   water: ["electric", "nature"],
   fire: ["water", "earth"],
@@ -51,13 +85,59 @@ const WEAK = {
   undead: ["magic"]
 };
 
-function normalize(str) {
-  return (str ?? "").toString().trim().toLowerCase();
+function elementMultiplier(atkElem, defElems) {
+  const a = normalize(atkElem);
+  const defs = (defElems ?? []).map(normalize);
+
+  let mul = 1;
+  for (const d of defs) {
+    if (STRONG[a]?.includes(d)) mul *= 2.0;
+    if (WEAK[a]?.includes(d)) mul *= 0.5;
+  }
+  return mul;
 }
 
-function toNum(v) {
-  const n = Number(v);
-  return Number.isFinite(n) ? n : 0;
+function isElementalAttack(elem) {
+  const e = normalize(elem);
+  return ["water","fire","nature","earth","air","electric","magic","mind","undead"].includes(e);
+}
+
+function pickAtkDefStats(mode, attackElem, inputs) {
+  if (mode === "physical") {
+    return { atk: inputs.atkPA, def: inputs.defPD, label: "PA vs PD" };
+  }
+  if (mode === "elemental") {
+    return { atk: inputs.atkEA, def: inputs.defED, label: "EA vs ED" };
+  }
+
+  const elemental = isElementalAttack(attackElem);
+  if (elemental) return { atk: inputs.atkEA, def: inputs.defED, label: "EA vs ED" };
+  return { atk: inputs.atkPA, def: inputs.defPD, label: "PA vs PD" };
+}
+
+function computePerHit(ap, atkStat, defStat, elemMul) {
+  const a = toNum(ap);
+  const atk = Math.max(1, toNum(atkStat));
+  const def = Math.max(1, toNum(defStat));
+  const m = toNum(elemMul);
+
+  const base = (a * (atk / def)) * m;
+  const min = Math.floor(base * 0.90);
+  const max = Math.floor(base * 1.10);
+  return { min, max, base };
+}
+
+/* =========================================================
+   MISCRITS PICKER (DROPDOWN WITH ICON)
+========================================================= */
+
+function findById(idOrName) {
+  if (idOrName == null) return null;
+  const key = String(idOrName).trim();
+  const byId = DB.find(m => m.id != null && String(m.id) === key);
+  if (byId) return byId;
+  const nk = normalize(key);
+  return DB.find(m => normalize(m.name) === nk) ?? null;
 }
 
 function getMiscritPrimaryElement(m) {
@@ -112,71 +192,6 @@ function renderMiscritDropdown(side, query) {
   });
 }
 
-function swapInputValues(aId, bId) {
-  const a = document.getElementById(aId);
-  const b = document.getElementById(bId);
-  if (!a || !b) return;
-  const tmp = a.value;
-  a.value = b.value;
-  b.value = tmp;
-}
-
-function swapRelicSelectValues() {
-  for (let i = 0; i < 4; i++) {
-    const a = document.querySelector(`.atkRelic[data-slot="${i}"]`);
-    const b = document.querySelector(`.defRelic[data-slot="${i}"]`);
-    if (!a || !b) continue;
-    const tmp = a.value;
-    a.value = b.value;
-    b.value = tmp;
-  }
-}
-
-function swapSides() {
-  // 1) swap ids (quién es attacker/defender)
-  const oldAtkId = atkId;
-  atkId = defId;
-  defId = oldAtkId;
-
-  // 2) swap base stats (para relic calc)
-  const oldAtkBase = ATK_BASE;
-  ATK_BASE = DEF_BASE;
-  DEF_BASE = oldAtkBase;
-
-  // 3) swap buscadores visuales
-  swapInputValues("atkMiscritSearch", "defMiscritSearch");
-  // hidden (si los usas)
-  swapInputValues("atkMiscrit", "defMiscrit");
-
-  // 4) swap stats inputs visibles (HP/SPD/EA/PA/ED/PD)
-  ["HP","SPD","EA","PA","ED","PD"].forEach(k => {
-    swapInputValues(`atk${k}`, `def${k}`);
-  });
-
-  // 5) swap relics
-  swapRelicSelectValues();
-  refreshAllRelicSlots();
-
-  // 6) swap avatars
-  const atkM = findById(atkId);
-  const defM = findById(defId);
-  if (atkM) setAvatarFromMiscrit("atk", atkM);
-  if (defM) setAvatarFromMiscrit("def", defM);
-
-  // 7) metas (si existen en tu HTML)
-  setMeta(atkId, $("#atkMeta"));
-  setMeta(defId, $("#defMeta"));
-
-  // 8) attacker cambia -> hay que recargar attacks (porque ahora es otro miscrit)
-  atkAttackIndex = 0;
-  fillAttackSelect();
-  syncMoveListPicker();
-
-  // 9) recalcular
-  renderResult();
-}
-
-
 function bindMiscritPicker(side) {
   const input = side === "atk" ? $("#atkMiscritSearch") : $("#defMiscritSearch");
   const dd = side === "atk" ? $("#atkMiscritDropdown") : $("#defMiscritDropdown");
@@ -201,9 +216,7 @@ function bindMiscritPicker(side) {
         return;
       }
       const firstBtn = dd.querySelector(".miscritpicker__item");
-      if (firstBtn) {
-        firstBtn.click();
-      }
+      if (firstBtn) firstBtn.click();
     }
   });
 
@@ -214,273 +227,35 @@ function bindMiscritPicker(side) {
   });
 }
 
+/* =========================================================
+   AVATAR
+========================================================= */
 
-function elementMultiplier(atkElem, defElems) {
-  const a = normalize(atkElem);
-  const defs = (defElems ?? []).map(normalize);
+function setAvatarFromMiscrit(side, m) {
+  const imgEl = side === "atk" ? $("#atkAvatar") : $("#defAvatar");
+  if (!imgEl || !m?.name) return;
 
-  let mul = 1;
+  const avatarFile = AVATAR_BY_NAME.get(normalize(m.name));
+  const src = avatarFile
+    ? `../assets/images/miscrits_avatar/${avatarFile}`
+    : `../assets/images/miscrits_avatar/preset_avatar.png`;
 
-  for (const d of defs) {
-    if (STRONG[a]?.includes(d)) mul *= 2.0;
-    if (WEAK[a]?.includes(d)) mul *= 0.5;
-  }
-  return mul;
-}
-
-function setStatsInputsObj(prefix, stats) {
-  if (!stats) return;
-  $(`#${prefix}HP`).value  = toNum(stats.HP);
-  $(`#${prefix}SPD`).value = toNum(stats.SPD);
-  $(`#${prefix}EA`).value  = toNum(stats.EA);
-  $(`#${prefix}PA`).value  = toNum(stats.PA);
-  $(`#${prefix}ED`).value  = toNum(stats.ED);
-  $(`#${prefix}PD`).value  = toNum(stats.PD);
-}
-
-function calcSideWithRelics(side) {
-  const base = side === "atk" ? ATK_BASE : DEF_BASE;
-  if (!base) return null;
-
-  const picks = getRelicSelectionsDetailed(side === "atk" ? ".atkRelic" : ".defRelic");
-
-  return applyRelicStatsBySlot(
-    { HP: base.HP, SPD: base.SPD, PA: base.PA, EA: base.EA, PD: base.PD, ED: base.ED },
-    picks
-  );
-}
-
-function refreshSideStatsFromRelics(side) {
-  const total = calcSideWithRelics(side);
-  if (!total) return;
-  setStatsInputsObj(side, total);
-}
-
-
-function computePerHit(ap, atkStat, defStat, elemMul) {
-  const a = toNum(ap);
-  const atk = Math.max(1, toNum(atkStat));
-  const def = Math.max(1, toNum(defStat));
-  const m = toNum(elemMul);
-  const base = (a * (atk / def)) * m;
-  const min = Math.floor(base * 0.90);
-  const max = Math.floor(base * 1.10);
-
-  return { min, max, base };
-}
-
-
-function isElementalAttack(elem) {
-  const e = normalize(elem);
-  return ["water","fire","nature","earth","air","electric","magic","mind","undead"].includes(e);
-}
-
-function pickAtkDefStats(mode, atkMis, defMis, attackElem, inputs) {
-  if (mode === "physical") {
-    return { atk: inputs.atkPA, def: inputs.defPD, label: "PA vs PD" };
-  }
-  if (mode === "elemental") {
-    return { atk: inputs.atkEA, def: inputs.defED, label: "EA vs ED" };
-  }
-
-  const elemental = isElementalAttack(attackElem);
-  if (elemental) return { atk: inputs.atkEA, def: inputs.defED, label: "EA vs ED" };
-  return { atk: inputs.atkPA, def: inputs.defPD, label: "PA vs PD" };
-}
-
-function slugFileName(name) {
-  return (name ?? "")
-    .toString()
-    .trim()
-    .toLowerCase()
-    .replace(/\s+/g, "_")
-    .replace(/[^\w_]/g, "") + ".png";
-}
-
-const RELIC_PLACEHOLDER = "../assets/images/relics/molten_coin.png";
-
-function relicIconSrc(r) {
-  const fallback = RELIC_PLACEHOLDER;
-  if (!r) return fallback;
-
-  if (r.icon) return `../assets/images/relics/${r.icon}`;
-  return `../assets/images/relics/${slugFileName(r.name)}`;
-}
-
-function relicBonusText(r) {
-  const s = r?.stats || {};
-  const parts = [];
-
-  if (toNum(s.HP))  parts.push(`+${toNum(s.HP)} HP`);
-  if (toNum(s.SPD)) parts.push(`+${toNum(s.SPD)} SPD`);
-  if (toNum(s.PA))  parts.push(`+${toNum(s.PA)} PA`);
-  if (toNum(s.EA))  parts.push(`+${toNum(s.EA)} EA`);
-  if (toNum(s.PD))  parts.push(`+${toNum(s.PD)} PD`);
-  if (toNum(s.ED))  parts.push(`+${toNum(s.ED)} ED`);
-
-  return parts.join(" • ");
-}
-
-function getInputsRaw() {
-  return {
-    atkPA: toNum($("#atkPA")?.value),
-    atkEA: toNum($("#atkEA")?.value),
-    atkSPD: toNum($("#atkSPD")?.value),
-    atkPD: toNum($("#atkPD")?.value),
-    atkED: toNum($("#atkED")?.value),
-    atkHP: toNum($("#atkHP")?.value),
-
-    defPA: toNum($("#defPA")?.value),
-    defEA: toNum($("#defEA")?.value),
-    defSPD: toNum($("#defSPD")?.value),
-    defPD: toNum($("#defPD")?.value),
-    defED: toNum($("#defED")?.value),
-    defHP: toNum($("#defHP")?.value),
+  imgEl.src = src;
+  imgEl.onerror = () => {
+    imgEl.src = `../assets/images/miscrits_avatar/preset_avatar.png`;
   };
 }
 
-function findById(idOrName) {
-  if (idOrName == null) return null;
-  const key = String(idOrName).trim();
-  const byId = DB.find(m => m.id != null && String(m.id) === key);
-  if (byId) return byId;
-  const nk = normalize(key);
-  return DB.find(m => normalize(m.name) === nk) ?? null;
-}
-
-
-function fillMiscritDatalist() {
-  const dl = $("#miscritsList");
-  if (!dl) return;
-
-  const names = DB
-    .map(m => (m.name ?? "").toString().trim())
-    .filter(Boolean)
-    .sort((a, b) => a.localeCompare(b, "es"));
-
-  dl.innerHTML = names.map(n => `<option value="${n}"></option>`).join("");
-}
-
-
-function populateRelicSelects() {
-  const allSelects = document.querySelectorAll(".atkRelic, .defRelic");
-  if (!allSelects.length) return;
-
-  const sorted = RELICS.slice().sort((a, b) => (a.name ?? "").localeCompare((b.name ?? ""), "es"));
-
-  const html = [
-    `<option value=""></option>`,
-    ...sorted.map(r => `<option value="${r.name}">${r.name}</option>`)
-  ].join("");
-
-  allSelects.forEach(sel => {
-    sel.innerHTML = html;
-  });
-}
-
-function applyMiscritSelection(side, idOrName) {
-  const m = findById(idOrName);
-  if (!m?.stats) return;
-
-  if (side === "atk") {
-    atkId = m.name;
-    $("#atkMiscrit") && ($("#atkMiscrit").value = atkId);
-
-    ATK_BASE = { ...m.stats };
-    refreshSideStatsFromRelics("atk");
-
-    setMeta(atkId, $("#atkMeta"));
-    fillAttackSelect();
-    syncMoveListPicker();
-    renderSelectedMoveButton();
-    setAvatarFromMiscrit("atk", m);
-
-    renderResult();
-    return;
-  }
-
-  if (side === "def") {
-    defId = m.name;
-    $("#defMiscrit") && ($("#defMiscrit").value = defId);
-
-    DEF_BASE = { ...m.stats };
-    refreshSideStatsFromRelics("def");
-
-    setMeta(defId, $("#defMeta"));
-    setAvatarFromMiscrit("def", m);
-
-    renderResult();
-    return;
-  }
-}
-
-function syncMoveListPicker() {
-  const atk = findById(atkId);
-  const picker = $("#atkAttackPicker");
-  const sel = $("#atkAttack");
-  const grid = $("#moveListGrid");
-  if (!picker || !sel) return;
-
-  const attacks = getAtkMoves(atk);
-
-  const ordered = attacks
-    .map((a, idx) => ({ a, idx }))
-    .sort((x, y) => toNum(y.a?.ap) - toNum(x.a?.ap));
-
-
-  picker.innerHTML = ordered.map(({ a, idx }) =>
-    `<option value="${idx}">${a.name} • AP ${toNum(a.ap)}</option>`
-  ).join("");
-
-  picker.value = sel.value || "0";
-
-
-  if (!grid) return;
-  grid.innerHTML = "";
-
-  const bg = atkUseEnhanced
-    ? "../assets/images/ui/enchanted_attack.png"
-    : "../assets/images/ui/unchanted_attack.png";
-
-  ordered.forEach(({ a, idx }) => {
-    const btn = document.createElement("button");
-    btn.type = "button";
-    btn.className =
-      "move-card" +
-      (atkUseEnhanced ? " is-enhanced" : "") +
-      (String(idx) === String(sel.value) ? " is-selected" : "");
-
-    const icon = normalize(a.element || "physical");
-    const iconSrc = `../assets/images/type/${icon}.png`;
-
-    btn.innerHTML = `
-      <div class="move-card__bg" style="background-image:url('${bg}')"></div>
-      <img class="move-card__icon" src="${iconSrc}" alt="">
-      <div class="move-card__name">${a.name ?? ""}</div>
-      <div class="move-card__ap">${toNum(a.ap)}</div>
-    `;
-
-    btn.addEventListener("click", () => {
-      atkAttackIndex = idx;
-      sel.value = String(idx);
-      picker.value = String(idx);
-      syncMoveListPicker();
-      renderSelectedMoveButton();
-      renderResult();
-    });
-
-    grid.appendChild(btn);
-  });
-
-  renderSelectedMoveButton();
-}
+/* =========================================================
+   UI: MOVE LIST + SELECTED MOVE BUTTON
+========================================================= */
 
 function renderSelectedMoveButton() {
   const btn = $("#openMoveList");
   if (!btn) return;
 
   const atk = findById(atkId);
-  const moves = getAtkMoves(atk);
+  const moves = getAtkMovesSorted(atk);
   const a = moves[atkAttackIndex];
 
   if (!a) {
@@ -505,50 +280,98 @@ function renderSelectedMoveButton() {
   `;
 }
 
-function setAvatarFromMiscrit(side, m) {
-  const imgEl = side === "atk" ? $("#atkAvatar") : $("#defAvatar");
-  if (!imgEl || !m?.name) return;
+function syncMoveListPicker() {
+  const atk = findById(atkId);
+  const sel = $("#atkAttack");
+  const picker = $("#atkAttackPicker");
+  const grid = $("#moveListGrid");
+  if (!sel) return;
 
-  const avatarFile = AVATAR_BY_NAME.get(normalize(m.name));
-  const src = avatarFile
-    ? `../assets/images/miscrits_avatar/${avatarFile}`
-    : `../assets/images/miscrits_avatar/flue_avatar.png`;
+  const attacks = getAtkMovesSorted(atk);
+  
+  const prevKey = attacks[atkAttackIndex] ? moveKey(attacks[atkAttackIndex]) : null;
+  if (prevKey) {
+    const idx = attacks.findIndex(a => moveKey(a) === prevKey);
+    if (idx >= 0) atkAttackIndex = idx;
+  } else {
+    atkAttackIndex = 0;
+  }
 
-  imgEl.src = src;
-  imgEl.onerror = () => {
-    imgEl.src = `../assets/images/miscrits_avatar/flue_avatar.png`;
+  sel.innerHTML = attacks.map((a, i) => `<option value="${i}">${a.name}</option>`).join("");
+  sel.value = String(atkAttackIndex);
+
+  if (picker) {
+    picker.innerHTML = attacks.map((a, i) => `<option value="${i}">${a.name}</option>`).join("");
+    picker.value = String(atkAttackIndex);
+  }
+
+  if (!grid) return;
+  grid.innerHTML = "";
+
+  const bg = atkUseEnhanced
+    ? "../assets/images/ui/enchanted_attack.png"
+    : "../assets/images/ui/unchanted_attack.png";
+
+  const left = attacks.slice(0, 5);
+  const right = attacks.slice(5);
+
+  const makeCol = (list, offset) => {
+    const col = document.createElement("div");
+    col.className = "movegrid__col";
+
+    list.forEach((a, i) => {
+      const idx = offset + i;
+
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className =
+        "move-card" +
+        (atkUseEnhanced ? " is-enhanced" : "") +
+        (idx === atkAttackIndex ? " is-selected" : "");
+
+      const icon = normalize(a.element || "physical");
+      const iconSrc = `../assets/images/type/${icon}.png`;
+
+      btn.innerHTML = `
+        <div class="move-card__bg" style="background-image:url('${bg}')"></div>
+        <img class="move-card__icon" src="${iconSrc}" alt="">
+        <div class="move-card__name">${a.name ?? ""}</div>
+        <div class="move-card__ap">${toNum(a.ap)}</div>
+      `;
+
+      btn.addEventListener("click", () => {
+        atkAttackIndex = idx;
+        sel.value = String(idx);
+        if (picker) picker.value = String(idx);
+
+        // re-render highlight + botón + daño
+        syncMoveListPicker();
+        renderSelectedMoveButton();
+        renderResult();
+      });
+
+      col.appendChild(btn);
+    });
+
+    return col;
   };
+
+  grid.appendChild(makeCol(left, 0));
+  if (right.length) grid.appendChild(makeCol(right, 5));
 }
 
-function parseMiscritInput(value) {
-  const v = (value ?? "").toString().trim();
-  if (!v) return null;
+/* =========================================================
+   APPLY MISCRIT SELECTION
+========================================================= */
 
-  const vv = normalize(v);
-
-  const exact = DB.find(m => normalize(m.name) === vv);
-  if (exact) return exact.name;
-
-  const matches = DB.filter(m => normalize(m.name).includes(vv));
-  if (matches.length === 1) return matches[0].name;
-
-  return null;
-}
-
-function setSearchValueFromId(inputEl, idOrName) {
-  const m = findById(idOrName);
-  if (!inputEl || !m) return;
-  inputEl.value = m.name;
-}
-
-function setStatsInputs(prefix, stats) {
+function setStatsInputsObj(prefix, stats) {
   if (!stats) return;
-  $(`#${prefix}PA`).value = toNum(stats.PA);
-  $(`#${prefix}EA`).value = toNum(stats.EA);
+  $(`#${prefix}HP`).value  = toNum(stats.HP);
   $(`#${prefix}SPD`).value = toNum(stats.SPD);
-  $(`#${prefix}PD`).value = toNum(stats.PD);
-  $(`#${prefix}ED`).value = toNum(stats.ED);
-  $(`#${prefix}HP`).value = toNum(stats.HP);
+  $(`#${prefix}EA`).value  = toNum(stats.EA);
+  $(`#${prefix}PA`).value  = toNum(stats.PA);
+  $(`#${prefix}ED`).value  = toNum(stats.ED);
+  $(`#${prefix}PD`).value  = toNum(stats.PD);
 }
 
 function setMeta(id, metaEl) {
@@ -560,33 +383,77 @@ function setMeta(id, metaEl) {
   metaEl.textContent = elems ? `Elements: ${elems}` : "—";
 }
 
-function fillAttackSelect() {
-  const atk = findById(atkId);
-  const sel = $("#atkAttack");
-  if (!sel) return;
+function applyMiscritSelection(side, idOrName) {
+  const m = findById(idOrName);
+  if (!m?.stats) return;
 
-  const attacks = getAtkMoves(atk);
+  if (side === "atk") {
+    atkId = m.name;
+    $("#atkMiscrit") && ($("#atkMiscrit").value = atkId);
 
-  sel.innerHTML = attacks.map((a, i) => `<option value="${i}">${a.name}</option>`).join("");
+    ATK_BASE = { ...m.stats };
+    refreshSideStatsFromRelics("atk");
 
-  if (!attacks.length) {
-    sel.innerHTML = `<option value="0">(Sin ataques)</option>`;
+    setMeta(atkId, $("#atkMeta"));
+
     atkAttackIndex = 0;
-    sel.value = "0";
+    syncMoveListPicker();
+    renderSelectedMoveButton();
+
+    setAvatarFromMiscrit("atk", m);
+    renderResult();
     return;
   }
 
-  atkAttackIndex = Math.min(atkAttackIndex, attacks.length - 1);
-  sel.value = String(atkAttackIndex);
-  renderSelectedMoveButton();
-}
+  if (side === "def") {
+    defId = m.name;
+    $("#defMiscrit") && ($("#defMiscrit").value = defId);
 
+    DEF_BASE = { ...m.stats };
+    refreshSideStatsFromRelics("def");
+
+    setMeta(defId, $("#defMeta"));
+    setAvatarFromMiscrit("def", m);
+
+    renderResult();
+    return;
+  }
+}
 
 /* =========================================================
    RELICS
 ========================================================= */
 
-let RELIC_PICK = { side: null, slot: null };
+const RELIC_PLACEHOLDER = "../assets/images/relics/molten_coin.png";
+
+function slugFileName(name) {
+  return (name ?? "")
+    .toString()
+    .trim()
+    .toLowerCase()
+    .replace(/\s+/g, "_")
+    .replace(/[^\w_]/g, "") + ".png";
+}
+
+function relicIconSrc(r) {
+  if (!r) return RELIC_PLACEHOLDER;
+  if (r.icon) return `../assets/images/relics/${r.icon}`;
+  return `../assets/images/relics/${slugFileName(r.name)}`;
+}
+
+function relicBonusText(r) {
+  const s = r?.stats || {};
+  const parts = [];
+
+  if (toNum(s.HP))  parts.push(`+${toNum(s.HP)} HP`);
+  if (toNum(s.SPD)) parts.push(`+${toNum(s.SPD)} SPD`);
+  if (toNum(s.PA))  parts.push(`+${toNum(s.PA)} PA`);
+  if (toNum(s.EA))  parts.push(`+${toNum(s.EA)} EA`);
+  if (toNum(s.PD))  parts.push(`+${toNum(s.PD)} PD`);
+  if (toNum(s.ED))  parts.push(`+${toNum(s.ED)} ED`);
+
+  return parts.join(" • ");
+}
 
 function getSlotLevel(slot) {
   const s = Math.max(0, Math.min(3, toNum(slot)));
@@ -631,6 +498,24 @@ function applyRelicStatsBySlot(stats, selections) {
   return out;
 }
 
+function calcSideWithRelics(side) {
+  const base = side === "atk" ? ATK_BASE : DEF_BASE;
+  if (!base) return null;
+
+  const picks = getRelicSelectionsDetailed(side === "atk" ? ".atkRelic" : ".defRelic");
+
+  return applyRelicStatsBySlot(
+    { HP: base.HP, SPD: base.SPD, PA: base.PA, EA: base.EA, PD: base.PD, ED: base.ED },
+    picks
+  );
+}
+
+function refreshSideStatsFromRelics(side) {
+  const total = calcSideWithRelics(side);
+  if (!total) return;
+  setStatsInputsObj(side, total);
+}
+
 function setSlotButtonUI(side, slot) {
   const host = document.querySelector(`.relic-slot[data-side="${side}"][data-slot="${slot}"]`);
   if (!host) return;
@@ -644,17 +529,11 @@ function setSlotButtonUI(side, slot) {
   host.dataset.relicName = name || "";
   host.dataset.relicLevel = String(getSlotLevel(slot));
 
-  const insideImg = host.querySelector("img");
-  if (insideImg) {
-    insideImg.src = img;
-    insideImg.alt = name || "Empty";
-    insideImg.onerror = () => { insideImg.src = RELIC_PLACEHOLDER; };
-  } else {
-    host.style.backgroundImage = `url("${img}")`;
-    host.style.backgroundRepeat = "no-repeat";
-    host.style.backgroundPosition = "center";
-    host.style.backgroundSize = "70% 70%";
-  }
+  host.style.backgroundImage = `url("${img}")`;
+  host.style.backgroundRepeat = "no-repeat";
+  host.style.backgroundPosition = "center";
+  host.style.backgroundSize = "70% 70%";
+
   host.title = name ? `${name} (lvl ${getSlotLevel(slot)})` : `Empty (lvl ${getSlotLevel(slot)})`;
   host.setAttribute("aria-label", host.title);
 }
@@ -665,6 +544,8 @@ function refreshAllRelicSlots() {
     setSlotButtonUI("def", i);
   }
 }
+
+let RELIC_PICK = { side: null, slot: null };
 
 function openRelicModal(side, slot) {
   RELIC_PICK = { side, slot };
@@ -690,6 +571,8 @@ function openRelicModal(side, slot) {
       .filter(r => toNum(r.level) === toNum(lvl))
       .filter(r => !qq || normalize(r.name).includes(qq))
       .sort((a, b) => (a.name ?? "").localeCompare((b.name ?? ""), "es"));
+
+    // Empty
     const empty = document.createElement("div");
     empty.className = "relic-item";
     empty.innerHTML = `
@@ -704,7 +587,7 @@ function openRelicModal(side, slot) {
       if (sel) sel.value = "";
 
       refreshAllRelicSlots();
-			refreshSideStatsFromRelics(side);
+      refreshSideStatsFromRelics(side);
       closeRelicModal();
       renderResult();
     });
@@ -724,7 +607,7 @@ function openRelicModal(side, slot) {
         const sel = getRelicSelect(side, slot);
         if (sel) sel.value = r.name;
         refreshAllRelicSlots();
-				refreshSideStatsFromRelics(side);
+        refreshSideStatsFromRelics(side);
         closeRelicModal();
         renderResult();
       });
@@ -744,9 +627,43 @@ function closeRelicModal() {
   RELIC_PICK = { side: null, slot: null };
 }
 
+function populateRelicSelects() {
+  const allSelects = document.querySelectorAll(".atkRelic, .defRelic");
+  if (!allSelects.length) return;
+
+  const sorted = RELICS.slice().sort((a, b) => (a.name ?? "").localeCompare((b.name ?? ""), "es"));
+
+  const html = [
+    `<option value=""></option>`,
+    ...sorted.map(r => `<option value="${r.name}">${r.name}</option>`)
+  ].join("");
+
+  allSelects.forEach(sel => {
+    sel.innerHTML = html;
+  });
+}
+
 /* =========================================================
    TOTAL STATS + RESULT
 ========================================================= */
+
+function getInputsRaw() {
+  return {
+    atkPA: toNum($("#atkPA")?.value),
+    atkEA: toNum($("#atkEA")?.value),
+    atkSPD: toNum($("#atkSPD")?.value),
+    atkPD: toNum($("#atkPD")?.value),
+    atkED: toNum($("#atkED")?.value),
+    atkHP: toNum($("#atkHP")?.value),
+
+    defPA: toNum($("#defPA")?.value),
+    defEA: toNum($("#defEA")?.value),
+    defSPD: toNum($("#defSPD")?.value),
+    defPD: toNum($("#defPD")?.value),
+    defED: toNum($("#defED")?.value),
+    defHP: toNum($("#defHP")?.value),
+  };
+}
 
 function readTotalStatsForCalc() {
   const raw = getInputsRaw();
@@ -773,10 +690,6 @@ function renderResult() {
   const outAvg = $("#outAvg");
   const outKO  = $("#outKO");
 
-  const resultMeta  = $("#resultMeta");  
-  const resultBox   = $("#resultBox");  
-  const resultNotes = $("#resultNotes");
-
   const setUI = (minTxt, maxTxt, avgTxt, koTxt) => {
     if (outMin) outMin.textContent = minTxt;
     if (outMax) outMax.textContent = maxTxt;
@@ -789,27 +702,21 @@ function renderResult() {
 
   if (!atk || !def) {
     setUI("—", "—", "—", "—");
-    if (resultMeta) resultMeta.textContent = "—";
-    if (resultBox)  resultBox.textContent  = "Selecciona attacker y defender.";
-    if (resultNotes) resultNotes.textContent = "";
     return;
   }
 
-  const attacks = getAtkMoves(atk);
+  const attacks = getAtkMovesSorted(atk);
   const a = attacks[atkAttackIndex] ?? null;
 
   if (!a) {
     setUI("—", "—", "—", "—");
-    if (resultMeta) resultMeta.textContent = "—";
-    if (resultBox)  resultBox.textContent  = "Este Miscrit no tiene ataques cargados.";
-    if (resultNotes) resultNotes.textContent = "";
     return;
   }
 
   const totals = readTotalStatsForCalc();
 
   const mode = $("#atkMode")?.value ?? "auto";
-  const picked = pickAtkDefStats(mode, atk, def, a.element, {
+  const picked = pickAtkDefStats(mode, a.element, {
     atkPA: totals.atk.PA,
     atkEA: totals.atk.EA,
     defPD: totals.def.PD,
@@ -828,35 +735,65 @@ function renderResult() {
   const defHP = Math.max(0, toNum(totals.def.HP));
   const usesToKO = totalAvg > 0 ? Math.ceil(defHP / totalAvg) : "—";
 
-  setUI(
-    String(totalMin),
-    String(totalMax),
-    String(totalAvg),
-    String(usesToKO)
-  );
+  setUI(String(totalMin), String(totalMax), String(totalAvg), String(usesToKO));
+}
 
-  const mulLabel = mul === 1 ? "1.00x" : `${mul.toFixed(2)}x`;
-  if (resultMeta) {
-    resultMeta.textContent =
-      `${a.name} • ${String(a.element).toUpperCase()} • ${picked.label} • Elem ${mulLabel} • Hits x${hits}`;
-  }
-  if (resultBox) {
-    resultBox.textContent =
-      `Total damage: ${totalMin} - ${totalMax} (avg ${totalAvg}) • Uses to KO: ${usesToKO}`;
-  }
+/* =========================================================
+   SWAP SIDES
+========================================================= */
 
-  const atkPicks = getRelicSelectionsDetailed(".atkRelic");
-  const defPicks = getRelicSelectionsDetailed(".defRelic");
-  const fmt = (arr) => arr.length ? arr.map(x => `${x.name} (lvl ${x.level})`).join(", ") : "—";
+function swapInputValues(aId, bId) {
+  const a = document.getElementById(aId);
+  const b = document.getElementById(bId);
+  if (!a || !b) return;
+  const tmp = a.value;
+  a.value = b.value;
+  b.value = tmp;
+}
 
-  if (resultNotes) {
-    resultNotes.textContent =
-      `Relics attacker: ${fmt(atkPicks)} • Relics defender: ${fmt(defPicks)}\n` +
-      `ATK total: HP ${totals.atk.HP} SPD ${totals.atk.SPD} PA ${totals.atk.PA} EA ${totals.atk.EA} PD ${totals.atk.PD} ED ${totals.atk.ED}\n` +
-      `DEF total: HP ${totals.def.HP} SPD ${totals.def.SPD} PA ${totals.def.PA} EA ${totals.def.EA} PD ${totals.def.PD} ED ${totals.def.ED}`;
+function swapRelicSelectValues() {
+  for (let i = 0; i < 4; i++) {
+    const a = document.querySelector(`.atkRelic[data-slot="${i}"]`);
+    const b = document.querySelector(`.defRelic[data-slot="${i}"]`);
+    if (!a || !b) continue;
+    const tmp = a.value;
+    a.value = b.value;
+    b.value = tmp;
   }
 }
 
+function swapSides() {
+  const oldAtkId = atkId;
+  atkId = defId;
+  defId = oldAtkId;
+
+  const oldAtkBase = ATK_BASE;
+  ATK_BASE = DEF_BASE;
+  DEF_BASE = oldAtkBase;
+
+  swapInputValues("atkMiscritSearch", "defMiscritSearch");
+  swapInputValues("atkMiscrit", "defMiscrit");
+
+  ["HP","SPD","EA","PA","ED","PD"].forEach(k => {
+    swapInputValues(`atk${k}`, `def${k}`);
+  });
+
+  swapRelicSelectValues();
+  refreshAllRelicSlots();
+
+  const atkM = findById(atkId);
+  const defM = findById(defId);
+  if (atkM) setAvatarFromMiscrit("atk", atkM);
+  if (defM) setAvatarFromMiscrit("def", defM);
+
+  setMeta(atkId, $("#atkMeta"));
+  setMeta(defId, $("#defMeta"));
+
+  atkAttackIndex = 0;
+  syncMoveListPicker();
+  renderSelectedMoveButton();
+  renderResult();
+}
 
 /* =========================================================
    LOAD + INIT + BIND
@@ -888,31 +825,9 @@ async function loadAll() {
   );
 }
 
-
-function bindMiscritSearch(side) {
-  const inputId = side === "atk" ? "#atkMiscritSearch" : "#defMiscritSearch";
-  const input = $(inputId);
-  if (!input) return;
-
-  const tryPick = () => {
-    const id = parseMiscritInput(input.value);
-    if (!id) return;
-    applyMiscritSelection(side, id);
-  };
-
-  input.addEventListener("change", tryPick);
-  input.addEventListener("input", tryPick);
-}
-
 function bindAll() {
   bindMiscritPicker("atk");
   bindMiscritPicker("def");
-
-  $("#atkAttack")?.addEventListener("change", () => {
-    atkAttackIndex = toNum($("#atkAttack")?.value);
-    syncMoveListPicker();
-    renderResult();
-  });
 
   $("#openMoveList")?.addEventListener("click", () => {
     const modal = $("#moveModal");
@@ -921,9 +836,7 @@ function bindAll() {
     modal.hidden = false;
   });
 
-  $("#btnSwapSides")?.addEventListener("click", () => {
-    swapSides();
-  });
+  $("#btnSwapSides")?.addEventListener("click", swapSides);
 
   document.addEventListener("click", (e) => {
     if (e.target.closest('[data-action="close-moves"]')) {
@@ -949,6 +862,8 @@ function bindAll() {
   document.querySelectorAll(".atkRelic, .defRelic").forEach(sel => {
     sel.addEventListener("change", () => {
       refreshAllRelicSlots();
+      refreshSideStatsFromRelics("atk");
+      refreshSideStatsFromRelics("def");
       renderResult();
     });
   });
@@ -965,33 +880,25 @@ function bindAll() {
   $("#atkEnhancedToggle")?.addEventListener("change", (e) => {
     atkUseEnhanced = !!e.target.checked;
     atkAttackIndex = 0;
-    fillAttackSelect();
     syncMoveListPicker();
     renderSelectedMoveButton();
     renderResult();
   });
-
 }
 
 async function init() {
   await loadAll();
-	populateRelicSelects();
-
-  fillMiscritDatalist();
+  populateRelicSelects();
   refreshAllRelicSlots();
-
-  const atkSearch = $("#atkMiscritSearch");
-  const defSearch = $("#defMiscritSearch");
 
   const first = DB[0]?.name ?? null;
   atkId = first ? String(first) : null;
   defId = first ? String(first) : null;
 
+  if ($("#atkMiscritSearch")) $("#atkMiscritSearch").value = atkId ?? "";
+  if ($("#defMiscritSearch")) $("#defMiscritSearch").value = defId ?? "";
   if ($("#atkMiscrit")) $("#atkMiscrit").value = atkId ?? "";
   if ($("#defMiscrit")) $("#defMiscrit").value = defId ?? "";
-
-  setSearchValueFromId(atkSearch, atkId);
-  setSearchValueFromId(defSearch, defId);
 
   setMeta(atkId, $("#atkMeta"));
   setMeta(defId, $("#defMeta"));
@@ -999,15 +906,16 @@ async function init() {
   const atkM = findById(atkId);
   const defM = findById(defId);
 
-	if (atkM?.stats) ATK_BASE = { ...atkM.stats };
-	if (defM?.stats) DEF_BASE = { ...defM.stats };
+  if (atkM?.stats) ATK_BASE = { ...atkM.stats };
+  if (defM?.stats) DEF_BASE = { ...defM.stats };
 
-	refreshSideStatsFromRelics("atk");
-	refreshSideStatsFromRelics("def");
+  refreshSideStatsFromRelics("atk");
+  refreshSideStatsFromRelics("def");
 
+  if (atkM) setAvatarFromMiscrit("atk", atkM);
+  if (defM) setAvatarFromMiscrit("def", defM);
 
-  fillAttackSelect();
-	syncMoveListPicker();
+  syncMoveListPicker();
   renderSelectedMoveButton();
   bindAll();
   renderResult();
