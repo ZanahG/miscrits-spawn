@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Breeding Calculator | Miscrits Hub</title>
+
+  <link rel="stylesheet" href="../styles.css" />
+
+  <link rel="icon" href="../assets/images/logo.png" sizes="32x32">
+  <link rel="apple-touch-icon" href="../assets/images/logo.png">
+</head>
+
+<body>
+  <header class="top">
+    <div class="wrap topbar">
+      <a class="brand" href="../index.html" aria-label="Ir a Miscrits Hub">
+        <img src="../assets/images/logo.png" alt="Miscrits Hub" class="brand__logo" draggable="false" />
+      </a>
+
+      <nav class="topnav topnav--header" aria-label="Navegación principal">
+        <a class="topnav__link" href="../index.html">Spawns</a>
+				<a class="topnav__link is-active" href="./breeding.html">Breeding Calculator</a>
+        <a class="topnav__link" href="./pvp.html">PVP Teams</a>
+        <a class="topnav__link" href="./damage.html">Damage Calculator</a>
+        <a class="topnav__link" href="./miscritdle.html">Miscritdle</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="card breeding">
+      <div class="breeding__grid">
+
+        <!-- PARENTS -->
+        <div class="breeding__panel">
+          <div class="breeding__panelHead">
+            <h2 class="breeding__title">Parents</h2>
+            <button id="br-reset" class="btn ghost" type="button">Reset</button>
+          </div>
+
+          <div class="breeding__parents">
+
+            <!-- Parent A -->
+            <div class="br-parent" data-parent="0">
+              <div class="br-parent__top">
+                <div class="br-parent__label">Parent 1</div>
+
+                <div class="miscritpicker miscritpicker--br">
+                  <input id="br-pick-0" class="dmgx__search" type="text" placeholder="Search Miscrit..." autocomplete="off">
+                  <div id="br-dd-0" class="miscritpicker__dropdown" hidden></div>
+                </div>
+								<div class="br-parent__mini">
+									<img id="br-avatar-0" class="br-avatar" src="../assets/images/miscrits_avatar/preset_avatar.png" alt="">
+									<div class="br-parent__info">
+										<div id="br-name-0" class="br-name">—</div>
+										<div id="br-meta-0" class="br-meta muted">—</div>
+
+										<div class="br-presets">
+											<button class="br-preset" data-parent="0" data-type="red-speed">RED SPEED</button>
+											<button class="br-preset" data-parent="0" data-type="all-green">ALL GREEN</button>
+										</div>
+									</div>
+								</div>						
+              </div>
+
+              <div class="br-stats">
+                <div class="br-stat"><span>HP</span>
+                  <select class="br-color" data-parent="0" data-stat="hp">
+                    <option>White</option><option selected>Green</option><option>Red</option>
+                  </select>
+                </div>
+                <div class="br-stat"><span>EA</span>
+                  <select class="br-color" data-parent="0" data-stat="ea">
+                    <option>White</option><option selected>Green</option><option>Red</option>
+                  </select>
+                </div>
+                <div class="br-stat"><span>PA</span>
+                  <select class="br-color" data-parent="0" data-stat="pa">
+                    <option>White</option><option selected>Green</option><option>Red</option>
+                  </select>
+                </div>
+                <div class="br-stat"><span>ED</span>
+                  <select class="br-color" data-parent="0" data-stat="ed">
+                    <option>White</option><option selected>Green</option><option>Red</option>
+                  </select>
+                </div>
+                <div class="br-stat"><span>PD</span>
+                  <select class="br-color" data-parent="0" data-stat="pd">
+                    <option>White</option><option selected>Green</option><option>Red</option>
+                  </select>
+                </div>
+                <div class="br-stat"><span>SPD</span>
+                  <select class="br-color" data-parent="0" data-stat="spd">
+                    <option>White</option><option selected>Green</option><option>Red</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- Parent B -->
+            <div class="br-parent" data-parent="1">
+              <div class="br-parent__top">
+                <div class="br-parent__label">Parent 2</div>
+
+                <div class="miscritpicker miscritpicker--br">
+                  <input id="br-pick-1" class="dmgx__search" type="text" placeholder="Search Miscrit..." autocomplete="off">
+                  <div id="br-dd-1" class="miscritpicker__dropdown" hidden></div>
+                </div>
+								<div class="br-parent__mini">
+									<img id="br-avatar-1" class="br-avatar" src="../assets/images/miscrits_avatar/preset_avatar.png" alt="">
+
+									<div class="br-parent__info">
+										<div id="br-name-1" class="br-name">—</div>
+										<div id="br-meta-1" class="br-meta muted">—</div>
+
+										<div class="br-presets">
+											<button class="br-preset" data-parent="1" data-type="red-speed">RED SPEED</button>
+											<button class="br-preset" data-parent="1" data-type="all-green">ALL GREEN</button>
+										</div>
+									</div>
+								</div>
+              </div>
+
+              <div class="br-stats">
+                <div class="br-stat"><span>HP</span>
+                  <select class="br-color" data-parent="1" data-stat="hp">
+                    <option>White</option><option selected>Green</option><option>Red</option>
+                  </select>
+                </div>
+                <div class="br-stat"><span>EA</span>
+                  <select class="br-color" data-parent="1" data-stat="ea">
+                    <option>White</option><option selected>Green</option><option>Red</option>
+                  </select>
+                </div>
+                <div class="br-stat"><span>PA</span>
+                  <select class="br-color" data-parent="1" data-stat="pa">
+                    <option>White</option><option selected>Green</option><option>Red</option>
+                  </select>
+                </div>
+                <div class="br-stat"><span>ED</span>
+                  <select class="br-color" data-parent="1" data-stat="ed">
+                    <option>White</option><option selected>Green</option><option>Red</option>
+                  </select>
+                </div>
+                <div class="br-stat"><span>PD</span>
+                  <select class="br-color" data-parent="1" data-stat="pd">
+                    <option>White</option><option selected>Green</option><option>Red</option>
+                  </select>
+                </div>
+                <div class="br-stat"><span>SPD</span>
+                  <select class="br-color" data-parent="1" data-stat="spd">
+                    <option>White</option><option selected>Green</option><option>Red</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- Parent C -->
+            <div class="br-parent" data-parent="2">
+              <div class="br-parent__top">
+                <div class="br-parent__label">Parent 3</div>
+
+                <div class="miscritpicker miscritpicker--br">
+                  <input id="br-pick-2" class="dmgx__search" type="text" placeholder="Search Miscrit..." autocomplete="off">
+                  <div id="br-dd-2" class="miscritpicker__dropdown" hidden></div>
+                </div>
+
+								<div class="br-parent__mini">
+									<img id="br-avatar-2" class="br-avatar" src="../assets/images/miscrits_avatar/preset_avatar.png" alt="">
+
+									<div class="br-parent__info">
+										<div id="br-name-2" class="br-name">—</div>
+										<div id="br-meta-2" class="br-meta muted">—</div>
+
+										<div class="br-presets">
+											<button class="br-preset" data-parent="2" data-type="red-speed">RED SPEED</button>
+											<button class="br-preset" data-parent="2" data-type="all-green">ALL GREEN</button>
+										</div>
+									</div>
+								</div>
+              </div>
+
+              <div class="br-stats">
+                <div class="br-stat"><span>HP</span>
+                  <select class="br-color" data-parent="2" data-stat="hp">
+                    <option>White</option><option selected>Green</option><option>Red</option>
+                  </select>
+                </div>
+                <div class="br-stat"><span>EA</span>
+                  <select class="br-color" data-parent="2" data-stat="ea">
+                    <option>White</option><option selected>Green</option><option>Red</option>
+                  </select>
+                </div>
+                <div class="br-stat"><span>PA</span>
+                  <select class="br-color" data-parent="2" data-stat="pa">
+                    <option>White</option><option selected>Green</option><option>Red</option>
+                  </select>
+                </div>
+                <div class="br-stat"><span>ED</span>
+                  <select class="br-color" data-parent="2" data-stat="ed">
+                    <option>White</option><option selected>Green</option><option>Red</option>
+                  </select>
+                </div>
+                <div class="br-stat"><span>PD</span>
+                  <select class="br-color" data-parent="2" data-stat="pd">
+                    <option>White</option><option selected>Green</option><option>Red</option>
+                  </select>
+                </div>
+                <div class="br-stat"><span>SPD</span>
+                  <select class="br-color" data-parent="2" data-stat="spd">
+                    <option>White</option><option selected>Green</option><option>Red</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="breeding__panel">
+          <div class="breeding__panelHead">
+            <h2 class="breeding__title">Expected Miscrit</h2>
+          </div>
+
+          <div class="breeding__goal">
+            <div class="field">
+              <label for="br-target">Target</label>
+              <select id="br-target" class="br-select">
+                <option value="">— Selecciona primero los 3 padres —</option>
+              </select>
+            </div>
+
+					<div class="br-goalPresets">
+						<button class="br-preset br-preset--goal" data-scope="goal" data-type="red-speed" type="button">RED SPEED</button>
+						<button class="br-preset br-preset--goal" data-scope="goal" data-type="all-green" type="button">ALL GREEN</button>
+					</div>
+
+            <div class="breeding__desired">
+              <div class="br-stats br-stats--desired">
+                <div class="br-stat"><span>HP</span>
+                  <select class="br-desired" data-stat="hp">
+                    <option selected>Any</option><option>White</option><option>Green</option><option>Red</option>
+                  </select>
+                </div>
+                <div class="br-stat"><span>EA</span>
+                  <select class="br-desired" data-stat="ea">
+                    <option selected>Any</option><option>White</option><option>Green</option><option>Red</option>
+                  </select>
+                </div>
+                <div class="br-stat"><span>PA</span>
+                  <select class="br-desired" data-stat="pa">
+                    <option selected>Any</option><option>White</option><option>Green</option><option>Red</option>
+                  </select>
+                </div>
+                <div class="br-stat"><span>ED</span>
+                  <select class="br-desired" data-stat="ed">
+                    <option selected>Any</option><option>White</option><option>Green</option><option>Red</option>
+                  </select>
+                </div>
+                <div class="br-stat"><span>PD</span>
+                  <select class="br-desired" data-stat="pd">
+                    <option selected>Any</option><option>White</option><option>Green</option><option>Red</option>
+                  </select>
+                </div>
+                <div class="br-stat"><span>SPD</span>
+                  <select class="br-desired" data-stat="spd">
+                    <option selected>Any</option><option>White</option><option>Green</option><option>Red</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="breeding__actions">
+              <button id="br-calc" class="btn" type="button">Calculate</button>
+              <button id="br-simulate" class="btn" type="button">Simulate</button>
+            </div>
+
+            <div id="br-status" class="muted breeding__status"></div>
+
+            <div class="breeding__result">
+              <div class="breeding__resultRow">
+                <div class="muted">Probability</div>
+                <div id="br-prob" class="breeding__value">—</div>
+              </div>
+              <div class="breeding__resultRow">
+                <div class="muted">Expected attempts</div>
+                <div id="br-attempts" class="breeding__value">—</div>
+              </div>
+              <div class="breeding__resultRow">
+                <div class="muted">Expected gold (5,000 each)</div>
+                <div id="br-gold" class="breeding__value">—</div>
+              </div>
+
+              <div class="breeding__breakdown muted" id="br-breakdown"></div>
+            </div>
+	
+						<section id="br-simCard" class="br-sim" hidden>
+							<div class="br-sim__head">
+								<div class="br-sim__title">Simulation result</div>
+								<div class="br-sim__sub muted">Each click rolls a new breeding outcome.</div>
+							</div>
+
+							<div class="br-sim__body">
+								<div class="br-sim__mini">
+									<img id="br-simAvatar" class="br-sim__avatar" src="../assets/images/miscrits_avatar/preset_avatar.png" alt="">
+									<div class="br-sim__info">
+										<div id="br-simName" class="br-sim__name">—</div>
+										<div id="br-simMeta" class="br-sim__meta muted">—</div>
+									</div>
+								</div>
+
+								<div id="br-simStats" class="br-sim__stats"></div>
+							</div>
+						</section>
+
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <script src="../js/breeding.js"></script>
+</body>
+</html>

@@ -5,7 +5,6 @@ const MAX_TRIES = 6;
 
 const MISCRITS_JSON_URL = "../miscrits.json";
 
-// RUTAS
 const AVATAR_FOLDER = "../assets/images/miscrits_avatar/";
 const AVATAR_FALLBACK = `${AVATAR_FOLDER}preset_avatar.png`;
 const TYPE_FOLDER = "../assets/images/type/";
@@ -100,8 +99,8 @@ function renderEndCard(state) {
 
   const isWin = state.solved === true;
 
-  if (titleEl) titleEl.textContent = isWin ? "VICTORIA!" : "ESTA VEZ HAS FALLADO";
-  if (line1El) line1El.textContent = isWin ? "Adivinaste" : "El Miscrit era";
+  if (titleEl) titleEl.textContent = isWin ? "VICTORY!" : "YOU FAILED THIS TIME";
+  if (line1El) line1El.textContent = isWin ? "You guessed it" : "The Miscrit was";
   if (nameEl) nameEl.textContent = todayTarget?.name ?? "-";
   if (avatarEl) {
     avatarEl.src = todayTarget ? avatarSrc(todayTarget) : AVATAR_FALLBACK;
@@ -132,12 +131,9 @@ function primaryPlace(m) {
   return (m?.spawns?.[0]?.place ?? "Unknown").toString();
 }
 function existsVariant(baseName, prefix) {
-  // busca "Dark X" o "Light X" dentro del JSON
   const wanted = normalize(`${prefix} ${baseName}`);
   return MISCRITS.some(x => normalize(x?.name) === wanted);
 }
-
-/* ====== date / storage ====== */
 
 function getDateKeyInTZ(timeZone = TZ) {
   const parts = new Intl.DateTimeFormat("en-CA", {
@@ -410,12 +406,12 @@ function initEvents() {
 
     const gObj = findByName(name);
     if (!gObj) {
-      setStatus("No encontrado. Elige uno del menú.");
+      setStatus("Miscrit not found. Choose one of the menu.");
       return;
     }
 
     if (state.guesses.some(g => normalize(g.name) === normalize(gObj.name))) {
-      setStatus("Ya intentaste ese Miscrit.");
+      setStatus("You already tried that Miscrit.");
       return;
     }
 
@@ -478,6 +474,6 @@ async function loadMiscrits() {
     renderBoard(loadState());
   } catch (e) {
     console.error(e);
-    setStatus("Error cargando Miscritdle. Revisa consola y rutas del JSON.");
+    setStatus("Error loading Miscritdle. Revisa consola y rutas del JSON.");
   }
 })();

@@ -20,6 +20,7 @@
 
       <nav class="topnav topnav--header" aria-label="Navegación principal">
         <a class="topnav__link" href="../index.html">Spawns</a>
+        <a class="topnav__link" href="./breeding.html">Breeding Calculator</a>
         <a class="topnav__link" href="./pvp.html">PVP Teams</a>
         <a class="topnav__link" href="./damage.html">Damage Calculator</a>
         <a class="topnav__link is-active" href="./miscritdle.html">Miscritdle</a>
@@ -28,13 +29,10 @@
   </header>
 
   <main class="wrap">
-    <!-- HERO -->
     <section class="miscritdle__hero">
-      <h2>ADIVINA EL MISCRITS DE HOY !</h2>
-      <h2>GUESS TODAY MISCRITS !</h2>
+      <h2>GUESS TODAY'S MISCRIT!</h2>
     </section>
 
-    <!-- INPUT + BOARD -->
     <section class="miscritdle card">
       <div class="miscritdle__controls">
         <div class="field">
@@ -43,7 +41,7 @@
               id="md-guess"
               class="dmgx__search"
               type="text"
-              placeholder="Escribe el nombre del Miscrit"
+              placeholder="Write a Miscrit name"
               autocomplete="off"
             />
             <div id="mdDropdown" class="miscritpicker__dropdown" hidden></div>
@@ -57,20 +55,19 @@
 
       <div id="md-header" class="miscritdle__header"></div>
       <div id="md-board" class="miscritdle__board"></div>
-			<!-- END CARD -->
 			<section id="md-endcard" class="md-endcard" hidden>
-				<h2 id="md-end-title" class="md-endcard__title">VICTORIA!</h2>
+				<h2 id="md-end-title" class="md-endcard__title">VICTORY!</h2>
 
 				<div class="md-endcard__who">
 					<img id="md-end-avatar" class="md-endcard__avatar" src="../assets/images/miscrits_avatar/preset_avatar.png" alt="">
 					<div class="md-endcard__whoText">
-						<div id="md-end-line1" class="md-endcard__line">Adivinaste</div>
+						<div id="md-end-line1" class="md-endcard__line">Congratulations, you guess</div>
 						<div id="md-end-name" class="md-endcard__name">miscrit_name</div>
 					</div>
 				</div>
 
 				<div class="md-endcard__next">
-					<div class="md-endcard__nextLabel">PROXIMO MISCRITS EN</div>
+					<div class="md-endcard__nextLabel">NEXT MISCRIT IN</div>
 					<div id="md-next-timer" class="md-endcard__timer">--:--:--</div>
 				</div>
 			</section>

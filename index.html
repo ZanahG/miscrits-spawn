@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Miscrits Spawns Wiki</title>
+  <title>Miscrits HUB</title>
   <link rel="stylesheet" href="./styles.css" />
   <link rel="icon" href="./assets/images/logo.png" sizes="32x32">
   <link rel="apple-touch-icon" href="./assets/images/logo.png">
@@ -22,6 +22,7 @@
 
       <nav class="topnav topnav--header" aria-label="Navegación principal">
         <a class="topnav__link is-active" href="./index.html">Spawns</a>
+        <a class="topnav__link" href="./html/breeding.html">Breeding Calculator</a>
         <a class="topnav__link" href="./html/pvp.html">PVP Teams</a>
         <a class="topnav__link" href="./html/damage.html">Damage Calculator</a>
         <a class="topnav__link" href="./html/miscritdle.html">Miscritdle</a>
@@ -33,43 +34,43 @@
   <main class="wrap">
     <section class="filters card">
       <div class="field">
-        <label for="q">Buscar Miscrit</label>
-        <input id="q" type="text" placeholder="Ej: Flue..." autocomplete="off" />
+        <label for="q">Search Miscrit</label>
+        <input id="q" type="text" placeholder="Ex: Flue" autocomplete="off" />
       </div>
 
       <div class="field">
-        <label for="day">Día</label>
+        <label for="day">Day</label>
         <select id="day" class="day-select">
-          <option value="__today__">🔥 HOY 🔥</option>
-          <option value="">Todos</option>
-          <option value="Lunes">Lunes</option>
-          <option value="Martes">Martes</option>
-          <option value="Miércoles">Miércoles</option>
-          <option value="Jueves">Jueves</option>
-          <option value="Viernes">Viernes</option>
-          <option value="Sábado">Sábado</option>
-          <option value="Domingo">Domingo</option>
+          <option value="__today__">🔥 TODAY 🔥</option>
+          <option value="">All days</option>
+          <option value="Lunes">Monday</option>
+          <option value="Martes">Tuesday</option>
+          <option value="Miércoles">Wednesday</option>
+          <option value="Jueves">Thursday</option>
+          <option value="Viernes">Friday</option>
+          <option value="Sábado">Saturday</option>
+          <option value="Domingo">Sunday</option>
         </select>
       </div>
 
       <div class="field">
-        <label for="place">Lugar</label>
+        <label for="place">Spawn Place</label>
         <select id="place">
-          <option value="">Todos</option>
+          <option value="">All</option>
           <option value="Forest">Forest</option>
           <option value="Mount Gemma">Mount Gemma</option>
           <option value="The Shac">The Shac</option>
           <option value="Mansion">Mansion</option>
-          <option value="Beach">Beach</option>
+          <option value="Beach">Shore</option>
           <option value="Moon of Miscria">Moon of Miscria</option>
           <option value="Cave">Cave</option>
         </select>
       </div>
 
       <div class="field">
-        <label for="rarity">Rareza</label>
+        <label for="rarity">Rarity</label>
         <select id="rarity">
-          <option value="">Todas</option>
+          <option value="">All</option>
           <option value="Common">Common</option>
           <option value="Rare">Rare</option>
           <option value="Epic">Epic</option>
@@ -79,8 +80,8 @@
       </div>
 
       <div class="actions">
-        <button id="btnClear" class="btn ghost">Limpiar</button>
-        <button id="btnRandom" class="btn">Aleatorio</button>
+        <button id="btnClear" class="btn ghost">Clean Filters</button>
+        <button id="btnRandom" class="btn">Random Miscrit</button>
       </div>
     </section>
 
@@ -109,13 +110,13 @@
 
   <footer class="footer">
     <section class="pager card" id="pager">
-  		<button class="btn ghost" id="btnPrev">Anterior</button>
+  		<button class="btn ghost" id="btnPrev">Previous</button>
 
   		<div class="pager__mid">
-    		<span id="pageInfo">Página 1 / 1</span>
+    		<span id="pageInfo">Page 1 / 1</span>
 
     		<label class="pager__label">
-      		Por página
+      		Per page
       		<select id="pageSize">
 						<option value="24">24</option>
 						<option value="36" selected>36</option>
@@ -124,7 +125,7 @@
       		</select>
     		</label>
   		</div>
-			<button class="btn" id="btnNext">Siguiente</button>
+			<button class="btn" id="btnNext">Next</button>
 		</section>
   </footer>
 

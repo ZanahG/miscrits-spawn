@@ -18,6 +18,7 @@
 
       <nav class="topnav topnav--header" aria-label="Navegación principal">
         <a class="topnav__link" href="../index.html">Spawns</a>
+        <a class="topnav__link" href="./breeding.html">Breeding Calculator</a>
         <a class="topnav__link" href="../html/pvp.html">PVP Teams</a>
         <a class="topnav__link is-active" href="../html/damage.html">Damage Calculator</a>
         <a class="topnav__link" href="../html/miscritdle.html">Miscritdle</a>
@@ -78,7 +79,6 @@
 
             <button id="openMoveList" class="dmgx__btn" type="button">Move list</button>
 
-            <!-- Select real del ataque (tu JS lo usa) -->
             <div style="display:none">
               <select id="atkAttack"></select>
               <select id="atkMode">
@@ -87,8 +87,7 @@
                 <option value="elemental">elemental</option>
               </select>
             </div>
-
-            <!-- Relics/Bonus panel (ATTACKER) -->
+            
             <div class="dmgx__subpanel" data-side="atk">
               <div class="dmgx__tabs">
                 <button class="dmgx__tab is-active" type="button" data-tab="relics" data-side="atk">RELICS</button>
@@ -104,7 +103,6 @@
                   <button class="dmgx__slot relic-slot" type="button" data-side="atk" data-slot="3"></button>
                 </div>
 
-                <!-- selects reales ocultos -->
                 <div style="display:none">
                   <select class="atkRelic" data-slot="0"></select>
                   <select class="atkRelic" data-slot="1"></select>

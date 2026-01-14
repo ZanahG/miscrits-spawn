@@ -94,8 +94,8 @@ function clearSelection() {
   const panelMeta = $("#panelMeta");
   const teamsList = $("#teamsList");
 
-  if (panelTitle) panelTitle.textContent = "Selecciona un Miscrit";
-  if (panelMeta) panelMeta.textContent = "Elige uno para ver equipos recomendados.";
+  if (panelTitle) panelTitle.textContent = "Select one Miscrit";
+  if (panelMeta) panelMeta.textContent = "This will show best teams for this Miscrit";
   if (teamsList) teamsList.innerHTML = "";
 }
 
