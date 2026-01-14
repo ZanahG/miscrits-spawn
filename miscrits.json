@@ -46,7 +46,7 @@
       "type": "Nature",
       "rarity": "Common",
       "spawns": [
-        {"place": "Forest","zone": ["Forest 1"],"view": "object","objectImage": "../assets/images/maps/MAP_FOREST.png","days": "ALL_DAYS"}
+        {"place": "Mansion","zone": ["Cualquier Objeto de la Mansion"],"view": "object","objectImage": "../assets/images/maps/mansion.jpg","days": "ALL_DAYS"}
       ],
       "avatar": "weevern_avatar.png"
     },
@@ -93,7 +93,7 @@
     {
       "id": "009",
       "name": "Quirk",
-      "type": "Water",
+      "type": "Nature",
       "rarity": "Common",
       "spawns": [
         {"place": "Forest","zone": ["Forest 2"],"view": "object","objectImage": "../assets/images/maps/MAP_FOREST.png","days": "ALL_DAYS"}
