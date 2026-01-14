@@ -112,6 +112,71 @@ function renderMiscritDropdown(side, query) {
   });
 }
 
+function swapInputValues(aId, bId) {
+  const a = document.getElementById(aId);
+  const b = document.getElementById(bId);
+  if (!a || !b) return;
+  const tmp = a.value;
+  a.value = b.value;
+  b.value = tmp;
+}
+
+function swapRelicSelectValues() {
+  for (let i = 0; i < 4; i++) {
+    const a = document.querySelector(`.atkRelic[data-slot="${i}"]`);
+    const b = document.querySelector(`.defRelic[data-slot="${i}"]`);
+    if (!a || !b) continue;
+    const tmp = a.value;
+    a.value = b.value;
+    b.value = tmp;
+  }
+}
+
+function swapSides() {
+  // 1) swap ids (quién es attacker/defender)
+  const oldAtkId = atkId;
+  atkId = defId;
+  defId = oldAtkId;
+
+  // 2) swap base stats (para relic calc)
+  const oldAtkBase = ATK_BASE;
+  ATK_BASE = DEF_BASE;
+  DEF_BASE = oldAtkBase;
+
+  // 3) swap buscadores visuales
+  swapInputValues("atkMiscritSearch", "defMiscritSearch");
+  // hidden (si los usas)
+  swapInputValues("atkMiscrit", "defMiscrit");
+
+  // 4) swap stats inputs visibles (HP/SPD/EA/PA/ED/PD)
+  ["HP","SPD","EA","PA","ED","PD"].forEach(k => {
+    swapInputValues(`atk${k}`, `def${k}`);
+  });
+
+  // 5) swap relics
+  swapRelicSelectValues();
+  refreshAllRelicSlots();
+
+  // 6) swap avatars
+  const atkM = findById(atkId);
+  const defM = findById(defId);
+  if (atkM) setAvatarFromMiscrit("atk", atkM);
+  if (defM) setAvatarFromMiscrit("def", defM);
+
+  // 7) metas (si existen en tu HTML)
+  setMeta(atkId, $("#atkMeta"));
+  setMeta(defId, $("#defMeta"));
+
+  // 8) attacker cambia -> hay que recargar attacks (porque ahora es otro miscrit)
+  atkAttackIndex = 0;
+  fillAttackSelect();
+  syncMoveListPicker();
+
+  // 9) recalcular
+  renderResult();
+}
+
+
 function bindMiscritPicker(side) {
   const input = side === "atk" ? $("#atkMiscritSearch") : $("#defMiscritSearch");
   const dd = side === "atk" ? $("#atkMiscritDropdown") : $("#defMiscritDropdown");
@@ -854,6 +919,10 @@ function bindAll() {
     if (!modal) return;
     syncMoveListPicker();
     modal.hidden = false;
+  });
+
+  $("#btnSwapSides")?.addEventListener("click", () => {
+    swapSides();
   });
 
   document.addEventListener("click", (e) => {

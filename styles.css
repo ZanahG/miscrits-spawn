@@ -1627,6 +1627,23 @@ input::placeholder{ color:#6b778b; }
   opacity: 0.95;
 }
 
+.dmgx__swap{
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.18);
+  background: rgba(0,0,0,.25);
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  margin: 8px auto 12px auto;
+}
+
+.dmgx__swap:hover{
+  background: rgba(255,255,255,.08);
+}
 
 /* ===============================
    Responsive (global)
