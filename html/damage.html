@@ -30,14 +30,13 @@
 
         <!-- ============== LEFT: ATTACKER ============== -->
         <div class="dmgx__col">
-          <div class="dmgx__label">Attacker</div>
+          <div class="dmgx__label dmgx__label--center">Attacker</div>
 
           <div class="miscritpicker">
             <input id="atkMiscritSearch" class="dmgx__search" placeholder="Escribe Miscrit..." autocomplete="off" />
             <div id="atkMiscritDropdown" class="miscritpicker__dropdown" hidden></div>
           </div>
           <input id="atkMiscrit" type="hidden" />
-
 
           <div class="dmgx__card">
             <div class="dmgx__avatarRow">
@@ -88,44 +87,89 @@
               </select>
             </div>
 
-            <!-- Relics/Bonus panel -->
-            <div class="dmgx__subpanel">
+            <!-- Relics/Bonus panel (ATTACKER) -->
+            <div class="dmgx__subpanel" data-side="atk">
               <div class="dmgx__tabs">
-                <button class="dmgx__tab is-active" type="button">RELICS</button>
-                <button class="dmgx__tab" type="button">BONUS</button>
+                <button class="dmgx__tab is-active" type="button" data-tab="relics" data-side="atk">RELICS</button>
+                <button class="dmgx__tab" type="button" data-tab="bonus" data-side="atk">BONUS</button>
               </div>
 
-              <div class="dmgx__slots">
-                <button class="dmgx__slot relic-slot" type="button" data-side="atk" data-slot="0"></button>
-                <button class="dmgx__slot relic-slot" type="button" data-side="atk" data-slot="1"></button>
-                <button class="dmgx__slot relic-slot" type="button" data-side="atk" data-slot="2"></button>
-                <button class="dmgx__slot relic-slot" type="button" data-side="atk" data-slot="3"></button>
+              <!-- RELICS panel -->
+              <div class="dmgx__panel dmgx__panel--relics" data-panel="relics" data-side="atk">
+                <div class="dmgx__slots">
+                  <button class="dmgx__slot relic-slot" type="button" data-side="atk" data-slot="0"></button>
+                  <button class="dmgx__slot relic-slot" type="button" data-side="atk" data-slot="1"></button>
+                  <button class="dmgx__slot relic-slot" type="button" data-side="atk" data-slot="2"></button>
+                  <button class="dmgx__slot relic-slot" type="button" data-side="atk" data-slot="3"></button>
+                </div>
+
+                <!-- selects reales ocultos -->
+                <div style="display:none">
+                  <select class="atkRelic" data-slot="0"></select>
+                  <select class="atkRelic" data-slot="1"></select>
+                  <select class="atkRelic" data-slot="2"></select>
+                  <select class="atkRelic" data-slot="3"></select>
+
+                  <select id="atkRelicLvl">
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="30">30</option>
+                    <option value="35" selected>35</option>
+                  </select>
+                </div>
               </div>
 
-              <!-- selects reales ocultos -->
-              <div style="display:none">
-                <select class="atkRelic" data-slot="0"></select>
-                <select class="atkRelic" data-slot="1"></select>
-                <select class="atkRelic" data-slot="2"></select>
-                <select class="atkRelic" data-slot="3"></select>
+              <!-- BONUS panel -->
+              <div class="dmgx__panel dmgx__panel--bonus" data-panel="bonus" data-side="atk" hidden>
+                <div class="bonus__head">
+                  <div class="bonus__title">Bonus stats</div>
+                  <div class="bonus__pool">Pool: <strong id="atkBonusPool">136</strong> / 136</div>
+                </div>
 
-                <select id="atkRelicLvl">
-                  <option value="10">10</option>
-                  <option value="20">20</option>
-                  <option value="30">30</option>
-                  <option value="35" selected>35</option>
-                </select>
+                <div class="bonus__grid">
+                  <label class="bonus__field">
+                    <span>HP</span>
+                    <input id="atkBonusHP" type="number" min="0" value="0">
+                  </label>
+                  <label class="bonus__field">
+                    <span>EA</span>
+                    <input id="atkBonusEA" type="number" min="0" value="0">
+                  </label>
+
+                  <label class="bonus__field">
+                    <span>PA</span>
+                    <input id="atkBonusPA" type="number" min="0" value="0">
+                  </label>
+                  <label class="bonus__field">
+                    <span>SPD</span>
+                    <input id="atkBonusSPD" type="number" min="0" value="0">
+                  </label>
+
+                  <label class="bonus__field">
+                    <span>ED</span>
+                    <input id="atkBonusED" type="number" min="0" value="0">
+                  </label>
+                  <label class="bonus__field">
+                    <span>PD</span>
+                    <input id="atkBonusPD" type="number" min="0" value="0">
+                  </label>
+                </div>
+
+                <div class="bonus__foot">
+                  <div class="bonus__applied">Applied: <strong id="atkBonusApplied">0</strong> / 136</div>
+                  <div class="bonus__actions">
+                    <button class="btn ghost" type="button" id="atkBonusClean">Clean</button>
+                    <button class="btn" type="button" id="atkBonusApply">Apply</button>
+                  </div>
+                </div>
               </div>
             </div>
 
           </div>
         </div>
 
-        <!-- ============== MIDDLE: VS + DEFENDER ============== -->
+        <!-- ============== MIDDLE: DEFENDER ============== -->
         <div class="dmgx__mid">
-          <button id="btnSwapSides" class="dmgx__swap" type="button" aria-label="Swap attacker and defender">
-            ⇄
-          </button>
           <div class="dmgx__col">
             <div class="dmgx__label dmgx__label--center">Defender</div>
 
@@ -135,10 +179,12 @@
             </div>
             <input id="defMiscrit" type="hidden" />
 
-
             <div class="dmgx__card dmgx__card--compact">
               <div class="dmgx__avatarRow">
                 <img id="defAvatar" class="dmgx__avatar" src="../assets/images/miscrits_avatar/preset_avatar.png" alt="">
+                <button id="btnSwapSides" class="dmgx__swap" type="button" aria-label="Swap attacker and defender">
+                  ⇄
+                </button>
               </div>
 
               <div class="dmgx__stats dmgx__stats--def">
@@ -173,60 +219,109 @@
                 </div>
               </div>
 
-              <div class="dmgx__subpanel">
+              <!-- Relics/Bonus panel (DEFENDER) -->
+              <div class="dmgx__subpanel" data-side="def">
                 <div class="dmgx__tabs">
-                  <button class="dmgx__tab is-active" type="button">RELICS</button>
-                  <button class="dmgx__tab" type="button">BONUS</button>
+                  <button class="dmgx__tab is-active" type="button" data-tab="relics" data-side="def">RELICS</button>
+                  <button class="dmgx__tab" type="button" data-tab="bonus" data-side="def">BONUS</button>
                 </div>
 
-                <div class="dmgx__slots">
-                  <button class="dmgx__slot relic-slot" type="button" data-side="def" data-slot="0"></button>
-                  <button class="dmgx__slot relic-slot" type="button" data-side="def" data-slot="1"></button>
-                  <button class="dmgx__slot relic-slot" type="button" data-side="def" data-slot="2"></button>
-                  <button class="dmgx__slot relic-slot" type="button" data-side="def" data-slot="3"></button>
+                <!-- RELICS panel -->
+                <div class="dmgx__panel dmgx__panel--relics" data-panel="relics" data-side="def">
+                  <div class="dmgx__slots">
+                    <button class="dmgx__slot relic-slot" type="button" data-side="def" data-slot="0"></button>
+                    <button class="dmgx__slot relic-slot" type="button" data-side="def" data-slot="1"></button>
+                    <button class="dmgx__slot relic-slot" type="button" data-side="def" data-slot="2"></button>
+                    <button class="dmgx__slot relic-slot" type="button" data-side="def" data-slot="3"></button>
+                  </div>
+
+                  <div style="display:none">
+                    <select class="defRelic" data-slot="0"></select>
+                    <select class="defRelic" data-slot="1"></select>
+                    <select class="defRelic" data-slot="2"></select>
+                    <select class="defRelic" data-slot="3"></select>
+
+                    <select id="defRelicLvl">
+                      <option value="10">10</option>
+                      <option value="20">20</option>
+                      <option value="30">30</option>
+                      <option value="35" selected>35</option>
+                    </select>
+                  </div>
                 </div>
 
-                <div style="display:none">
-                  <select class="defRelic" data-slot="0"></select>
-                  <select class="defRelic" data-slot="1"></select>
-                  <select class="defRelic" data-slot="2"></select>
-                  <select class="defRelic" data-slot="3"></select>
+                <!-- BONUS panel -->
+                <div class="dmgx__panel dmgx__panel--bonus" data-panel="bonus" data-side="def" hidden>
+                  <div class="bonus__head">
+                    <div class="bonus__title">Bonus stats</div>
+                    <div class="bonus__pool">Pool: <strong id="defBonusPool">136</strong> / 136</div>
+                  </div>
 
-                  <select id="defRelicLvl">
-                    <option value="10">10</option>
-                    <option value="20">20</option>
-                    <option value="30">30</option>
-                    <option value="35" selected>35</option>
-                  </select>
+                  <div class="bonus__grid">
+                    <label class="bonus__field">
+                      <span>HP</span>
+                      <input id="defBonusHP" type="number" min="0" value="0">
+                    </label>
+                    <label class="bonus__field">
+                      <span>EA</span>
+                      <input id="defBonusEA" type="number" min="0" value="0">
+                    </label>
+
+                    <label class="bonus__field">
+                      <span>PA</span>
+                      <input id="defBonusPA" type="number" min="0" value="0">
+                    </label>
+                    <label class="bonus__field">
+                      <span>SPD</span>
+                      <input id="defBonusSPD" type="number" min="0" value="0">
+                    </label>
+
+                    <label class="bonus__field">
+                      <span>ED</span>
+                      <input id="defBonusED" type="number" min="0" value="0">
+                    </label>
+                    <label class="bonus__field">
+                      <span>PD</span>
+                      <input id="defBonusPD" type="number" min="0" value="0">
+                    </label>
+                  </div>
+
+                  <div class="bonus__foot">
+                    <div class="bonus__applied">Applied: <strong id="defBonusApplied">0</strong> / 136</div>
+                    <div class="bonus__actions">
+                      <button class="btn ghost" type="button" id="defBonusClean">Clean</button>
+                      <button class="btn" type="button" id="defBonusApply">Apply</button>
+                    </div>
+                  </div>
                 </div>
+
               </div>
 
             </div>
           </div>
         </div>
 
+        <!-- ============== RESULT ============== -->
         <div class="dmgx__col dmgx__col--result">
-          <div class="dmgx__resultTitle">RESULT</div>
-
           <div class="dmgx__resultBox">
             <div class="dmgx__resultHead">DAMAGE RESULTS</div>
 
-            <div class="dmgx__resultLine">
+            <div class="dmgx__resultLine minDamage">
               <span>Min damage:</span>
               <strong id="outMin">—</strong>
             </div>
 
-            <div class="dmgx__resultLine">
+            <div class="dmgx__resultLine maxDamage">
               <span>Max damage:</span>
               <strong id="outMax">—</strong>
             </div>
 
-            <div class="dmgx__resultLine">
+            <div class="dmgx__resultLine avgDamage">
               <span>Average damage:</span>
               <strong id="outAvg">—</strong>
             </div>
 
-            <div class="dmgx__resultLine dmgx__resultLine--space">
+            <div class="dmgx__resultLine dmgx__resultLine--space hitKo">
               <span>Hits to KO:</span>
               <strong id="outKO">—</strong>
             </div>
@@ -257,8 +352,6 @@
       </div>
     </div>
 
-    </div>
-
     <div class="relic-modal" id="moveModal" hidden>
       <div class="relic-modal__overlay" data-action="close-moves"></div>
 
@@ -276,14 +369,10 @@
         </div>
 
         <div id="moveListGrid" class="movegrid"></div>
-
         <select id="atkAttackPicker" style="display:none"></select>
 
-        <div style="padding:14px 16px; color:var(--muted); font-size:12px;">
-        </div>
+        <div style="padding:14px 16px; color:var(--muted); font-size:12px;"></div>
       </div>
-    </div>
-
     </div>
 
   </main>

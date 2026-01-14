@@ -13,6 +13,12 @@ let defId = null;
 let atkAttackIndex = 0;
 let atkUseEnhanced = false;
 
+const BONUS_POOL_MAX = 136;
+
+let BONUS_ATK = { HP:0, EA:0, PA:0, SPD:0, ED:0, PD:0 };
+let BONUS_DEF = { HP:0, EA:0, PA:0, SPD:0, ED:0, PD:0 };
+
+
 function normalize(str) {
   return (str ?? "").toString().trim().toLowerCase();
 }
@@ -21,6 +27,7 @@ function toNum(v) {
   const n = Number(v);
   return Number.isFinite(n) ? n : 0;
 }
+
 
 /* =========================================================
    MOVES
@@ -503,12 +510,22 @@ function calcSideWithRelics(side) {
   if (!base) return null;
 
   const picks = getRelicSelectionsDetailed(side === "atk" ? ".atkRelic" : ".defRelic");
-
-  return applyRelicStatsBySlot(
+  const withRelics = applyRelicStatsBySlot(
     { HP: base.HP, SPD: base.SPD, PA: base.PA, EA: base.EA, PD: base.PD, ED: base.ED },
     picks
   );
+
+  const b = getCommittedBonus(side);
+  return {
+    HP:  toNum(withRelics.HP)  + toNum(b.HP),
+    SPD: toNum(withRelics.SPD) + toNum(b.SPD),
+    PA:  toNum(withRelics.PA)  + toNum(b.PA),
+    EA:  toNum(withRelics.EA)  + toNum(b.EA),
+    PD:  toNum(withRelics.PD)  + toNum(b.PD),
+    ED:  toNum(withRelics.ED)  + toNum(b.ED),
+  };
 }
+
 
 function refreshSideStatsFromRelics(side) {
   const total = calcSideWithRelics(side);
@@ -646,6 +663,62 @@ function populateRelicSelects() {
 /* =========================================================
    TOTAL STATS + RESULT
 ========================================================= */
+
+function sumBonus(b){
+  return toNum(b.HP)+toNum(b.EA)+toNum(b.PA)+toNum(b.SPD)+toNum(b.ED)+toNum(b.PD);
+}
+
+function readBonusDraft(side){
+  const p = side === "atk" ? "atk" : "def";
+  return {
+    HP: toNum($(`#${p}BonusHP`)?.value),
+    EA: toNum($(`#${p}BonusEA`)?.value),
+    PA: toNum($(`#${p}BonusPA`)?.value),
+    SPD: toNum($(`#${p}BonusSPD`)?.value),
+    ED: toNum($(`#${p}BonusED`)?.value),
+    PD: toNum($(`#${p}BonusPD`)?.value),
+  };
+}
+
+function writeBonusDraft(side, b){
+  const p = side === "atk" ? "atk" : "def";
+  $(`#${p}BonusHP`).value  = toNum(b.HP);
+  $(`#${p}BonusEA`).value  = toNum(b.EA);
+  $(`#${p}BonusPA`).value  = toNum(b.PA);
+  $(`#${p}BonusSPD`).value = toNum(b.SPD);
+  $(`#${p}BonusED`).value  = toNum(b.ED);
+  $(`#${p}BonusPD`).value  = toNum(b.PD);
+}
+
+function getCommittedBonus(side){
+  return side === "atk" ? BONUS_ATK : BONUS_DEF;
+}
+
+function setCommittedBonus(side, b){
+  if (side === "atk") BONUS_ATK = { ...b };
+  else BONUS_DEF = { ...b };
+}
+
+function updateBonusUI(side){
+  const p = side === "atk" ? "atk" : "def";
+  const draft = readBonusDraft(side);
+  const used = sumBonus(draft);
+  const left = Math.max(0, BONUS_POOL_MAX - used);
+
+  const poolEl = $(`#${p}BonusPool`);
+  const appliedEl = $(`#${p}BonusApplied`);
+  if (poolEl) poolEl.textContent = String(left);
+  if (appliedEl) appliedEl.textContent = String(used);
+
+  // Si se pasan del pool, marcamos inputs visualmente (opcional)
+  const over = used > BONUS_POOL_MAX;
+  [ "HP","EA","PA","SPD","ED","PD" ].forEach(k => {
+    const el = $(`#${p}Bonus${k}`);
+    if (!el) return;
+    el.style.outline = over ? "2px solid rgba(255,0,0,.35)" : "";
+  });
+}
+
 
 function getInputsRaw() {
   return {
@@ -884,6 +957,51 @@ function bindAll() {
     renderSelectedMoveButton();
     renderResult();
   });
+
+  // Tabs RELICS / BONUS
+document.querySelectorAll(".dmgx__tab").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const side = btn.getAttribute("data-side");   // atk/def
+    const tab  = btn.getAttribute("data-tab");    // relics/bonus
+
+    const host = btn.closest(".dmgx__subpanel");
+    if (!host) return;
+
+    host.querySelectorAll(".dmgx__tab").forEach(t => t.classList.remove("is-active"));
+    btn.classList.add("is-active");
+
+    host.querySelectorAll(".dmgx__panel").forEach(p => {
+      const isTarget = p.getAttribute("data-panel") === tab && p.getAttribute("data-side") === side;
+      p.hidden = !isTarget;
+    });
+
+    if (tab === "bonus") updateBonusUI(side);
+  });
+});
+
+  // BONUS live update + Apply/Clean
+  ["atk","def"].forEach(side => {
+    const ids = ["HP","EA","PA","SPD","ED","PD"].map(k => `#${side}Bonus${k}`);
+    ids.forEach(sel => {
+      $(sel)?.addEventListener("input", () => updateBonusUI(side));
+    });
+
+    $(`#${side}BonusClean`)?.addEventListener("click", () => {
+      writeBonusDraft(side, {HP:0,EA:0,PA:0,SPD:0,ED:0,PD:0});
+      updateBonusUI(side);
+    });
+
+    $(`#${side}BonusApply`)?.addEventListener("click", () => {
+      const draft = readBonusDraft(side);
+      const used = sumBonus(draft);
+      if (used > BONUS_POOL_MAX) return; // si quieres, aquí puedes mostrar un mensaje
+
+      setCommittedBonus(side, draft);
+      refreshSideStatsFromRelics(side);  // recalcula inputs visibles con bonus+relics
+      renderResult();
+    });
+  });
+
 }
 
 async function init() {
@@ -918,6 +1036,10 @@ async function init() {
   syncMoveListPicker();
   renderSelectedMoveButton();
   bindAll();
+  writeBonusDraft("atk", BONUS_ATK);
+  writeBonusDraft("def", BONUS_DEF);
+  updateBonusUI("atk");
+  updateBonusUI("def");
   renderResult();
 }
 

@@ -11,13 +11,20 @@
 }
 
 @font-face {
-  font-family: "Miscrits";
-  src: url("../assets/fonts/Miscrits.ttf") format("truetype");
+  font-family: "Louis";
+  src: url("../assets/fonts/Louis.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Montserrat";
+  src: url("../assets/fonts/Montserrat-Black.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 
 /* ===============================
    Base / Reset
@@ -1187,6 +1194,7 @@ input::placeholder{ color:#6b778b; }
 }
 
 .dmgx__label{
+  font-family: "Louis", sans-serif;
   font-style: italic;
   font-weight: 900;
   letter-spacing: .6px;
@@ -1391,16 +1399,17 @@ input::placeholder{ color:#6b778b; }
 
 .dmgx__resultBox{
   border-radius: 18px;
-  border: 3px solid rgba(120,220,255,.95);
+  border: 1px solid rgba(255, 255, 255, .10);
   background: rgba(6,10,16,.35);
   box-shadow: 0 24px 70px rgba(0,0,0,.45);
   padding: 18px 18px 22px;
   min-height: 360px;
+  margin-top: 29px;
 }
 
 .dmgx__resultHead{
+  font-family: "Louis", sans-serif;
   font-weight: 900;
-  font-style: italic;
   font-size: 26px;
   margin-bottom: 14px;
 }
@@ -1456,7 +1465,7 @@ input::placeholder{ color:#6b778b; }
   color:#ffffff;
   -webkit-text-stroke: 1px #5a3a00;
   font-size: 20px;
-  font-family: "Miscrits", sans-serif;
+  font-family: "Montserrat", sans-serif;
   text-transform: uppercase;
 }
 
@@ -1506,7 +1515,7 @@ input::placeholder{ color:#6b778b; }
   color:#ffffff;
   -webkit-text-stroke: 1px #5a3a00;
   font-size: 20px;
-  font-family: "Miscrits", sans-serif;
+  font-family: "Montserrat", sans-serif;
   text-transform: uppercase;
 }
 
@@ -1518,7 +1527,7 @@ input::placeholder{ color:#6b778b; }
 }
 
 #openMoveList.move-btn{
-  font-family: "Miscrits", sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 20px;
   position: relative;
   height: 85px;
@@ -1657,6 +1666,112 @@ input::placeholder{ color:#6b778b; }
 .dmgx__swap:hover{
   background: rgba(255,255,255,.08);
 }
+
+.minDamage strong {
+  color: #e61b1b;
+  margin-top: 60px;
+}
+
+.minDamage span {
+  margin-top: 60px;
+  color: #e61b1b;
+  font-family: "Louis", sans-serif;
+  text-transform: uppercase;
+  font-style: normal;
+  font-size: 21px;
+}
+
+.maxDamage strong {
+  color: #85ff4d;
+}
+
+.maxDamage span {
+  color: #85ff4d;
+  font-family: "Louis", sans-serif;
+  text-transform: uppercase;
+  font-style: normal;
+  font-size: 20px;
+}
+
+.avgDamage strong {
+  color: #ffed4d;
+  margin-top: 30px;
+}
+
+.avgDamage span {
+  color: #ffed4d;
+  font-family: "Louis", sans-serif;
+  text-transform: uppercase;
+  font-style: normal;
+  font-size: 20px;
+  margin-top: 30px;
+}
+
+.hitKo strong {
+  color: #ffffff;
+  margin-top: 80px;
+}
+
+.hitKo span {
+  color: #ffffff;
+  font-family: "Louis", sans-serif;
+  text-transform: uppercase;
+  font-style: normal;
+  font-size: 20px;
+  margin-top: 80px;
+}
+
+.dmgx__panel { margin-top: 10px; }
+
+.bonus__head{
+  display:flex;
+  justify-content: space-between;
+  align-items:center;
+  font-size:12px;
+  color: var(--muted);
+  padding: 6px 4px 10px;
+}
+
+.bonus__grid{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 16px;
+  padding: 0 4px 12px;
+}
+
+.bonus__field{
+  display:flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.bonus__field input{
+  height: 34px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(0,0,0,.25);
+  color: var(--text);
+  padding: 0 10px;
+}
+
+.bonus__foot{
+  display:flex;
+  justify-content: space-between;
+  align-items:center;
+  padding: 10px 4px 2px;
+  border-top: 1px solid rgba(255,255,255,.08);
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.bonus__actions{
+  display:flex;
+  gap: 10px;
+  align-items:center;
+}
+
 
 /* ===============================
    Responsive (global)
