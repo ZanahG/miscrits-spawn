@@ -2456,6 +2456,10 @@ input::placeholder{ color:#6b778b; }
 .br-preset--goal[data-type="red-speed"]{ color:#ff6b6b; }
 .br-preset--goal[data-type="all-green"]{ color:#6dff7a; }
 
+#btnNegateElement.is-active{
+  outline: 2px solid rgba(255,255,255,.2);
+  filter: brightness(1.1);
+}
 
 /* =========================
    BREEDING SIMULATION CARD
@@ -2565,4 +2569,113 @@ input::placeholder{ color:#6b778b; }
   }
   .topnav--header{ margin-top:4px; }
   .brand__logo{ height:54px; }
+}
+
+
+/* =========================
+   MISCRITDLE — RESPONSIVE MOBILE
+   (pegar al final del styles.css)
+========================= */
+
+.miscritdle,
+.miscritdle__board,
+.miscritdle__row,
+.miscritdle__header {
+  min-width: 0;
+}
+
+.miscritdle__header,
+.miscritdle__row {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+.mdcell {
+  width: 100%;
+  max-width: 92px;
+  height: auto;
+  aspect-ratio: 1 / 1;
+}
+
+.md-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.md-elem {
+  width: 60%;
+  height: 60%;
+}
+
+/* ---------- MOBILE MODE ---------- */
+@media (max-width: 640px) {
+  .miscritdle.card {
+    padding: 14px;
+  }
+
+  .miscritdle__controls {
+    max-width: 100%;
+    margin-bottom: 18px;
+    gap: 12px;
+  }
+
+  .miscritdle__controls .actions .btn {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .miscritdle__header {
+    display: none;
+  }
+
+  .miscritdle__board {
+    max-width: 100%;
+    padding: 0 0 14px;
+    gap: 12px;
+  }
+
+  .miscritdle__row {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    justify-items: stretch;
+
+    padding: 12px;
+    border: 1px solid rgba(255,255,255,.10);
+    background: rgba(0,0,0,.14);
+    border-radius: 16px;
+  }
+
+  .mdcell {
+    max-width: none;
+    aspect-ratio: 1 / 1;
+    border-radius: 14px;
+  }
+
+  .mdtext {
+    font-size: 12px;
+    padding: 8px;
+  }
+
+  .md-yn {
+    font-size: 14px;
+  }
+
+  .md-endcard {
+    max-width: 100%;
+    padding: 18px 14px;
+  }
+
+  .md-endcard__title {
+    font-size: 34px;
+  }
+
+  .md-endcard__timer {
+    font-size: 44px;
+  }
+
+  .miscritdle__footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
 }

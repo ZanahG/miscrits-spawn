@@ -8,6 +8,7 @@ let DEF_BASE = null;
 let MISCRITS_META = [];
 let AVATAR_BY_NAME = new Map();
 
+let negateElement = false;
 let atkId = null;
 let defId = null;
 let atkAttackIndex = 0;
@@ -70,26 +71,18 @@ const STRONG = {
   water: ["fire"],
   fire: ["nature"],
   nature: ["water"],
-  earth: ["air"],
-  air: ["earth"],
-  electric: ["water"],
-  magic: ["mind"],
-  mind: ["magic"],
-  physical: ["undead"],
-  undead: ["physical"]
+  earth: ["lightning"],
+  wind: ["earth"],
+  lightning: ["wind"]
 };
 
 const WEAK = {
-  water: ["electric", "nature"],
-  fire: ["water", "earth"],
-  nature: ["fire", "air"],
-  earth: ["fire", "water"],
-  air: ["nature", "electric"],
-  electric: ["earth"],
-  magic: ["undead"],
-  mind: ["undead"],
-  physical: ["mind"],
-  undead: ["magic"]
+  water: ["nature"],
+  fire: ["water"],
+  nature: ["fire"],
+  earth: ["wind"],
+  wind: ["lightning"],
+  lightning: ["earth"]
 };
 
 function elementMultiplier(atkElem, defElems) {
@@ -106,7 +99,7 @@ function elementMultiplier(atkElem, defElems) {
 
 function isElementalAttack(elem) {
   const e = normalize(elem);
-  return ["water","fire","nature","earth","air","electric","magic","mind","undead"].includes(e);
+  return ["water","fire","nature","earth","wind","lightning"].includes(e);
 }
 
 function pickAtkDefStats(mode, attackElem, inputs) {
@@ -135,7 +128,7 @@ function computePerHit(ap, atkStat, defStat, elemMul) {
 }
 
 /* =========================================================
-   MISCRITS PICKER (DROPDOWN WITH ICON)
+   MISCRITS PICKER
 ========================================================= */
 
 function findById(idOrName) {
@@ -710,7 +703,6 @@ function updateBonusUI(side){
   if (poolEl) poolEl.textContent = String(left);
   if (appliedEl) appliedEl.textContent = String(used);
 
-  // Si se pasan del pool, marcamos inputs visualmente (opcional)
   const over = used > BONUS_POOL_MAX;
   [ "HP","EA","PA","SPD","ED","PD" ].forEach(k => {
     const el = $(`#${p}Bonus${k}`);
@@ -740,22 +732,12 @@ function getInputsRaw() {
 
 function readTotalStatsForCalc() {
   const raw = getInputsRaw();
-
-  const atkPicks = getRelicSelectionsDetailed(".atkRelic");
-  const defPicks = getRelicSelectionsDetailed(".defRelic");
-
-  const atkWithRelics = applyRelicStatsBySlot(
-    { HP: raw.atkHP, SPD: raw.atkSPD, PA: raw.atkPA, EA: raw.atkEA, PD: raw.atkPD, ED: raw.atkED },
-    atkPicks
-  );
-
-  const defWithRelics = applyRelicStatsBySlot(
-    { HP: raw.defHP, SPD: raw.defSPD, PA: raw.defPA, EA: raw.defEA, PD: raw.defPD, ED: raw.defED },
-    defPicks
-  );
-
-  return { atk: atkWithRelics, def: defWithRelics };
+  return {
+    atk: { HP: raw.atkHP, SPD: raw.atkSPD, PA: raw.atkPA, EA: raw.atkEA, PD: raw.atkPD, ED: raw.atkED },
+    def: { HP: raw.defHP, SPD: raw.defSPD, PA: raw.defPA, EA: raw.defEA, PD: raw.defPD, ED: raw.defED },
+  };
 }
+
 
 function renderResult() {
   const outMin = $("#outMin");
@@ -796,7 +778,7 @@ function renderResult() {
     defED: totals.def.ED
   });
 
-  const mul = elementMultiplier(a.element, def.elements);
+  const mul = negateElement ? 1.0 : elementMultiplier(a.element, def.elements);
   const per = computePerHit(a.ap, picked.atk, picked.def, mul);
 
   const hits = Math.max(1, toNum(a.hits ?? 1));
@@ -910,6 +892,18 @@ function bindAll() {
   });
 
   $("#btnSwapSides")?.addEventListener("click", swapSides);
+
+  $("#btnNegateElement")?.addEventListener("click", () => {
+  negateElement = !negateElement;
+
+  const b = $("#btnNegateElement");
+  if (b) {
+    b.classList.toggle("is-active", negateElement);
+    b.setAttribute("aria-pressed", negateElement ? "true" : "false");
+  }
+
+  renderResult();
+});
 
   document.addEventListener("click", (e) => {
     if (e.target.closest('[data-action="close-moves"]')) {
