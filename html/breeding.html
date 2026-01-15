@@ -226,9 +226,20 @@
           <div class="breeding__goal">
             <div class="field">
               <label for="br-target">Target</label>
-              <select id="br-target" class="br-select">
-                <option value="">— Selecciona primero los 3 padres —</option>
-              </select>
+
+              <div class="miscritpicker miscritpicker--br">
+                <input
+                  id="br-target"
+                  class="dmgx__search"
+                  type="text"
+                  placeholder="— Selecciona primero los 3 padres —"
+                  autocomplete="off"
+                  disabled
+                >
+                <div id="br-dd-target" class="miscritpicker__dropdown" hidden></div>
+              </div>
+
+              <input id="br-target-id" type="hidden" value="">
             </div>
 
 					<div class="br-goalPresets">

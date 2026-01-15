@@ -102,7 +102,7 @@ const FILTER_KEYS = ["q", "day", "place", "rarity", "page", "perPage"];
 function defaultFilters() {
   return {
     q: "",
-    day: "__today__",
+    day: "",
     place: "",
     rarity: "",
     page: "1",
@@ -113,7 +113,7 @@ function defaultFilters() {
 function getFiltersFromUI() {
   return {
     q: $("#q")?.value ?? "",
-    day: $("#day")?.value ?? "__today__",
+    day: $("#day")?.value ?? "",
     place: $("#place")?.value ?? "",
     rarity: $("#rarity")?.value ?? "",
     page: String(PAGE),
@@ -124,7 +124,7 @@ function getFiltersFromUI() {
 function setFiltersToUI(f) {
   if (!f) return;
   if ($("#q")) $("#q").value = f.q ?? "";
-  if ($("#day")) $("#day").value = f.day ?? "__today__";
+  if ($("#day")) $("#day").value = f.day ?? "";
   if ($("#place")) $("#place").value = f.place ?? "";
   if ($("#rarity")) $("#rarity").value = f.rarity ?? "";
   if ($("#pageSize") && f.perPage) $("#pageSize").value = f.perPage;
@@ -373,7 +373,7 @@ function applyFilters(resetPage = false) {
   const place = $("#place")?.value ?? "";
   const rarity = $("#rarity")?.value ?? "";
 
-  const dayRaw = $("#day")?.value ?? "__today__";
+  const dayRaw = $("#day")?.value ?? "";
   const day = dayRaw === "__today__" ? getServerDayName() : dayRaw;
 
   FILTERED = MISCRITS.filter((m) => {
@@ -474,7 +474,7 @@ async function init() {
 
   $("#btnClear")?.addEventListener("click", () => {
     if ($("#q")) $("#q").value = "";
-    if ($("#day")) $("#day").value = "__today__";
+    if ($("#day")) $("#day").value = "";
     if ($("#place")) $("#place").value = "";
     if ($("#rarity")) $("#rarity").value = "";
 

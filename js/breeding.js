@@ -8,6 +8,7 @@ const COST_PER_ATTEMPT = 5000;
 const STATS = ["hp", "ea", "pa", "ed", "pd", "spd"];
 
 let MISCRITS = [];
+let TARGET_POOL = [];
 let parents = [null, null, null];
 
 /* =========================
@@ -207,32 +208,120 @@ function readDesiredColors() {
    TARGET SELECT
 ========================= */
 function rebuildTargetSelect() {
-  const sel = $("#br-target");
-  if (!sel) return;
+  const input = $("#br-target");
+  const dd = $("#br-dd-target");
+  const hidden = $("#br-target-id");
+  if (!input || !dd || !hidden) return;
 
-  const current = sel.value;
   const list = parents.filter(Boolean);
-  sel.innerHTML = "";
 
-  if (!list.length) {
-    sel.innerHTML = `<option value="">— Select 3 Miscrits for Breeding —</option>`;
+  if (list.length !== 3) {
+    TARGET_POOL = [];
+
+    input.value = "";
+    hidden.value = "";
+    input.placeholder = "— Select 3 Miscrit as parents first —";
+    input.disabled = true;
+
+    dd.hidden = true;
+    dd.innerHTML = "";
     return;
   }
-
   const uniq = [];
   const seen = new Set();
   for (const m of list) {
-    const key = normalize(m.name);
-    if (seen.has(key)) continue;
-    seen.add(key);
+    const k = normalize(m.name);
+    if (seen.has(k)) continue;
+    seen.add(k);
     uniq.push(m);
   }
 
-  sel.innerHTML = `<option value="">— Expected Target —</option>` + uniq.map(m =>
-    `<option value="${m.id}">${m.name}</option>`
-  ).join("");
+  TARGET_POOL = uniq;
 
-  if (current) sel.value = current;
+  input.disabled = false;
+  input.placeholder = "Select expected target";
+
+  if (hidden.value) {
+    const stillValid = list.some(p => String(p.id) === String(hidden.value));
+    if (!stillValid) {
+      input.value = "";
+      hidden.value = "";
+    }
+  }
+
+  dd.hidden = true;
+  dd.innerHTML = "";
+
+  if (!input.dataset.bound) {
+    input.dataset.bound = "1";
+
+    const close = () => { dd.hidden = true; dd.innerHTML = ""; };
+
+    const render = (matches) => {
+      if (!matches.length) return close();
+
+      dd.hidden = false;
+      dd.innerHTML = matches.map(m => `
+        <button type="button" class="miscritpicker__item" data-id="${m.id}">
+          <img class="miscritpicker__avatar" src="${avatarSrc(m)}" alt="">
+          <div class="miscritpicker__name">${m.name}</div>
+        </button>
+      `).join("");
+
+      dd.querySelectorAll(".miscritpicker__item").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const id = btn.getAttribute("data-id") || "";
+          const picked = TARGET_POOL.find(x => String(x.id) === String(id));
+          if (!picked) return;
+
+          input.value = picked.name;
+          hidden.value = picked.id;
+
+          close();
+          doCalculate();
+        });
+      });
+    };
+
+    const open = () => {
+      const q = normalize(input.value);
+      const matches = (TARGET_POOL || [])
+        .filter(m => !q || normalize(m.name).includes(q))
+        .slice(0, 60);
+
+      render(matches);
+    };
+
+    input.addEventListener("focus", open);
+    input.addEventListener("input", open);
+
+    input.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") close();
+
+      if (e.key === "Enter") {
+        const exact = (TARGET_POOL || []).find(m => normalize(m.name) === normalize(input.value));
+        if (exact) {
+          e.preventDefault();
+          input.value = exact.name;
+          hidden.value = exact.id;
+          close();
+          doCalculate();
+          return;
+        }
+
+        const first = dd.querySelector(".miscritpicker__item");
+        if (first) {
+          e.preventDefault();
+          first.click();
+        }
+      }
+    });
+
+    document.addEventListener("click", (e) => {
+      const host = input.closest(".miscritpicker");
+      if (host && !host.contains(e.target)) close();
+    });
+  }
 }
 
 function countTargetInParents(targetId) {
@@ -293,7 +382,7 @@ function buildBreakdownText(res) {
 
 function doCalculate() {
   const desired = readDesiredColors();
-  const targetId = $("#br-target")?.value || "";
+  const targetId = $("#br-target-id")?.value || "";
 
   const res = calcProbability(targetId, desired);
   const probEl = $("#br-prob");
@@ -319,8 +408,6 @@ function doCalculate() {
 
   const expectedGold = Number.isFinite(expectedAttempts) ? expectedAttempts * COST_PER_ATTEMPT : Infinity;
   if (goldEl) goldEl.textContent = Number.isFinite(expectedGold) ? fmtNum(Math.round(expectedGold)) : "∞";
-
-  if (bdEl) bdEl.textContent = buildBreakdownText(res);
 }
 
 /* =========================
@@ -454,7 +541,7 @@ function init() {
   $("#br-simulate")?.addEventListener("click", () => {
     const result = simulateOnce();
     if (!result) {
-      setStatus("Selecciona los 3 padres antes de simular.");
+      setStatus("Please select 3 parent before simulation.");
       return;
     }
     setStatus("");

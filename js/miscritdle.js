@@ -135,19 +135,36 @@ function existsVariant(baseName, prefix) {
   return MISCRITS.some(x => normalize(x?.name) === wanted);
 }
 
-function getDateKeyInTZ(timeZone = TZ) {
+function getGameDateKey(timeZone = TZ, resetHour = RESET_HOUR) {
+  const now = new Date();
+
   const parts = new Intl.DateTimeFormat("en-CA", {
     timeZone,
     year: "numeric",
     month: "2-digit",
     day: "2-digit",
-  }).formatToParts(new Date());
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+  }).formatToParts(now);
 
-  const y = parts.find(p => p.type === "year")?.value ?? "0000";
-  const m = parts.find(p => p.type === "month")?.value ?? "00";
-  const d = parts.find(p => p.type === "day")?.value ?? "00";
-  return `${y}-${m}-${d}`;
+  const y = Number(parts.find(p => p.type === "year")?.value);
+  const m = Number(parts.find(p => p.type === "month")?.value);
+  const d = Number(parts.find(p => p.type === "day")?.value);
+  const hh = Number(parts.find(p => p.type === "hour")?.value);
+  const mm = Number(parts.find(p => p.type === "minute")?.value);
+
+  const afterReset = (hh > resetHour) || (hh === resetHour && mm >= 0);
+
+  const base = new Date(Date.UTC(y, m - 1, d));
+  if (afterReset) base.setUTCDate(base.getUTCDate() + 1);
+
+  const yy = base.getUTCFullYear();
+  const mm2 = String(base.getUTCMonth() + 1).padStart(2, "0");
+  const dd2 = String(base.getUTCDate()).padStart(2, "0");
+  return `${yy}-${mm2}-${dd2}`;
 }
+
 
 function hashStringToInt(str) {
   let h = 2166136261;
@@ -159,11 +176,11 @@ function hashStringToInt(str) {
 }
 
 function storageKey() {
-  return `miscritdle:${getDateKeyInTZ()}`;
+  return `miscritdle:${getGameDateKey()}`;
 }
 
 function pickTodayTarget(list) {
-  const key = getDateKeyInTZ();
+  const key = getGameDateKey();
   const idx = hashStringToInt(key) % list.length;
   return list[idx];
 }
@@ -290,7 +307,7 @@ function renderBoard(state) {
 function buildShareText(state, target) {
   const solved = state.solved === true;
   const tries = state.guesses.length;
-  const dayKey = getDateKeyInTZ();
+  const dayKey = getGameDateKey();
 
   const title = `Miscritdle ${dayKey} — ${solved ? tries : "X"}/${MAX_TRIES}`;
   const tType = normalize(target.type || "");

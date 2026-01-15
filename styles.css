@@ -263,8 +263,8 @@ input::placeholder{ color:#6b778b; }
 
 .badge--common{ color:#d8d8d8; }
 .badge--rare{ color:#60a5fa; }
-.badge--epic{ color:#a78bfa; }
-.badge--exotic{ color:#00ff00; }
+.badge--epic{ color:#00ff00; }
+.badge--exotic{ color:#a78bfa; }
 .badge--legendary{
   color:#facc15;
   text-shadow: 0 0 6px rgba(250,204,21,.35);
