@@ -1227,7 +1227,7 @@
       "rarity": "Epic",
       "avatar": "hotdog_avatar.png",
       "spawns": [
-        {"place": "Mansion","zone": ["Mansion 1st Floor"],"view": "object","objectImage": "../assets/images/maps/Cand.jpg","days": "ALL_DAYS"}
+        {"place": "Mansion","zone": ["Mansion 1st Floor"],"view": "object","objectImage": "../assets/images/maps/Cand.png","days": "ALL_DAYS"}
       ]
     },
     {
