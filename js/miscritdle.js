@@ -1,15 +1,21 @@
 const $ = (sel) => document.querySelector(sel);
 
-const TZ = "America/Santiago";
+const TIMEZONE = "America/Santiago";
 const MAX_TRIES = 6;
 
 const MISCRITS_JSON_URL = "../miscrits.json";
+const MISCRITDLE_POOL_URL = "../assets/data/miscritdle_pool.json";
 
 const AVATAR_FOLDER = "../assets/images/miscrits_avatar/";
 const AVATAR_FALLBACK = `${AVATAR_FOLDER}preset_avatar.png`;
 const TYPE_FOLDER = "../assets/images/type/";
 
+const RESET_HOUR = 21;
+let endTimerInterval = null;
+
 let MISCRITS = [];
+let MISCRITDLE_POOL = [];
+let PLAYABLE = [];
 let todayTarget = null;
 
 const COLS = [
@@ -17,19 +23,60 @@ const COLS = [
   { key: "element", label: "ELEMENT" },
   { key: "rarity", label: "RARITY" },
   { key: "place", label: "SPAWN PLACE" },
-  { key: "dark", label: "DARK VERSION" },
-  { key: "light", label: "LIGHT VERSION" },
+  { key: "dark", label: "MISCRIT IS DARK" },
+  { key: "light", label: "MISCRIT IS LIGHT" },
 ];
 
-const RESET_TZ = "America/Santiago";
-const RESET_HOUR = 21;
-let endTimerInterval = null;
+const RARITY_ORDER = ["Common", "Rare", "Epic", "Exotic", "Legendary"];
+
+/* ===============================
+   Utils
+=============================== */
+
+function normalize(s) {
+  return (s ?? "").toString().trim().toLowerCase();
+}
+
+function sameName(a, b) {
+  return normalize(a) === normalize(b);
+}
+
+function isDarkName(name) {
+  return normalize(name).startsWith("dark ");
+}
+function isLightName(name) {
+  return normalize(name).startsWith("light ");
+}
+
+function rarityRank(r) {
+  const rr = (r ?? "").toString().trim().toLowerCase();
+  const idx = RARITY_ORDER.findIndex(x => x.toLowerCase() === rr);
+  return idx >= 0 ? idx : -1;
+}
+
+function avatarSrc(m) {
+  const file = (m?.avatar ?? "").toString().trim();
+  return file ? `${AVATAR_FOLDER}${file}` : AVATAR_FALLBACK;
+}
+
+function elementIconSrc(type) {
+  const el = normalize(type || "physical");
+  return `${TYPE_FOLDER}${el}.png`;
+}
+
+function primaryPlace(m) {
+  return (m?.spawns?.[0]?.place ?? "Unknown").toString();
+}
+
+/* ===============================
+   Reset timer
+=============================== */
 
 function getNextResetTimestampChile() {
   const now = new Date();
 
   const parts = new Intl.DateTimeFormat("en-CA", {
-    timeZone: RESET_TZ,
+    timeZone: TIMEZONE,
     year: "numeric",
     month: "2-digit",
     day: "2-digit",
@@ -39,14 +86,21 @@ function getNextResetTimestampChile() {
   const m = Number(parts.find(p => p.type === "month")?.value);
   const d = Number(parts.find(p => p.type === "day")?.value);
 
-  const candidate = new Date(Date.UTC(y, m - 1, d, RESET_HOUR + 3, 0, 0)); 
-  const chileHour = Number(new Intl.DateTimeFormat("en-US", { timeZone: RESET_TZ, hour: "2-digit", hour12: false }).format(now));
-  const chileMin  = Number(new Intl.DateTimeFormat("en-US", { timeZone: RESET_TZ, minute: "2-digit" }).format(now));
+  const candidate = new Date(Date.UTC(y, m - 1, d, RESET_HOUR + 3, 0, 0));
+
+  const chileHour = Number(new Intl.DateTimeFormat("en-US", {
+    timeZone: TIMEZONE,
+    hour: "2-digit",
+    hour12: false
+  }).format(now));
+
+  const chileMin = Number(new Intl.DateTimeFormat("en-US", {
+    timeZone: TIMEZONE,
+    minute: "2-digit"
+  }).format(now));
 
   const alreadyPassed = (chileHour > RESET_HOUR) || (chileHour === RESET_HOUR && chileMin >= 0);
-  if (alreadyPassed) {
-    candidate.setUTCDate(candidate.getUTCDate() + 1);
-  }
+  if (alreadyPassed) candidate.setUTCDate(candidate.getUTCDate() + 1);
 
   return candidate.getTime();
 }
@@ -82,6 +136,155 @@ function stopNextTimer() {
   endTimerInterval = null;
 }
 
+/* ===============================
+   Date key for "game day"
+=============================== */
+
+function getGameDateKey() {
+  const now = new Date();
+
+  const parts = new Intl.DateTimeFormat("en-CA", {
+    timeZone: TIMEZONE,
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+  }).formatToParts(now);
+
+  const y = Number(parts.find(p => p.type === "year")?.value);
+  const m = Number(parts.find(p => p.type === "month")?.value);
+  const d = Number(parts.find(p => p.type === "day")?.value);
+  const hh = Number(parts.find(p => p.type === "hour")?.value);
+  const mm = Number(parts.find(p => p.type === "minute")?.value);
+
+  const afterReset = (hh > RESET_HOUR) || (hh === RESET_HOUR && mm >= 0);
+
+  const base = new Date(Date.UTC(y, m - 1, d));
+  if (afterReset) base.setUTCDate(base.getUTCDate() + 1);
+
+  const yy = base.getUTCFullYear();
+  const mm2 = String(base.getUTCMonth() + 1).padStart(2, "0");
+  const dd2 = String(base.getUTCDate()).padStart(2, "0");
+  return `${yy}-${mm2}-${dd2}`;
+}
+
+function hashStringToInt(str) {
+  let h = 2166136261;
+  for (let i = 0; i < str.length; i++) {
+    h ^= str.charCodeAt(i);
+    h = Math.imul(h, 16777619);
+  }
+  return (h >>> 0);
+}
+
+function storageKey() {
+  return `miscritdle:${getGameDateKey()}`;
+}
+
+/* ===============================
+   Pool loading + building
+=============================== */
+
+async function loadMiscritdlePool() {
+  const res = await fetch(MISCRITDLE_POOL_URL, { cache: "no-store" });
+  if (!res.ok) {
+    console.warn("miscritdle_pool.json no encontrado, usando todos los Miscrits");
+    MISCRITDLE_POOL = [];
+    return;
+  }
+
+  const json = await res.json();
+  if (Array.isArray(json?.pool)) {
+    MISCRITDLE_POOL = json.pool
+      .map(n => n.toString().trim())
+      .filter(Boolean);
+  } else {
+    MISCRITDLE_POOL = [];
+  }
+}
+
+function buildMiscritdlePool(allMiscrits) {
+  if (!MISCRITDLE_POOL.length) return allMiscrits;
+
+  const byName = new Map(allMiscrits.map(m => [normalize(m.name), m]));
+  const pool = MISCRITDLE_POOL
+    .map(name => byName.get(normalize(name)))
+    .filter(Boolean);
+
+  if (!pool.length) {
+    console.warn("Pool vacío (no matcheó nombres), usando todos los Miscrits");
+    return allMiscrits;
+  }
+
+  return pool;
+}
+
+/* ===============================
+   Pick today target
+=============================== */
+
+function pickTodayTarget(list) {
+  const key = getGameDateKey();
+  const idx = hashStringToInt(key) % list.length;
+  return list[idx];
+}
+
+/* ===============================
+   State
+=============================== */
+
+function setStatus(txt) {
+  const el = $("#md-status");
+  if (el) el.textContent = txt || "";
+}
+
+function loadState() {
+  const raw = localStorage.getItem(storageKey());
+  if (!raw) return { guesses: [], solved: false, finished: false };
+
+  try {
+    const st = JSON.parse(raw);
+    if (!Array.isArray(st.guesses)) st.guesses = [];
+    st.solved = !!st.solved;
+    st.finished = !!st.finished;
+    return st;
+  } catch {
+    return { guesses: [], solved: false, finished: false };
+  }
+}
+
+function saveState(state) {
+  localStorage.setItem(storageKey(), JSON.stringify(state));
+}
+
+/* ===============================
+   Data helpers
+=============================== */
+
+function findByName(name) {
+  const n = normalize(name);
+  return MISCRITS.find(m => normalize(m?.name) === n) || null;
+}
+
+/* ===============================
+   UI render
+=============================== */
+
+function renderHeader() {
+  const header = $("#md-header");
+  if (!header) return;
+
+  header.innerHTML = "";
+  for (const c of COLS) {
+    const div = document.createElement("div");
+    div.className = "cell";
+    div.textContent = c.label;
+    header.appendChild(div);
+  }
+}
+
 function renderEndCard(state) {
   const card = $("#md-endcard");
   if (!card) return;
@@ -111,168 +314,91 @@ function renderEndCard(state) {
   startNextTimer();
 }
 
-function normalize(s) {
-  return (s ?? "").toString().trim().toLowerCase();
-}
-function toNum(v) {
-  const n = Number(v);
-  return Number.isFinite(n) ? n : 0;
-}
-
-function avatarSrc(m) {
-  const file = (m?.avatar ?? "").toString().trim();
-  return file ? `${AVATAR_FOLDER}${file}` : AVATAR_FALLBACK;
-}
-function elementIconSrc(type) {
-  const el = normalize(type || "physical");
-  return `${TYPE_FOLDER}${el}.png`;
-}
-function primaryPlace(m) {
-  return (m?.spawns?.[0]?.place ?? "Unknown").toString();
-}
-function existsVariant(baseName, prefix) {
-  const wanted = normalize(`${prefix} ${baseName}`);
-  return MISCRITS.some(x => normalize(x?.name) === wanted);
-}
-
-function getGameDateKey(timeZone = TZ, resetHour = RESET_HOUR) {
-  const now = new Date();
-
-  const parts = new Intl.DateTimeFormat("en-CA", {
-    timeZone,
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-    hour: "2-digit",
-    minute: "2-digit",
-    hour12: false,
-  }).formatToParts(now);
-
-  const y = Number(parts.find(p => p.type === "year")?.value);
-  const m = Number(parts.find(p => p.type === "month")?.value);
-  const d = Number(parts.find(p => p.type === "day")?.value);
-  const hh = Number(parts.find(p => p.type === "hour")?.value);
-  const mm = Number(parts.find(p => p.type === "minute")?.value);
-
-  const afterReset = (hh > resetHour) || (hh === resetHour && mm >= 0);
-
-  const base = new Date(Date.UTC(y, m - 1, d));
-  if (afterReset) base.setUTCDate(base.getUTCDate() + 1);
-
-  const yy = base.getUTCFullYear();
-  const mm2 = String(base.getUTCMonth() + 1).padStart(2, "0");
-  const dd2 = String(base.getUTCDate()).padStart(2, "0");
-  return `${yy}-${mm2}-${dd2}`;
-}
-
-
-function hashStringToInt(str) {
-  let h = 2166136261;
-  for (let i = 0; i < str.length; i++) {
-    h ^= str.charCodeAt(i);
-    h = Math.imul(h, 16777619);
-  }
-  return (h >>> 0);
-}
-
-function storageKey() {
-  return `miscritdle:${getGameDateKey()}`;
-}
-
-function pickTodayTarget(list) {
-  const key = getGameDateKey();
-  const idx = hashStringToInt(key) % list.length;
-  return list[idx];
-}
-
-/* ====== state ====== */
-
-function setStatus(txt) {
-  const el = $("#md-status");
-  if (el) el.textContent = txt || "";
-}
-
-function loadState() {
-  const raw = localStorage.getItem(storageKey());
-  if (!raw) return { guesses: [], solved: false, finished: false };
-
-  try {
-    const st = JSON.parse(raw);
-    if (!Array.isArray(st.guesses)) st.guesses = [];
-    st.solved = !!st.solved;
-    st.finished = !!st.finished;
-    return st;
-  } catch {
-    return { guesses: [], solved: false, finished: false };
-  }
-}
-
-function saveState(state) {
-  localStorage.setItem(storageKey(), JSON.stringify(state));
-}
-
-/* ====== data helpers ====== */
-
-function findByName(name) {
-  const n = normalize(name);
-  return MISCRITS.find(m => normalize(m?.name) === n) || null;
-}
-
-/* ====== UI render ====== */
-
-function renderHeader() {
-  const header = $("#md-header");
-  if (!header) return;
-
-  header.innerHTML = "";
-  for (const c of COLS) {
-    const div = document.createElement("div");
-    div.className = "cell";
-    div.textContent = c.label;
-    header.appendChild(div);
-  }
-}
-
 function renderRow(guess, target) {
   const row = document.createElement("div");
   row.className = "miscritdle__row";
 
+  /* ================= MISCRIT ================= */
   const c1 = document.createElement("div");
-  c1.className = `mdcell ${guess.id === target.id ? "ok" : "no"}`;
+  const miscritMatch = sameName(guess.name, target.name);
+  c1.className = `mdcell ${miscritMatch ? "ok" : "no"}`;
+  c1.dataset.label = "Miscrit";
   c1.innerHTML = `<img class="md-avatar" src="${avatarSrc(guess)}" alt="${guess.name}">`;
   row.appendChild(c1);
 
+  /* ================= ELEMENT ================= */
   const gType = (guess.type ?? "?").toString();
   const tType = (target.type ?? "?").toString();
+
   const c2 = document.createElement("div");
   c2.className = `mdcell ${normalize(gType) === normalize(tType) ? "ok" : "no"}`;
+  c2.dataset.label = "Element";
   c2.innerHTML = `<img class="md-elem" src="${elementIconSrc(gType)}" alt="${gType}">`;
   row.appendChild(c2);
 
+  /* ================= RARITY ================= */
   const gR = (guess.rarity ?? "?").toString();
   const tR = (target.rarity ?? "?").toString();
+
+  const gr = rarityRank(gR);
+  const tr = rarityRank(tR);
+
   const c3 = document.createElement("div");
-  c3.className = `mdcell ${normalize(gR) === normalize(tR) ? "ok" : "no"}`;
-  c3.innerHTML = `<div class="mdtext">${gR}</div>`;
+
+  if (normalize(gR) === normalize(tR)) {
+    c3.className = "mdcell ok";
+    c3.innerHTML = `<div class="mdtext">${gR}</div>`;
+  } else if (gr === -1 || tr === -1) {
+    c3.className = "mdcell no";
+    c3.innerHTML = `<div class="mdtext">${gR}</div>`;
+  } else {
+    const hint = gr < tr ? "higher" : "lower";
+    const arrow = hint === "higher" ? "↑" : "↓";
+    const label = hint === "higher" ? "Higher" : "Lower";
+
+    c3.className = `mdcell no mdhint mdhint--${hint}`;
+    c3.innerHTML = `
+      <div class="mdtext">
+        ${gR}
+        <span class="mdhint__arrow">${arrow}</span>
+        <span class="mdhint__label">${label}</span>
+      </div>
+    `;
+  }
+
+  c3.dataset.label = "Rarity";
   row.appendChild(c3);
 
+  /* ================= SPAWN ================= */
   const gP = primaryPlace(guess);
   const tP = primaryPlace(target);
+
   const c4 = document.createElement("div");
   c4.className = `mdcell ${normalize(gP) === normalize(tP) ? "ok" : "no"}`;
+  c4.dataset.label = "Spawn";
   c4.innerHTML = `<div class="mdtext">${gP}</div>`;
   row.appendChild(c4);
 
-  const hasDark = existsVariant(target.name, "Dark");
+  /* ================= DARK / LIGHT ================= */
+  const targetIsDark = isDarkName(target.name);
+  const targetIsLight = isLightName(target.name);
+
+  const guessIsDark = isDarkName(guess.name);
+  const guessIsLight = isLightName(guess.name);
+
+  const darkMatch = guessIsDark === targetIsDark;
+  const lightMatch = guessIsLight === targetIsLight;
+
   const c5 = document.createElement("div");
-  c5.className = `mdcell ${hasDark ? "ok" : "no"}`;
-  c5.innerHTML = `<div class="mdtext md-yn">${hasDark ? "YES" : "NO"}</div>`;
+  c5.className = `mdcell ${darkMatch ? "ok" : "no"}`;
+  c5.dataset.label = "Dark";
+  c5.innerHTML = `<div class="mdtext md-yn">${darkMatch ? "MATCH" : "NO IS DARK"}</div>`;
   row.appendChild(c5);
 
-  const hasLight = existsVariant(target.name, "Light");
   const c6 = document.createElement("div");
-  c6.className = `mdcell ${hasLight ? "ok" : "no"}`;
-  c6.innerHTML = `<div class="mdtext md-yn">${hasLight ? "YES" : "NO"}</div>`;
+  c6.className = `mdcell ${lightMatch ? "ok" : "no"}`;
+  c6.dataset.label = "Light";
+  c6.innerHTML = `<div class="mdtext md-yn">${lightMatch ? "MATCH" : "NO IS LIGHT"}</div>`;
   row.appendChild(c6);
 
   return row;
@@ -292,43 +418,50 @@ function renderBoard(state) {
 
   const shareBtn = $("#md-share");
   if (state.solved) {
-    setStatus(`¡Correcto! ${state.guesses.length}/${MAX_TRIES}.`);
+    setStatus(`You Win! ${state.guesses.length}/${MAX_TRIES}.`);
     if (shareBtn) shareBtn.disabled = false;
   } else if (state.finished) {
     if (shareBtn) shareBtn.disabled = false;
   } else {
-    setStatus(`${state.guesses.length}/${MAX_TRIES} intentos usados.`);
+    setStatus(`${state.guesses.length}/${MAX_TRIES} tries.`);
     if (shareBtn) shareBtn.disabled = true;
   }
+
   renderEndCard(state);
 }
 
-/* ====== share text ======*/
+/* ===============================
+   Share
+=============================== */
+
 function buildShareText(state, target) {
   const solved = state.solved === true;
   const tries = state.guesses.length;
   const dayKey = getGameDateKey();
 
   const title = `Miscritdle ${dayKey} — ${solved ? tries : "X"}/${MAX_TRIES}`;
+
   const tType = normalize(target.type || "");
   const tR = normalize(target.rarity || "");
   const tP = normalize(primaryPlace(target));
-  const tDark = existsVariant(target.name, "Dark");
-  const tLight = existsVariant(target.name, "Light");
+  const tDark = isDarkName(target.name);
+  const tLight = isLightName(target.name);
 
   const lines = state.guesses.map(g => {
     const gObj = findByName(g.name) || g;
     const gType = normalize(gObj.type || "");
     const gRarity = normalize(gObj.rarity || "");
     const gPlace = normalize(primaryPlace(gObj));
+    const gDark = isDarkName(gObj.name);
+    const gLight = isLightName(gObj.name);
 
     const cells = [
-      normalize(gObj.name) === normalize(target.name) ? "🟩" : "⬛",
+      sameName(gObj.name, target.name) ? "🟩" : "⬛",
       gType === tType ? "🟩" : "⬛",
       gRarity === tR ? "🟩" : "⬛",
       gPlace === tP ? "🟩" : "⬛",
-      (tDark ? "🟩" : "⬛"),
-      (tLight ? "🟩" : "⬛"),
+      (gDark === tDark ? "🟩" : "⬛"),
+      (gLight === tLight ? "🟩" : "⬛"),
     ];
     return cells.join("");
   });
@@ -337,7 +470,9 @@ function buildShareText(state, target) {
   return `${title}\n${lines.join("\n")}${reveal}`;
 }
 
-/* ====== dropdown ====== */
+/* ===============================
+   Dropdown
+=============================== */
 
 function renderDropdown(matches) {
   const dd = $("#mdDropdown");
@@ -376,9 +511,12 @@ function bindMiscritDropdown() {
 
   const open = () => {
     const q = normalize(input.value);
-    const matches = MISCRITS
+    const base = PLAYABLE.length ? PLAYABLE : MISCRITS;
+
+    const matches = base
       .filter(m => !q || normalize(m.name).includes(q))
       .slice(0, 60);
+
     renderDropdown(matches);
   };
 
@@ -407,7 +545,9 @@ function bindMiscritDropdown() {
   });
 }
 
-/* ====== events ====== */
+/* ===============================
+   Events
+=============================== */
 
 function initEvents() {
   const input = $("#md-guess");
@@ -427,14 +567,19 @@ function initEvents() {
       return;
     }
 
-    if (state.guesses.some(g => normalize(g.name) === normalize(gObj.name))) {
+    if (PLAYABLE.length && !PLAYABLE.some(m => sameName(m.name, gObj.name))) {
+      setStatus("This Miscrit is not available in Miscritdle pool.");
+      return;
+    }
+
+    if (state.guesses.some(g => sameName(g.name, gObj.name))) {
       setStatus("You already tried that Miscrit.");
       return;
     }
 
-    state.guesses.push({ id: gObj.id, name: gObj.name });
+    state.guesses.push({ name: gObj.name });
 
-    if (normalize(gObj.name) === normalize(todayTarget.name)) {
+    if (sameName(gObj.name, todayTarget.name)) {
       state.solved = true;
       state.finished = true;
     } else if (state.guesses.length >= MAX_TRIES) {
@@ -456,30 +601,35 @@ function initEvents() {
     const text = buildShareText(state, todayTarget);
     try {
       await navigator.clipboard.writeText(text);
-      setStatus("Copiado. Pégalo en Discord.");
+      setStatus("Copied. Paste it in Discord.");
     } catch {
-      prompt("Copia esto:", text);
+      prompt("Copy this:", text);
     }
   });
 }
 
-/* ====== load ====== */
+/* ===============================
+   Load
+=============================== */
 
 async function loadMiscrits() {
   const res = await fetch(MISCRITS_JSON_URL, { cache: "no-store" });
-  if (!res.ok) throw new Error(`HTTP ${res.status} cargando ${MISCRITS_JSON_URL}`);
+  if (!res.ok) throw new Error(`HTTP ${res.status} loading ${MISCRITS_JSON_URL}`);
 
   const json = await res.json();
   const list = Array.isArray(json?.miscrits) ? json.miscrits : [];
 
   MISCRITS = list
-    .filter(m => m?.name && m?.id != null)
+    .filter(m => m?.name)
     .slice()
-    .sort((a, b) => toNum(a.id) - toNum(b.id));
+    .sort((a, b) => (a.name ?? "").localeCompare((b.name ?? ""), "en", { sensitivity: "base" }));
 
-  if (!MISCRITS.length) throw new Error("miscrits.json vacío o estructura inválida.");
+  if (!MISCRITS.length) throw new Error("miscrits.json empty or invalid structure.");
 
-  todayTarget = pickTodayTarget(MISCRITS);
+  await loadMiscritdlePool();
+  PLAYABLE = buildMiscritdlePool(MISCRITS);
+
+  todayTarget = pickTodayTarget(PLAYABLE);
 }
 
 (async function boot() {
@@ -491,6 +641,6 @@ async function loadMiscrits() {
     renderBoard(loadState());
   } catch (e) {
     console.error(e);
-    setStatus("Error loading Miscritdle. Revisa consola y rutas del JSON.");
+    setStatus("Error loading Miscritdle. Check console and JSON paths.");
   }
 })();

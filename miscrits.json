@@ -276,7 +276,7 @@
       "type": "Water",
       "rarity": "Common",
       "spawns": [
-        {"place": "Forest","zone": ["Forest 1"],"view": "object","objectImage": "../assets/images/maps/Waddles.png","days": "LUN_JUE_DOM"}
+        {"place": "Cave","zone": ["Cualquier Objeto Zona 1 de la Cueva"],"view": "object","objectImage": "../assets/images/maps/cave.jpg","days": "ALL_DAYS"}
       ],
       "avatar": "frostmite_avatar.png"
     },
@@ -671,7 +671,7 @@
       ]
     },
     {
-      "id": "067",
+      "id": "066",
       "name": "Beelzebug",
       "type": "Lightning",
       "rarity": "Epic",
@@ -681,7 +681,7 @@
       ]
     },
     {
-      "id": "068",
+      "id": "067",
       "name": "Winnebeargo",
       "type": "Wind",
       "rarity": "Epic",
@@ -691,7 +691,7 @@
       ]
     },
     {
-      "id": "069",
+      "id": "068",
       "name": "Fennie",
       "type": "Earth",
       "rarity": "Epic",
@@ -701,7 +701,7 @@
       ]
     },
     {
-      "id": "070",
+      "id": "069",
       "name": "Patchkin",
       "type": "Nature",
       "rarity": "Exotic",
@@ -711,7 +711,7 @@
       ]
     },
     {
-      "id": "072",
+      "id": "070",
       "name": "Flurrious",
       "type": "Water",
       "rarity": "Exotic",
@@ -721,7 +721,7 @@
       ]
     },
     {
-      "id": "073",
+      "id": "071",
       "name": "Fangly",
       "type": "Wind",
       "rarity": "Epic",
@@ -731,7 +731,7 @@
       ]
     },
     {
-      "id": "074",
+      "id": "072",
       "name": "Dark Kiloray",
       "type": "Lightning",
       "rarity": "Rare",
@@ -741,7 +741,7 @@
       ]
     },
     {
-      "id": "075",
+      "id": "073",
       "name": "Dark Croaky",
       "type": "Earth",
       "rarity": "Rare",
@@ -751,7 +751,7 @@
       ]
     },
     {
-      "id": "076",
+      "id": "074",
       "name": "Valentino",
       "type": "Lightning",
       "rarity": "Exotic",
@@ -761,7 +761,7 @@
       ]
     },
     {
-      "id": "077",
+      "id": "075",
       "name": "Dark Cubsprout",
       "type": "Nature",
       "rarity": "Rare",
@@ -771,7 +771,7 @@
       ]
     },
     {
-      "id": "078",
+      "id": "076",
       "name": "Dark Sparkitten",
       "type": "Fire",
       "rarity": "Rare",
@@ -781,7 +781,7 @@
       ]
     },
     {
-      "id": "079",
+      "id": "077",
       "name": "Dark Snortus",
       "type": "Water",
       "rarity": "Epic",
@@ -791,7 +791,7 @@
       ]
     },
     {
-      "id": "080",
+      "id": "078",
       "name": "Boltzee",
       "type": "Lightning",
       "rarity": "Epic",
@@ -801,7 +801,7 @@
       ]
     },
     {
-      "id": "082",
+      "id": "079",
       "name": "Dark Owlie",
       "type": "Wind",
       "rarity": "Rare",
@@ -811,7 +811,7 @@
       ]
     },
     {
-      "id": "083",
+      "id": "080",
       "name": "Dark Echino",
       "type": "Nature",
       "rarity": "Rare",
@@ -821,7 +821,7 @@
       ]
     },
     {
-      "id": "085",
+      "id": "081",
       "name": "Dark Arigato",
       "type": "Lightning",
       "rarity": "Rare",
@@ -831,7 +831,7 @@
       ]
     },
     {
-      "id": "086",
+      "id": "082",
       "name": "Dark Hydroseal",
       "type": "Water",
       "rarity": "Rare",
@@ -841,7 +841,7 @@
       ]
     },
     {
-      "id": "087",
+      "id": "083",
       "name": "Peepsie",
       "type": "Wind",
       "rarity": "Exotic",
@@ -851,7 +851,7 @@
       ]
     },
     {
-      "id": "088",
+      "id": "084",
       "name": "Dark Eggy",
       "type": "Earth",
       "rarity": "Epic",
@@ -861,7 +861,7 @@
       ]
     },
     {
-      "id": "090",
+      "id": "085",
       "name": "Dark Flameling",
       "type": "Fire",
       "rarity": "Rare",
@@ -871,7 +871,7 @@
       ]
     },
     {
-      "id": "091",
+      "id": "086",
       "name": "Dark Elefauna",
       "type": "Nature",
       "rarity": "Epic",
@@ -881,7 +881,7 @@
       ]
     },
     {
-      "id": "093",
+      "id": "087",
       "name": "Mama",
       "type": "Nature",
       "rarity": "Exotic",
@@ -891,7 +891,7 @@
       ]
     },
     {
-      "id": "094",
+      "id": "088",
       "name": "Dark Nessy",
       "type": "Water",
       "rarity": "Exotic",
@@ -901,7 +901,7 @@
       ]
     },
     {
-      "id": "095",
+      "id": "089",
       "name": "Dark Hotfoot",
       "type": "Fire",
       "rarity": "Rare",
@@ -911,7 +911,7 @@
       ]
     },
     {
-      "id": "097",
+      "id": "090",
       "name": "Dark Breezycheeks",
       "type": "Wind",
       "rarity": "Rare",
@@ -921,7 +921,7 @@
       ]
     },
     {
-      "id": "098",
+      "id": "091",
       "name": "Papa",
       "type": "Lightning",
       "rarity": "Exotic",
@@ -931,7 +931,7 @@
       ]
     },
     {
-      "id": "101",
+      "id": "092",
       "name": "Whik",
       "type": "Fire",
       "rarity": "Common",
@@ -941,7 +941,7 @@
       ]
     },
     {
-      "id": "102",
+      "id": "093",
       "name": "Slithero",
       "type": "Fire",
       "rarity": "Common",
@@ -951,7 +951,7 @@
       ]
     },
     {
-      "id": "104",
+      "id": "094",
       "name": "Spinnerette",
       "type": "Water",
       "rarity": "Common",
@@ -961,7 +961,7 @@
       ]
     },
     {
-      "id": "108",
+      "id": "095",
       "name": "Crickin",
       "type": "Fire",
       "rarity": "Common",
@@ -971,7 +971,7 @@
       ]
     },
     {
-      "id": "111",
+      "id": "096",
       "name": "Bubbles",
       "type": "Water",
       "rarity": "Common",
@@ -981,7 +981,7 @@
       ]
     },
     {
-      "id": "112",
+      "id": "097",
       "name": "Humbug",
       "type": "Nature",
       "rarity": "Common",
@@ -991,7 +991,7 @@
       ]
     },
     {
-      "id": "115",
+      "id": "098",
       "name": "Lavarilla",
       "type": "Fire",
       "rarity": "Common",
@@ -1001,7 +1001,7 @@
       ]
     },
     {
-      "id": "121",
+      "id": "099",
       "name": "Bloomple",
       "type": "Nature",
       "rarity": "Epic",
@@ -1011,7 +1011,7 @@
       ]
     },
     {
-      "id": "124",
+      "id": "100",
       "name": "Pamboo",
       "type": "Nature",
       "rarity": "Rare",
@@ -1021,7 +1021,7 @@
       ]
     },
     {
-      "id": "125",
+      "id": "101",
       "name": "Rockodile",
       "type": "Water",
       "rarity": "Rare",
@@ -1031,7 +1031,7 @@
       ]
     },
     {
-      "id": "133",
+      "id": "102",
       "name": "Boneshee",
       "type": "Wind",
       "rarity": "Epic",
@@ -1041,7 +1041,7 @@
       ]
     },
     {
-      "id": "134",
+      "id": "103",
       "name": "Ursiwave",
       "type": "Water",
       "rarity": "Epic",
@@ -1051,7 +1051,7 @@
       ]
     },
     {
-      "id": "135",
+      "id": "104",
       "name": "Bludger",
       "type": "Earth",
       "rarity": "Common",
@@ -1061,7 +1061,7 @@
       ]
     },
     {
-      "id": "138",
+      "id": "105",
       "name": "Zaptor",
       "type": "Lightning",
       "rarity": "Common",
@@ -1071,7 +1071,7 @@
       ]
     },
     {
-      "id": "139",
+      "id": "106",
       "name": "Narlope",
       "type": "Lightning",
       "rarity": "Common",
@@ -1081,7 +1081,7 @@
       ]
     },
     {
-      "id": "142",
+      "id": "107",
       "name": "Vexie",
       "type": "Earth",
       "rarity": "Common",
@@ -1091,7 +1091,7 @@
       ]
     },
     {
-      "id": "144",
+      "id": "108",
       "name": "Tongutail",
       "type": "Earth",
       "rarity": "Common",
@@ -1101,7 +1101,7 @@
       ]
     },
     {
-      "id": "151",
+      "id": "109",
       "name": "Hawkai",
       "type": "Wind",
       "rarity": "Common",
@@ -1111,7 +1111,7 @@
       ]
     },
     {
-      "id": "152",
+      "id": "110",
       "name": "Nero",
       "type": "Lightning",
       "rarity": "Common",
@@ -1121,7 +1121,7 @@
       ]
     },
     {
-      "id": "155",
+      "id": "111",
       "name": "Pollifog",
       "type": "Wind",
       "rarity": "Rare",
@@ -1131,7 +1131,7 @@
       ]
     },
     {
-      "id": "156",
+      "id": "112",
       "name": "Felis",
       "type": "Lightning",
       "rarity": "Common",
@@ -1141,7 +1141,7 @@
       ]
     },
     {
-      "id": "158",
+      "id": "113",
       "name": "Tectonyx",
       "type": "Earth",
       "rarity": "Common",
@@ -1151,7 +1151,7 @@
       ]
     },
     {
-      "id": "168",
+      "id": "114",
       "name": "Nibbles",
       "type": "Water",
       "rarity": "Common",
@@ -1161,7 +1161,7 @@
       ]
     },
     {
-      "id": "171",
+      "id": "115",
       "name": "Skustunk",
       "type": "Wind",
       "rarity": "Rare",
@@ -1171,7 +1171,7 @@
       ]
     },
     {
-      "id": "176",
+      "id": "116",
       "name": "Flintly",
       "type": "Fire",
       "rarity": "Rare",
@@ -1181,7 +1181,7 @@
       ]
     },
     {
-      "id": "180",
+      "id": "117",
       "name": "Gog",
       "type": "Earth",
       "rarity": "Epic",
@@ -1191,7 +1191,7 @@
       ]
     },
     {
-      "id": "184",
+      "id": "118",
       "name": "Octavio",
       "type": "Wind",
       "rarity": "Epic",
@@ -1201,7 +1201,7 @@
       ]
     },
     {
-      "id": "192",
+      "id": "119",
       "name": "Crabbles",
       "type": "Fire",
       "rarity": "Rare",
@@ -1211,7 +1211,7 @@
       ]
     },
     {
-      "id": "196",
+      "id": "120",
       "name": "Inferno",
       "type": "Fire",
       "rarity": "Epic",
@@ -1221,7 +1221,7 @@
       ]
     },
     {
-      "id": "197",
+      "id": "121",
       "name": "Hotdog",
       "type": "Fire",
       "rarity": "Epic",
@@ -1231,7 +1231,7 @@
       ]
     },
     {
-      "id": "200",
+      "id": "122",
       "name": "Rafiery",
       "type": "Fire",
       "rarity": "Rare",
@@ -1241,7 +1241,7 @@
       ]
     },
     {
-      "id": "201",
+      "id": "123",
       "name": "Nanaslug",
       "type": "WaterWind",
       "rarity": "Epic",
@@ -1251,7 +1251,7 @@
       ]
     },
     {
-      "id": "202",
+      "id": "124",
       "name": "Vhisp",
       "type": "Wind",
       "rarity": "Common",
@@ -1261,7 +1261,7 @@
       ]
     },
     {
-      "id": "203",
+      "id": "125",
       "name": "Raldio",
       "type": "Earth",
       "rarity": "Rare",
@@ -1271,7 +1271,7 @@
       ]
     },
     {
-      "id": "205",
+      "id": "126",
       "name": "Freedom",
       "type": "FireWind",
       "rarity": "Exotic",
@@ -1281,7 +1281,7 @@
       ]
     },
     {
-      "id": "206",
+      "id": "127",
       "name": "Gemix",
       "type": "Earth",
       "rarity": "Epic",
@@ -1291,7 +1291,7 @@
       ]
     },
     {
-      "id": "210",
+      "id": "128",
       "name": "Podo",
       "type": "Lightning",
       "rarity": "Epic",
@@ -1301,7 +1301,7 @@
       ]
     },
     {
-      "id": "212",
+      "id": "129",
       "name": "Lavazard",
       "type": "Fire",
       "rarity": "Epic",
@@ -1311,7 +1311,7 @@
       ]
     },
     {
-      "id": "214",
+      "id": "130",
       "name": "Shurikoon",
       "type": "FireWind",
       "rarity": "Epic",
@@ -1321,7 +1321,7 @@
       ]
     },
     {
-      "id": "223",
+      "id": "131",
       "name": "Skelepup",
       "type": "Lightning",
       "rarity": "Exotic",
@@ -1331,7 +1331,7 @@
       ]
     },
     {
-      "id": "226",
+      "id": "132",
       "name": "Foil Waddles",
       "type": "Water",
       "rarity": "Exotic",
@@ -1341,7 +1341,7 @@
       ]
     },
     {
-      "id": "227",
+      "id": "133",
       "name": "Foil Fossillia",
       "type": "Earth",
       "rarity": "Exotic",
@@ -1351,7 +1351,7 @@
       ]
     },
     {
-      "id": "230",
+      "id": "134",
       "name": "Foil Thundercracker",
       "type": "Lightning",
       "rarity": "Exotic",
@@ -1361,7 +1361,7 @@
       ]
     },
     {
-      "id": "242",
+      "id": "135",
       "name": "Hoopty",
       "type": "Earth",
       "rarity": "Epic",
@@ -1371,7 +1371,7 @@
       ]
     },
     {
-      "id": "247",
+      "id": "136",
       "name": "Foil Kiloray",
       "type": "Lightning",
       "rarity": "Exotic",
@@ -1381,7 +1381,7 @@
       ]
     },
     {
-      "id": "248",
+      "id": "137",
       "name": "Spangles",
       "type": "Lightning",
       "rarity": "Exotic",
@@ -1391,7 +1391,7 @@
       ]
     },
     {
-      "id": "312",
+      "id": "138",
       "name": "Opigum",
       "type": "Earth",
       "rarity": "Rare",
@@ -1401,7 +1401,7 @@
       ]
     },
     {
-      "id": "322",
+      "id": "139",
       "name": "Foil Flintly",
       "type": "Fire",
       "rarity": "Exotic",
@@ -1411,7 +1411,7 @@
       ]
     },
     {
-      "id": "326",
+      "id": "140",
       "name": "Light Tectonyx",
       "type": "Earth",
       "rarity": "Exotic",
@@ -1421,7 +1421,7 @@
       ]
     },
     {
-      "id": "338",
+      "id": "141",
       "name": "Flaring",
       "type": "Fire",
       "rarity": "Epic",
@@ -1431,7 +1431,7 @@
       ]
     },
     {
-      "id": "341",
+      "id": "142",
       "name": "Cadbunny",
       "type": "WaterEarth",
       "rarity": "Exotic",
@@ -1441,7 +1441,7 @@
       ]
     },
     {
-      "id": "352",
+      "id": "143",
       "name": "Fiender",
       "type": "Wind",
       "rarity": "Rare",
@@ -1451,7 +1451,7 @@
       ]
     },
     {
-      "id": "356",
+      "id": "144",
       "name": "Pillblaze",
       "type": "Fire",
       "rarity": "Rare",
@@ -1461,7 +1461,7 @@
       ]
     },
     {
-      "id": "367",
+      "id": "145",
       "name": "Blub",
       "type": "Lightning",
       "rarity": "Common",
@@ -1471,7 +1471,7 @@
       ]
     },
     {
-      "id": "376",
+      "id": "146",
       "name": "Cerberuff",
       "type": "Earth",
       "rarity": "Common",
@@ -1481,7 +1481,7 @@
       ]
     },
     {
-      "id": "378",
+      "id": "147",
       "name": "Auger",
       "type": "Earth",
       "rarity": "Common",
@@ -1491,7 +1491,7 @@
       ]
     },
     {
-      "id": "380",
+      "id": "148",
       "name": "Flurfy",
       "type": "Nature",
       "rarity": "Common",
@@ -1501,7 +1501,7 @@
       ]
     },
     {
-      "id": "382",
+      "id": "149",
       "name": "Squirmle",
       "type": "Water",
       "rarity": "Common",
@@ -1511,7 +1511,7 @@
       ]
     },
     {
-      "id": "388",
+      "id": "150",
       "name": "Lil Bubs",
       "type": "Water",
       "rarity": "Rare",
@@ -1521,7 +1521,7 @@
       ]
     },
     {
-      "id": "390",
+      "id": "151",
       "name": "Peekly",
       "type": "Wind",
       "rarity": "Common",
@@ -1531,7 +1531,7 @@
       ]
     },
     {
-      "id": "404",
+      "id": "152",
       "name": "Splender",
       "type": "NatureEarth",
       "rarity": "Exotic",
@@ -1541,7 +1541,7 @@
       ]
     },
     {
-      "id": "405",
+      "id": "153",
       "name": "Dorux",
       "type": "FireLightning",
       "rarity": "Epic",
@@ -1551,7 +1551,7 @@
       ]
     },
     {
-      "id": "417",
+      "id": "154",
       "name": "Fubby",
       "type": "Earth",
       "rarity": "Exotic",
@@ -1561,7 +1561,7 @@
       ]
     },
     {
-      "id": "419",
+      "id": "155",
       "name": "Pennon",
       "type": "Wind",
       "rarity": "Epic",
@@ -1571,7 +1571,7 @@
       ]
     },
     {
-      "id": "420",
+      "id": "156",
       "name": "Ekkult",
       "type": "Water",
       "rarity": "Exotic",
@@ -1581,7 +1581,7 @@
       ]
     },
     {
-      "id": "425",
+      "id": "157",
       "name": "Defilio",
       "type": "NatureEarth",
       "rarity": "Exotic",
@@ -1591,7 +1591,7 @@
       ]
     },
     {
-      "id": "430",
+      "id": "158",
       "name": "Blighted Cubsprout",
       "type": "Nature",
       "rarity": "Exotic",
@@ -1601,7 +1601,7 @@
       ]
     },
     {
-      "id": "433",
+      "id": "159",
       "name": "Blighted Flue",
       "type": "Fire",
       "rarity": "Legendary",
@@ -1611,7 +1611,7 @@
       ]
     },
     {
-      "id": "438",
+      "id": "160",
       "name": "Blobroller",
       "type": "Nature Lightning",
       "rarity": "Exotic",
@@ -1621,7 +1621,7 @@
       ]
     },
     {
-      "id": "451",
+      "id": "161",
       "name": "Light Nibbles",
       "type": "WaterLightning",
       "rarity": "Epic",
@@ -1631,7 +1631,7 @@
       ]
     },
     {
-      "id": "456",
+      "id": "162",
       "name": "Light Frostmite",
       "type": "Water",
       "rarity": "Exotic",
@@ -1641,7 +1641,7 @@
       ]
     },
     {
-      "id": "457",
+      "id": "163",
       "name": "Light Bludger",
       "type": "Earth",
       "rarity": "Exotic",
@@ -1651,7 +1651,7 @@
       ]
     },
     {
-      "id": "458",
+      "id": "164",
       "name": "Light Zaptor",
       "type": "NatureLightning",
       "rarity": "Exotic",
@@ -1661,7 +1661,7 @@
       ]
     },
     {
-      "id": "459",
+      "id": "165",
       "name": "Light Quirk",
       "type": "Nature",
       "rarity": "Epic",
@@ -1671,7 +1671,7 @@
       ]
     },
     {
-      "id": "476",
+      "id": "166",
       "name": "Light Statikat",
       "type": "FireLightning",
       "rarity": "Exotic",
@@ -1681,7 +1681,7 @@
       ]
     },
     {
-      "id": "480",
+      "id": "167",
       "name": "Dark Spinnerette",
       "type": "Water",
       "rarity": "Exotic",
@@ -1691,7 +1691,7 @@
       ]
     },
     {
-      "id": "488",
+      "id": "168",
       "name": "Light Twiggum",
       "type": "Nature",
       "rarity": "Exotic",
@@ -1701,7 +1701,7 @@
       ]
     },
     {
-      "id": "493",
+      "id": "169",
       "name": "Aquarion",
       "type": "Water",
       "rarity": "Legendary",
@@ -1711,7 +1711,7 @@
       ]
     },
     {
-      "id": "500",
+      "id": "170",
       "name": "Blighted Fiender",
       "type": "Wind",
       "rarity": "Exotic",
@@ -1721,7 +1721,7 @@
       ]
     },
     {
-      "id": "501",
+      "id": "171",
       "name": "Blighted Kiloray",
       "type": "Lightning",
       "rarity": "Exotic",
@@ -1731,7 +1731,7 @@
       ]
     },
     {
-      "id": "502",
+      "id": "172",
       "name": "Dark Shellbee",
       "type": "Water",
       "rarity": "Rare",
@@ -1741,7 +1741,7 @@
       ]
     },
     {
-      "id": "503",
+      "id": "173",
       "name": "Liothning",
       "type": "Lightning",
       "rarity": "Epic",
@@ -1751,7 +1751,7 @@
       ]
     },
     {
-      "id": "504",
+      "id": "174",
       "name": "Dark Lumera",
       "type": "Fire",
       "rarity": "Rare",
@@ -1761,7 +1761,7 @@
       ]
     },
     {
-      "id": "505",
+      "id": "175",
       "name": "Dark Steamguin",
       "type": "Fire",
       "rarity": "Rare",
@@ -1771,7 +1771,7 @@
       ]
     },
     {
-      "id": "506",
+      "id": "176",
       "name": "Dark Poltergust",
       "type": "Wind",
       "rarity": "Legendary",
@@ -1781,7 +1781,7 @@
       ]
     },
     {
-      "id": "507",
+      "id": "177",
       "name": "Dark Treemur",
       "type": "Nature",
       "rarity": "Epic",
@@ -1791,7 +1791,7 @@
       ]
     },
     {
-      "id": "508",
+      "id": "178",
       "name": "Foil Vexie",
       "type": "Earth",
       "rarity": "Exotic",
@@ -1801,7 +1801,7 @@
       ]
     },
     {
-      "id": "509",
+      "id": "179",
       "name": "Foil Vhisp",
       "type": "Wind",
       "rarity": "Exotic",
@@ -1811,7 +1811,7 @@
       ]
     },
     {
-      "id": "510",
+      "id": "180",
       "name": "Dark Sparkupine",
       "type": "Fire",
       "rarity": "Rare",
@@ -1821,7 +1821,7 @@
       ]
     },
     {
-      "id": "511",
+      "id": "181",
       "name": "Dark Squibee",
       "type": "Water",
       "rarity": "Rare",
@@ -1831,7 +1831,7 @@
       ]
     },
     {
-      "id": "512",
+      "id": "182",
       "name": "Dark Waddles",
       "type": "Water",
       "rarity": "Epic",
@@ -1841,7 +1841,7 @@
       ]
     },
     {
-      "id": "513",
+      "id": "183",
       "name": "Dark Twiggum",
       "type": "Nature",
       "rarity": "Epic",
@@ -1851,7 +1851,7 @@
       ]
     },
     {
-      "id": "514",
+      "id": "184",
       "name": "Dark Auger",
       "type": "Earth",
       "rarity": "Epic",
@@ -1861,7 +1861,7 @@
       ]
     },
     {
-      "id": "515",
+      "id": "185",
       "name": "Dark Aria",
       "type": "Wind",
       "rarity": "Rare",
@@ -1871,7 +1871,7 @@
       ]
     },
     {
-      "id": "516",
+      "id": "186",
       "name": "Light Rafiery",
       "type": "FireLightning",
       "rarity": "Epic",
@@ -1881,7 +1881,7 @@
       ]
     },
     {
-      "id": "517",
+      "id": "187",
       "name": "Light Fossillia",
       "type": "WaterEarth",
       "rarity": "Epic",
@@ -1891,7 +1891,7 @@
       ]
     },
     {
-      "id": "518",
+      "id": "188",
       "name": "Light Nanaslug",
       "type": "Wind",
       "rarity": "Exotic",
@@ -1901,7 +1901,7 @@
       ]
     },
     {
-      "id": "519",
+      "id": "189",
       "name": "Light Crickin",
       "type": "Fire",
       "rarity": "Exotic",
@@ -1911,7 +1911,7 @@
       ]
     },
     {
-      "id": "520",
+      "id": "190",
       "name": "Light Flue",
       "type": "FireWind",
       "rarity": "Epic",
@@ -1921,7 +1921,7 @@
       ]
     },
     {
-      "id": "521",
+      "id": "191",
       "name": "Light Grubbean",
       "type": "NatureWind",
       "rarity": "Epic",
@@ -1931,7 +1931,7 @@
       ]
     },
     {
-      "id": "522",
+      "id": "192",
       "name": "Ribos",
       "type": "Water",
       "rarity": "Rare",
@@ -1941,7 +1941,7 @@
       ]
     },
     {
-      "id": "523",
+      "id": "193",
       "name": "Light Sparkspeck",
       "type": "Lightning",
       "rarity": "Rare",
@@ -1951,7 +1951,7 @@
       ]
     },
     {
-      "id": "524",
+      "id": "194",
       "name": "Light Wavesling",
       "type": "WaterWind",
       "rarity": "Rare",
@@ -1961,7 +1961,7 @@
       ]
     },
     {
-      "id": "525",
+      "id": "195",
       "name": "Light Jack",
       "type": "Wind",
       "rarity": "Rare",
@@ -1971,7 +1971,7 @@
       ]
     },
     {
-      "id": "526",
+      "id": "196",
       "name": "Light Flurfy",
       "type": "Nature",
       "rarity": "Rare",
@@ -1981,7 +1981,7 @@
       ]
     },
     {
-      "id": "527",
+      "id": "197",
       "name": "Light Slithero",
       "type": "Fire",
       "rarity": "Rare",
@@ -1991,7 +1991,7 @@
       ]
     },
     {
-      "id": "528",
+      "id": "198",
       "name": "Light Squibee",
       "type": "Water",
       "rarity": "Rare",
@@ -2001,7 +2001,7 @@
       ]
     },
     {
-      "id": "529",
+      "id": "199",
       "name": "Light Digsy",
       "type": "FireEarth",
       "rarity": "Epic",
@@ -2011,7 +2011,7 @@
       ]
     },
     {
-      "id": "530",
+      "id": "200",
       "name": "Light Ignios",
       "type": "Fire Lightning",
       "rarity": "Legendary",
@@ -2021,7 +2021,7 @@
       ]
     },
     {
-      "id": "531",
+      "id": "201",
       "name": "Light Mumbah",
       "type": "Earth",
       "rarity": "Rare",
@@ -2031,7 +2031,7 @@
       ]
     },
     {
-      "id": "532",
+      "id": "202",
       "name": "Dark Tongutail",
       "type": "Earth",
       "rarity": "Rare",
@@ -2041,7 +2041,7 @@
       ]
     },
     {
-      "id": "533",
+      "id": "203",
       "name": "Dark Lavarilla",
       "type": "Fire",
       "rarity": "Rare",
@@ -2051,7 +2051,7 @@
       ]
     },
     {
-      "id": "534",
+      "id": "204",
       "name": "Dark Frostmite",
       "type": "Water",
       "rarity": "Rare",
@@ -2061,7 +2061,7 @@
       ]
     },
     {
-      "id": "535",
+      "id": "205",
       "name": "Dark Tulipinny",
       "type": "Nature",
       "rarity": "Epic",
@@ -2071,7 +2071,7 @@
       ]
     },
     {
-      "id": "536",
+      "id": "206",
       "name": "Dark Flutterpat",
       "type": "Wind",
       "rarity": "Epic",
@@ -2081,7 +2081,7 @@
       ]
     },
     {
-      "id": "537",
+      "id": "207",
       "name": "Dark Slithero",
       "type": "Fire",
       "rarity": "Exotic",
@@ -2091,7 +2091,7 @@
       ]
     },
     {
-      "id": "538",
+      "id": "208",
       "name": "Keeper",
       "type": "Nature Earth",
       "rarity": "Legendary",
@@ -2101,7 +2101,7 @@
       ]
     },
     {
-      "id": "539",
+      "id": "209",
       "name": "Dark Luna",
       "type": "Lightning",
       "rarity": "Epic",
@@ -2111,7 +2111,7 @@
       ]
     },
     {
-      "id": "540",
+      "id": "210",
       "name": "Foil Luna",
       "type": "Lightning",
       "rarity": "Exotic",
@@ -2121,7 +2121,7 @@
       ]
     },
     {
-      "id": "541",
+      "id": "211",
       "name": "Sol",
       "type": "Fire",
       "rarity": "Rare",
@@ -2131,7 +2131,7 @@
       ]
     },
     {
-      "id": "542",
+      "id": "212",
       "name": "Dreamger",
       "type": "Wind",
       "rarity": "Rare",
@@ -2141,7 +2141,7 @@
       ]
     },
     {
-      "id": "543",
+      "id": "213",
       "name": "Light Weevern",
       "type": "NatureEarth",
       "rarity": "Epic",
@@ -2151,7 +2151,7 @@
       ]
     },
     {
-      "id": "544",
+      "id": "214",
       "name": "Dark Quirk",
       "type": "Nature",
       "rarity": "Rare",
@@ -2161,7 +2161,7 @@
       ]
     },
     {
-      "id": "545",
+      "id": "215",
       "name": "Dark Squirmle",
       "type": "Water",
       "rarity": "Rare",
@@ -2171,7 +2171,7 @@
       ]
     },
     {
-      "id": "546",
+      "id": "216",
       "name": "Blighted Flowerpiller",
       "type": "Nature",
       "rarity": "Legendary",
@@ -2181,7 +2181,7 @@
       ]
     },
     {
-      "id": "547",
+      "id": "217",
       "name": "Dark Jellyshock",
       "type": "Lightning",
       "rarity": "Epic",
@@ -2191,7 +2191,7 @@
       ]
     },
     {
-      "id": "548",
+      "id": "218",
       "name": "Light Hawkai",
       "type": "Wind",
       "rarity": "Rare",
@@ -2201,7 +2201,7 @@
       ]
     },
     {
-      "id": "549",
+      "id": "219",
       "name": "Dark Vexie",
       "type": "Earth",
       "rarity": "Rare",
@@ -2211,7 +2211,7 @@
       ]
     },
     {
-      "id": "550",
+      "id": "220",
       "name": "Da Windy",
       "type": "Wind",
       "rarity": "Legendary",
@@ -2221,7 +2221,7 @@
       ]
     },
     {
-      "id": "551",
+      "id": "221",
       "name": "Light Snorkels",
       "type": "WaterWind",
       "rarity": "Exotic",
@@ -2231,7 +2231,7 @@
       ]
     },
     {
-      "id": "552",
+      "id": "222",
       "name": "Foil Croaky",
       "type": "Earth",
       "rarity": "Legendary",
@@ -2241,7 +2241,7 @@
       ]
     },
     {
-      "id": "553",
+      "id": "223",
       "name": "Freezet",
       "type": "Water",
       "rarity": "Common",
@@ -2251,7 +2251,7 @@
       ]
     },
     {
-      "id": "554",
+      "id": "224",
       "name": "Dark Pillblaze",
       "type": "Fire",
       "rarity": "Epic",
@@ -2261,7 +2261,7 @@
       ]
     },
     {
-      "id": "555",
+      "id": "225",
       "name": "Rudy",
       "type": "Earth",
       "rarity": "Exotic",
@@ -2271,7 +2271,7 @@
       ]
     },
     {
-      "id": "556",
+      "id": "226",
       "name": "Manio",
       "type": "Lightning",
       "rarity": "Legendary",
@@ -2281,7 +2281,7 @@
       ]
     },
     {
-      "id": "557",
+      "id": "227",
       "name": "Mistraxol",
       "type": "Wind",
       "rarity": "Common",
@@ -2291,7 +2291,7 @@
       ]
     },
     {
-      "id": "558",
+      "id": "228",
       "name": "Orbling",
       "type": "Earth",
       "rarity": "Common",
@@ -2301,7 +2301,7 @@
       ]
     },
     {
-      "id": "559",
+      "id": "229",
       "name": "Zappup",
       "type": "Lightning",
       "rarity": "Common",
@@ -2311,7 +2311,7 @@
       ]
     },
     {
-      "id": "560",
+      "id": "230",
       "name": "Pestling",
       "type": "Nature",
       "rarity": "Common",
@@ -2321,7 +2321,7 @@
       ]
     },
     {
-      "id": "561",
+      "id": "231",
       "name": "Woolly",
       "type": "Water",
       "rarity": "Legendary",
@@ -2331,7 +2331,7 @@
       ]
     },
     {
-      "id": "562",
+      "id": "232",
       "name": "Frozy",
       "type": "Water",
       "rarity": "Common",
@@ -2341,7 +2341,7 @@
       ]
     },
     {
-      "id": "563",
+      "id": "233",
       "name": "Stalkra",
       "type": "Nature",
       "rarity": "Common",
@@ -2351,7 +2351,7 @@
       ]
     },
     {
-      "id": "564",
+      "id": "234",
       "name": "Mech",
       "type": "Water",
       "rarity": "Common",
@@ -2361,7 +2361,7 @@
       ]
     },
     {
-      "id": "565",
+      "id": "235",
       "name": "Rexie",
       "type": "Fire",
       "rarity": "Common",
@@ -2371,7 +2371,7 @@
       ]
     },
     {
-      "id": "566",
+      "id": "236",
       "name": "Warrian",
       "type": "Fire",
       "rarity": "Common",
@@ -2381,7 +2381,7 @@
       ]
     },
     {
-      "id": "567",
+      "id": "237",
       "name": "Aebex",
       "type": "NatureWind",
       "rarity": "Common",
@@ -2391,7 +2391,7 @@
       ]
     },
     {
-      "id": "568",
+      "id": "238",
       "name": "Charix",
       "type": "Nature",
       "rarity": "Rare",
@@ -2401,7 +2401,7 @@
       ]
     },
     {
-      "id": "569",
+      "id": "239",
       "name": "Alpha",
       "type": "Nature",
       "rarity": "Exotic",
@@ -2411,7 +2411,7 @@
       ]
     },
     {
-      "id": "570",
+      "id": "240",
       "name": "Charpy",
       "type": "Fire",
       "rarity": "Legendary",
@@ -2421,7 +2421,7 @@
       ]
     },
     {
-      "id": "571",
+      "id": "241",
       "name": "Lambolt",
       "type": "Lightning",
       "rarity": "Rare",
@@ -2431,7 +2431,7 @@
       ]
     },
     {
-      "id": "572",
+      "id": "242",
       "name": "Gravitron",
       "type": "Earth",
       "rarity": "Exotic",
@@ -2441,7 +2441,7 @@
       ]
     },
     {
-      "id": "573",
+      "id": "243",
       "name": "Babakku",
       "type": "Earth",
       "rarity": "Epic",
@@ -2451,7 +2451,7 @@
       ]
     },
     {
-      "id": "574",
+      "id": "244",
       "name": "Smolderfry",
       "type": "Fire",
       "rarity": "Exotic",
@@ -2461,7 +2461,7 @@
       ]
     },
     {
-      "id": "575",
+      "id": "245",
       "name": "Moondrip",
       "type": "Water",
       "rarity": "Common",
@@ -2471,7 +2471,7 @@
       ]
     },
     {
-      "id": "576",
+      "id": "246",
       "name": "Shroolet",
       "type": "Water",
       "rarity": "Rare",
@@ -2481,7 +2481,7 @@
       ]
     },
     {
-      "id": "577",
+      "id": "247",
       "name": "Lumite",
       "type": "Earth",
       "rarity": "Common",
@@ -2491,7 +2491,7 @@
       ]
     },
     {
-      "id": "578",
+      "id": "248",
       "name": "Voidotron",
       "type": "FireWind",
       "rarity": "Legendary",
@@ -2501,7 +2501,7 @@
       ]
     },
     {
-      "id": "579",
+      "id": "249",
       "name": "Niboro",
       "type": "Wind",
       "rarity": "Epic",
@@ -2511,7 +2511,7 @@
       ]
     },
     {
-      "id": "580",
+      "id": "250",
       "name": "Pinplar",
       "type": "Water",
       "rarity": "Exotic",
@@ -2521,7 +2521,7 @@
       ]
     },
     {
-      "id": "581",
+      "id": "251",
       "name": "Lithos",
       "type": "Lightning",
       "rarity": "Exotic",
@@ -2531,7 +2531,7 @@
       ]
     },
     {
-      "id": "582",
+      "id": "252",
       "name": "Brainzer",
       "type": "Lightning",
       "rarity": "Common",
@@ -2541,7 +2541,7 @@
       ]
     },
     {
-      "id": "583",
+      "id": "253",
       "name": "Pyrex",
       "type": "Fire",
       "rarity": "Exotic",
@@ -2551,7 +2551,7 @@
       ]
     },
     {
-      "id": "584",
+      "id": "254",
       "name": "Oozie",
       "type": "WaterLightning",
       "rarity": "Rare",
@@ -2561,7 +2561,7 @@
       ]
     },
     {
-      "id": "585",
+      "id": "255",
       "name": "Lunako",
       "type": "FireEarth",
       "rarity": "Rare",
@@ -2571,7 +2571,7 @@
       ]
     },
     {
-      "id": "586",
+      "id": "256",
       "name": "Rephily",
       "type": "Wind",
       "rarity": "Rare",
@@ -2581,7 +2581,7 @@
       ]
     },
     {
-      "id": "587",
+      "id": "257",
       "name": "Eluzar",
       "type": "Water",
       "rarity": "Common",
@@ -2591,7 +2591,7 @@
       ]
     },
     {
-      "id": "588",
+      "id": "258",
       "name": "Furiko",
       "type": "Fire",
       "rarity": "Rare",
@@ -2601,7 +2601,7 @@
       ]
     },
     {
-      "id": "589",
+      "id": "259",
       "name": "Bunplop",
       "type": "WaterEarth",
       "rarity": "Epic",
@@ -2611,7 +2611,7 @@
       ]
     },
     {
-      "id": "590",
+      "id": "260",
       "name": "Drilune",
       "type": "Nature",
       "rarity": "Common",
@@ -2621,7 +2621,7 @@
       ]
     },
     {
-      "id": "591",
+      "id": "261",
       "name": "Flaclay",
       "type": "FireEarth",
       "rarity": "Common",
@@ -2631,7 +2631,7 @@
       ]
     },
     {
-      "id": "592",
+      "id": "262",
       "name": "Enex",
       "type": "Fire",
       "rarity": "Common",
@@ -2641,7 +2641,7 @@
       ]
     },
     {
-      "id": "593",
+      "id": "263",
       "name": "Voltombra",
       "type": "Lightning",
       "rarity": "Common",
@@ -2651,7 +2651,7 @@
       ]
     },
     {
-      "id": "594",
+      "id": "264",
       "name": "Eclipso",
       "type": "Wind",
       "rarity": "Exotic",
@@ -2661,7 +2661,7 @@
       ]
     },
     {
-      "id": "595",
+      "id": "265",
       "name": "Osmeron",
       "type": "Water",
       "rarity": "Rare",
@@ -2671,7 +2671,7 @@
       ]
     },
     {
-      "id": "596",
+      "id": "266",
       "name": "Mooncrit",
       "type": "WaterEarth",
       "rarity": "Rare",
@@ -2681,7 +2681,7 @@
       ]
     },
     {
-      "id": "597",
+      "id": "267",
       "name": "Beateorite",
       "type": "Earth",
       "rarity": "Legendary",
@@ -2691,7 +2691,7 @@
       ]
     },
     {
-      "id": "598",
+      "id": "268",
       "name": "Silkire",
       "type": "Fire",
       "rarity": "Common",
@@ -2701,7 +2701,7 @@
       ]
     },
     {
-      "id": "599",
+      "id": "269",
       "name": "Zephry",
       "type": "Wind",
       "rarity": "Common",
@@ -2711,7 +2711,7 @@
       ]
     },
     {
-      "id": "600",
+      "id": "270",
       "name": "Fungask",
       "type": "Water",
       "rarity": "Common",
@@ -2721,7 +2721,7 @@
       ]
     },
     {
-      "id": "601",
+      "id": "271",
       "name": "Larbunni",
       "type": "Wind",
       "rarity": "Epic",
@@ -2731,7 +2731,7 @@
       ]
     },
     {
-      "id": "602",
+      "id": "272",
       "name": "Yuefira",
       "type": "Nature",
       "rarity": "Common",
@@ -2741,7 +2741,7 @@
       ]
     },
     {
-      "id": "603",
+      "id": "273",
       "name": "Mucora",
       "type": "Wind",
       "rarity": "Common",
@@ -2751,7 +2751,7 @@
       ]
     },
     {
-      "id": "604",
+      "id": "274",
       "name": "Goo",
       "type": "WaterEarth",
       "rarity": "Common",
@@ -2761,7 +2761,7 @@
       ]
     },
     {
-      "id": "605",
+      "id": "275",
       "name": "Avarus",
       "type": "FireWind",
       "rarity": "Common",
@@ -2771,7 +2771,7 @@
       ]
     },
     {
-      "id": "606",
+      "id": "276",
       "name": "Beakka",
       "type": "Wind",
       "rarity": "Common",
@@ -2781,7 +2781,7 @@
       ]
     },
     {
-      "id": "607",
+      "id": "277",
       "name": "Whispen",
       "type": "Wind",
       "rarity": "Common",
@@ -2791,7 +2791,7 @@
       ]
     },
     {
-      "id": "608",
+      "id": "278",
       "name": "Fickra",
       "type": "Lightning",
       "rarity": "Common",
@@ -2801,7 +2801,7 @@
       ]
     },
     {
-      "id": "609",
+      "id": "279",
       "name": "Pirate Bludger",
       "type": "Earth",
       "rarity": "Rare",
@@ -2811,7 +2811,7 @@
       ]
     },
     {
-      "id": "610",
+      "id": "280",
       "name": "Lutox",
       "type": "Earth",
       "rarity": "Rare",
@@ -2821,7 +2821,7 @@
       ]
     },
     {
-      "id": "611",
+      "id": "281",
       "name": "Deetlee",
       "type": "Earth",
       "rarity": "Rare",
@@ -2831,7 +2831,7 @@
       ]
     },
     {
-      "id": "612",
+      "id": "282",
       "name": "Ampupine",
       "type": "Lightning",
       "rarity": "Rare",
@@ -2841,7 +2841,7 @@
       ]
     },
     {
-      "id": "613",
+      "id": "283",
       "name": "Hekatom",
       "type": "NatureWind",
       "rarity": "Epic",
@@ -2851,7 +2851,7 @@
       ]
     },
     {
-      "id": "614",
+      "id": "284",
       "name": "Scarecrow Charix",
       "type": "Nature",
       "rarity": "Epic",
@@ -2861,7 +2861,7 @@
       ]
     },
     {
-      "id": "615",
+      "id": "285",
       "name": "Vamp Skustunk",
       "type": "Wind",
       "rarity": "Epic",
@@ -2871,7 +2871,7 @@
       ]
     },
     {
-      "id": "616",
+      "id": "286",
       "name": "Grimm Kiloray",
       "type": "Lightning",
       "rarity": "Epic",
@@ -2881,7 +2881,7 @@
       ]
     },
     {
-      "id": "617",
+      "id": "287",
       "name": "Rocker Octavio",
       "type": "Wind",
       "rarity": "Exotic",
@@ -2891,7 +2891,7 @@
       ]
     },
     {
-      "id": "618",
+      "id": "288",
       "name": "Boo Blazertooth",
       "type": "Fire",
       "rarity": "Exotic",
@@ -2901,7 +2901,7 @@
       ]
     },
     {
-      "id": "619",
+      "id": "289",
       "name": "Geneseed",
       "type": "Nature",
       "rarity": "Legendary",
@@ -2911,7 +2911,7 @@
       ]
     },
     {
-      "id": "620",
+      "id": "290",
       "name": "Sora",
       "type": "Wind",
       "rarity": "Common",
@@ -2921,7 +2921,7 @@
       ]
     },
     {
-      "id": "621",
+      "id": "291",
       "name": "Dark Sparkslug",
       "type": "Lightning",
       "rarity": "Rare",
@@ -2931,7 +2931,7 @@
       ]
     },
     {
-      "id": "622",
+      "id": "292",
       "name": "Phoboros",
       "type": "Fire",
       "rarity": "Epic",
@@ -2941,7 +2941,7 @@
       ]
     },
     {
-      "id": "623",
+      "id": "293",
       "name": "Lagoony",
       "type": "Water",
       "rarity": "Exotic",
@@ -2951,7 +2951,7 @@
       ]
     },
     {
-      "id": "624",
+      "id": "294",
       "name": "Poppet",
       "type": "Fire",
       "rarity": "Common",
@@ -2961,7 +2961,7 @@
       ]
     },
     {
-      "id": "625",
+      "id": "295",
       "name": "Nubyll",
       "type": "Lightning",
       "rarity": "Rare",
@@ -2971,7 +2971,7 @@
       ]
     },
     {
-      "id": "626",
+      "id": "296",
       "name": "Elphin",
       "type": "Water",
       "rarity": "Epic",
@@ -2981,7 +2981,7 @@
       ]
     },
     {
-      "id": "627",
+      "id": "297",
       "name": "Luvcraft",
       "type": "Fire",
       "rarity": "Exotic",
@@ -2991,7 +2991,7 @@
       ]
     },
     {
-      "id": "628",
+      "id": "298",
       "name": "Damse",
       "type": "Lightning",
       "rarity": "Exotic",
@@ -3001,13 +3001,23 @@
       ]
     },
     {
-      "id": "629",
+      "id": "299",
       "name": "Beldame",
       "type": "Lightning",
       "rarity": "Legendary",
       "avatar": "beldame_avatar.png",
       "spawns": [
         {"place": "The Shac","zone": ["2nd Floor of The Shack"],"view": "object","objectImage": "../assets/images/maps/OldBed.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "300",
+      "name": "Kitpole",
+      "type": "Fire",
+      "rarity": "Exotic",
+      "avatar": "preset_avatar.png",
+      "spawns": [
+        {"place": "Volcano Island","zone": ["2th Area on Volcano Island"],"view": "object","objectImage": "../assets/images/maps/Volcano1.png","days": "ALL_DAYS"}
       ]
     }
   ]

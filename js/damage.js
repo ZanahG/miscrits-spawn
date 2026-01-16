@@ -344,7 +344,6 @@ function syncMoveListPicker() {
         sel.value = String(idx);
         if (picker) picker.value = String(idx);
 
-        // re-render highlight + botón + daño
         syncMoveListPicker();
         renderSelectedMoveButton();
         renderResult();
@@ -582,7 +581,6 @@ function openRelicModal(side, slot) {
       .filter(r => !qq || normalize(r.name).includes(qq))
       .sort((a, b) => (a.name ?? "").localeCompare((b.name ?? ""), "es"));
 
-    // Empty
     const empty = document.createElement("div");
     empty.className = "relic-item";
     empty.innerHTML = `
@@ -955,8 +953,8 @@ function bindAll() {
   // Tabs RELICS / BONUS
 document.querySelectorAll(".dmgx__tab").forEach(btn => {
   btn.addEventListener("click", () => {
-    const side = btn.getAttribute("data-side");   // atk/def
-    const tab  = btn.getAttribute("data-tab");    // relics/bonus
+    const side = btn.getAttribute("data-side");
+    const tab  = btn.getAttribute("data-tab");
 
     const host = btn.closest(".dmgx__subpanel");
     if (!host) return;
@@ -973,7 +971,6 @@ document.querySelectorAll(".dmgx__tab").forEach(btn => {
   });
 });
 
-  // BONUS live update + Apply/Clean
   ["atk","def"].forEach(side => {
     const ids = ["HP","EA","PA","SPD","ED","PD"].map(k => `#${side}Bonus${k}`);
     ids.forEach(sel => {
@@ -988,10 +985,10 @@ document.querySelectorAll(".dmgx__tab").forEach(btn => {
     $(`#${side}BonusApply`)?.addEventListener("click", () => {
       const draft = readBonusDraft(side);
       const used = sumBonus(draft);
-      if (used > BONUS_POOL_MAX) return; // si quieres, aquí puedes mostrar un mensaje
+      if (used > BONUS_POOL_MAX) return;
 
       setCommittedBonus(side, draft);
-      refreshSideStatsFromRelics(side);  // recalcula inputs visibles con bonus+relics
+      refreshSideStatsFromRelics(side);
       renderResult();
     });
   });

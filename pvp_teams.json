@@ -75,415 +75,289 @@
     "SCENT_OF_SKUSTUNK": "../assets/images/relics/scent_of_skustunk.png",
     "CHARCOAL_IDOL": "../assets/images/relics/charcoal_idol.png"
   },
-  "trendingTeams": ["t001", "t002", "t003", "t006", "t007"],
+  "trendingTeams": ["t001", "t002", "t003", "t004", "t005"],
   "teams": [
     {
       "id": "t001",
-      "title": "GenoIgnite",
+      "title": "Fractal Pigs Team",
       "format": "Platinum Arena",
       "patch": "1.0.4",
       "miscrits": [
-				{"id":"030","name":"Equestrion",
-        "relics": ["BLESSED_POLLEN","MT_GEMMA_BANNER","GOLD_PIECE_DIE","MOLTEN_COIN"]},
-        {"id":"530","name":"Light Ignios",
-        "relics": ["BLESSED_POLLEN","MT_GEMMA_BANNER","GOLD_PIECE_DIE","MOLTEN_COIN"]},
-        {"id":"619","name":"Geneseed",
-        "relics": ["BLESSED_POLLEN","MT_GEMMA_BANNER","GOLD_PIECE_DIE","MOLTEN_COIN"]},
-        {"id":"604","name":"Goo",
-        "relics": ["BLESSED_POLLEN","MT_GEMMA_BANNER","GOLD_PIECE_DIE","MOLTEN_COIN"]}
-      ],
-      "summary": ""
+        { "name": "Narlope", "autoRelics": true },
+        { "name": "Eclipso", "autoRelics": true },
+        { "name": "Beateorite", "autoRelics": true },
+        { "name": "Dark Squibee", "autoRelics": true }]
     },
-		{
+    {
       "id": "t002",
-      "title": "Inferno",
+      "title": "Sweetmonarchy Team",
       "format": "Platinum Arena",
       "patch": "1.0.4",
       "miscrits": [
-				{"id":"533","name":"Dark Lavarilla",
-        "relics": ["BLESSED_POLLEN","MT_GEMMA_BANNER","GOLD_PIECE_DIE","MOLTEN_COIN"]},
-        {"id":"546","name":"Blighted Flowerpiller",
-        "relics": ["BLESSED_POLLEN","MT_GEMMA_BANNER","GOLD_PIECE_DIE","MOLTEN_COIN"]},
-        {"id":"212","name":"Lavazard",
-        "relics": ["BLESSED_POLLEN","MT_GEMMA_BANNER","GOLD_PIECE_DIE","MOLTEN_COIN"]},
-        {"id":"196","name":"Inferno",
-        "relics": ["BLESSED_POLLEN","MT_GEMMA_BANNER","GOLD_PIECE_DIE","MOLTEN_COIN"]}
-      ],
-      "summary": ""
+        { "name": "Mooncrit", "autoRelics": true },
+        { "name": "Skelepup", "autoRelics": true },
+        { "name": "Dark Poltergust", "autoRelics": true },
+        { "name": "Narlope", "autoRelics": true }]
     },
     {
       "id": "t003",
-      "title": "Demons Crits",
+      "title": "PapaPape Team",
       "format": "Platinum Arena",
       "patch": "1.0.4",
       "miscrits": [
-        {"id":"139","name":"Narlope",
-        "relics": ["BLESSED_POLLEN","MT_GEMMA_BANNER","GOLD_PIECE_DIE","MOLTEN_COIN"]},
-        {"id":"506","name":"Dark Poltergust",
-        "relics": ["BLESSED_POLLEN","MT_GEMMA_BANNER","GOLD_PIECE_DIE","MOLTEN_COIN"]},
-        {"id":"596","name":"Mooncrit",
-        "relics": ["BLESSED_POLLEN","MT_GEMMA_BANNER","GOLD_PIECE_DIE","MOLTEN_COIN"]},
-        {"id":"223","name":"Skelepup",
-        "relics": ["BLESSED_POLLEN","MT_GEMMA_BANNER","GOLD_PIECE_DIE","MOLTEN_COIN"]}
-      ],
-      "summary": ""
+        { "name": "Flurrious", "autoRelics": true },
+        { "name": "Dark Squibee", "autoRelics": true },
+        { "name": "Dark Elefauna", "autoRelics": true },
+        { "name": "Phoboros", "autoRelics": true }]
     },
     {
       "id": "t004",
-      "title": "Unexpected",
+      "title": "Shembot Team",
       "format": "Platinum Arena",
       "patch": "1.0.4",
       "miscrits": [
-        {"id":"508","name":"Foil Vexie",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
-        {"id":"624","name":"Poppet",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
-        {"id":"068","name":"Winnebeargo",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
-        {"id":"501","name":"Blighted Kiloray",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]}
-      ],
-      "summary": ""
+        { "name": "Flurrious", "autoRelics": true },
+        { "name": "Winnebeargo", "autoRelics": true },
+        { "name": "Pinplar", "autoRelics": true },
+        { "name": "Nero", "autoRelics": true }]
     },
     {
       "id": "t005",
-      "title": "Dark and Light",
+      "title": "Michael XPO Team",
       "format": "Platinum Arena",
       "patch": "1.0.4",
       "miscrits": [
-        {"id":"025","name":"Dark Prawnja",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
-        {"id":"530","name":"Light Ignios",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
-        {"id":"596","name":"Mooncrit",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
-        {"id":"535","name":"Dark Tulipinny",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]}
-      ],
-      "summary": ""
+        { "name": "Flurrious", "autoRelics": true },
+        { "name": "Hotdog", "autoRelics": true },
+        { "name": "Lavazard", "autoRelics": true },
+        { "name": "Dreamger", "autoRelics": true }]
     },
     {
-      "id": "t006",
-      "title": "Thunderwave",
-      "format": "Platinum Arena",
-      "patch": "1.0.4",
-      "miscrits": [
-        {"id":"542","name":"Dreamger",
-        "relics": ["BLESSED_POLLEN","MT_GEMMA_BANNER","GOLD_PIECE_DIE","MOLTEN_COIN"]},
-        {"id":"580","name":"Pinplar",
-        "relics": ["BLESSED_POLLEN","MT_GEMMA_BANNER","GOLD_PIECE_DIE","MOLTEN_COIN"]},
-        {"id":"433","name":"Blight Flue",
-        "relics": ["BLESSED_POLLEN","MT_GEMMA_BANNER","GOLD_PIECE_DIE","MOLTEN_COIN"]},
-        {"id":"152","Name":"Nero",
-        "relics": ["BLESSED_POLLEN","MT_GEMMA_BANNER","GOLD_PIECE_DIE","MOLTEN_COIN"]}
-      ],
-      "summary": ""
-    },
-    {
-      "id": "t007",
-      "title": "Dark Team",
-      "format": "Platinum Arena",
-      "patch": "1.0.4",
-      "miscrits": [
-        {"id":"196","name":"Inferno",
-        "relics": ["BLESSED_POLLEN","MT_GEMMA_BANNER","GOLD_PIECE_DIE","MOLTEN_COIN"]},
-        {"id":"533","name":"Dark Lavarilla",
-        "relics": ["BLESSED_POLLEN","MT_GEMMA_BANNER","GOLD_PIECE_DIE","MOLTEN_COIN"]},
-        {"id":"546","name":"Blighted Flowerpiller",
-        "relics": ["BLESSED_POLLEN","MT_GEMMA_BANNER","GOLD_PIECE_DIE","MOLTEN_COIN"]},
-        {"id":"023","name":"Dark Flue",
-        "relics": ["BLESSED_POLLEN","MT_GEMMA_BANNER","GOLD_PIECE_DIE","MOLTEN_COIN"]}
-      ],
-      "summary": ""
-    },
-    {
-      "id": "t008",
-      "title": "",
-      "format": "Platinum Arena",
-      "patch": "1.0.4",
-      "miscrits": [
-        {"id":"552","name":"Foil Croaky",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
-        {"id":"501","name":"Blighted Kiloray",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
-        {"id":"611","name":"Deetlee",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
-        {"id":"040","name":"Owlie",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]}
-      ],
-      "summary": ""
-    },
-    {
-      "id": "t009",
-      "title": "",
-      "format": "Platinum Arena",
-      "patch": "1.0.4",
-      "miscrits": [
-        {"id":"552","name":"Foil Croaky",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
-        {"id":"501","name":"Blighted Kiloray",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
-        {"id":"611","name":"Deetlee",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
-        {"id":"040","name":"Owlie",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]}
-      ],
-      "summary": ""
-    },
-    {
-      "id": "t010",
-      "title": "",
-      "format": "Platinum Arena",
-      "patch": "1.0.4",
-      "miscrits": [
-        {"id":"611","name":"Deetlee",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
-        {"id":"597","name":"Beateorite",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
-        {"id":"596","name":"Mooncrit",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
-        {"id":"530","name":"Light Ignios",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]}
-      ],
-      "summary": ""
-    },
-    {
-      "id": "t011",
-      "title": "",
-      "format": "Platinum Arena",
-      "patch": "1.0.4",
-      "miscrits": [
-        {"id":"627","name":"Luvcraft",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
-        {"id":"594","name":"Eclipso",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
-        {"id":"025","name":"Dark Prawnja",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
-        {"id":"571","name":"Lambolt",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]}
-      ],
-      "summary": ""
-    },
-    {
-      "id": "t012",
-      "title": "",
-      "format": "Platinum Arena",
-      "patch": "1.0.4",
-      "miscrits": [
-        {"id":"341","name":"Cadbunny",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
-        {"id":"544","name":"Dark Quirk",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
-        {"id":"040","name":"Owlie",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
-        {"id":"619","name":"Geneseed",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]}
-      ],
-      "summary": ""
-    },
-    {
-      "id": "t013",
-      "title": "",
-      "format": "Platinum Arena",
-      "patch": "1.0.4",
-      "miscrits": [
-        {"id":"139","name":"Narlope",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
-        {"id":"596","name":"Mooncrit",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
-        {"id":"594","name":"Eclipso",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
-        {"id":"619","name":"Geneseed",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]}
-      ],
-      "summary": ""
-    },
-    {
-      "id": "t014",
-      "title": "",
-      "format": "Platinum Arena",
-      "patch": "1.0.4",
-      "miscrits": [
-        {"id":"212","name":"Lavazard",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
-        {"id":"546","name":"Blighted Flowerpiller",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
-        {"id":"196","name":"Inferno",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
-        {"id":"565","name":"Rexie",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]}
-      ],
-      "summary": ""
-    },
-    {
-      "id": "t015",
-      "title": "",
-      "format": "Platinum Arena",
-      "patch": "1.0.4",
-      "miscrits": [
-        {"id":"594","name":"Eclipso",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
-        {"id":"031","name":"Drilldent",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
-        {"id":"530","name":"Light Ignios",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
-        {"id":"596","name":"Mooncrit",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]}
-      ],
-      "summary": ""
-    },
-    {
-      "id": "t016",
-      "title": "",
-      "format": "Platinum Arena",
-      "patch": "1.0.4",
-      "miscrits": [
-        {"id":"596","name":"Mooncrit",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
-        {"id":"616","name":"Grimm Kiloray",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
-        {"id":"578","name":"Voidotron",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
-        {"id":"511","name":"Dark Squibee",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]}
-      ],
-      "summary": ""
-    },
-    {
-      "id": "t017",
-      "title": "",
-      "format": "Platinum Arena",
-      "patch": "1.0.4",
-      "miscrits": [
-        {"id":"578","name":"Voidotron",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
-        {"id":"524","name":"Light Wavesling",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
-        {"id":"569","name":"Alpha",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
-        {"id":"565","name":"Rexie",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]}
-      ],
-      "summary": ""
-    },
-    {
-      "id": "t018",
-      "title": "",
-      "format": "Platinum Arena",
-      "patch": "1.0.4",
-      "miscrits": [
-        {"id":"341","name":"Cadbunny",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
-        {"id":"509","name":"Foil Vhisp",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
-        {"id":"023","name":"Dark Flue",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
-        {"id":"124","name":"Pamboo",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]}
-      ],
-      "summary": ""
-    },
-    {
-      "id": "t019",
-      "title": "",
-      "format": "Platinum Arena",
-      "patch": "1.0.4",
-      "miscrits": [
-        {"id":"070","name":"Patchkin",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
-        {"id":"341","name":"Cadbunny",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
-        {"id":"512","name":"Dark Waddles",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
-        {"id":"605","name":"Avarus",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]}
-      ],
-      "summary": ""
-    },
-    {
-      "id": "t020",
-      "title": "",
-      "format": "Platinum Arena",
-      "patch": "1.0.4",
-      "miscrits": [
-        {"id":"069","name":"Fennie",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
-        {"id":"223","name":"Skelepup",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
-        {"id":"594","name":"Eclipso",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
-        {"id":"139","name":"Narlope",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]}
-      ],
-      "summary": ""
-    },
-    {
-      "id": "t021",
-      "title": "",
-      "format": "Platinum Arena",
-      "patch": "1.0.4",
-      "miscrits": [
-        {"id":"139","name":"Narlope",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
-        {"id":"085","name":"Dark Arigato",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
-        {"id":"506","name":"Dark Poltergust",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
-        {"id":"628","name":"Damse",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]}
-      ],
-      "summary": ""
-    },
-    {
-      "id": "t022",
-      "title": "",
-      "format": "Platinum Arena",
-      "patch": "1.0.4",
-      "miscrits": [
-        {"id":"622","name":"Phoboros",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
-        {"id":"621","name":"Dark Sparkslug",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
-        {"id":"596","name":"Mooncrit",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
-        {"id":"561","name":"Woolly",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]}
-      ],
-      "summary": ""
-    },
-    {
-      "id": "t023",
-      "title": "",
-      "format": "Platinum Arena",
-      "patch": "1.0.4",
-      "miscrits": [
-        {"id":"578","name":"Voidotron",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
-        {"id":"016","name":"Twiggum",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
-        {"id":"562","name":"Frozy",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
-        {"id":"619","name":"Geneseed",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]}
-      ],
-      "summary": ""
-    },
-    {
-      "id": "t024",
-      "title": "",
-      "format": "Platinum Arena",
-      "patch": "1.0.4",
-      "miscrits": [
-        {"id":"048","name":"Sledgehog",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
-        {"id":"532","name":"Dark Tongutail",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
-        {"id":"197","name":"Hotdog",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]},
-        {"id":"572","name":"Gravitron",
-        "relics": ["MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN","MOLTEN_COIN"]}
-      ],
-      "summary": ""
-    }
-  ]
+			"id": "t006",
+			"title": "SUGGESTED TEAM",
+			"format": "Platinum Arena",
+			"patch": "1.0.4",
+			"miscrits": [
+				{ "name": "Dreamger", "autoRelics": true },
+				{ "name": "Pinplar", "autoRelics": true },
+				{ "name": "Blighted Flue", "autoRelics": true },
+				{ "name": "Nero", "autoRelics": true }]
+		},
+		{
+			"id": "t007",
+			"title": "SUGGESTED TEAM",
+			"format": "Platinum Arena",
+			"patch": "1.0.4",
+			"miscrits": [
+				{ "name": "Inferno", "autoRelics": true },
+				{ "name": "Dark Lavarilla", "autoRelics": true },
+				{ "name": "Blighted Flowerpiller", "autoRelics": true },
+				{ "name": "Dark Flue", "autoRelics": true }
+			]
+		},
+		{
+			"id": "t008",
+			"title": "SUGGESTED TEAM",
+			"format": "Platinum Arena",
+			"patch": "1.0.4",
+			"miscrits": [
+				{ "name": "Foil Croaky", "autoRelics": true },
+				{ "name": "Blighted Kiloray", "autoRelics": true },
+				{ "name": "Deetlee", "autoRelics": true },
+				{ "name": "Owlie", "autoRelics": true }
+			]
+		},
+		{
+			"id": "t009",
+			"title": "SUGGESTED TEAM",
+			"format": "Platinum Arena",
+			"patch": "1.0.4",
+			"miscrits": [
+				{ "name": "Foil Croaky", "autoRelics": true },
+				{ "name": "Blighted Kiloray", "autoRelics": true },
+				{ "name": "Deetlee", "autoRelics": true },
+				{ "name": "Owlie", "autoRelics": true }
+			]
+		},
+		{
+			"id": "t010",
+			"title": "SUGGESTED TEAM",
+			"format": "Platinum Arena",
+			"patch": "1.0.4",
+			"miscrits": [
+				{ "name": "Deetlee", "autoRelics": true },
+				{ "name": "Beateorite", "autoRelics": true },
+				{ "name": "Mooncrit", "autoRelics": true },
+				{ "name": "Light Ignios", "autoRelics": true }
+			]
+		},
+		{
+			"id": "t011",
+			"title": "SUGGESTED TEAM",
+			"format": "Platinum Arena",
+			"patch": "1.0.4",
+			"miscrits": [
+				{ "name": "Luvcraft", "autoRelics": true },
+				{ "name": "Eclipso", "autoRelics": true },
+				{ "name": "Dark Prawnja", "autoRelics": true },
+				{ "name": "Lambolt", "autoRelics": true }
+			]
+		},
+		{
+			"id": "t012",
+			"title": "SUGGESTED TEAM",
+			"format": "Platinum Arena",
+			"patch": "1.0.4",
+			"miscrits": [
+				{ "name": "Cadbunny", "autoRelics": true },
+				{ "name": "Dark Quirk", "autoRelics": true },
+				{ "name": "Owlie", "autoRelics": true },
+				{ "name": "Geneseed", "autoRelics": true }
+			]
+		},
+		{
+			"id": "t013",
+			"title": "SUGGESTED TEAM",
+			"format": "Platinum Arena",
+			"patch": "1.0.4",
+			"miscrits": [
+				{ "name": "Narlope", "autoRelics": true },
+				{ "name": "Mooncrit", "autoRelics": true },
+				{ "name": "Eclipso", "autoRelics": true },
+				{ "name": "Geneseed", "autoRelics": true }
+			]
+		},
+		{
+			"id": "t014",
+			"title": "SUGGESTED TEAM",
+			"format": "Platinum Arena",
+			"patch": "1.0.4",
+			"miscrits": [
+				{ "name": "Lavazard", "autoRelics": true },
+				{ "name": "Blighted Flowerpiller", "autoRelics": true },
+				{ "name": "Inferno", "autoRelics": true },
+				{ "name": "Rexie", "autoRelics": true }
+			]
+		},
+		{
+			"id": "t015",
+			"title": "SUGGESTED TEAM",
+			"format": "Platinum Arena",
+			"patch": "1.0.4",
+			"miscrits": [
+				{ "name": "Eclipso", "autoRelics": true },
+				{ "name": "Drilldent", "autoRelics": true },
+				{ "name": "Light Ignios", "autoRelics": true },
+				{ "name": "Mooncrit", "autoRelics": true }
+			]
+		},
+		{
+			"id": "t016",
+			"title": "SUGGESTED TEAM",
+			"format": "Platinum Arena",
+			"patch": "1.0.4",
+			"miscrits": [
+				{ "name": "Mooncrit", "autoRelics": true },
+				{ "name": "Grimm Kiloray", "autoRelics": true },
+				{ "name": "Voidotron", "autoRelics": true },
+				{ "name": "Dark Squibee", "autoRelics": true }
+			]
+		},
+		{
+			"id": "t017",
+			"title": "SUGGESTED TEAM",
+			"format": "Platinum Arena",
+			"patch": "1.0.4",
+			"miscrits": [
+				{ "name": "Voidotron", "autoRelics": true },
+				{ "name": "Light Wavesling", "autoRelics": true },
+				{ "name": "Alpha", "autoRelics": true },
+				{ "name": "Rexie", "autoRelics": true }
+			]
+		},
+		{
+			"id": "t018",
+			"title": "SUGGESTED TEAM",
+			"format": "Platinum Arena",
+			"patch": "1.0.4",
+			"miscrits": [
+				{ "name": "Cadbunny", "autoRelics": true },
+				{ "name": "Foil Vhisp", "autoRelics": true },
+				{ "name": "Dark Flue", "autoRelics": true },
+				{ "name": "Pamboo", "autoRelics": true }
+			]
+		},
+		{
+			"id": "t019",
+			"title": "SUGGESTED TEAM",
+			"format": "Platinum Arena",
+			"patch": "1.0.4",
+			"miscrits": [
+				{ "name": "Patchkin", "autoRelics": true },
+				{ "name": "Cadbunny", "autoRelics": true },
+				{ "name": "Dark Waddles", "autoRelics": true },
+				{ "name": "Avarus", "autoRelics": true }
+			]
+		},
+		{
+			"id": "t020",
+			"title": "SUGGESTED TEAM",
+			"format": "Platinum Arena",
+			"patch": "1.0.4",
+			"miscrits": [
+				{ "name": "Fennie", "autoRelics": true },
+				{ "name": "Skelepup", "autoRelics": true },
+				{ "name": "Eclipso", "autoRelics": true },
+				{ "name": "Narlope", "autoRelics": true }
+			]
+		},
+		{
+			"id": "t021",
+			"title": "SUGGESTED TEAM",
+			"format": "Platinum Arena",
+			"patch": "1.0.4",
+			"miscrits": [
+				{ "name": "Narlope", "autoRelics": true },
+				{ "name": "Dark Arigato", "autoRelics": true },
+				{ "name": "Dark Poltergust", "autoRelics": true },
+				{ "name": "Damse", "autoRelics": true }
+			]
+		},
+		{
+			"id": "t022",
+			"title": "SUGGESTED TEAM",
+			"format": "Platinum Arena",
+			"patch": "1.0.4",
+			"miscrits": [
+				{ "name": "Phoboros", "autoRelics": true },
+				{ "name": "Dark Sparkslug", "autoRelics": true },
+				{ "name": "Mooncrit", "autoRelics": true },
+				{ "name": "Woolly", "autoRelics": true }
+			]
+		},
+		{
+			"id": "t023",
+			"title": "SUGGESTED TEAM",
+			"format": "Platinum Arena",
+			"patch": "1.0.4",
+			"miscrits": [
+				{ "name": "Voidotron", "autoRelics": true },
+				{ "name": "Twiggum", "autoRelics": true },
+				{ "name": "Frozy", "autoRelics": true },
+				{ "name": "Geneseed", "autoRelics": true }
+			]
+		},
+		{
+			"id": "t024",
+			"title": "SUGGESTED TEAM",
+			"format": "Platinum Arena",
+			"patch": "1.0.4",
+			"miscrits": [
+				{ "name": "Sledgehog", "autoRelics": true },
+				{ "name": "Dark Tongutail", "autoRelics": true },
+				{ "name": "Hotdog", "autoRelics": true },
+				{ "name": "Gravitron", "autoRelics": true }
+			]
+		}
+	]
 }

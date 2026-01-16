@@ -3,11 +3,14 @@ const $ = (sel) => document.querySelector(sel);
 let MISCRITS = [];
 let TEAMS = [];
 let TEAMS_BY_MISCRIT = {};
-let selectedId = null;
+let selectedName = null;
 let RELIC_MAP = {};
 let TRENDING_IDS = [];
+let MISCRITS_BY_NAME = {};
+let BEST_RELICS = {};
 
 const RARITIES = ["Common", "Rare", "Epic", "Exotic", "Legendary"];
+const BEST_RELICS_URL = "../assets/data/best_relics.json";
 
 function stripDiacritics(str) {
   return (str ?? "")
@@ -31,11 +34,89 @@ function safeImgSrc(path) {
   return path || "../assets/images/ui/placeholder.png";
 }
 
+function findMiscritByName(name) {
+  return MISCRITS_BY_NAME[normalize(name)] ?? null;
+}
+
+/* ===================== RELICS HELPERS ===================== */
+
+function relicNameToKey(name) {
+  const s = (name ?? "").toString().trim();
+  if (!s) return "";
+
+  if (/^[A-Z0-9_]+$/.test(s)) return s;
+
+  return s
+    .toUpperCase()
+    .replace(/['’]/g, "")        
+    .replace(/[^A-Z0-9]+/g, "_")
+    .replace(/^_+|_+$/g, "");
+}
+
+function buildRelicAliasIndex(relicMap) {
+  const idx = {};
+
+  for (const key of Object.keys(relicMap || {})) {
+    const kNorm = normalize(key.replace(/_/g, " "));
+    idx[kNorm] = key;
+    idx[kNorm.replace(/\s+/g, "")] = key;
+  }
+
+  return idx;
+}
+
+function resolveRelicKeyFromHumanName(humanName, aliasIndex) {
+  const directKey = relicNameToKey(humanName);
+  if (directKey && RELIC_MAP[directKey]) return directKey;
+
+  const n = normalize(humanName);
+  if (aliasIndex[n]) return aliasIndex[n];
+  if (aliasIndex[n.replace(/\s+/g, "")]) return aliasIndex[n.replace(/\s+/g, "")];
+
+  const n2 = n.replace(/\s+/g, "");
+  for (const k of Object.keys(aliasIndex)) {
+    if (k.includes(n2) || n2.includes(k)) return aliasIndex[k];
+  }
+
+  return "";
+}
+
+function getRelicsForMiscrit(mm) {
+  if (Array.isArray(mm?.relics) && mm.relics.length) return mm.relics.slice(0, 4);
+  if (mm?.autoRelics !== true) return [];
+
+  const key = normalize(mm?.name);
+  const best = BEST_RELICS[key];
+  return Array.isArray(best) ? best.slice(0, 4) : [];
+}
+
+function resolveRelic(ref) {
+  if (!ref) return "";
+  return RELIC_MAP[ref] ?? ref;
+}
+
+function getRelicsArray(mm) {
+  const list = getRelicsForMiscrit(mm);
+  return list
+    .map(resolveRelic)
+    .filter(Boolean)
+    .slice(0, 4);
+}
+
+/* ===================== LOADERS ===================== */
+
 async function loadMiscrits() {
   const res = await fetch("../miscrits.json", { cache: "no-store" });
   if (!res.ok) throw new Error(`HTTP ${res.status} cargando miscrits.json`);
   const data = await res.json();
   MISCRITS = data.miscrits ?? [];
+
+  MISCRITS_BY_NAME = {};
+  for (const m of MISCRITS) {
+    const key = normalize(m?.name);
+    if (!key) continue;
+    MISCRITS_BY_NAME[key] = m;
+  }
 }
 
 async function loadTeams() {
@@ -49,13 +130,47 @@ async function loadTeams() {
   TEAMS_BY_MISCRIT = indexTeamsByMiscrit(TEAMS);
 }
 
+async function loadBestRelics() {
+  const res = await fetch(BEST_RELICS_URL, { cache: "no-store" });
+  if (!res.ok) {
+    console.warn("best_relics.json no encontrado, autoRelics quedará vacío.");
+    BEST_RELICS = {};
+    return;
+  }
+
+  const raw = await res.json();
+
+  const aliasIndex = buildRelicAliasIndex(RELIC_MAP);
+  const out = {};
+
+  for (const [miscritName, relicNames] of Object.entries(raw || {})) {
+    const mKey = normalize(miscritName);
+    if (!mKey) continue;
+
+    const arr = Array.isArray(relicNames) ? relicNames : [];
+    const keys = [];
+
+    for (const human of arr) {
+      const k = resolveRelicKeyFromHumanName(human, aliasIndex);
+      if (k) keys.push(k);
+    }
+
+    out[mKey] = keys.slice(0, 4);
+  }
+
+  BEST_RELICS = out;
+}
+
+/* ===================== INDEXING ===================== */
+
 function indexTeamsByMiscrit(teams) {
   const map = {};
   for (const t of teams) {
     for (const mm of (t.miscrits ?? [])) {
-      const id = String(mm.id);
-      if (!map[id]) map[id] = [];
-      map[id].push(t);
+      const key = normalize(mm.name);
+      if (!key) continue;
+      if (!map[key]) map[key] = [];
+      map[key].push(t);
     }
   }
   return map;
@@ -76,18 +191,17 @@ function groupByRarity(list) {
   return map;
 }
 
-function findMiscritById(id) {
-  return MISCRITS.find(m => String(m.id) === String(id)) ?? null;
-}
+/* ===================== UI ===================== */
 
-function setActiveAvatar(id) {
+function setActiveAvatar(name) {
+  const key = normalize(name);
   document.querySelectorAll(".avatar-btn").forEach((b) => {
-    b.classList.toggle("is-active", !!id && b.dataset.id === id);
+    b.classList.toggle("is-active", !!key && normalize(b.dataset.name) === key);
   });
 }
 
 function clearSelection() {
-  selectedId = null;
+  selectedName = null;
   setActiveAvatar(null);
 
   const panelTitle = $("#panelTitle");
@@ -99,18 +213,10 @@ function clearSelection() {
   if (teamsList) teamsList.innerHTML = "";
 }
 
-function resolveRelic(ref) {
-  if (!ref) return "";
-  return RELIC_MAP[ref] ?? ref;
-}
-
-function getRelicsArray(mm) {
-  if (!Array.isArray(mm?.relics)) return [];
-  return mm.relics.map(resolveRelic).filter(Boolean).slice(0, 4);
-}
-
-function goToSpawnDetail(miscritId) {
-  window.location.href = `./miscrits.html?id=${encodeURIComponent(miscritId)}`;
+function goToSpawnDetailByName(name) {
+  const m = findMiscritByName(name);
+  if (!m?.id) return;
+  window.location.href = `./miscrits.html?id=${encodeURIComponent(m.id)}`;
 }
 
 function teamDisplayTitle(t) {
@@ -125,20 +231,20 @@ function buildTeamCardEl(t, extraClass = "") {
   card.className = `team-card ${extraClass}`.trim();
 
   const slotsHTML = (t.miscrits ?? []).slice(0, 4).map((mm) => {
-    const full = findMiscritById(mm.id);
-    const name = mm.name ?? full?.name ?? mm.id;
+    const name = (mm.name ?? "").toString().trim();
+    const full = findMiscritByName(name);
     const src = full ? avatarSrc(full) : "../assets/images/miscrits_avatar/preset_avatar.png";
     const relics = getRelicsArray(mm);
 
     const relicsHTML = relics.map((r) => `
-      <button class="relic-btn" type="button" data-mid="${mm.id}">
+      <button class="relic-btn" type="button" data-mname="${name}">
         <img src="${safeImgSrc(r)}" alt="Relic" onerror="this.src='../assets/images/ui/placeholder.png'">
       </button>
     `).join("");
 
     return `
       <div class="team-slot">
-        <button class="team-miscrit" type="button" data-mid="${mm.id}" title="Ver dónde capturar ${name}">
+        <button class="team-miscrit" type="button" data-mname="${name}" title="Ver dónde capturar ${name}">
           <img src="${src}" alt="${name}" onerror="this.src='../assets/images/miscrits_avatar/preset_avatar.png'">
         </button>
         <div class="relic-grid">
@@ -163,9 +269,6 @@ function buildTeamCardEl(t, extraClass = "") {
   return card;
 }
 
-/**
- * Render acordeones
- */
 function renderAccordions() {
   const host = $("#rarityAccordions");
   if (!host) return;
@@ -199,7 +302,7 @@ function renderAccordions() {
       const btn = document.createElement("button");
       btn.type = "button";
       btn.className = "avatar-btn";
-      btn.dataset.id = String(m.id);
+      btn.dataset.name = m.name ?? "";
       btn.title = m.name ?? "Miscrit";
 
       const img = document.createElement("img");
@@ -219,8 +322,8 @@ function renderAccordions() {
   }
 }
 
-function openSectionForMiscrit(id) {
-  const m = findMiscritById(id);
+function openSectionForMiscrit(name) {
+  const m = findMiscritByName(name);
   if (!m) return;
 
   const rarity = RARITIES.find(r => rarityKey(r) === rarityKey(m.rarity)) ?? "Common";
@@ -234,15 +337,14 @@ function openSectionForMiscrit(id) {
   section.classList.add("is-open");
 }
 
-function renderTeamsFor(selectedMiscritId) {
+function renderTeamsFor(selectedMiscritName) {
   const panelTitle = $("#panelTitle");
   const panelMeta = $("#panelMeta");
   const teamsList = $("#teamsList");
-
   if (!panelTitle || !panelMeta || !teamsList) return;
 
-  const m = findMiscritById(selectedMiscritId);
-  const teams = TEAMS_BY_MISCRIT[String(selectedMiscritId)] ?? [];
+  const m = findMiscritByName(selectedMiscritName);
+  const teams = TEAMS_BY_MISCRIT[normalize(selectedMiscritName)] ?? [];
 
   panelTitle.textContent = m ? m.name : "Miscrit";
   panelMeta.textContent = m ? `${m.type ?? "-"} • ${m.rarity ?? "-"}` : "—";
@@ -263,7 +365,6 @@ function renderSingleTeam(t) {
   const panelTitle = $("#panelTitle");
   const panelMeta = $("#panelMeta");
   const teamsList = $("#teamsList");
-
   if (!panelTitle || !panelMeta || !teamsList) return;
 
   panelTitle.textContent = teamDisplayTitle(t);
@@ -274,11 +375,11 @@ function renderSingleTeam(t) {
   teamsList.appendChild(buildTeamCardEl(t, ""));
 }
 
-function selectMiscrit(id) {
-  selectedId = id;
-  setActiveAvatar(id);
-  openSectionForMiscrit(id);
-  renderTeamsFor(id);
+function selectMiscrit(name) {
+  selectedName = name;
+  setActiveAvatar(name);
+  openSectionForMiscrit(name);
+  renderTeamsFor(name);
 }
 
 function pickTopTeams(max = 5) {
@@ -323,34 +424,17 @@ function renderTopCarousel() {
   for (const t of topTeams) marquee.appendChild(makeCard(t));
 
   track.appendChild(marquee);
-
-  const prev = $("#topPrev");
-  const next = $("#topNext");
-
-  const scrollByCard = (dir) => {
-    const firstCard = track.querySelector(".topteam-card");
-    if (!firstCard) return;
-    const w = firstCard.getBoundingClientRect().width + 14;
-    track.scrollBy({ left: dir * w, behavior: "smooth" });
-  };
-
-  if (prev) prev.addEventListener("click", () => scrollByCard(-1));
-  if (next) next.addEventListener("click", () => scrollByCard(1));
 }
 
-/**
- * Delegación: 1 solo listener para TODO
- */
 function bindDelegatedEvents() {
   document.addEventListener("click", (e) => {
     const avatarBtn = e.target.closest(".avatar-btn");
     if (avatarBtn) {
       e.stopPropagation();
-      const id = avatarBtn.dataset.id;
-      if (!id) return;
-      if (selectedId === id) clearSelection();
-      else selectMiscrit(id);
-
+      const name = avatarBtn.dataset.name;
+      if (!name) return;
+      if (normalize(selectedName) === normalize(name)) clearSelection();
+      else selectMiscrit(name);
       return;
     }
 
@@ -382,22 +466,24 @@ function bindDelegatedEvents() {
       return;
     }
 
-    const midEl = e.target.closest("[data-mid]");
-    if (midEl) {
+    const mnameEl = e.target.closest("[data-mname]");
+    if (mnameEl) {
       e.preventDefault();
       e.stopPropagation();
-      const mid = midEl.getAttribute("data-mid");
-      if (mid) goToSpawnDetail(mid);
+      const mname = mnameEl.getAttribute("data-mname");
+      if (mname) goToSpawnDetailByName(mname);
       return;
     }
   });
 }
 
-/**
- * Init
- */
+/* ===================== INIT ===================== */
+
 async function init() {
-  await Promise.all([loadMiscrits(), loadTeams()]);
+  await loadTeams();
+  await loadBestRelics();
+  await loadMiscrits();
+
   renderAccordions();
   renderTopCarousel();
   bindDelegatedEvents();
