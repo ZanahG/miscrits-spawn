@@ -22,6 +22,22 @@ function stripDiacritics(str) {
     .replace(/[\u0300-\u036f]/g, "");
 }
 
+const DAY_ES_TO_EN = {
+  "domingo": "Sunday",
+  "lunes": "Monday",
+  "martes": "Tuesday",
+  "miercoles": "Wednesday",
+  "jueves": "Thursday",
+  "viernes": "Friday",
+  "sabado": "Saturday"
+};
+
+function dayToEnglish(dayEs) {
+  const key = stripDiacritics(dayEs).trim().toLowerCase();
+  return DAY_ES_TO_EN[key] ?? dayEs;
+}
+
+
 function getServerDayName() {
   const now = new Date(
     new Date().toLocaleString("en-US", {
@@ -30,12 +46,11 @@ function getServerDayName() {
   );
 
   const resetHour = 21;
-
   if (now.getHours() >= resetHour) {
     now.setDate(now.getDate() + 1);
   }
 
-  const days = [
+  const daysEs = [
     "Domingo",
     "Lunes",
     "Martes",
@@ -45,9 +60,8 @@ function getServerDayName() {
     "Sábado"
   ];
 
-  return days[now.getDay()];
+  return daysEs[now.getDay()];
 }
-
 
 function normalize(str) {
   return stripDiacritics(str).trim().toLowerCase();
@@ -338,7 +352,7 @@ function render(listPaged, total, totalPages, startIdx, endIdx) {
         for (const d of resolveDays(s.days)) {
           const pill = document.createElement("span");
           pill.className = "pill";
-          pill.textContent = d;
+          pill.textContent = dayToEnglish(d);
           daysWrap.appendChild(pill);
         }
 
