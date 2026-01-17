@@ -3012,6 +3012,16 @@
     },
     {
       "id": "300",
+      "name": "Blowpuffle",
+      "type": "Water",
+      "rarity": "Common",
+      "avatar": "preset_avatar.png",
+      "spawns": [
+        {"place": "Volcano Island","zone": ["1st Area on Volcano Island"],"view": "object","objectImage": "../assets/images/maps/volcanoisland.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "301",
       "name": "Kitpole",
       "type": "Fire",
       "rarity": "Exotic",

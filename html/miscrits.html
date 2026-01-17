@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Miscrit Hub</title>
+  <link rel="stylesheet" href="../styles.css" />
+  <link rel="icon" href="../assets/images/logo.png" sizes="32x32">
+  <link rel="apple-touch-icon" href="../assets/images/logo.png">
+</head>
+<body>
+  <header class="top">
+    <div class="wrap">
+      <h1 id="title">Miscrit Hub</h1>
+      <p id="subtitle">All detailed data from Miscrits</p>
+      <button class="btn ghost" id="back">Volver</button>
+    </div>
+  </header>
+
+  <main class="wrap detail-layout">
+    <aside class="side card" id="leftPanel">
+      <div class="side__head">
+        <img class="side__avatar" id="avatar" alt="Miscrit" />
+        <div>
+          <h2 class="side__name" id="name">-</h2>
+          <div class="side__meta" id="meta">-</div>
+        </div>
+      </div>
+
+      <div class="side__body" id="spawnsList"></div>
+
+      <div class="ivs card" id="ivsWrap">
+        <div class="ivs__title">RATING</div>
+        <div class="ivs__note" id="ivsNote"></div>
+        <div class="ivs__tablewrap" id="ivsTableWrap"></div>
+      </div>
+
+    </aside>
+
+    <section class="map-area">
+      <div class="map-title" id="mapTitle">MAP_NAME</div>
+
+      <div class="map-frame card" id="mapFrame">
+        <img id="mapImg" class="map-img" alt="Mapa" />
+
+        <div class="pins" id="pins"></div>
+
+        <div class="pin-card card" id="pinCard" hidden>
+          <div class="pin-card__title" id="pinCardTitle">Zona</div>
+          <div class="pin-card__imgwrap">
+            <img id="pinCardImg" alt="Objeto" />
+          </div>
+          <div class="pin-card__chips" id="pinCardChips"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="../js/maps.js"></script>
+  <script src="../js/miscrits.js"></script>
+  <script src="../js/ratingTable.js"></script>
+</body>
+</html>
