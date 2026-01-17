@@ -3015,13 +3015,33 @@
       "name": "Blowpuffle",
       "type": "Water",
       "rarity": "Common",
-      "avatar": "preset_avatar.png",
+      "avatar": "blowpuffle_avatar.png",
       "spawns": [
         {"place": "Volcano Island","zone": ["1st Area on Volcano Island"],"view": "object","objectImage": "../assets/images/maps/volcanoisland.png","days": "ALL_DAYS"}
       ]
     },
     {
       "id": "301",
+      "name": "Viperd",
+      "type": "Nature",
+      "rarity": "Common",
+      "avatar": "viperd_avatar.png",
+      "spawns": [
+        {"place": "Volcano Island","zone": ["1st Area on Volcano Island"],"view": "object","objectImage": "../assets/images/maps/volcanoisland.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "302",
+      "name": "Foil Pamboo",
+      "type": "Nature",
+      "rarity": "Exotic",
+      "avatar": "foil_pamboo_avatar.png",
+      "spawns": [
+        {"place": "Volcano Island","zone": ["1st Area on Volcano Island"],"view": "object","objectImage": "../assets/images/maps/FoilPamboo.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "30x",
       "name": "Kitpole",
       "type": "Fire",
       "rarity": "Exotic",

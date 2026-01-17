@@ -1,12 +1,30 @@
 const $ = (sel) => document.querySelector(sel);
 
-let DB = [];
-let RELICS = [];
+/* =========================================================
+   STATE
+========================================================= */
+
+let DB = [];                 
+let RELICS = [];            
 let RELIC_BY_NAME = new Map();
-let ATK_BASE = null;
-let DEF_BASE = null;
-let MISCRITS_META = [];
+
+let MISCRITS_META = [];     
 let AVATAR_BY_NAME = new Map();
+
+let BASE_STATS = [];        
+let BASE_BY_NAME = new Map();
+
+let ATK_BASE = null;        
+let DEF_BASE = null;
+
+let ATK_COLORS = { HP:"green", SPD:"green", EA:"green", PA:"green", ED:"green", PD:"green" };
+let DEF_COLORS = { HP:"green", SPD:"green", EA:"green", PA:"green", ED:"green", PD:"green" };
+
+const PVP_LEVEL = 35;
+const BONUS_POOL_MAX = 136;
+
+let BONUS_ATK = { HP:0, EA:0, PA:0, SPD:0, ED:0, PD:0 };
+let BONUS_DEF = { HP:0, EA:0, PA:0, SPD:0, ED:0, PD:0 };
 
 let negateElement = false;
 let atkId = null;
@@ -14,11 +32,9 @@ let defId = null;
 let atkAttackIndex = 0;
 let atkUseEnhanced = false;
 
-const BONUS_POOL_MAX = 136;
-
-let BONUS_ATK = { HP:0, EA:0, PA:0, SPD:0, ED:0, PD:0 };
-let BONUS_DEF = { HP:0, EA:0, PA:0, SPD:0, ED:0, PD:0 };
-
+/* =========================================================
+   HELPERS
+========================================================= */
 
 function normalize(str) {
   return (str ?? "").toString().trim().toLowerCase();
@@ -29,6 +45,100 @@ function toNum(v) {
   return Number.isFinite(n) ? n : 0;
 }
 
+function clamp(n, a, b) {
+  n = toNum(n);
+  return Math.max(a, Math.min(b, n));
+}
+
+function getSideColors(side) {
+  return side === "atk" ? ATK_COLORS : DEF_COLORS;
+}
+
+/* =========================================================
+   BASE STATS CALCULATOR
+========================================================= */
+
+function colorFactor(color) {
+  const c = normalize(color);
+  if (c === "red") return 1;
+  if (c === "white") return 2;
+  return 3;
+}
+
+function statAtLevel(baseStat15, level, color, isHp) {
+  const C = colorFactor(color);
+  const L = clamp(level, 1, 35);
+
+  if (isHp) {
+    const perLevel = (12 + 2 * toNum(baseStat15) + 1.5 * C) / 5;
+    return Math.floor(perLevel * L + 10);
+  } else {
+    const perLevel = (3 + 2 * toNum(baseStat15) + 1.5 * C) / 6;
+    return Math.floor(perLevel * L + 5);
+  }
+}
+
+function getBase15ForName(name) {
+  const raw = BASE_BY_NAME.get(normalize(name));
+  if (!raw) return null;
+
+  const hp  = raw.hp  ?? raw.HP  ?? raw.Hp  ?? raw.health ?? null;
+  const spd = raw.spd ?? raw.SPD ?? raw.speed ?? null;
+  const ea  = raw.ea  ?? raw.EA  ?? raw.elemAtk ?? raw.elementalAttack ?? null;
+  const pa  = raw.pa  ?? raw.PA  ?? raw.physAtk ?? raw.physicalAttack ?? null;
+  const ed  = raw.ed  ?? raw.ED  ?? raw.elemDef ?? raw.elementalDefense ?? null;
+  const pd  = raw.pd  ?? raw.PD  ?? raw.physDef ?? raw.physicalDefense ?? null;
+
+  if (hp == null || spd == null || ea == null || pa == null || ed == null || pd == null) return null;
+
+  return { hp: toNum(hp), spd: toNum(spd), ea: toNum(ea), pa: toNum(pa), ed: toNum(ed), pd: toNum(pd) };
+}
+
+function computeBaseStatsFromCalculator(name, side) {
+  const base15 = getBase15ForName(name);
+  if (!base15) return null;
+
+  const c = getSideColors(side);
+
+  return {
+    HP:  statAtLevel(base15.hp,  PVP_LEVEL, c.HP,  true),
+    SPD: statAtLevel(base15.spd, PVP_LEVEL, c.SPD, false),
+    EA:  statAtLevel(base15.ea,  PVP_LEVEL, c.EA,  false),
+    PA:  statAtLevel(base15.pa,  PVP_LEVEL, c.PA,  false),
+    ED:  statAtLevel(base15.ed,  PVP_LEVEL, c.ED,  false),
+    PD:  statAtLevel(base15.pd,  PVP_LEVEL, c.PD,  false),
+  };
+}
+
+function setAllGreen(side) {
+  const obj = side === "atk" ? ATK_COLORS : DEF_COLORS;
+  obj.HP = obj.SPD = obj.EA = obj.PA = obj.ED = obj.PD = "green";
+}
+
+function setRedSpeed(side) {
+  setAllGreen(side);
+  const obj = side === "atk" ? ATK_COLORS : DEF_COLORS;
+  obj.SPD = "red";
+}
+
+function recomputeSideBase(side) {
+  const name = side === "atk" ? atkId : defId;
+  if (!name) return;
+
+  const computed = computeBaseStatsFromCalculator(name, side);
+
+  const m = findById(name);
+  const fallback = m?.stats ? { ...m.stats } : null;
+
+  const chosen = computed ?? fallback;
+  if (!chosen) return;
+
+  if (side === "atk") ATK_BASE = chosen;
+  else DEF_BASE = chosen;
+
+  refreshSideStatsFromRelics(side);
+  renderResult();
+}
 
 /* =========================================================
    MOVES
@@ -231,15 +341,21 @@ function bindMiscritPicker(side) {
    AVATAR
 ========================================================= */
 
+function inferAvatarFromName(name) {
+  const slug = normalize(name)
+    .replace(/\s+/g, "_")
+    .replace(/[^\w_]/g, "");
+  return `${slug}_avatar.png`;
+}
+
 function setAvatarFromMiscrit(side, m) {
   const imgEl = side === "atk" ? $("#atkAvatar") : $("#defAvatar");
   if (!imgEl || !m?.name) return;
 
-  const avatarFile = AVATAR_BY_NAME.get(normalize(m.name));
-  const src = avatarFile
-    ? `../assets/images/miscrits_avatar/${avatarFile}`
-    : `../assets/images/miscrits_avatar/preset_avatar.png`;
+  const metaAvatar = AVATAR_BY_NAME.get(normalize(m.name));
+  const inferred = inferAvatarFromName(m.name);
 
+  const src = `../assets/images/miscrits_avatar/${metaAvatar || inferred}`;
   imgEl.src = src;
   imgEl.onerror = () => {
     imgEl.src = `../assets/images/miscrits_avatar/preset_avatar.png`;
@@ -288,7 +404,6 @@ function syncMoveListPicker() {
   if (!sel) return;
 
   const attacks = getAtkMovesSorted(atk);
-  
   const prevKey = attacks[atkAttackIndex] ? moveKey(attacks[atkAttackIndex]) : null;
   if (prevKey) {
     const idx = attacks.findIndex(a => moveKey(a) === prevKey);
@@ -377,29 +492,34 @@ function setMeta(id, metaEl) {
   const m = findById(id);
   if (!metaEl) return;
   if (!m) { metaEl.textContent = "—"; return; }
-
   const elems = Array.isArray(m.elements) ? m.elements.join(", ") : "";
   metaEl.textContent = elems ? `Elements: ${elems}` : "—";
 }
 
+function chooseBaseStatsForSide(m, side) {
+  const computed = computeBaseStatsFromCalculator(m.name, side);
+  if (computed) return computed;
+  if (m?.stats) return { ...m.stats };
+  return null;
+}
+
 function applyMiscritSelection(side, idOrName) {
   const m = findById(idOrName);
-  if (!m?.stats) return;
+  if (!m?.name) return;
 
   if (side === "atk") {
     atkId = m.name;
     $("#atkMiscrit") && ($("#atkMiscrit").value = atkId);
 
-    ATK_BASE = { ...m.stats };
+    ATK_BASE = chooseBaseStatsForSide(m, "atk");
     refreshSideStatsFromRelics("atk");
 
     setMeta(atkId, $("#atkMeta"));
+    setAvatarFromMiscrit("atk", m);
 
     atkAttackIndex = 0;
     syncMoveListPicker();
     renderSelectedMoveButton();
-
-    setAvatarFromMiscrit("atk", m);
     renderResult();
     return;
   }
@@ -408,7 +528,7 @@ function applyMiscritSelection(side, idOrName) {
     defId = m.name;
     $("#defMiscrit") && ($("#defMiscrit").value = defId);
 
-    DEF_BASE = { ...m.stats };
+    DEF_BASE = chooseBaseStatsForSide(m, "def");
     refreshSideStatsFromRelics("def");
 
     setMeta(defId, $("#defMeta"));
@@ -497,6 +617,60 @@ function applyRelicStatsBySlot(stats, selections) {
   return out;
 }
 
+function sumBonus(b){
+  return toNum(b.HP)+toNum(b.EA)+toNum(b.PA)+toNum(b.SPD)+toNum(b.ED)+toNum(b.PD);
+}
+
+function readBonusDraft(side){
+  const p = side === "atk" ? "atk" : "def";
+  return {
+    HP: toNum($(`#${p}BonusHP`)?.value),
+    EA: toNum($(`#${p}BonusEA`)?.value),
+    PA: toNum($(`#${p}BonusPA`)?.value),
+    SPD: toNum($(`#${p}BonusSPD`)?.value),
+    ED: toNum($(`#${p}BonusED`)?.value),
+    PD: toNum($(`#${p}BonusPD`)?.value),
+  };
+}
+
+function writeBonusDraft(side, b){
+  const p = side === "atk" ? "atk" : "def";
+  $(`#${p}BonusHP`).value  = toNum(b.HP);
+  $(`#${p}BonusEA`).value  = toNum(b.EA);
+  $(`#${p}BonusPA`).value  = toNum(b.PA);
+  $(`#${p}BonusSPD`).value = toNum(b.SPD);
+  $(`#${p}BonusED`).value  = toNum(b.ED);
+  $(`#${p}BonusPD`).value  = toNum(b.PD);
+}
+
+function getCommittedBonus(side){
+  return side === "atk" ? BONUS_ATK : BONUS_DEF;
+}
+
+function setCommittedBonus(side, b){
+  if (side === "atk") BONUS_ATK = { ...b };
+  else BONUS_DEF = { ...b };
+}
+
+function updateBonusUI(side){
+  const p = side === "atk" ? "atk" : "def";
+  const draft = readBonusDraft(side);
+  const used = sumBonus(draft);
+  const left = Math.max(0, BONUS_POOL_MAX - used);
+
+  const poolEl = $(`#${p}BonusPool`);
+  const appliedEl = $(`#${p}BonusApplied`);
+  if (poolEl) poolEl.textContent = String(left);
+  if (appliedEl) appliedEl.textContent = String(used);
+
+  const over = used > BONUS_POOL_MAX;
+  [ "HP","EA","PA","SPD","ED","PD" ].forEach(k => {
+    const el = $(`#${p}Bonus${k}`);
+    if (!el) return;
+    el.style.outline = over ? "2px solid rgba(255,0,0,.35)" : "";
+  });
+}
+
 function calcSideWithRelics(side) {
   const base = side === "atk" ? ATK_BASE : DEF_BASE;
   if (!base) return null;
@@ -517,7 +691,6 @@ function calcSideWithRelics(side) {
     ED:  toNum(withRelics.ED)  + toNum(b.ED),
   };
 }
-
 
 function refreshSideStatsFromRelics(side) {
   const total = calcSideWithRelics(side);
@@ -652,63 +825,8 @@ function populateRelicSelects() {
 }
 
 /* =========================================================
-   TOTAL STATS + RESULT
+   RESULT
 ========================================================= */
-
-function sumBonus(b){
-  return toNum(b.HP)+toNum(b.EA)+toNum(b.PA)+toNum(b.SPD)+toNum(b.ED)+toNum(b.PD);
-}
-
-function readBonusDraft(side){
-  const p = side === "atk" ? "atk" : "def";
-  return {
-    HP: toNum($(`#${p}BonusHP`)?.value),
-    EA: toNum($(`#${p}BonusEA`)?.value),
-    PA: toNum($(`#${p}BonusPA`)?.value),
-    SPD: toNum($(`#${p}BonusSPD`)?.value),
-    ED: toNum($(`#${p}BonusED`)?.value),
-    PD: toNum($(`#${p}BonusPD`)?.value),
-  };
-}
-
-function writeBonusDraft(side, b){
-  const p = side === "atk" ? "atk" : "def";
-  $(`#${p}BonusHP`).value  = toNum(b.HP);
-  $(`#${p}BonusEA`).value  = toNum(b.EA);
-  $(`#${p}BonusPA`).value  = toNum(b.PA);
-  $(`#${p}BonusSPD`).value = toNum(b.SPD);
-  $(`#${p}BonusED`).value  = toNum(b.ED);
-  $(`#${p}BonusPD`).value  = toNum(b.PD);
-}
-
-function getCommittedBonus(side){
-  return side === "atk" ? BONUS_ATK : BONUS_DEF;
-}
-
-function setCommittedBonus(side, b){
-  if (side === "atk") BONUS_ATK = { ...b };
-  else BONUS_DEF = { ...b };
-}
-
-function updateBonusUI(side){
-  const p = side === "atk" ? "atk" : "def";
-  const draft = readBonusDraft(side);
-  const used = sumBonus(draft);
-  const left = Math.max(0, BONUS_POOL_MAX - used);
-
-  const poolEl = $(`#${p}BonusPool`);
-  const appliedEl = $(`#${p}BonusApplied`);
-  if (poolEl) poolEl.textContent = String(left);
-  if (appliedEl) appliedEl.textContent = String(used);
-
-  const over = used > BONUS_POOL_MAX;
-  [ "HP","EA","PA","SPD","ED","PD" ].forEach(k => {
-    const el = $(`#${p}Bonus${k}`);
-    if (!el) return;
-    el.style.outline = over ? "2px solid rgba(255,0,0,.35)" : "";
-  });
-}
-
 
 function getInputsRaw() {
   return {
@@ -735,7 +853,6 @@ function readTotalStatsForCalc() {
     def: { HP: raw.defHP, SPD: raw.defSPD, PA: raw.defPA, EA: raw.defEA, PD: raw.defPD, ED: raw.defED },
   };
 }
-
 
 function renderResult() {
   const outMin = $("#outMin");
@@ -815,6 +932,12 @@ function swapRelicSelectValues() {
   }
 }
 
+function swapColors() {
+  const tmp = ATK_COLORS;
+  ATK_COLORS = DEF_COLORS;
+  DEF_COLORS = tmp;
+}
+
 function swapSides() {
   const oldAtkId = atkId;
   atkId = defId;
@@ -823,6 +946,12 @@ function swapSides() {
   const oldAtkBase = ATK_BASE;
   ATK_BASE = DEF_BASE;
   DEF_BASE = oldAtkBase;
+
+  const oldBonus = BONUS_ATK;
+  BONUS_ATK = BONUS_DEF;
+  BONUS_DEF = oldBonus;
+
+  swapColors();
 
   swapInputValues("atkMiscritSearch", "defMiscritSearch");
   swapInputValues("atkMiscrit", "defMiscrit");
@@ -842,6 +971,11 @@ function swapSides() {
   setMeta(atkId, $("#atkMeta"));
   setMeta(defId, $("#defMeta"));
 
+  writeBonusDraft("atk", BONUS_ATK);
+  writeBonusDraft("def", BONUS_DEF);
+  updateBonusUI("atk");
+  updateBonusUI("def");
+
   atkAttackIndex = 0;
   syncMoveListPicker();
   renderSelectedMoveButton();
@@ -853,15 +987,17 @@ function swapSides() {
 ========================================================= */
 
 async function loadAll() {
-  const [dbRes, relicRes, metaRes] = await Promise.all([
+  const [dbRes, relicRes, metaRes, baseStatsRes] = await Promise.all([
     fetch("../assets/data/miscritsdb.json", { cache: "no-store" }),
     fetch("../assets/data/relics.json", { cache: "no-store" }),
-    fetch("../miscrits.json", { cache: "no-store" })
+    fetch("../miscrits.json", { cache: "no-store" }),
+    fetch("../assets/data/base_stats.json", { cache: "no-store" }),
   ]);
 
   if (!dbRes.ok) throw new Error(`HTTP ${dbRes.status} cargando miscritsdb.json`);
   if (!relicRes.ok) throw new Error(`HTTP ${relicRes.status} cargando relics.json`);
   if (!metaRes.ok) throw new Error(`HTTP ${metaRes.status} cargando miscrits.json`);
+  if (!baseStatsRes.ok) throw new Error(`HTTP ${baseStatsRes.status} cargando base_stats.json`);
 
   DB = await dbRes.json();
   RELICS = await relicRes.json();
@@ -869,12 +1005,25 @@ async function loadAll() {
   const metaJson = await metaRes.json();
   MISCRITS_META = metaJson?.miscrits ?? [];
 
+  const baseStatsJson = await baseStatsRes.json();
+
+  BASE_STATS = Array.isArray(baseStatsJson) ? baseStatsJson : (baseStatsJson?.miscrits ?? []);
+
   RELIC_BY_NAME = new Map(RELICS.map(r => [r.name, r]));
 
   AVATAR_BY_NAME = new Map(
     MISCRITS_META
       .filter(x => x?.name && x?.avatar)
       .map(x => [normalize(x.name), x.avatar])
+  );
+
+  BASE_BY_NAME = new Map(
+    BASE_STATS
+      .filter(x => x?.name && (x?.baseStats || x?.stats || x?.base || x?.base_stats))
+      .map(x => {
+        const bs = x.baseStats ?? x.stats ?? x.base ?? x.base_stats;
+        return [normalize(x.name), bs];
+      })
   );
 }
 
@@ -891,17 +1040,18 @@ function bindAll() {
 
   $("#btnSwapSides")?.addEventListener("click", swapSides);
 
+  $("#obsDmgList")?.addEventListener("input", renderDefenseGuess);
+
   $("#btnNegateElement")?.addEventListener("click", () => {
-  negateElement = !negateElement;
+    negateElement = !negateElement;
 
-  const b = $("#btnNegateElement");
-  if (b) {
-    b.classList.toggle("is-active", negateElement);
-    b.setAttribute("aria-pressed", negateElement ? "true" : "false");
-  }
-
-  renderResult();
-});
+    const b = $("#btnNegateElement");
+    if (b) {
+      b.classList.toggle("is-active", negateElement);
+      b.setAttribute("aria-pressed", negateElement ? "true" : "false");
+    }
+    renderResult();
+  });
 
   document.addEventListener("click", (e) => {
     if (e.target.closest('[data-action="close-moves"]')) {
@@ -950,26 +1100,25 @@ function bindAll() {
     renderResult();
   });
 
-  // Tabs RELICS / BONUS
-document.querySelectorAll(".dmgx__tab").forEach(btn => {
-  btn.addEventListener("click", () => {
-    const side = btn.getAttribute("data-side");
-    const tab  = btn.getAttribute("data-tab");
+  document.querySelectorAll(".dmgx__tab").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const side = btn.getAttribute("data-side");
+      const tab  = btn.getAttribute("data-tab");
 
-    const host = btn.closest(".dmgx__subpanel");
-    if (!host) return;
+      const host = btn.closest(".dmgx__subpanel");
+      if (!host) return;
 
-    host.querySelectorAll(".dmgx__tab").forEach(t => t.classList.remove("is-active"));
-    btn.classList.add("is-active");
+      host.querySelectorAll(".dmgx__tab").forEach(t => t.classList.remove("is-active"));
+      btn.classList.add("is-active");
 
-    host.querySelectorAll(".dmgx__panel").forEach(p => {
-      const isTarget = p.getAttribute("data-panel") === tab && p.getAttribute("data-side") === side;
-      p.hidden = !isTarget;
+      host.querySelectorAll(".dmgx__panel").forEach(p => {
+        const isTarget = p.getAttribute("data-panel") === tab && p.getAttribute("data-side") === side;
+        p.hidden = !isTarget;
+      });
+
+      if (tab === "bonus") updateBonusUI(side);
     });
-
-    if (tab === "bonus") updateBonusUI(side);
   });
-});
 
   ["atk","def"].forEach(side => {
     const ids = ["HP","EA","PA","SPD","ED","PD"].map(k => `#${side}Bonus${k}`);
@@ -993,6 +1142,10 @@ document.querySelectorAll(".dmgx__tab").forEach(btn => {
     });
   });
 
+  $("#atkPresetAllGreen")?.addEventListener("click", () => { setAllGreen("atk"); recomputeSideBase("atk"); });
+  $("#atkPresetRedSpeed")?.addEventListener("click", () => { setRedSpeed("atk"); recomputeSideBase("atk"); });
+  $("#defPresetAllGreen")?.addEventListener("click", () => { setAllGreen("def"); recomputeSideBase("def"); });
+  $("#defPresetRedSpeed")?.addEventListener("click", () => { setRedSpeed("def"); recomputeSideBase("def"); });
 }
 
 async function init() {
@@ -1015,8 +1168,8 @@ async function init() {
   const atkM = findById(atkId);
   const defM = findById(defId);
 
-  if (atkM?.stats) ATK_BASE = { ...atkM.stats };
-  if (defM?.stats) DEF_BASE = { ...defM.stats };
+  if (atkM) ATK_BASE = chooseBaseStatsForSide(atkM, "atk");
+  if (defM) DEF_BASE = chooseBaseStatsForSide(defM, "def");
 
   refreshSideStatsFromRelics("atk");
   refreshSideStatsFromRelics("def");
@@ -1024,9 +1177,12 @@ async function init() {
   if (atkM) setAvatarFromMiscrit("atk", atkM);
   if (defM) setAvatarFromMiscrit("def", defM);
 
+  atkAttackIndex = 0;
   syncMoveListPicker();
   renderSelectedMoveButton();
+
   bindAll();
+
   writeBonusDraft("atk", BONUS_ATK);
   writeBonusDraft("def", BONUS_DEF);
   updateBonusUI("atk");
