@@ -6,6 +6,7 @@
   <title>Miscrits Hub — Stats Calculator</title>
 
   <link rel="stylesheet" href="../styles.css" />
+
   <link rel="icon" href="../assets/images/logo.png" sizes="32x32">
   <link rel="apple-touch-icon" href="../assets/images/logo.png">
 </head>
@@ -14,12 +15,7 @@
   <header class="top">
     <div class="wrap topbar">
       <a class="brand" href="../index.html" aria-label="Ir a Miscrits Hub">
-        <img
-          src="../assets/images/logo.png"
-          alt="Miscrits Hub"
-          class="brand__logo"
-          draggable="false"
-        />
+        <img src="../assets/images/logo.png" alt="Miscrits Hub" class="brand__logo" draggable="false" />
       </a>
 
       <nav class="topnav topnav--header" aria-label="Navegación principal">
@@ -33,14 +29,14 @@
   <main class="wrap sc">
     <h1 class="sc__title">Stats Calculator</h1>
 
-    <!-- Controles -->
+    <!-- CONTROLES TOP -->
     <section class="card sc__panel">
-      <div class="filters sc__filters">
+      <div class="filters sc__filters sc__filters--search">
         <div class="field">
           <label for="sc-guess">Miscrit</label>
 
           <!-- Picker -->
-          <div class="miscritpicker miscritpicker--md">
+          <div class="miscritpicker miscritpicker--md sc__picker">
             <input
               id="sc-guess"
               class="dmgx__search"
@@ -49,165 +45,169 @@
               autocomplete="off"
             />
             <div id="scDropdown" class="miscritpicker__dropdown" hidden></div>
-
-            <input id="miscritSelect" type="hidden" value="">
           </div>
         </div>
 
         <div class="field">
-          <label for="levelInput">Nivel (1–35)</label>
-          <input id="levelInput" type="number" min="1" max="35" value="35" />
-        </div>
-
-        <div class="actions sc__actions">
-          <button id="calcBtn" class="btn" type="button">Calcular</button>
-          <button id="resetBtn" class="btn ghost" type="button">Reset colores</button>
+          <label for="levelInput">Level 1 to 35</label>
+          <input id="levelInput" type="number" min="1" max="35" value="35" class="sc__input"/>
         </div>
       </div>
     </section>
 
-    <!-- Result -->
-    <section class="card sc__result" aria-live="polite">
-      <div class="sc__head">
-        <img id="avatarImg" class="sc__avatar" src="../assets/images/logo.png" alt="" />
-        <div class="sc__headText">
-          <p class="sc__name" id="title">—</p>
-          <div class="sc__meta" id="subtitle">White / Flat (sin bonus)</div>
+    <section class="sc__stage">
+      <div class="sc__left">
+        <div class="sc__presets">
+          <button id="presetRedSpeed" class="btn sc__presetBtn" type="button">RED SPEED</button>
+          <button id="presetAllGreen" class="btn sc__presetBtn" type="button">ALL GREEN</button>
+          <button id="resetBtn" class="btn sc__presetBtn" type="button">RESET</button>
+        </div>
+
+        <div class="sc__avatarWrap">
+          <img id="avatarImg" class="sc__bigAvatar" src="../assets/images/miscrits_avatar/preset_avatar.png" alt="">
+        </div>
+
+        <!-- RESULT STATS CARD -->
+        <section class="card sc__result sc__result--compact" aria-live="polite">
+          <div class="sc__resultHead">
+            <p class="sc__name" id="title">—</p>
+            <div class="sc__meta" id="subtitle">—</div>
+          </div>
+
+          <div class="sc__statList">
+            <div class="scrow" data-stat="hp">
+              <span class="sck sck--hp">HP</span>
+
+              <select class="sccolor" id="cHp">
+                <option value="white">WHITE</option>
+                <option value="green">GREEN</option>
+                <option value="red">RED</option>
+              </select>
+
+              <strong id="outHp">—</strong>
+            </div>
+
+            <div class="scrow" data-stat="spd">
+              <span class="sck sck--spd">SPD</span>
+
+              <select class="sccolor" id="cSpd">
+                <option value="white">WHITE</option>
+                <option value="green">GREEN</option>
+                <option value="red">RED</option>
+              </select>
+
+              <strong id="outSpd">—</strong>
+            </div>
+
+            <div class="scrow" data-stat="ea">
+              <span class="sck sck--ea">EA</span>
+
+              <select class="sccolor" id="cEa">
+                <option value="white">WHITE</option>
+                <option value="green">GREEN</option>
+                <option value="red">RED</option>
+              </select>
+
+              <strong id="outEa">—</strong>
+            </div>
+
+            <div class="scrow" data-stat="pa">
+              <span class="sck sck--pa">PA</span>
+
+              <select class="sccolor" id="cPa">
+                <option value="white">WHITE</option>
+                <option value="green">GREEN</option>
+                <option value="red">RED</option>
+              </select>
+
+              <strong id="outPa">—</strong>
+            </div>
+
+            <div class="scrow" data-stat="ed">
+              <span class="sck sck--ed">ED</span>
+
+              <select class="sccolor" id="cEd">
+                <option value="white">WHITE</option>
+                <option value="green">GREEN</option>
+                <option value="red">RED</option>
+              </select>
+
+              <strong id="outEd">—</strong>
+            </div>
+
+            <div class="scrow" data-stat="pd">
+              <span class="sck sck--pd">PD</span>
+
+              <select class="sccolor" id="cPd">
+                <option value="white">WHITE</option>
+                <option value="green">GREEN</option>
+                <option value="red">RED</option>
+              </select>
+
+              <strong id="outPd">—</strong>
+            </div>
+          </div>
+          <div class="sc__error" id="err"></div>
+        </section>
+
+        <div class="sc__hiddenColors" hidden>
+          <select id="cHp"><option value="white">white</option><option value="green">green</option><option value="red">red</option></select>
+          <select id="cSpd"><option value="white">white</option><option value="green">green</option><option value="red">red</option></select>
+          <select id="cEa"><option value="white">white</option><option value="green">green</option><option value="red">red</option></select>
+          <select id="cPa"><option value="white">white</option><option value="green">green</option><option value="red">red</option></select>
+          <select id="cEd"><option value="white">white</option><option value="green">green</option><option value="red">red</option></select>
+          <select id="cPd"><option value="white">white</option><option value="green">green</option><option value="red">red</option></select>
         </div>
       </div>
 
-      <div class="sc__statsgrid">
-        <div class="scstat">
-          <div class="scstat__top">
-            <div class="scstat__k">HP</div>
-            <select id="cHp" class="scstat__color" data-val="white">
-              <option value="white" selected>White</option>
-              <option value="green">Green</option>
-              <option value="red">Red</option>
-            </select>
+      <div class="sc__right">
+        <!-- BONUS X LEVEL -->
+        <div class="sc__bonusRow">
+          <section class="card sc__bonusSolo">
+            <div class="sc__bonusSoloHead">
+              <p class="sc__bonusTitle" id="bonusTitle">BONUS X LEVEL</p>
+            </div>
+
+            <div class="sc__totalsGrid sc__totalsGrid--inputs">
+              <div class="sctotal"><b class="sck sck--hp">HP</b><input id="bHp" class="sc__bonusInput" type="number" min="0" value="0" /></div>
+              <div class="sctotal"><b class="sck sck--spd">SPD</b><input id="bSpd" class="sc__bonusInput" type="number" min="0" value="0" /></div>
+              <div class="sctotal"><b class="sck sck--ea">EA</b><input id="bEa" class="sc__bonusInput" type="number" min="0" value="0" /></div>
+              <div class="sctotal"><b class="sck sck--pa">PA</b><input id="bPa" class="sc__bonusInput" type="number" min="0" value="0" /></div>
+              <div class="sctotal"><b class="sck sck--ed">ED</b><input id="bEd" class="sc__bonusInput" type="number" min="0" value="0" /></div>
+              <div class="sctotal"><b class="sck sck--pd">PD</b><input id="bPd" class="sc__bonusInput" type="number" min="0" value="0" /></div>
+            </div>
+          </section>
+
+          <div class="sc__bonusSideBtns">
+            <button id="regenBonusBtn" class="btnRegen" type="button">REGENERATE</button>
+            <button id="applyBonusBtn" class="btn ghost" type="button">APPLY BONUS</button>
           </div>
-          <div class="scstat__v" id="outHp">—</div>
         </div>
 
-        <div class="scstat">
-          <div class="scstat__top">
-            <div class="scstat__k">SPD</div>
-            <select id="cSpd" class="scstat__color" data-val="white">
-              <option value="white" selected>White</option>
-              <option value="green">Green</option>
-              <option value="red">Red</option>
-            </select>
-          </div>
-          <div class="scstat__v" id="outSpd">—</div>
-        </div>
+        <!-- BONUS X PLATINUM -->
+        <div class="sc__bonusRow">
+          <section class="card sc__bonusSolo sc__bonusSolo--plat">
+            <div class="sc__bonusSoloHead">
+              <p class="sc__bonusTitle" id="platBonusTitle">BONUS X PLATINUM</p>
+            </div>
 
-        <div class="scstat">
-          <div class="scstat__top">
-            <div class="scstat__k">EA</div>
-            <select id="cEa" class="scstat__color" data-val="white">
-              <option value="white" selected>White</option>
-              <option value="green">Green</option>
-              <option value="red">Red</option>
-            </select>
-          </div>
-          <div class="scstat__v" id="outEa">—</div>
-        </div>
+            <div class="sc__totalsGrid sc__totalsGrid--inputs">
+              <div class="sctotal"><b class="sck sck--hp">HP</b><input id="pHp" class="sc__bonusInput" type="number" min="0" value="0" /></div>
+              <div class="sctotal"><b class="sck sck--spd">SPD</b><input id="pSpd" class="sc__bonusInput" type="number" min="0" value="0" /></div>
+              <div class="sctotal"><b class="sck sck--ea">EA</b><input id="pEa" class="sc__bonusInput" type="number" min="0" value="0" /></div>
+              <div class="sctotal"><b class="sck sck--pa">PA</b><input id="pPa" class="sc__bonusInput" type="number" min="0" value="0" /></div>
+              <div class="sctotal"><b class="sck sck--ed">ED</b><input id="pEd" class="sc__bonusInput" type="number" min="0" value="0" /></div>
+              <div class="sctotal"><b class="sck sck--pd">PD</b><input id="pPd" class="sc__bonusInput" type="number" min="0" value="0" /></div>
+            </div>
+          </section>
 
-        <div class="scstat">
-          <div class="scstat__top">
-            <div class="scstat__k">PA</div>
-            <select id="cPa" class="scstat__color" data-val="white">
-              <option value="white" selected>White</option>
-              <option value="green">Green</option>
-              <option value="red">Red</option>
-            </select>
+          <div class="sc__bonusSideBtns">
+            <button id="regenPlatBonusBtn" class="btnRegen" type="button">REGENERATE</button>
+            <button id="applyPlatBonusBtn" class="btn ghost" type="button">APPLY BONUS</button>
           </div>
-          <div class="scstat__v" id="outPa">—</div>
-        </div>
-
-        <div class="scstat">
-          <div class="scstat__top">
-            <div class="scstat__k">ED</div>
-            <select id="cEd" class="scstat__color" data-val="white">
-              <option value="white" selected>White</option>
-              <option value="green">Green</option>
-              <option value="red">Red</option>
-            </select>
-          </div>
-          <div class="scstat__v" id="outEd">—</div>
-        </div>
-
-        <div class="scstat">
-          <div class="scstat__top">
-            <div class="scstat__k">PD</div>
-            <select id="cPd" class="scstat__color" data-val="white">
-              <option value="white" selected>White</option>
-              <option value="green">Green</option>
-              <option value="red">Red</option>
-            </select>
-          </div>
-          <div class="scstat__v" id="outPd">—</div>
         </div>
       </div>
-
-      <div class="sc__note">
-        C por color: Red=1, White=2, Green=3. “Flat”: sin bonus points, sin platinum, sin reliquias.
-      </div>
-
-      <div class="sc__error" id="err"></div>
     </section>
-
-    <div class="sc__bonusRow2">
-
-      <!-- BONUS -->
-      <section class="card sc__bonusSolo">
-        <div class="sc__bonusSoloHead">
-          <p class="sc__bonusTitle" id="bonusTitle">Bonus Total</p>
-
-          <div class="sc__bonusActions">
-            <label class="sc__toggle">
-              <input type="checkbox" id="applyBonus">
-              <span>Aplicar bonus</span>
-            </label>
-            <button id="regenBonusBtn" class="btn" type="button">Regenerar</button>
-          </div>
-        </div>
-
-        <div class="sc__totalsGrid sc__totalsGrid--inputs">
-          <div class="sctotal"><b>HP</b><input id="bHp" class="sc__bonusInput" type="number" min="0" value="0" /></div>
-          <div class="sctotal"><b>SPD</b><input id="bSpd" class="sc__bonusInput" type="number" min="0" value="0" /></div>
-          <div class="sctotal"><b>EA</b><input id="bEa" class="sc__bonusInput" type="number" min="0" value="0" /></div>
-          <div class="sctotal"><b>PA</b><input id="bPa" class="sc__bonusInput" type="number" min="0" value="0" /></div>
-          <div class="sctotal"><b>ED</b><input id="bEd" class="sc__bonusInput" type="number" min="0" value="0" /></div>
-          <div class="sctotal"><b>PD</b><input id="bPd" class="sc__bonusInput" type="number" min="0" value="0" /></div>
-        </div>
-      </section>
-
-      <!-- BONUS PLATINO -->
-      <section class="card sc__bonusSolo sc__bonusSolo--plat">
-        <div class="sc__bonusSoloHead">
-          <p class="sc__bonusTitle" id="platBonusTitle">Bonus Platino</p>
-
-          <div class="sc__bonusActions">
-            <label class="sc__toggle">
-              <input type="checkbox" id="applyPlatBonus">
-              <span>Aplicar platino</span>
-            </label>
-            <button id="regenPlatBonusBtn" class="btn" type="button">Regenerar</button>
-          </div>
-        </div>
-
-        <div class="sc__totalsGrid sc__totalsGrid--inputs">
-          <div class="sctotal"><b>HP</b><input id="pHp" class="sc__bonusInput" type="number" min="0" value="0" /></div>
-          <div class="sctotal"><b>SPD</b><input id="pSpd" class="sc__bonusInput" type="number" min="0" value="0" /></div>
-          <div class="sctotal"><b>EA</b><input id="pEa" class="sc__bonusInput" type="number" min="0" value="0" /></div>
-          <div class="sctotal"><b>PA</b><input id="pPa" class="sc__bonusInput" type="number" min="0" value="0" /></div>
-          <div class="sctotal"><b>ED</b><input id="pEd" class="sc__bonusInput" type="number" min="0" value="0" /></div>
-          <div class="sctotal"><b>PD</b><input id="pPd" class="sc__bonusInput" type="number" min="0" value="0" /></div>
-        </div>
-      </section>
-
-    </div>
   </main>
 
   <script src="../js/statscalculator.js"></script>
