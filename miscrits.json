@@ -3012,16 +3012,6 @@
     },
     {
       "id": "300",
-      "name": "Blowpuffle",
-      "type": "Water",
-      "rarity": "Common",
-      "avatar": "blowpuffle_avatar.png",
-      "spawns": [
-        {"place": "Volcano Island","zone": ["1st Area on Volcano Island"],"view": "object","objectImage": "../assets/images/maps/volcanoisland.png","days": "ALL_DAYS"}
-      ]
-    },
-    {
-      "id": "301",
       "name": "Viperd",
       "type": "Nature",
       "rarity": "Common",
@@ -3031,7 +3021,47 @@
       ]
     },
     {
+      "id": "301",
+      "name": "Blowpuffle",
+      "type": "Water",
+      "rarity": "Common",
+      "avatar": "blowpuffle_avatar.png",
+      "spawns": [
+        {"place": "Volcano Island","zone": ["1st Area on Volcano Island"],"view": "object","objectImage": "../assets/images/maps/volcanoisland.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
       "id": "302",
+      "name": "Squawcat",
+      "type": "Fire",
+      "rarity": "Rare",
+      "avatar": "squawcat_avatar.png",
+      "spawns": [
+        {"place": "Volcano Island","zone": ["1st Area on Volcano Island"],"view": "object","objectImage": "../assets/images/maps/volcanoisland.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "303",
+      "name": "Dark Weevern",
+      "type": "Nature",
+      "rarity": "Rare",
+      "avatar": "dark_weevern_avatar.png",
+      "spawns": [
+        {"place": "Volcano Island","zone": ["Any Object 1st Area on Volcano Island"],"view": "object","objectImage": "../assets/images/maps/volcanoisland.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "304",
+      "name": "Pangoleaf",
+      "type": "Nature",
+      "rarity": "Epic",
+      "avatar": "pangoleaf_avatar.png",
+      "spawns": [
+        {"place": "Volcano Island","zone": ["1st Area on Volcano Island"],"view": "object","objectImage": "../assets/images/maps/Pangoleaf.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "305",
       "name": "Foil Pamboo",
       "type": "Nature",
       "rarity": "Exotic",
@@ -3041,13 +3071,213 @@
       ]
     },
     {
-      "id": "30x",
+      "id": "306",
+      "name": "Gippo",
+      "type": "Water",
+      "rarity": "Common",
+      "avatar": "gippo_avatar.png",
+      "spawns": [
+        {"place": "Volcano Island","zone": ["2nd Area on Volcano Island"],"view": "object","objectImage": "../assets/images/maps/volcanoisland.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "307",
+      "name": "Hoghedge",
+      "type": "Nature",
+      "rarity": "Common",
+      "avatar": "hoghedge_avatar.png",
+      "spawns": [
+        {"place": "Volcano Island","zone": ["2nd Area on Volcano Island"],"view": "object","objectImage": "../assets/images/maps/volcanoisland.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "308",
+      "name": "Shroomer",
+      "type": "Nature",
+      "rarity": "Common",
+      "avatar": "shroomer_avatar.png",
+      "spawns": [
+        {"place": "Volcano Island","zone": ["2nd Area on Volcano Island"],"view": "object","objectImage": "../assets/images/maps/volcanoisland.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "309",
+      "name": "Daloo",
+      "type": "Water",
+      "rarity": "Common",
+      "avatar": "daloo_avatar.png",
+      "spawns": [
+        {"place": "Volcano Island","zone": ["2nd Area on Volcano Island"],"view": "object","objectImage": "../assets/images/maps/volcanoisland.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "310",
+      "name": "Dark Whik",
+      "type": "Fire",
+      "rarity": "Rare",
+      "avatar": "dark_whik_avatar.png",
+      "spawns": [
+        {"place": "Volcano Island","zone": ["2nd Area on Volcano Island"],"view": "object","objectImage": "../assets/images/maps/volcanoisland.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "311",
+      "name": "Bloombat",
+      "type": "Nature",
+      "rarity": "Rare",
+      "avatar": "bloombat_avatar.png",
+      "spawns": [
+        {"place": "Volcano Island","zone": ["2th Area on Volcano Island"],"view": "object","objectImage": "../assets/images/maps/Bloombat.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "312",
+      "name": "Nyma",
+      "type": "Water",
+      "rarity": "Epic",
+      "avatar": "nyma_avatar.png",
+      "spawns": [
+        {"place": "Volcano Island","zone": [""],"view": "object","objectImage": "../assets/images/maps/Nyma.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "313",
       "name": "Kitpole",
       "type": "Fire",
       "rarity": "Exotic",
-      "avatar": "preset_avatar.png",
+      "avatar": "kitpole_avatar.png",
       "spawns": [
         {"place": "Volcano Island","zone": ["2th Area on Volcano Island"],"view": "object","objectImage": "../assets/images/maps/Volcano1.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "314",
+      "name": "Magpole",
+      "type": "Fire",
+      "rarity": "Common",
+      "avatar": "magpole_avatar.png",
+      "spawns": [
+        {"place": "Volcano Island","zone": ["3rd Area on Volcano Island"],"view": "object","objectImage": "../assets/images/maps/Volcano1.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "315",
+      "name": "Beetor",
+      "type": "Fire",
+      "rarity": "Common",
+      "avatar": "beetor_avatar.png",
+      "spawns": [
+        {"place": "Volcano Island","zone": ["3rd Area on Volcano Island"],"view": "object","objectImage": "../assets/images/maps/Volcano1.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "316",
+      "name": "Liquifien",
+      "type": "Water",
+      "rarity": "Common",
+      "avatar": "liquifien_avatar.png",
+      "spawns": [
+        {"place": "Volcano Island","zone": ["3rd Area on Volcano Island"],"view": "object","objectImage": "../assets/images/maps/Volcano1.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "317",
+      "name": "Glary",
+      "type": "Water",
+      "rarity": "Epic",
+      "avatar": "glary_avatar.png",
+      "spawns": [
+        {"place": "Volcano Island","zone": ["3rd Area on Volcano Island"],"view": "object","objectImage": "../assets/images/maps/Glary.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "318",
+      "name": "Foil Liquifien",
+      "type": "Water",
+      "rarity": "Exotic",
+      "avatar": "foil_liquifien_avatar.png",
+      "spawns": [
+        {"place": "Volcano Island","zone": ["3rd Area on Volcano Island"],"view": "object","objectImage": "../assets/images/maps/FoilLiquifien.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "319",
+      "name": "Pachydo",
+      "type": "Water",
+      "rarity": "Common",
+      "avatar": "pachydo_avatar.png",
+      "spawns": [
+        {"place": "Volcano Island","zone": ["4th Area on Volcano Island"],"view": "object","objectImage": "../assets/images/maps/FoilLiquifien.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "320",
+      "name": "Gurgleplops",
+      "type": "Water",
+      "rarity": "Common",
+      "avatar": "gurgleplops_avatar.png",
+      "spawns": [
+        {"place": "Volcano Island","zone": ["4th Area on Volcano Island"],"view": "object","objectImage": "../assets/images/maps/FoilLiquifien.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "321",
+      "name": "Budillo",
+      "type": "Nature",
+      "rarity": "Common",
+      "avatar": "gurgleplops_avatar.png",
+      "spawns": [
+        {"place": "Volcano Island","zone": ["4th Area on Volcano Island"],"view": "object","objectImage": "../assets/images/maps/FoilLiquifien.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "322",
+      "name": "Pithapillar",
+      "type": "Nature",
+      "rarity": "Common",
+      "avatar": "pithapillar_avatar.png",
+      "spawns": [
+        {"place": "Volcano Island","zone": ["4th Area on Volcano Island"],"view": "object","objectImage": "../assets/images/maps/volcanoisland.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "323",
+      "name": "Dark Bubbles",
+      "type": "Water",
+      "rarity": "Rare",
+      "avatar": "dark_bubbles_avatar.png",
+      "spawns": [
+        {"place": "Volcano Island","zone": ["4th Area on Volcano Island"],"view": "object","objectImage": "../assets/images/maps/volcanoisland.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "324",
+      "name": "Pyras",
+      "type": "Fire",
+      "rarity": "Epic",
+      "avatar": "pyras_avatar.png",
+      "spawns": [
+        {"place": "Volcano Island","zone": ["4th Area on Volcano Island"],"view": "object","objectImage": "../assets/images/maps/volcanoisland.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "325",
+      "name": "Foil Rockodile",
+      "type": "Water",
+      "rarity": "Exotic",
+      "avatar": "foil_rockodile_avatar.png",
+      "spawns": [
+        {"place": "Volcano Island","zone": ["4th Area on Volcano Island"],"view": "object","objectImage": "../assets/images/maps/FoilRockodile.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "326",
+      "name": "Bunaken",
+      "type": "Water",
+      "rarity": "Legendary",
+      "avatar": "bunaken_avatar.png",
+      "spawns": [
+        {"place": "Volcano Island","zone": ["4th Area on Volcano Island"],"view": "object","objectImage": "../assets/images/maps/Bunaken.png","days": "ALL_DAYS"}
       ]
     }
   ]
