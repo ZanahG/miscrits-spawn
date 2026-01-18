@@ -3247,7 +3247,7 @@
       "rarity": "Rare",
       "avatar": "dark_bubbles_avatar.png",
       "spawns": [
-        {"place": "Volcano Island","zone": ["4th Area on Volcano Island"],"view": "object","objectImage": "../assets/images/maps/volcanoisland.png","days": "ALL_DAYS"}
+        {"place": "Volcano Island","zone": ["4th Area on Volcano Island"],"view": "object","objectImage": "../assets/images/maps/volcanoisland.png","days": ["Lunes"]}
       ]
     },
     {
@@ -3257,7 +3257,7 @@
       "rarity": "Epic",
       "avatar": "pyras_avatar.png",
       "spawns": [
-        {"place": "Volcano Island","zone": ["4th Area on Volcano Island"],"view": "object","objectImage": "../assets/images/maps/volcanoisland.png","days": "ALL_DAYS"}
+        {"place": "Volcano Island","zone": ["4th Area on Volcano Island"],"view": "object","objectImage": "../assets/images/maps/Pyras.png","days": ["Domingo"]}
       ]
     },
     {
