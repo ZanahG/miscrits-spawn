@@ -23,11 +23,34 @@ const COLS = [
   { key: "element", label: "ELEMENT" },
   { key: "rarity", label: "RARITY" },
   { key: "place", label: "SPAWN PLACE" },
-  { key: "dark", label: "MISCRIT IS DARK" },
-  { key: "light", label: "MISCRIT IS LIGHT" },
+  { key: "variant", label: "IS VARIANT/FORM" }
 ];
 
 const RARITY_ORDER = ["Common", "Rare", "Epic", "Exotic", "Legendary"];
+
+const ELEMENTS = ["fire", "water", "nature", "earth", "wind","lightning"];
+
+function parseElements(typeRaw) {
+  const s = normalize(typeRaw).replace(/[^a-z]/g, "");
+  const found = ELEMENTS.filter(el => s.includes(el));
+  return [...new Set(found)];
+}
+
+function compareElements(guessType, targetType) {
+  const g = parseElements(guessType);
+  const t = parseElements(targetType);
+
+  const gSet = new Set(g);
+  const tSet = new Set(t);
+
+  let common = 0;
+  for (const el of gSet) if (tSet.has(el)) common++;
+
+  const exact = (gSet.size === tSet.size) && common === gSet.size;
+  const partial = !exact && common > 0;
+
+  return { exact, partial, g, t, common };
+}
 
 /* ===============================
    Utils
@@ -41,11 +64,18 @@ function sameName(a, b) {
   return normalize(a) === normalize(b);
 }
 
-function isDarkName(name) {
-  return normalize(name).startsWith("dark ");
-}
-function isLightName(name) {
-  return normalize(name).startsWith("light ");
+const VARIANT_PREFIXES = [
+  "dark",
+  "light",
+  "foil",
+  "blighted",
+  "grimm",
+  "alpha"
+];
+
+function isVariantName(name) {
+  const n = normalize(name);
+  return VARIANT_PREFIXES.some(p => n.startsWith(p + " "));
 }
 
 function rarityRank(r) {
@@ -330,10 +360,17 @@ function renderRow(guess, target) {
   const gType = (guess.type ?? "?").toString();
   const tType = (target.type ?? "?").toString();
 
+  const cmp = compareElements(gType, tType);
+
   const c2 = document.createElement("div");
-  c2.className = `mdcell ${normalize(gType) === normalize(tType) ? "ok" : "no"}`;
+  c2.className = `mdcell ${cmp.exact ? "ok" : (cmp.partial ? "mid" : "no")}`;
   c2.dataset.label = "Element";
-  c2.innerHTML = `<img class="md-elem" src="${elementIconSrc(gType)}" alt="${gType}">`;
+
+  const icons = (cmp.g.length ? cmp.g : [normalize(gType)]).slice(0, 2).map(el =>
+    `<img class="md-elem" src="${elementIconSrc(el)}" alt="${el}">`
+  ).join("");
+
+  c2.innerHTML = `<div class="md-elemRow">${icons}</div>`;
   row.appendChild(c2);
 
   /* ================= RARITY ================= */
@@ -379,27 +416,20 @@ function renderRow(guess, target) {
   c4.innerHTML = `<div class="mdtext">${gP}</div>`;
   row.appendChild(c4);
 
-  /* ================= DARK / LIGHT ================= */
-  const targetIsDark = isDarkName(target.name);
-  const targetIsLight = isLightName(target.name);
+  /* ================= VARIANT / FORM ================= */
+  const targetIsVariant = isVariantName(target.name);
+  const guessIsVariant = isVariantName(guess.name);
 
-  const guessIsDark = isDarkName(guess.name);
-  const guessIsLight = isLightName(guess.name);
-
-  const darkMatch = guessIsDark === targetIsDark;
-  const lightMatch = guessIsLight === targetIsLight;
+  const variantMatch = guessIsVariant === targetIsVariant;
 
   const c5 = document.createElement("div");
-  c5.className = `mdcell ${darkMatch ? "ok" : "no"}`;
-  c5.dataset.label = "Dark";
-  c5.innerHTML = `<div class="mdtext md-yn">${darkMatch ? "MATCH" : "NO IS DARK"}</div>`;
-  row.appendChild(c5);
+  c5.className = `mdcell ${variantMatch ? "ok" : "no"}`;
+  c5.dataset.label = "Variant / Form";
 
-  const c6 = document.createElement("div");
-  c6.className = `mdcell ${lightMatch ? "ok" : "no"}`;
-  c6.dataset.label = "Light";
-  c6.innerHTML = `<div class="mdtext md-yn">${lightMatch ? "MATCH" : "NO IS LIGHT"}</div>`;
-  row.appendChild(c6);
+  const guessTxt = guessIsVariant ? "VARIANT" : "NORMAL";
+  c5.innerHTML = `<div class="mdtext md-yn">${variantMatch ? "NO VARIANT" : guessTxt}</div>`;
+
+  row.appendChild(c5);
 
   return row;
 }
@@ -444,24 +474,21 @@ function buildShareText(state, target) {
   const tType = normalize(target.type || "");
   const tR = normalize(target.rarity || "");
   const tP = normalize(primaryPlace(target));
-  const tDark = isDarkName(target.name);
-  const tLight = isLightName(target.name);
+  const tVariant = isVariantName(target.name);
 
   const lines = state.guesses.map(g => {
     const gObj = findByName(g.name) || g;
     const gType = normalize(gObj.type || "");
     const gRarity = normalize(gObj.rarity || "");
     const gPlace = normalize(primaryPlace(gObj));
-    const gDark = isDarkName(gObj.name);
-    const gLight = isLightName(gObj.name);
+    const gVariant = isVariantName(gObj.name);
 
     const cells = [
       sameName(gObj.name, target.name) ? "🟩" : "⬛",
       gType === tType ? "🟩" : "⬛",
       gRarity === tR ? "🟩" : "⬛",
       gPlace === tP ? "🟩" : "⬛",
-      (gDark === tDark ? "🟩" : "⬛"),
-      (gLight === tLight ? "🟩" : "⬛"),
+      (gVariant === tVariant ? "🟩" : "⬛"),
     ];
     return cells.join("");
   });

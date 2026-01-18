@@ -2522,6 +2522,24 @@ input::placeholder{ color:#6b778b; }
   font-size: 13px;
 }
 
+.mdcell.mid { 
+  background: rgba(255, 200, 0, 0.18);
+  border-color: rgba(255, 200, 0, 0.45);
+}
+
+.md-elemRow{
+  display:flex;
+  gap:6px;
+  align-items:center;
+  justify-content:center;
+}
+.md-elem{
+  width:22px;
+  height:22px;
+  object-fit:contain;
+}
+
+
 /* =========================
    STATS CALCULATOR
 ========================= */
