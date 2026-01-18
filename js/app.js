@@ -81,6 +81,20 @@ function isRarePlus(rarityRaw) {
   return ["rare", "epic", "exotic", "legendary"].includes(r);
 }
 
+const ELEMENTS = ["fire", "water", "nature", "earth", "wind", "lightning"];
+
+function parseElements(typeRaw) {
+  const s = normalize(typeRaw).replace(/[^a-z]/g, "");
+  const found = ELEMENTS.filter(el => s.includes(el));
+  return [...new Set(found)];
+}
+
+function miscritHasElement(m, el) {
+  if (!el) return true;
+  const elems = parseElements(m?.type ?? "");
+  return elems.includes(normalize(el));
+}
+
 // ===============================
 // Cargar JSON
 // ===============================
@@ -111,7 +125,7 @@ function includesDay(daysArray, selectedDay) {
 // ===============================
 // URL Filters + paginación
 // ===============================
-const FILTER_KEYS = ["q", "day", "place", "rarity", "page", "perPage"];
+const FILTER_KEYS = ["q", "day", "place", "rarity", "element", "page", "perPage"];
 
 function defaultFilters() {
   return {
@@ -119,6 +133,7 @@ function defaultFilters() {
     day: "",
     place: "",
     rarity: "",
+    element: "",
     page: "1",
     perPage: "36",
   };
@@ -130,6 +145,7 @@ function getFiltersFromUI() {
     day: $("#day")?.value ?? "",
     place: $("#place")?.value ?? "",
     rarity: $("#rarity")?.value ?? "",
+    element: $("#element")?.value ?? "",
     page: String(PAGE),
     perPage: String(PER_PAGE),
   };
@@ -141,6 +157,7 @@ function setFiltersToUI(f) {
   if ($("#day")) $("#day").value = f.day ?? "";
   if ($("#place")) $("#place").value = f.place ?? "";
   if ($("#rarity")) $("#rarity").value = f.rarity ?? "";
+  if ($("#element")) $("#element").value = f.element ?? "";
   if ($("#pageSize") && f.perPage) $("#pageSize").value = f.perPage;
 }
 
@@ -386,6 +403,7 @@ function applyFilters(resetPage = false) {
   const q = $("#q")?.value ?? "";
   const place = $("#place")?.value ?? "";
   const rarity = $("#rarity")?.value ?? "";
+  const element = $("#element")?.value ?? "";
 
   const dayRaw = $("#day")?.value ?? "";
   const day = dayRaw === "__today__" ? getServerDayName() : dayRaw;
@@ -396,6 +414,8 @@ function applyFilters(resetPage = false) {
     if (dayRaw === "__today__" && !isRarePlus(m.rarity)) return false;
 
     if (rarity && !equalsNormalized(m.rarity, rarity)) return false;
+
+    if (element && !miscritHasElement(m, element)) return false;
 
     const placeOk = !place
       ? true
@@ -468,6 +488,7 @@ async function init() {
 
   $("#place")?.addEventListener("change", onFilterChange);
   $("#rarity")?.addEventListener("change", onFilterChange);
+  $("#element")?.addEventListener("change", onFilterChange);
 
   $("#pageSize")?.addEventListener("change", () => {
     const v = parseInt($("#pageSize").value, 10);
@@ -491,6 +512,7 @@ async function init() {
     if ($("#day")) $("#day").value = "";
     if ($("#place")) $("#place").value = "";
     if ($("#rarity")) $("#rarity").value = "";
+    if ($("#element")) $("#element").value = "";
 
     PAGE = 1;
     PER_PAGE = parseInt($("#pageSize")?.value || "36", 10) || 36;
@@ -508,6 +530,8 @@ async function init() {
     if ($("#day")) $("#day").value = "__today__";
     if ($("#place")) $("#place").value = "";
     if ($("#rarity")) $("#rarity").value = "";
+    if ($("#element")) $("#element").value = "";
+
     PAGE = 1;
     syncDayHighlight();
     applyFilters(false);
