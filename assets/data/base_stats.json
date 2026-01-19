@@ -4205,6 +4205,384 @@
         "ed": 4,
         "pd": 4
       }
+    },
+    {
+      "id": "300",
+      "name": "Viperd",
+      "type": "Nature",
+      "rarity": "Common",
+      "baseStats": {
+        "hp": 2,
+        "spd": 2,
+        "ea": 4,
+        "pa": 1,
+        "ed": 4,
+        "pd": 2
+      }
+    },
+    {
+      "id": "301",
+      "name": "Blowpuffle",
+      "type": "Water",
+      "rarity": "Common",
+      "baseStats": {
+        "hp": 2,
+        "spd": 1,
+        "ea": 3,
+        "pa": 2,
+        "ed": 3,
+        "pd": 4
+      }
+    },
+    {
+      "id": "302",
+      "name": "Squawcat",
+      "type": "Fire",
+      "rarity": "Rare",
+      "baseStats": {
+        "hp": 3,
+        "spd": 4,
+        "ea": 4,
+        "pa": 1,
+        "ed": 4,
+        "pd": 4
+      }
+    },
+    {
+      "id": "303",
+      "name": "Dark Weevern",
+      "type": "Nature",
+      "rarity": "Rare",
+      "baseStats": {
+        "hp": 2,
+        "spd": 5,
+        "ea": 4,
+        "pa": 1,
+        "ed": 2,
+        "pd": 2
+      }
+    },
+    {
+      "id": "304",
+      "name": "Pangoleaf",
+      "type": "Nature",
+      "rarity": "Epic",
+      "baseStats": {
+        "hp": 3,
+        "spd": 1,
+        "ea": 2,
+        "pa": 5,
+        "ed": 3,
+        "pd": 3
+      }
+    },
+    {
+      "id": "305",
+      "name": "Foil Pamboo",
+      "type": "Nature",
+      "rarity": "Exotic",
+      "baseStats": {
+        "hp": 4,
+        "spd": 1,
+        "ea": 4,
+        "pa": 1,
+        "ed": 4,
+        "pd": 4
+      }
+    },
+    {
+      "id": "306",
+      "name": "Gippo",
+      "type": "Water",
+      "rarity": "Common",
+      "baseStats": {
+        "hp": 2,
+        "spd": 3,
+        "ea": 1,
+        "pa": 5,
+        "ed": 2,
+        "pd": 2
+      }
+    },
+    {
+      "id": "307",
+      "name": "Hoghedge",
+      "type": "Nature",
+      "rarity": "Common",
+      "baseStats": {
+        "hp": 2,
+        "spd": 1,
+        "ea": 1,
+        "pa": 4,
+        "ed": 3,
+        "pd": 4
+      }
+    },
+    {
+      "id": "308",
+      "name": "Shroomer",
+      "type": "Nature",
+      "rarity": "Common",
+      "baseStats": {
+        "hp": 2,
+        "spd": 2,
+        "ea": 5,
+        "pa": 1,
+        "ed": 2,
+        "pd": 3
+      }
+    },
+    {
+      "id": "309",
+      "name": "Daloo",
+      "type": "Water",
+      "rarity": "Common",
+      "baseStats": {
+        "hp": 2,
+        "spd": 2,
+        "ea": 4,
+        "pa": 1,
+        "ed": 4,
+        "pd": 2
+      }
+    },
+    {
+      "id": "310",
+      "name": "Dark Whik",
+      "type": "Fire",
+      "rarity": "Rare",
+      "baseStats": {
+        "hp": 3,
+        "spd": 3,
+        "ea": 4,
+        "pa": 1,
+        "ed": 3,
+        "pd": 2
+      }
+    },
+    {
+      "id": "311",
+      "name": "Bloombat",
+      "type": "Nature",
+      "rarity": "Rare",
+      "baseStats": {
+        "hp": 3,
+        "spd": 2,
+        "ea": 4,
+        "pa": 1,
+        "ed": 3,
+        "pd": 3
+      }
+    },
+    {
+      "id": "312",
+      "name": "Nyma",
+      "type": "Water",
+      "rarity": "Epic",
+      "baseStats": {
+        "hp": 2,
+        "spd": 4,
+        "ea": 4,
+        "pa": 1,
+        "ed": 3,
+        "pd": 3
+      }
+    },
+    {
+      "id": "313",
+      "name": "Kitpole",
+      "type": "Fire",
+      "rarity": "Exotic",
+      "baseStats": {
+        "hp": 5,
+        "spd": 2,
+        "ea": 4,
+        "pa": 1,
+        "ed": 4,
+        "pd": 2
+      }
+    },
+    {
+      "id": "314",
+      "name": "Magpole",
+      "type": "Fire",
+      "rarity": "Common",
+      "baseStats": {
+        "hp": 2,
+        "spd": 4,
+        "ea": 4,
+        "pa": 1,
+        "ed": 2,
+        "pd": 2
+      }
+    },
+    {
+      "id": "315",
+      "name": "Beetor",
+      "type": "Fire",
+      "rarity": "Common",
+      "baseStats": {
+        "hp": 3,
+        "spd": 2,
+        "ea": 4,
+        "pa": 1,
+        "ed": 3,
+        "pd": 2
+      }
+    },
+    {
+      "id": "316",
+      "name": "Liquifien",
+      "type": "Water",
+      "rarity": "Common",
+      "baseStats": {
+        "hp": 3,
+        "spd": 2,
+        "ea": 4,
+        "pa": 1,
+        "ed": 3,
+        "pd": 3
+      }
+    },
+    {
+      "id": "317",
+      "name": "Glary",
+      "type": "Water",
+      "rarity": "Epic",
+      "baseStats": {
+        "hp": 4,
+        "spd": 1,
+        "ea": 4,
+        "pa": 2,
+        "ed": 3,
+        "pd": 3
+      }
+    },
+    {
+      "id": "318",
+      "name": "Foil Liquifien",
+      "type": "Water",
+      "rarity": "Exotic",
+      "baseStats": {
+        "hp": 4,
+        "spd": 2,
+        "ea": 5,
+        "pa": 1,
+        "ed": 3,
+        "pd": 3
+      }
+    },
+    {
+      "id": "319",
+      "name": "Pachydo",
+      "type": "Water",
+      "rarity": "Common",
+      "baseStats": {
+        "hp": 2,
+        "spd": 1,
+        "ea": 1,
+        "pa": 4,
+        "ed": 2,
+        "pd": 5
+      }
+    },
+    {
+      "id": "320",
+      "name": "Gurgleplops",
+      "type": "Water",
+      "rarity": "Common",
+      "baseStats": {
+        "hp": 1,
+        "spd": 1,
+        "ea": 2,
+        "pa": 3,
+        "ed": 4,
+        "pd": 4
+      }
+    },
+    {
+      "id": "321",
+      "name": "Budillo",
+      "type": "Nature",
+      "rarity": "Common",
+      "baseStats": {
+        "hp": 4,
+        "spd": 1,
+        "ea": 4,
+        "pa": 1,
+        "ed": 3,
+        "pd": 2
+      }
+    },
+    {
+      "id": "322",
+      "name": "Pithapillar",
+      "type": "Nature",
+      "rarity": "Common",
+      "baseStats": {
+        "hp": 2,
+        "spd": 1,
+        "ea": 2,
+        "pa": 4,
+        "ed": 3,
+        "pd": 3
+      }
+    },
+    {
+      "id": "323",
+      "name": "Dark Bubbles",
+      "type": "Water",
+      "rarity": "Rare",
+      "baseStats": {
+        "hp": 4,
+        "spd": 1,
+        "ea": 5,
+        "pa": 1,
+        "ed": 4,
+        "pd": 1
+      }
+    },
+    {
+      "id": "324",
+      "name": "Pyras",
+      "type": "Fire",
+      "rarity": "Epic",
+      "baseStats": {
+        "hp": 3,
+        "spd": 4,
+        "ea": 5,
+        "pa": 1,
+        "ed": 2,
+        "pd": 2
+      }
+    },
+    {
+      "id": "325",
+      "name": "Foil Rockodile",
+      "type": "Water",
+      "rarity": "Exotic",
+      "baseStats": {
+        "hp": 3,
+        "spd": 1,
+        "ea": 4,
+        "pa": 2,
+        "ed": 5,
+        "pd": 3
+      }
+    },
+    {
+      "id": "326",
+      "name": "Bunaken",
+      "type": "Water",
+      "rarity": "Legendary",
+      "baseStats": {
+        "hp": 3,
+        "spd": 5,
+        "ea": 5,
+        "pa": 1,
+        "ed": 3,
+        "pd": 3
+      }
     }
   ]
 }
