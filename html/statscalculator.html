@@ -164,6 +164,34 @@
       </div>
 
       <div class="sc__right">
+
+                <!-- RELICS -->
+        <div class="sc__bonusRow">
+          <section class="card sc__relics">
+            <div class="sc__bonusSoloHead">
+              <p class="sc__bonusTitle">RELICS</p>
+            </div>
+
+            <div class="dmgx__slots sc__relicSlots">
+              <button class="dmgx__slot relic-slot" type="button" data-slot="0"></button>
+              <button class="dmgx__slot relic-slot" type="button" data-slot="1"></button>
+              <button class="dmgx__slot relic-slot" type="button" data-slot="2"></button>
+              <button class="dmgx__slot relic-slot" type="button" data-slot="3"></button>
+            </div>
+
+            <div hidden>
+              <select class="scRelic" data-slot="0"></select>
+              <select class="scRelic" data-slot="1"></select>
+              <select class="scRelic" data-slot="2"></select>
+              <select class="scRelic" data-slot="3"></select>
+            </div>
+          </section>
+
+          <div class="sc__bonusSideBtns">
+            <button id="regenRelicsBtn" class="btnRegenRelics" type="button">REGENERATE</button>
+            <button id="applyRelicsBtn" class="btn ghost" type="button">APPLY RELICS</button>
+          </div>
+        </div>
         <!-- BONUS X LEVEL -->
         <div class="sc__bonusRow">
           <section class="card sc__bonusSolo">
@@ -212,6 +240,25 @@
       </div>
     </section>
   </main>
+
+    <!-- RELIC MODAL -->
+  <div class="relic-modal" id="relicModal" hidden>
+    <div class="relic-modal__overlay" data-action="close-relic"></div>
+
+    <div class="relic-modal__card">
+      <div class="relic-modal__head">
+        <div class="relic-modal__title" id="relicModalTitle">Relics</div>
+        <button class="btn ghost" type="button" data-action="close-relic">Close</button>
+      </div>
+
+      <div class="relic-modal__search">
+        <input id="relicSearch" type="text" placeholder="Search relic..." />
+      </div>
+
+      <div class="relic-modal__grid" id="relicGrid"></div>
+    </div>
+  </div>
+
 
   <script src="../js/statscalculator.js"></script>
 </body>

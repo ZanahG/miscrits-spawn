@@ -1,83 +1,123 @@
 (() => {
+  /* =========================================================
+     CONFIG
+  ========================================================= */
   const DATA_URL = "../assets/data/base_stats.json";
 
   const AVATAR_FOLDER = "../assets/images/miscrits_avatar/";
   const AVATAR_FALLBACK = `${AVATAR_FOLDER}preset_avatar.png`;
 
-  const $ = (id) => document.getElementById(id);
+  const RELICS_URL = "../assets/data/relics.json";
+  const RELIC_IMG_FOLDER = "../assets/images/relics/";
+  const RELIC_PLACEHOLDER = `${RELIC_IMG_FOLDER}molten_coin.png`;
+
+  const SLOT_LEVELS = [10, 20, 30, 35];
+
+  const $id = (id) => document.getElementById(id);
+  const $q = (sel) => document.querySelector(sel);
+  const $qa = (sel) => Array.from(document.querySelectorAll(sel));
 
   const ui = {
-    guess: $("sc-guess"),
-    dropdown: $("scDropdown"),
+    // picker
+    guess: $id("sc-guess"),
+    dropdown: $id("scDropdown"),
 
-    level: $("levelInput"),
-    calc: $("calcBtn"),
-    reset: $("resetBtn"),
+    // level/buttons
+    level: $id("levelInput"),
+    calc: $id("calcBtn"),
+    reset: $id("resetBtn"),
 
-    presetRedSpeed: $("presetRedSpeed"),
-    presetAllGreen: $("presetAllGreen"),
+    // presets
+    presetRedSpeed: $id("presetRedSpeed"),
+    presetAllGreen: $id("presetAllGreen"),
 
-    title: $("title"),
-    subtitle: $("subtitle"),
-    avatar: $("avatarImg"),
-    err: $("err"),
+    // header
+    title: $id("title"),
+    subtitle: $id("subtitle"),
+    avatar: $id("avatarImg"),
+    err: $id("err"),
+
+    // outputs
     out: {
-      hp: $("outHp"),
-      spd: $("outSpd"),
-      ea: $("outEa"),
-      pa: $("outPa"),
-      ed: $("outEd"),
-      pd: $("outPd"),
+      hp: $id("outHp"),
+      spd: $id("outSpd"),
+      ea: $id("outEa"),
+      pa: $id("outPa"),
+      ed: $id("outEd"),
+      pd: $id("outPd"),
     },
 
+    // color selects
     colors: {
-      hp: $("cHp"),
-      spd: $("cSpd"),
-      ea: $("cEa"),
-      pa: $("cPa"),
-      ed: $("cEd"),
-      pd: $("cPd"),
+      hp: $id("cHp"),
+      spd: $id("cSpd"),
+      ea: $id("cEa"),
+      pa: $id("cPa"),
+      ed: $id("cEd"),
+      pd: $id("cPd"),
     },
 
+    // bonus x level
     bonus: {
-      title: $("bonusTitle"),
-      regen: $("regenBonusBtn"),
-      applyBtn: $("applyBonusBtn"),
+      title: $id("bonusTitle"),
+      regen: $id("regenBonusBtn"),
+      applyBtn: $id("applyBonusBtn"),
       inputs: {
-        hp: $("bHp"),
-        spd: $("bSpd"),
-        ea: $("bEa"),
-        pa: $("bPa"),
-        ed: $("bEd"),
-        pd: $("bPd"),
+        hp: $id("bHp"),
+        spd: $id("bSpd"),
+        ea: $id("bEa"),
+        pa: $id("bPa"),
+        ed: $id("bEd"),
+        pd: $id("bPd"),
       },
     },
 
+    // bonus x platinum
     plat: {
-      title: $("platBonusTitle"),
-      regen: $("regenPlatBonusBtn"),
-      applyBtn: $("applyPlatBonusBtn"),
+      title: $id("platBonusTitle"),
+      regen: $id("regenPlatBonusBtn"),
+      applyBtn: $id("applyPlatBonusBtn"),
       inputs: {
-        hp: $("pHp"),
-        spd: $("pSpd"),
-        ea: $("pEa"),
-        pa: $("pPa"),
-        ed: $("pEd"),
-        pd: $("pPd"),
+        hp: $id("pHp"),
+        spd: $id("pSpd"),
+        ea: $id("pEa"),
+        pa: $id("pPa"),
+        ed: $id("pEd"),
+        pd: $id("pPd"),
       },
     },
+
+    // relic modal
+    relicModal: $id("relicModal"),
+    relicTitle: $id("relicModalTitle"),
+    relicGrid: $id("relicGrid"),
+    relicSearch: $id("relicSearch"),
   };
 
+  /* =========================================================
+     STATE
+  ========================================================= */
   let MISCRITS = [];
   let selected = null;
+
   let applyBonus = false;
   let applyPlat = false;
 
+  // Relics (single system)
+  let RELICS = [];
+  let RELIC_BY_NAME = new Map(); // name -> {name, level, icon, stats}
+
+  // Optional: if you later add a button with id="applyRelicsBtn"
+  let applyRelics = true; // default ON (since your UI no tiene toggle)
+  const applyRelicsBtn = $id("applyRelicsBtn");
+
   const BONUS_KEYS = ["hp", "spd", "ea", "pa", "ed", "pd"];
 
-  /* =========================
-     Utils
-  ========================= */
+  const STAT_KEY_MAP = { hp: "HP", spd: "SPD", ea: "EA", pa: "PA", ed: "ED", pd: "PD" };
+
+  /* =========================================================
+     UTILS
+  ========================================================= */
   function normalize(s) {
     return (s ?? "").toString().trim().toLowerCase();
   }
@@ -92,6 +132,11 @@
     return Math.min(max, Math.max(min, Math.trunc(x)));
   }
 
+  function toInt(x) {
+    const n = Number(x);
+    return Number.isFinite(n) ? Math.trunc(n) : 0;
+  }
+
   function avatarSrcFromName(name) {
     if (!name) return AVATAR_FALLBACK;
     const file =
@@ -99,13 +144,32 @@
         .toString()
         .trim()
         .toLowerCase()
-        .replace(/\s+/g, "_") + "_avatar.png";
+        .replace(/\s+/g, "_")
+        .replace(/[^\w_]/g, "") + "_avatar.png";
     return `${AVATAR_FOLDER}${file}`;
   }
 
+  function setAvatar(name) {
+    if (!ui.avatar) return;
+    ui.avatar.src = avatarSrcFromName(name);
+    ui.avatar.alt = name || "";
+    ui.avatar.onerror = () => {
+      ui.avatar.onerror = null;
+      ui.avatar.src = AVATAR_FALLBACK;
+    };
+  }
+
+  function clearOutputs() {
+    if (ui.title) ui.title.textContent = "—";
+    if (ui.subtitle) ui.subtitle.textContent = "—";
+    Object.values(ui.out).forEach((el) => el && (el.textContent = "—"));
+    setAvatar(null);
+  }
+
   function colorFactor(color) {
-    if (color === "red") return 1;
-    if (color === "white") return 2;
+    const c = normalize(color);
+    if (c === "red") return 1;
+    if (c === "white") return 2;
     return 3;
   }
 
@@ -120,9 +184,6 @@
     };
   }
 
-  /* =========================
-     Formula base
-  ========================= */
   function statAtLevel(baseStat15, level, color, isHp) {
     const C = colorFactor(color);
     const L = level;
@@ -136,9 +197,6 @@
     }
   }
 
-  /* =========================
-     Bonus totals
-  ========================= */
   function totalBonusPoints(level) {
     return Math.max(0, 3 * (level - 1));
   }
@@ -162,9 +220,6 @@
     };
   }
 
-  /* =========================
-     Random distribution
-  ========================= */
   function randInt(max) {
     return Math.floor(Math.random() * max);
   }
@@ -179,12 +234,13 @@
   }
 
   function writeInputs(group, totals) {
-    group.hp.value = String(totals.hp ?? 0);
-    group.spd.value = String(totals.spd ?? 0);
-    group.ea.value = String(totals.ea ?? 0);
-    group.pa.value = String(totals.pa ?? 0);
-    group.ed.value = String(totals.ed ?? 0);
-    group.pd.value = String(totals.pd ?? 0);
+    if (!group) return;
+    if (group.hp) group.hp.value = String(totals.hp ?? 0);
+    if (group.spd) group.spd.value = String(totals.spd ?? 0);
+    if (group.ea) group.ea.value = String(totals.ea ?? 0);
+    if (group.pa) group.pa.value = String(totals.pa ?? 0);
+    if (group.ed) group.ed.value = String(totals.ed ?? 0);
+    if (group.pd) group.pd.value = String(totals.pd ?? 0);
   }
 
   function updateBonusTitles(level) {
@@ -197,11 +253,39 @@
   function syncApplyButtons() {
     if (ui.bonus.applyBtn) ui.bonus.applyBtn.classList.toggle("is-active", applyBonus);
     if (ui.plat.applyBtn) ui.plat.applyBtn.classList.toggle("is-active", applyPlat);
+    if (applyRelicsBtn) applyRelicsBtn.classList.toggle("is-active", applyRelics);
   }
 
-  /* =========================
-     Presets de color
-  ========================= */
+  /* =========================================================
+     COLOR ROW UI
+  ========================================================= */
+  function setRowColorFromSelect(selectEl) {
+    const row = selectEl?.closest?.(".scrow");
+    if (!row) return;
+    row.dataset.color = normalize(selectEl.value || "white");
+  }
+
+  function syncColorRowsFromSelects() {
+    ["cHp", "cSpd", "cEa", "cPa", "cEd", "cPd"].forEach((id) => {
+      const sel = $id(id);
+      if (sel) setRowColorFromSelect(sel);
+    });
+  }
+
+  function initColorSelects() {
+    const ids = ["cHp", "cSpd", "cEa", "cPa", "cEd", "cPd"];
+    ids
+      .map($id)
+      .filter(Boolean)
+      .forEach((sel) => {
+        setRowColorFromSelect(sel);
+        sel.addEventListener("change", () => {
+          setRowColorFromSelect(sel);
+          render();
+        });
+      });
+  }
+
   function setAllColors(val) {
     Object.values(ui.colors).forEach((sel) => {
       if (!sel) return;
@@ -229,9 +313,9 @@
     render();
   }
 
-  /* =========================
-     Dropdown
-  ========================= */
+  /* =========================================================
+     DROPDOWN PICKER
+  ========================================================= */
   function renderDropdown(matches) {
     const dd = ui.dropdown;
     if (!dd) return;
@@ -246,11 +330,11 @@
     dd.innerHTML = matches
       .map(
         (m) => `
-      <button type="button" class="miscritpicker__item" data-id="${m.id}">
-        <img class="miscritpicker__avatar" src="${avatarSrcFromName(m.name)}" alt="">
-        <div class="miscritpicker__name">${m.name}</div>
-      </button>
-    `
+        <button type="button" class="miscritpicker__item" data-id="${m.id}">
+          <img class="miscritpicker__avatar" src="${avatarSrcFromName(m.name)}" alt="">
+          <div class="miscritpicker__name">${m.name}</div>
+        </button>
+      `
       )
       .join("");
 
@@ -275,9 +359,7 @@
     const dd = ui.dropdown;
     if (!input || !dd) return;
 
-    const close = () => {
-      dd.hidden = true;
-    };
+    const close = () => (dd.hidden = true);
 
     const open = () => {
       const q = normalize(input.value);
@@ -316,28 +398,230 @@
     });
   }
 
-  /* =========================
-     Render principal
-  ========================= */
-  function setAvatar(name) {
-    if (!ui.avatar) return;
-    ui.avatar.src = avatarSrcFromName(name);
-    ui.avatar.alt = name || "";
-    ui.avatar.onerror = () => {
-      ui.avatar.onerror = null;
-      ui.avatar.src = AVATAR_FALLBACK;
-    };
+  /* =========================================================
+     RELICS (SINGLE SYSTEM: .scRelic + .relic-slot + modal)
+  ========================================================= */
+  function normalizeRelicsForStatsCalc(raw) {
+    if (!Array.isArray(raw)) return [];
+    return raw
+      .map((r) => ({
+        name: (r.name ?? "").toString().trim(),
+        level: Number(r.level) || 0,
+        icon: (r.icon ?? "").toString().trim(),
+        stats: r.stats ?? {},
+      }))
+      .filter((r) => r.name && r.level);
   }
 
-  function clearOutputs() {
-    if (ui.title) ui.title.textContent = "—";
-    if (ui.subtitle) ui.subtitle.textContent = "—";
-    Object.values(ui.out).forEach((el) => {
-      if (el) el.textContent = "—";
+  function getSlotLevel(slot) {
+    const s = Math.max(0, Math.min(3, Number(slot) || 0));
+    return SLOT_LEVELS[s] ?? 35;
+  }
+
+  function relicIconSrc(r) {
+    if (!r) return RELIC_PLACEHOLDER;
+    const file = r.icon ? String(r.icon) : "";
+    return file ? `${RELIC_IMG_FOLDER}${file}` : RELIC_PLACEHOLDER;
+  }
+
+  function relicBonusText(r) {
+    const s = r?.stats || {};
+    const parts = [];
+    if (Number(s.HP)) parts.push(`+${Number(s.HP)} HP`);
+    if (Number(s.SPD)) parts.push(`+${Number(s.SPD)} SPD`);
+    if (Number(s.PA)) parts.push(`+${Number(s.PA)} PA`);
+    if (Number(s.EA)) parts.push(`+${Number(s.EA)} EA`);
+    if (Number(s.PD)) parts.push(`+${Number(s.PD)} PD`);
+    if (Number(s.ED)) parts.push(`+${Number(s.ED)} ED`);
+    return parts.join(" • ");
+  }
+
+  function getScRelicSelect(slot) {
+    return document.querySelector(`.scRelic[data-slot="${slot}"]`);
+  }
+
+  function populateScRelicSelects() {
+    const all = document.querySelectorAll(".scRelic");
+    if (!all.length) return;
+
+    const sorted = RELICS
+      .slice()
+      .sort((a, b) => a.name.localeCompare(b.name, "en", { sensitivity: "base" }));
+
+    const html = [`<option value=""></option>`, ...sorted.map((r) => `<option value="${r.name}">${r.name}</option>`)].join(
+      ""
+    );
+
+    all.forEach((sel) => {
+      sel.innerHTML = html;
+      if (!sel.value) sel.value = "";
     });
-    setAvatar(null);
   }
 
+  function setSlotButtonUI(slot) {
+    const btn = document.querySelector(`.relic-slot[data-slot="${slot}"]`);
+    if (!btn) return;
+
+    const sel = getScRelicSelect(slot);
+    const name = (sel?.value ?? "").toString().trim();
+    const r = name ? RELIC_BY_NAME.get(name) : null;
+
+    const img = r ? relicIconSrc(r) : RELIC_PLACEHOLDER;
+
+    btn.dataset.relicName = name || "";
+    btn.dataset.relicLevel = String(getSlotLevel(slot));
+
+    btn.style.backgroundImage = `url("${img}")`;
+    btn.style.backgroundRepeat = "no-repeat";
+    btn.style.backgroundPosition = "center";
+    btn.style.backgroundSize = "70% 70%";
+
+    btn.title = name ? `${name} (lvl ${getSlotLevel(slot)})` : `Empty (lvl ${getSlotLevel(slot)})`;
+    btn.setAttribute("aria-label", btn.title);
+  }
+
+  function refreshAllScRelicSlots() {
+    for (let i = 0; i < 4; i++) setSlotButtonUI(i);
+  }
+
+  let RELIC_PICK_SLOT = null;
+
+  function openRelicModalForStats(slot) {
+    RELIC_PICK_SLOT = slot;
+
+    const modal = ui.relicModal;
+    const title = ui.relicTitle;
+    const grid = ui.relicGrid;
+    const search = ui.relicSearch;
+
+    if (!modal || !title || !grid || !search) return;
+
+    const lvl = getSlotLevel(slot);
+    title.textContent = `Relics lvl ${lvl}`;
+
+    search.value = "";
+
+    const renderGrid = (q) => {
+      const qq = normalize(q);
+      grid.innerHTML = "";
+
+      const items = RELICS
+        .filter((r) => Number(r.level) === Number(lvl))
+        .filter((r) => !qq || normalize(r.name).includes(qq))
+        .sort((a, b) => a.name.localeCompare(b.name, "en", { sensitivity: "base" }));
+
+      // Empty option
+      const empty = document.createElement("div");
+      empty.className = "relic-item";
+      empty.innerHTML = `
+        <img class="relic-item__img" src="${RELIC_PLACEHOLDER}" alt="">
+        <div class="relic-item__text">
+          <div class="relic-item__name">Empty</div>
+          <div class="relic-item__bonus">Sin bonus</div>
+        </div>
+      `;
+      empty.addEventListener("click", () => {
+        const sel = getScRelicSelect(slot);
+        if (sel) sel.value = "";
+        refreshAllScRelicSlots();
+        closeRelicModal();
+        render();
+      });
+      grid.appendChild(empty);
+
+      // Relics
+      for (const r of items) {
+        const el = document.createElement("div");
+        el.className = "relic-item";
+        el.innerHTML = `
+          <img class="relic-item__img" src="${relicIconSrc(r)}" alt="${r.name}" onerror="this.src='${RELIC_PLACEHOLDER}'">
+          <div class="relic-item__text">
+            <div class="relic-item__name">${r.name}</div>
+            <div class="relic-item__bonus">${relicBonusText(r) || "—"}</div>
+          </div>
+        `;
+        el.addEventListener("click", () => {
+          const sel = getScRelicSelect(slot);
+          if (sel) sel.value = r.name;
+          refreshAllScRelicSlots();
+          closeRelicModal();
+          render();
+        });
+        grid.appendChild(el);
+      }
+    };
+
+    renderGrid("");
+    search.oninput = () => renderGrid(search.value);
+
+    modal.hidden = false;
+  }
+
+  function closeRelicModal() {
+    const modal = ui.relicModal;
+    if (modal) modal.hidden = true;
+    RELIC_PICK_SLOT = null;
+  }
+
+  function bindScRelicSlots() {
+    // ABRIR MODAL: delegación
+    document.addEventListener("click", (e) => {
+      const btn = e.target.closest(".relic-slot");
+      if (!btn) return;
+
+      const slot = Number(btn.getAttribute("data-slot") || 0);
+      openRelicModalForStats(slot);
+    });
+
+    // CERRAR MODAL
+    document.addEventListener("click", (e) => {
+      if (e.target.closest('[data-action="close-relic"]')) closeRelicModal();
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeRelicModal();
+    });
+
+    // Sync por si cambia el select hidden
+    document.querySelectorAll(".scRelic").forEach((sel) => {
+      sel.addEventListener("change", () => {
+        refreshAllScRelicSlots();
+        render();
+      });
+    });
+  }
+
+
+  function sumRelicsStats() {
+    const totals = { hp: 0, spd: 0, ea: 0, pa: 0, ed: 0, pd: 0 };
+
+    for (let slot = 0; slot < 4; slot++) {
+      const sel = getScRelicSelect(slot);
+      const name = (sel?.value ?? "").toString().trim();
+      if (!name) continue;
+
+      const r = RELIC_BY_NAME.get(name);
+      if (!r) continue;
+
+      // only if level matches this slot
+      const lvl = getSlotLevel(slot);
+      if (Number(r.level) !== Number(lvl)) continue;
+
+      const st = r.stats || {};
+      totals.hp += Number(st.HP || 0);
+      totals.spd += Number(st.SPD || 0);
+      totals.ea += Number(st.EA || 0);
+      totals.pa += Number(st.PA || 0);
+      totals.ed += Number(st.ED || 0);
+      totals.pd += Number(st.PD || 0);
+    }
+
+    return totals;
+  }
+
+  /* =========================================================
+     MAIN RENDER
+  ========================================================= */
   function render() {
     setError("");
 
@@ -391,66 +675,47 @@
       s.pd += manualPlatBonus.pd;
     }
 
+    if (applyRelics) {
+      const rAdd = sumRelicsStats();
+      s.hp += rAdd.hp;
+      s.spd += rAdd.spd;
+      s.ea += rAdd.ea;
+      s.pa += rAdd.pa;
+      s.ed += rAdd.ed;
+      s.pd += rAdd.pd;
+    }
+
     if (ui.title) ui.title.textContent = `${selected.name} — Nivel ${level}`;
     if (ui.subtitle) {
       ui.subtitle.textContent =
         `${selected.rarity} • ${selected.type}` +
         ` • BONUS:${applyBonus ? "ON" : "OFF"}` +
-        ` • PLAT:${applyPlat ? "ON" : "OFF"}`;
+        ` • PLAT:${applyPlat ? "ON" : "OFF"}` +
+        ` • RELICS:${applyRelics ? "ON" : "OFF"}`;
     }
 
-    if (ui.out.hp) ui.out.hp.textContent = s.hp;
-    if (ui.out.spd) ui.out.spd.textContent = s.spd;
-    if (ui.out.ea) ui.out.ea.textContent = s.ea;
-    if (ui.out.pa) ui.out.pa.textContent = s.pa;
-    if (ui.out.ed) ui.out.ed.textContent = s.ed;
-    if (ui.out.pd) ui.out.pd.textContent = s.pd;
+    if (ui.out.hp) ui.out.hp.textContent = String(s.hp);
+    if (ui.out.spd) ui.out.spd.textContent = String(s.spd);
+    if (ui.out.ea) ui.out.ea.textContent = String(s.ea);
+    if (ui.out.pa) ui.out.pa.textContent = String(s.pa);
+    if (ui.out.ed) ui.out.ed.textContent = String(s.ed);
+    if (ui.out.pd) ui.out.pd.textContent = String(s.pd);
 
     setAvatar(selected.name);
-
     syncColorRowsFromSelects();
   }
 
-  /* =========================
-     RESULT STATS color UI
-  ========================= */
-  function setRowColorFromSelect(selectEl) {
-    const row = selectEl?.closest?.(".scrow");
-    if (!row) return;
-    const val = (selectEl.value || "white").toLowerCase();
-    row.dataset.color = val;
-  }
-
-  function syncColorRowsFromSelects() {
-    ["cHp", "cSpd", "cEa", "cPa", "cEd", "cPd"].forEach((id) => {
-      const sel = document.getElementById(id);
-      if (sel) setRowColorFromSelect(sel);
-    });
-  }
-
-  function initColorSelects() {
-    const ids = ["cHp", "cSpd", "cEa", "cPa", "cEd", "cPd"];
-    const selects = ids.map((id) => document.getElementById(id)).filter(Boolean);
-
-    selects.forEach((sel) => setRowColorFromSelect(sel));
-
-    selects.forEach((sel) => {
-      sel.addEventListener("change", () => {
-        setRowColorFromSelect(sel);
-        render();
-      });
-    });
-  }
-
-  /* =========================
-     Init
-  ========================= */
+  /* =========================================================
+     INIT
+  ========================================================= */
   async function init() {
     try {
       setError("");
 
+      // defaults
       setAllColors("white");
 
+      // Load base stats
       const res = await fetch(DATA_URL, { cache: "no-store" });
       if (!res.ok) throw new Error(`No pude cargar ${DATA_URL} (HTTP ${res.status}).`);
 
@@ -466,13 +731,32 @@
 
       if (!MISCRITS.length) throw new Error("No hay miscrits válidos en base_stats.json");
 
+      // Load relics (single load)
+      try {
+        const relicRes = await fetch(RELICS_URL, { cache: "no-store" });
+        if (!relicRes.ok) throw new Error(`No pude cargar ${RELICS_URL} (HTTP ${relicRes.status}).`);
+        const relicRaw = await relicRes.json();
+
+        RELICS = normalizeRelicsForStatsCalc(relicRaw);
+        RELIC_BY_NAME = new Map(RELICS.map((r) => [r.name, r]));
+
+        populateScRelicSelects();
+        bindScRelicSlots();
+        refreshAllScRelicSlots();
+      } catch (e) {
+        console.warn("Relics load failed:", e);
+      }
+
+      // bind UI
       bindPicker();
       initColorSelects();
 
+      // pick default
       selected = MISCRITS.find((m) => normalize(m.name) === "flue") || MISCRITS[0];
       if (ui.guess) ui.guess.value = selected.name;
       setAvatar(selected.name);
 
+      // seed random bonus
       const lvl = clampInt(ui.level?.value, 1, 35);
       if (ui.bonus.inputs.hp) writeInputs(ui.bonus.inputs, randomDistribution(totalBonusPoints(lvl)));
       if (ui.plat.inputs.hp) writeInputs(ui.plat.inputs, randomDistribution(totalPlatBonusPoints(lvl)));
@@ -485,9 +769,9 @@
     }
   }
 
-  /* =========================
-     Events
-  ========================= */
+  /* =========================================================
+     EVENTS
+  ========================================================= */
   ui.calc?.addEventListener("click", render);
   ui.reset?.addEventListener("click", resetColors);
 
@@ -525,12 +809,16 @@
     render();
   });
 
-  Object.values(ui.bonus.inputs).forEach((inp) => {
-    inp?.addEventListener("input", render);
+  // Optional relic toggle if you add this button in HTML:
+  // <button id="applyRelicsBtn" ...>APPLY RELICS</button>
+  applyRelicsBtn?.addEventListener("click", () => {
+    applyRelics = !applyRelics;
+    syncApplyButtons();
+    render();
   });
-  Object.values(ui.plat.inputs).forEach((inp) => {
-    inp?.addEventListener("input", render);
-  });
+
+  Object.values(ui.bonus.inputs).forEach((inp) => inp?.addEventListener("input", render));
+  Object.values(ui.plat.inputs).forEach((inp) => inp?.addEventListener("input", render));
 
   init();
 })();
