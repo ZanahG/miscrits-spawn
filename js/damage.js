@@ -543,7 +543,7 @@ function applyMiscritSelection(side, idOrName) {
    RELICS
 ========================================================= */
 
-const RELIC_PLACEHOLDER = "../assets/images/relics/molten_coin.png";
+const RELIC_PLACEHOLDER = "../assets/images/relics/CRUZ.png";
 
 function slugFileName(name) {
   return (name ?? "")

@@ -9,7 +9,7 @@
 
   const RELICS_URL = "../assets/data/relics.json";
   const RELIC_IMG_FOLDER = "../assets/images/relics/";
-  const RELIC_PLACEHOLDER = `${RELIC_IMG_FOLDER}molten_coin.png`;
+  const RELIC_PLACEHOLDER = `${RELIC_IMG_FOLDER}CRUZ.png`;
 
   const SLOT_LEVELS = [10, 20, 30, 35];
 
@@ -18,26 +18,21 @@
   const $qa = (sel) => Array.from(document.querySelectorAll(sel));
 
   const ui = {
-    // picker
     guess: $id("sc-guess"),
     dropdown: $id("scDropdown"),
 
-    // level/buttons
     level: $id("levelInput"),
     calc: $id("calcBtn"),
     reset: $id("resetBtn"),
 
-    // presets
     presetRedSpeed: $id("presetRedSpeed"),
     presetAllGreen: $id("presetAllGreen"),
 
-    // header
     title: $id("title"),
     subtitle: $id("subtitle"),
     avatar: $id("avatarImg"),
     err: $id("err"),
 
-    // outputs
     out: {
       hp: $id("outHp"),
       spd: $id("outSpd"),
@@ -47,7 +42,6 @@
       pd: $id("outPd"),
     },
 
-    // color selects
     colors: {
       hp: $id("cHp"),
       spd: $id("cSpd"),
@@ -57,7 +51,6 @@
       pd: $id("cPd"),
     },
 
-    // bonus x level
     bonus: {
       title: $id("bonusTitle"),
       regen: $id("regenBonusBtn"),
@@ -72,7 +65,6 @@
       },
     },
 
-    // bonus x platinum
     plat: {
       title: $id("platBonusTitle"),
       regen: $id("regenPlatBonusBtn"),
@@ -87,7 +79,6 @@
       },
     },
 
-    // relic modal
     relicModal: $id("relicModal"),
     relicTitle: $id("relicModalTitle"),
     relicGrid: $id("relicGrid"),
@@ -103,12 +94,10 @@
   let applyBonus = false;
   let applyPlat = false;
 
-  // Relics (single system)
   let RELICS = [];
-  let RELIC_BY_NAME = new Map(); // name -> {name, level, icon, stats}
+  let RELIC_BY_NAME = new Map();
 
-  // Optional: if you later add a button with id="applyRelicsBtn"
-  let applyRelics = true; // default ON (since your UI no tiene toggle)
+  let applyRelics = true;
   const applyRelicsBtn = $id("applyRelicsBtn");
 
   const BONUS_KEYS = ["hp", "spd", "ea", "pa", "ed", "pd"];
@@ -399,7 +388,7 @@
   }
 
   /* =========================================================
-     RELICS (SINGLE SYSTEM: .scRelic + .relic-slot + modal)
+     RELICS
   ========================================================= */
   function normalizeRelicsForStatsCalc(raw) {
     if (!Array.isArray(raw)) return [];
@@ -510,7 +499,6 @@
         .filter((r) => !qq || normalize(r.name).includes(qq))
         .sort((a, b) => a.name.localeCompare(b.name, "en", { sensitivity: "base" }));
 
-      // Empty option
       const empty = document.createElement("div");
       empty.className = "relic-item";
       empty.innerHTML = `
@@ -529,7 +517,6 @@
       });
       grid.appendChild(empty);
 
-      // Relics
       for (const r of items) {
         const el = document.createElement("div");
         el.className = "relic-item";
@@ -564,7 +551,6 @@
   }
 
   function bindScRelicSlots() {
-    // ABRIR MODAL: delegación
     document.addEventListener("click", (e) => {
       const btn = e.target.closest(".relic-slot");
       if (!btn) return;
@@ -573,7 +559,6 @@
       openRelicModalForStats(slot);
     });
 
-    // CERRAR MODAL
     document.addEventListener("click", (e) => {
       if (e.target.closest('[data-action="close-relic"]')) closeRelicModal();
     });
@@ -582,7 +567,6 @@
       if (e.key === "Escape") closeRelicModal();
     });
 
-    // Sync por si cambia el select hidden
     document.querySelectorAll(".scRelic").forEach((sel) => {
       sel.addEventListener("change", () => {
         refreshAllScRelicSlots();
@@ -603,7 +587,6 @@
       const r = RELIC_BY_NAME.get(name);
       if (!r) continue;
 
-      // only if level matches this slot
       const lvl = getSlotLevel(slot);
       if (Number(r.level) !== Number(lvl)) continue;
 
@@ -711,11 +694,8 @@
   async function init() {
     try {
       setError("");
-
-      // defaults
       setAllColors("white");
 
-      // Load base stats
       const res = await fetch(DATA_URL, { cache: "no-store" });
       if (!res.ok) throw new Error(`No pude cargar ${DATA_URL} (HTTP ${res.status}).`);
 
@@ -731,7 +711,6 @@
 
       if (!MISCRITS.length) throw new Error("No hay miscrits válidos en base_stats.json");
 
-      // Load relics (single load)
       try {
         const relicRes = await fetch(RELICS_URL, { cache: "no-store" });
         if (!relicRes.ok) throw new Error(`No pude cargar ${RELICS_URL} (HTTP ${relicRes.status}).`);
@@ -747,16 +726,13 @@
         console.warn("Relics load failed:", e);
       }
 
-      // bind UI
       bindPicker();
       initColorSelects();
 
-      // pick default
       selected = MISCRITS.find((m) => normalize(m.name) === "flue") || MISCRITS[0];
       if (ui.guess) ui.guess.value = selected.name;
       setAvatar(selected.name);
 
-      // seed random bonus
       const lvl = clampInt(ui.level?.value, 1, 35);
       if (ui.bonus.inputs.hp) writeInputs(ui.bonus.inputs, randomDistribution(totalBonusPoints(lvl)));
       if (ui.plat.inputs.hp) writeInputs(ui.plat.inputs, randomDistribution(totalPlatBonusPoints(lvl)));
@@ -809,8 +785,6 @@
     render();
   });
 
-  // Optional relic toggle if you add this button in HTML:
-  // <button id="applyRelicsBtn" ...>APPLY RELICS</button>
   applyRelicsBtn?.addEventListener("click", () => {
     applyRelics = !applyRelics;
     syncApplyButtons();
