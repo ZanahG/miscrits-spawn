@@ -3037,7 +3037,7 @@
       "rarity": "Rare",
       "avatar": "squawcat_avatar.png",
       "spawns": [
-        {"place": "Volcano Island","zone": ["1st Area on Volcano Island"],"view": "object","objectImage": "../assets/images/maps/volcanoisland.png","days": "ALL_DAYS"}
+        {"place": "Volcano Island","zone": ["1st Area on Volcano Island"],"view": "object","objectImage": "../assets/images/maps/volcanoisland.png","days": ["Lunes", "Martes", "Miercoles"]}
       ]
     },
     {
@@ -3047,7 +3047,7 @@
       "rarity": "Rare",
       "avatar": "dark_weevern_avatar.png",
       "spawns": [
-        {"place": "Volcano Island","zone": ["Any Object 1st Area on Volcano Island"],"view": "object","objectImage": "../assets/images/maps/volcanoisland.png","days": "ALL_DAYS"}
+        {"place": "Volcano Island","zone": ["Any Object 1st Area on Volcano Island"],"view": "object","objectImage": "../assets/images/maps/volcanoisland.png","days": ["Sabado", "Domingo"]}
       ]
     },
     {
@@ -3117,7 +3117,7 @@
       "rarity": "Rare",
       "avatar": "dark_whik_avatar.png",
       "spawns": [
-        {"place": "Volcano Island","zone": ["2nd Area on Volcano Island"],"view": "object","objectImage": "../assets/images/maps/volcanoisland.png","days": "ALL_DAYS"}
+        {"place": "Volcano Island","zone": ["2nd Area on Volcano Island"],"view": "object","objectImage": "../assets/images/maps/volcanoisland.png","days": ["Lunes", "Martes"]}
       ]
     },
     {
@@ -3127,7 +3127,7 @@
       "rarity": "Rare",
       "avatar": "bloombat_avatar.png",
       "spawns": [
-        {"place": "Volcano Island","zone": ["2th Area on Volcano Island"],"view": "object","objectImage": "../assets/images/maps/Bloombat.png","days": "ALL_DAYS"}
+        {"place": "Volcano Island","zone": ["2th Area on Volcano Island"],"view": "object","objectImage": "../assets/images/maps/Bloombat.png","days": ["Viernes", "Sabado", "Domingo"]}
       ]
     },
     {
@@ -3247,7 +3247,7 @@
       "rarity": "Rare",
       "avatar": "dark_bubbles_avatar.png",
       "spawns": [
-        {"place": "Volcano Island","zone": ["4th Area on Volcano Island"],"view": "object","objectImage": "../assets/images/maps/volcanoisland.png","days": ["Lunes"]}
+        {"place": "Volcano Island","zone": ["4th Area on Volcano Island"],"view": "object","objectImage": "../assets/images/maps/volcanoisland.png","days": ["Lunes", "Martes", "Miercoles"]}
       ]
     },
     {
@@ -3257,7 +3257,7 @@
       "rarity": "Epic",
       "avatar": "pyras_avatar.png",
       "spawns": [
-        {"place": "Volcano Island","zone": ["4th Area on Volcano Island"],"view": "object","objectImage": "../assets/images/maps/Pyras.png","days": ["Domingo"]}
+        {"place": "Volcano Island","zone": ["4th Area on Volcano Island"],"view": "object","objectImage": "../assets/images/maps/Pyras.png","days": "ALL_DAYS"}
       ]
     },
     {
