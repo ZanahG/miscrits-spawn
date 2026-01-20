@@ -3117,7 +3117,7 @@
       "rarity": "Rare",
       "avatar": "dark_whik_avatar.png",
       "spawns": [
-        {"place": "Volcano Island","zone": ["2nd Area on Volcano Island"],"view": "object","objectImage": "../assets/images/maps/volcanoisland.png","days": ["Lunes", "Martes"]}
+        {"place": "Volcano Island","zone": ["Any Object 2nd Area on Volcano Island"],"view": "object","objectImage": "../assets/images/maps/volcanoisland.png","days": ["Lunes", "Martes"]}
       ]
     },
     {
@@ -3247,7 +3247,7 @@
       "rarity": "Rare",
       "avatar": "dark_bubbles_avatar.png",
       "spawns": [
-        {"place": "Volcano Island","zone": ["4th Area on Volcano Island"],"view": "object","objectImage": "../assets/images/maps/volcanoisland.png","days": ["Lunes", "Martes", "Miercoles"]}
+        {"place": "Volcano Island","zone": ["4th Area on Volcano Island"],"view": "object","objectImage": "../assets/images/maps/DarkBubbles.png","days": ["Lunes", "Martes", "Miercoles"]}
       ]
     },
     {
