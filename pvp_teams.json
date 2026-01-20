@@ -131,6 +131,28 @@
         { "name": "Hotdog", "autoRelics": true },
         { "name": "Lavazard", "autoRelics": true },
         { "name": "Dreamger", "autoRelics": true }]
+    },
+	{
+      "id": "t006",
+      "title": "Suggested Team",
+      "format": "Platinum Arena",
+      "patch": "2.0.0",
+      "miscrits": [
+        { "name": "Light Nibbles", "autoRelics": true },
+        { "name": "Dark Quirk", "autoRelics": true },
+        { "name": "Inferno", "autoRelics": true },
+        { "name": "Gravitron", "autoRelics": true }]
+    },
+	{
+      "id": "t006",
+      "title": "Suggested Team",
+      "format": "Platinum Arena",
+      "patch": "2.0.0",
+      "miscrits": [
+        { "name": "Nyma", "autoRelics": true },
+        { "name": "Bloombat", "autoRelics": true },
+        { "name": "Pangoleaf", "autoRelics": true },
+        { "name": "Luvcraft", "autoRelics": true }]
     }
   ]
 }
