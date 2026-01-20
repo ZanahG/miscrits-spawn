@@ -210,8 +210,6 @@ function setMapFromSpawn(spawn) {
 }
 
 async function init() {
-  const back = $("#back");
-  if (back) back.addEventListener("click", () => window.history.back());
 
   const id = getQueryParam("id");
   const subtitle = $("#subtitle");
