@@ -140,3 +140,78 @@
   width: 70px;
   height: 58px;
 }
+
+/* =========================================================
+   RELICS + MODAL — Mobile
+========================================================= */
+@media (max-width: 460px){
+
+  .relic-slots{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .relic-slot{
+    padding: 8px;
+    min-height: 62px;
+    border-radius: 14px;
+  }
+
+  @media (min-width: 430px){
+    .relic-slots{
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  .dmgx__slot.relic-slot{
+    width: 58px;
+    height: 52px;
+  }
+
+  .relic-modal__card{
+    width: calc(100vw - 20px);
+    max-height: 86vh;
+    border-radius: 16px;
+  }
+
+  .relic-modal__head{
+    padding: 12px;
+    gap: 10px;
+  }
+
+  .relic-modal__title{
+    font-size: 14px;
+  }
+
+  .relic-modal__search{
+    padding: 10px 12px;
+  }
+
+  .relic-modal__grid{
+    padding: 12px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  @media (max-width: 360px){
+    .relic-modal__grid{
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .relic-item{
+    padding: 10px;
+    border-radius: 14px;
+    gap: 10px;
+  }
+
+  .relic-item__img{
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+  }
+
+  .relic-item__bonus{
+    font-size: 11px;
+  }
+}

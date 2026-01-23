@@ -153,3 +153,82 @@
 }
 
 .ivs-table .empty{ color:#6b778b; }
+
+/* =========================================================
+   DETAIL PAGE — Mobile
+========================================================= */
+@media (max-width: 460px){
+
+  .detail-layout{
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .side{
+    position: static;
+    top: auto;
+    padding: 12px;
+  }
+
+  .side__head{
+    gap: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+  }
+
+  .side__avatar{
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+  }
+
+  .side__name{
+    font-size: 18px;
+  }
+
+  .side__meta{
+    font-size: 12px;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .map-area{ gap: 10px; }
+
+  .map-title{
+    font-size: 18px;
+    padding: 8px 14px;
+    letter-spacing: .6px;
+    text-align: center;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .map-frame{
+    padding: 10px;
+    border-radius: 14px;
+  }
+
+  .map-img{
+    border-radius: 12px;
+  }
+
+  .ivs{
+    padding: 10px;
+    margin-top: 10px;
+  }
+
+  .ivs__tablewrap{
+    border-radius: 12px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .ivs-table{
+    font-size: 11px;
+  }
+
+  .ivs-table th,
+  .ivs-table td{
+    padding: 7px 8px;
+  }
+}

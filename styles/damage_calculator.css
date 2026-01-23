@@ -535,3 +535,172 @@ PANEL DEL BONUS
   gap: 10px;
   align-items:center;
 }
+
+/* =========================================================
+   RELICS + DAMAGE UI — Mobile
+========================================================= */
+@media (max-width: 460px){
+
+  /* ===============================
+     RELICS
+  =============================== */
+  .relic-slots{
+    gap: 8px;
+  }
+  .relic-slot{
+    min-height: 64px;
+    padding: 8px;
+    border-radius: 14px;
+  }
+
+  /* ===============================
+     RELIC MODAL
+  =============================== */
+  .relic-modal__card{
+    width: calc(100vw - 24px);
+    max-height: 84vh;
+    border-radius: 18px;
+  }
+  .relic-modal__head{ padding: 12px 12px; }
+  .relic-modal__search{ padding: 10px 12px; }
+  .relic-modal__grid{
+    padding: 12px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+  .relic-item{
+    padding: 10px;
+    border-radius: 14px;
+    gap: 10px;
+  }
+  .relic-item__img{
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+  }
+  .relic-item__bonus{
+    font-size: 11px;
+  }
+
+  .dmgx{
+    padding: 14px 0;
+  }
+
+  .dmgx__grid{
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .dmgx__vs{
+    margin: 6px 0 0;
+    font-size: 42px;
+    line-height: 1;
+    opacity: .95;
+  }
+
+  .dmgx__label{
+    margin: 10px 0 8px;
+  }
+
+  .dmgx__search{
+    font-size: 16px;
+    padding: 12px 14px;
+    border-radius: 14px;
+  }
+  .dmgx__search::placeholder{
+    font-size: 16px;
+  }
+
+  .dmgx__card{
+    padding: 12px;
+    border-radius: 16px;
+  }
+
+  .dmgx__avatar{
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+  }
+
+  .dmgx__stats{
+    gap: 10px;
+  }
+
+  .dmgx__statV{
+    font-size: 15px;
+    padding: 9px 10px;
+  }
+
+  .dmgx__btn{
+    font-size: 20px;
+    padding: 12px 12px;
+    border-radius: 14px;
+  }
+
+  .dmgx__subpanel{
+    padding: 10px;
+    border-radius: 14px;
+  }
+
+  .dmgx__tabs{
+    gap: 10px;
+  }
+  .dmgx__tab{
+    padding: 10px 10px;
+    font-size: 13px;
+  }
+
+  .dmgx__slots{
+    gap: 10px;
+    padding: 6px 2px 2px;
+  }
+  .dmgx__slot{
+    border-width: 2px;
+  }
+
+  .dmgx__col--result{ padding-top: 0; }
+  .dmgx__resultTitle{
+    font-size: 26px;
+    margin: 6px 0 12px;
+  }
+  .dmgx__resultBox{
+    min-height: 0;
+    margin-top: 0;
+    padding: 14px;
+    border-radius: 16px;
+  }
+  .dmgx__resultHead{
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  .dmgx__resultLine{
+    font-size: 16px;
+    margin: 6px 0;
+  }
+
+  .dmgx__swap{
+    width: 42px;
+    height: 42px;
+    margin: 6px auto 10px;
+  }
+
+  /* ===============================
+     BONUS
+  =============================== */
+  .bonus__grid{
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .bonus__field input{
+    width: 100%;
+  }
+
+  .minDamage strong,
+  .minDamage span,
+  .avgDamage strong,
+  .avgDamage span,
+  .hitKo strong,
+  .hitKo span{
+    margin-top: 0 !important;
+  }
+}

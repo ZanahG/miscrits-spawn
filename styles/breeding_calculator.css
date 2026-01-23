@@ -373,3 +373,86 @@
 .br-simStat__v[data-val="White"]{ color:#fff; }
 .br-simStat__v[data-val="Green"]{ color:#6dff7a; }
 .br-simStat__v[data-val="Red"]{ color:#ff6b6b; }
+
+/* =========================================================
+   BREEDING — Mobile
+========================================================= */
+@media (max-width: 460px){
+
+  .breeding{ padding: 12px; }
+
+  .breeding__grid{
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .breeding__panel{ padding: 12px; }
+
+  .breeding__panelHead{
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .br-parent__top{ gap: 8px; }
+
+  .br-stats{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  @media (max-width: 360px){
+    .br-stats{ grid-template-columns: 1fr; }
+  }
+
+  .br-stat{
+    padding: 9px 10px;
+    border-radius: 12px;
+  }
+
+  .br-color,
+  .br-desired,
+  .br-select{
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .br-stat span{ font-size: 11px; }
+  .br-color, .br-desired, .br-select{ height: 34px; }
+
+  .breeding__actions{
+    flex-wrap: wrap;
+  }
+  .breeding__actions .btn{
+    flex: 1 1 160px;
+    min-width: 0;
+  }
+
+  .br-presets{
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .br-goalPresets{
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .br-sim__stats{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  @media (max-width: 360px){
+    .br-sim__stats{ grid-template-columns: 1fr; }
+  }
+
+  .br-avatar{ width: 40px; height: 40px; border-radius: 10px; }
+  .br-sim__avatar{ width: 46px; height: 46px; border-radius: 10px; }
+
+  .breeding__breakdown{
+    font-size: 10.5px;
+    line-height: 1.3;
+  }
+}

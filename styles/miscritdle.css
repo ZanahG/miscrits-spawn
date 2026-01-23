@@ -282,3 +282,127 @@
 .miscritdle__note.muted {
   font-size: 13px;
 }
+
+/* =========================================================
+   MISCRITDLE — Mobile
+========================================================= */
+@media (max-width: 460px){
+
+  .miscritdle__hero{
+    margin: 16px auto 14px;
+    padding: 16px 12px;
+    max-width: 100%;
+  }
+  .miscritdle__hero h2{ font-size: 18px; }
+  .miscritdle__hero p{
+    margin-top: 10px;
+    font-size: 12px;
+    line-height: 1.2;
+  }
+
+  .miscritdle.card{ padding: 12px; }
+
+  .miscritdle__controls{
+    max-width: 100%;
+    margin: 0 auto 16px;
+    gap: 10px;
+  }
+
+  .miscritdle__header{ display:none; }
+
+  .miscritdle__board{
+    max-width: 100%;
+    padding: 0 0 14px;
+    gap: 10px;
+  }
+
+  .miscritdle__row{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    justify-items: center;
+
+    padding: 10px;
+    border: 1px solid rgba(255,255,255,.10);
+    background: rgba(0,0,0,.14);
+    border-radius: 16px;
+  }
+
+  .mdcell{
+    width: 100%;
+    max-width: 150px;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    border-radius: 14px;
+    position: relative;
+    padding-top: 14px;
+  }
+
+  .md-avatar{ width: 100%; height: 100%; object-fit: cover; }
+  .md-elem{
+    width: 56%;
+    height: 56%;
+  }
+
+  .mdtext{
+    font-size: 12px;
+    padding: 6px;
+  }
+  .md-yn{ font-size: 13px; }
+
+  .mdcell::before{
+    content: attr(data-label);
+    position: absolute;
+    top: 6px;
+    left: 8px;
+    right: 8px;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.85);
+    text-shadow: 0 2px 8px rgba(0,0,0,.45);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    pointer-events: none;
+    text-align: center;
+  }
+
+  @media (min-width: 430px){
+    .miscritdle__row{
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .mdcell{
+      max-width: 130px;
+      aspect-ratio: 1 / 1;
+    }
+  }
+
+  .md-endcard{
+    max-width: 100%;
+    padding: 18px 12px;
+  }
+
+  .md-endcard__title{
+    font-size: 28px;
+    margin-bottom: 12px;
+  }
+
+  .md-endcard__timer{
+    font-size: 44px;
+  }
+
+  .md-endcard__who{
+    gap: 12px;
+    margin: 6px 0 14px;
+  }
+
+  .md-endcard__avatar{
+    width: 48px;
+    height: 48px;
+  }
+
+  .md-endcard__name{ font-size: 16px; }
+
+  .miscritdle__note.muted{ font-size: 12px; }
+}

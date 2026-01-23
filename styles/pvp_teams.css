@@ -442,9 +442,141 @@
 
 .statDelta{
   font-weight:800;
-  font-size:22px; /* ajústalo a tu statValue */
+  font-size:22px;
   opacity:.9;
 }
 
-.statDelta--pos{ color:#0ba744; } /* verde */
-.statDelta--neg{ color:#ff0026; } /* rojo opcional */
+.statDelta--pos{ color:#0ba744; }
+.statDelta--neg{ color:#ff0026; }
+
+/* =========================================================
+   PVP — Mobile
+========================================================= */
+@media (max-width: 460px){
+
+  .pvp{
+    grid-template-columns: 1fr;
+    padding: 12px;
+    gap: 12px;
+  }
+
+  .pvp__panel{ padding: 12px; }
+
+  .pvp__panelTitle{ font-size: 16px; }
+  .pvp__panelMeta{ font-size: 12px; }
+
+  .rare-header{
+    padding: 10px 12px;
+  }
+  .rare-body{
+    padding: 10px;
+  }
+
+  .avatar-grid{ gap: 8px; }
+  .avatar-btn{
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+  }
+
+  .team-card{
+    padding: 12px;
+    border-radius: 14px;
+  }
+
+  .team-title{
+    font-size: 18px;
+    letter-spacing: .6px;
+  }
+
+  .team-subtitle{
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+
+  .team-grid{
+    max-width: 100%;
+    gap: 10px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .team-miscrit{
+    width: 52px;
+    height: 52px;
+    border-radius: 12px;
+  }
+
+  .relic-btn{
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+  }
+
+  @media (max-width: 390px){
+    .team-grid{
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      max-width: 260px;
+    }
+  }
+
+  .team-notes{ font-size: 12px; }
+
+  .pvp-carousel{
+    padding: 12px;
+  }
+
+  .pvp-carousel__title{ font-size: 14px; }
+  .pvp-carousel__controls{ gap: 8px; }
+
+  .pvp-marquee{
+    gap: 12px;
+    animation-duration: 24s;
+  }
+
+  .topteam-card{
+    width: 320px;
+    max-width: calc(100vw - 48px);
+  }
+
+  .pvp-carousel__fade{
+    width: 46px;
+    top: 52px;
+    bottom: 12px;
+  }
+  .pvp-carousel__fade.left{ left: 12px; }
+  .pvp-carousel__fade.right{ right: 12px; }
+
+  .modal__card{
+    margin: 4vh auto;
+    padding: 12px;
+    border-radius: 14px;
+  }
+
+  .modal__header{
+    gap: 10px;
+  }
+
+  .modal__avatar{
+    width: 54px;
+    height: 54px;
+    border-radius: 12px;
+  }
+
+  .modal__title{ font-size: 16px; }
+  .modal__meta{ font-size: 12px; }
+
+  .statsGrid{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .relicPill{
+    padding: 6px 8px;
+  }
+  .relicPill span{
+    font-size: 11px;
+  }
+
+  .statValue{ font-size: 20px; }
+  .statDelta{ font-size: 20px; }
+}

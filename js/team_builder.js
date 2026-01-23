@@ -19,7 +19,6 @@ const STRONG = {
 };
 
 const ALL_ELEMS = ["water", "fire", "nature", "earth", "wind", "lightning"];
-
 const PVP_LEVEL = 35;
 
 // performance limits
@@ -28,23 +27,35 @@ const MAX_THREATS_FOR_SWAPS = 8;
 const MAX_SWAP_SUGGESTIONS = 6;
 const MAX_SWAP_POOL = 220; // candidatos a meter (cap para no matar el navegador)
 
+// cache limits
+const MAX_BESTHTK_CACHE = 50000;
+
 /* =========================================================
    STATE
 ========================================================= */
 let DB = [];
 let TEAM = [null, null, null, null];
 
-let BASE_BY_NAME = new Map();               // name -> base stats (lvl15)
-const TOTALS_CACHE = new Map();             // name -> totals lvl35 | null
-const BESTHTK_CACHE = new Map();            // "atk|def" -> result | null
+let BASE_BY_NAME = new Map(); // name -> base stats (lvl15)
+const TOTALS_CACHE = new Map(); // name -> totals lvl35 | null
+const BESTHTK_CACHE = new Map(); // "atk|def" -> result | null
 
-let DB_WITH_MOVES = [];                     // prefiltrado (moves)
-let DB_WITH_MOVES_AND_STATS = [];           // moves + stats calc
+let DB_WITH_MOVES = []; // prefiltrado (moves)
+let DB_WITH_MOVES_AND_STATS = []; // moves + stats calc
 
-let LAST_THREATS = [];                      // hard counters list
-let LAST_SWAP_RECS = [];                    // swaps list
+let LAST_THREATS = []; // hard counters list
+let LAST_SWAP_RECS = []; // swaps list
 
 const $ = (sel) => document.querySelector(sel);
+
+/* =========================================================
+   SMALL UTILS
+========================================================= */
+function cacheSet(map, key, val, max = MAX_BESTHTK_CACHE) {
+  // simple safety: avoid unbounded growth
+  if (map.size > max) map.clear();
+  map.set(key, val);
+}
 
 /* =========================================================
    GLOBAL DROPDOWN CLOSE
@@ -124,12 +135,12 @@ function getBase15ForName(name) {
   const raw = BASE_BY_NAME.get(normalize(name));
   if (!raw) return null;
 
-  const hp  = raw.hp  ?? raw.HP  ?? raw.Hp  ?? raw.health ?? null;
+  const hp = raw.hp ?? raw.HP ?? raw.Hp ?? raw.health ?? null;
   const spd = raw.spd ?? raw.SPD ?? raw.speed ?? null;
-  const ea  = raw.ea  ?? raw.EA  ?? raw.elemAtk ?? raw.elementalAttack ?? null;
-  const pa  = raw.pa  ?? raw.PA  ?? raw.physAtk ?? raw.physicalAttack ?? null;
-  const ed  = raw.ed  ?? raw.ED  ?? raw.elemDef ?? raw.elementalDefense ?? null;
-  const pd  = raw.pd  ?? raw.PD  ?? raw.physDef ?? raw.physicalDefense ?? null;
+  const ea = raw.ea ?? raw.EA ?? raw.elemAtk ?? raw.elementalAttack ?? null;
+  const pa = raw.pa ?? raw.PA ?? raw.physAtk ?? raw.physicalAttack ?? null;
+  const ed = raw.ed ?? raw.ED ?? raw.elemDef ?? raw.elementalDefense ?? null;
+  const pd = raw.pd ?? raw.PD ?? raw.physDef ?? raw.physicalDefense ?? null;
 
   if (hp == null || spd == null || ea == null || pa == null || ed == null || pd == null) return null;
 
@@ -143,12 +154,12 @@ function totalsAtPvpLevel(name, fallbackStats) {
   const b15 = getBase15ForName(name);
   if (b15) {
     const totals = {
-      HP:  statAtLevel(b15.hp,  PVP_LEVEL, true),
+      HP: statAtLevel(b15.hp, PVP_LEVEL, true),
       SPD: statAtLevel(b15.spd, PVP_LEVEL, false),
-      EA:  statAtLevel(b15.ea,  PVP_LEVEL, false),
-      PA:  statAtLevel(b15.pa,  PVP_LEVEL, false),
-      ED:  statAtLevel(b15.ed,  PVP_LEVEL, false),
-      PD:  statAtLevel(b15.pd,  PVP_LEVEL, false),
+      EA: statAtLevel(b15.ea, PVP_LEVEL, false),
+      PA: statAtLevel(b15.pa, PVP_LEVEL, false),
+      ED: statAtLevel(b15.ed, PVP_LEVEL, false),
+      PD: statAtLevel(b15.pd, PVP_LEVEL, false),
     };
     TOTALS_CACHE.set(key, totals);
     return totals;
@@ -181,7 +192,7 @@ function computeCoverage(team) {
 }
 
 function computeWeaknesses(team) {
-  // tu lógica original era “qué elementos te pegan fuerte”
+  // qué elementos te pegan fuerte
   const wk = Object.fromEntries(ALL_ELEMS.map((e) => [e, 0]));
   for (const m of team) {
     if (!m) continue;
@@ -214,12 +225,12 @@ async function loadDB() {
   const meta = metaJson?.miscrits ?? [];
 
   const baseStatsJson = await baseStatsRes.json();
-  const baseArr = Array.isArray(baseStatsJson) ? baseStatsJson : (baseStatsJson?.miscrits ?? []);
+  const baseArr = Array.isArray(baseStatsJson) ? baseStatsJson : baseStatsJson?.miscrits ?? [];
 
   BASE_BY_NAME = new Map(
     baseArr
-      .filter(x => x?.name && (x?.baseStats || x?.stats || x?.base || x?.base_stats))
-      .map(x => {
+      .filter((x) => x?.name && (x?.baseStats || x?.stats || x?.base || x?.base_stats))
+      .map((x) => {
         const bs = x.baseStats ?? x.stats ?? x.base ?? x.base_stats;
         return [normalize(x.name), bs];
       })
@@ -260,14 +271,14 @@ async function loadDB() {
 
   DB.sort((a, b) => (a.name ?? "").localeCompare(b.name ?? "", "en", { sensitivity: "base" }));
 
-  // pre-filtros (esto baja muchísimo el costo)
-  DB_WITH_MOVES = DB.filter(m => (m?.attacks?.length || m?.enhancedAttacks?.length));
-  DB_WITH_MOVES_AND_STATS = DB_WITH_MOVES.filter(m => !!totalsAtPvpLevel(m.name, m.stats));
+  // pre-filtros (bajan muchísimo el costo)
+  DB_WITH_MOVES = DB.filter((m) => m?.attacks?.length || m?.enhancedAttacks?.length);
+  DB_WITH_MOVES_AND_STATS = DB_WITH_MOVES.filter((m) => !!totalsAtPvpLevel(m.name, m.stats));
 
-  // debug coverage
+  // debug liviano (sin recalcular para todo DB)
   console.log("[TB] DB total:", DB.length);
   console.log("[TB] With moves:", DB_WITH_MOVES.length);
-  console.log("[TB] With stats:", DB.filter(m => !!totalsAtPvpLevel(m.name, m.stats)).length);
+  console.log("[TB] With base stats records:", baseArr.length);
   console.log("[TB] With both (moves+stats):", DB_WITH_MOVES_AND_STATS.length);
 }
 
@@ -316,7 +327,7 @@ function renderSlots() {
       closeAllDropdownsExcept(dd);
       renderDD(i, input.value, dd);
 
-      // mini bug fix: si escribe a mano y es match exact, actualiza avatar
+      // si escribe a mano y es match exact, actualiza avatar
       const exact = findExactMiscrit(input.value);
       setSlotAvatar(i, exact || TEAM[i]);
     };
@@ -347,12 +358,16 @@ function renderSlots() {
       }
     });
 
-    // cuando pierde foco: si hay match exact => selecciona (y dispara cálculo)
+    // cuando pierde foco: si hay match exact => selecciona SOLO si cambió
     input.addEventListener("blur", () => {
       // pequeño delay para permitir click en dropdown
       setTimeout(() => {
         const exact = findExactMiscrit(input.value);
-        if (exact) selectSlot(i, exact, input, dd);
+        if (!exact) return;
+
+        const curKey = normalize(TEAM[i]?.name);
+        const nextKey = normalize(exact.name);
+        if (curKey !== nextKey) selectSlot(i, exact, input, dd);
       }, 120);
     });
 
@@ -413,15 +428,14 @@ function renderDD(slotIndex, query, dd) {
 function findExactMiscrit(name) {
   const v = normalize(name);
   if (!v) return null;
-  return DB.find(m => normalize(m.name) === v) ?? null;
+  return DB.find((m) => normalize(m.name) === v) ?? null;
 }
 
 /* =========================================================
    SELECTION + RECALC (ONLY WHEN TEAM CHANGES)
 ========================================================= */
 function selectSlot(i, m, inputEl, dd) {
-  const prev = TEAM[i];
-  const prevKey = normalize(prev?.name);
+  const prevKey = normalize(TEAM[i]?.name);
   const nextKey = normalize(m?.name);
 
   TEAM[i] = m;
@@ -460,13 +474,13 @@ function bestHTK(attacker, defender) {
   const defTotals = totalsAtPvpLevel(defender.name, defender.stats);
 
   if (!atkTotals || !defTotals || !hasMoves(attacker)) {
-    BESTHTK_CACHE.set(key, null);
+    cacheSet(BESTHTK_CACHE, key, null);
     return null;
   }
 
   const best = pickBestMove(attacker, atkTotals, defender, defTotals, "auto");
   if (!best?.dmg || !best?.move) {
-    BESTHTK_CACHE.set(key, null);
+    cacheSet(BESTHTK_CACHE, key, null);
     return null;
   }
 
@@ -479,7 +493,7 @@ function bestHTK(attacker, defender) {
     label: best.dmg.label,
   };
 
-  BESTHTK_CACHE.set(key, res);
+  cacheSet(BESTHTK_CACHE, key, res);
   return res;
 }
 
@@ -487,14 +501,14 @@ function computeHardCounters(team, limit = MAX_COUNTERS) {
   const chosen = team.filter(Boolean);
   if (!chosen.length) return [];
 
-  // enemigos: solo los evaluables (moves + stats)
+  // enemigos: solo evaluables (moves + stats)
   const enemies = DB_WITH_MOVES_AND_STATS;
 
   const out = [];
 
   for (const e of enemies) {
     // enemy -> team: el mejor (menor HTK) contra cualquiera del team
-    let bestVs = null; // { target, htk, avg, moveName, moveElem, mul }
+    let bestVs = null;
     for (const t of chosen) {
       const res = bestHTK(e, t);
       if (!res) continue;
@@ -506,11 +520,9 @@ function computeHardCounters(team, limit = MAX_COUNTERS) {
   }
 
   out.sort((a, b) => {
-    // primero HTK más bajo
-    const d = toNum(a.vs.htk) - toNum(b.vs.htk);
+    const d = toNum(a.vs.htk) - toNum(b.vs.htk); // HTK más bajo primero
     if (d !== 0) return d;
-    // luego avg más alto
-    return toNum(b.vs.avg) - toNum(a.vs.avg);
+    return toNum(b.vs.avg) - toNum(a.vs.avg); // avg más alto
   });
 
   return out.slice(0, limit);
@@ -529,11 +541,9 @@ function teamThreatIndex(team, threatsList) {
   for (const th of threatsList) {
     const e = th.enemy;
 
-    // enemyKills: ya lo tenemos
     const enemyKills = toNum(th.vs?.htk);
     if (!Number.isFinite(enemyKills)) continue;
 
-    // teamKills: mínimo HTK del team contra e
     let teamKills = Infinity;
     for (const t of chosen) {
       const res = bestHTK(t, e);
@@ -542,23 +552,23 @@ function teamThreatIndex(team, threatsList) {
     }
     if (!Number.isFinite(teamKills)) continue;
 
-    score += (teamKills - enemyKills);
+    score += teamKills - enemyKills;
   }
 
   return score;
 }
 
 function buildSwapPool(chosen) {
-  const used = new Set(chosen.map(m => normalize(m.name)));
+  const used = new Set(chosen.map((m) => normalize(m.name)));
 
   // prioriza por rarity points desc (para meter legends primero) y luego nombre
   const sorted = DB_WITH_MOVES_AND_STATS
-    .filter(m => m?.name && !used.has(normalize(m.name)))
+    .filter((m) => m?.name && !used.has(normalize(m.name)))
     .slice()
     .sort((a, b) => {
       const d = rarityPoints(b) - rarityPoints(a);
       if (d !== 0) return d;
-      return (a.name ?? "").localeCompare(b.name ?? "", "en", { sensitivity:"base" });
+      return (a.name ?? "").localeCompare(b.name ?? "", "en", { sensitivity: "base" });
     });
 
   return sorted.slice(0, MAX_SWAP_POOL);
@@ -583,7 +593,6 @@ function suggestSwaps(team, threats, maxSuggestions = MAX_SWAP_SUGGESTIONS) {
       const next = team.slice();
       next[slot] = cand;
 
-      // respeta CAP
       const pts = next.reduce((s, m) => s + rarityPoints(m), 0);
       if (pts > CAP) continue;
 
@@ -698,10 +707,12 @@ function renderCounters(list) {
     const enemy = it.enemy;
     const vs = it.vs;
 
-    // avatar
     avatar.src = avatarSrcFromName(enemy?.name);
     avatar.alt = enemy?.name ?? "";
-    avatar.onerror = () => { avatar.onerror = null; avatar.src = AVATAR_FALLBACK; };
+    avatar.onerror = () => {
+      avatar.onerror = null;
+      avatar.src = AVATAR_FALLBACK;
+    };
 
     nameEl.textContent = enemy?.name ?? "—";
     htkEl.textContent = `HTK: ${vs?.htk ?? "—"}`;
@@ -716,8 +727,7 @@ function renderCounters(list) {
     moveName.textContent = vs?.moveName ?? "—";
 
     const mul = vs?.mul;
-    const mulTxt = Number.isFinite(mul) ? `x${mul}` : "x—";
-    mulEl.textContent = mulTxt;
+    mulEl.textContent = Number.isFinite(mul) ? `x${mul}` : "";
 
     const avg = vs?.avg;
     avgEl.textContent = Number.isFinite(avg) ? `AVG: ${avg}` : "";
@@ -752,11 +762,17 @@ function renderSwaps(list) {
 
     outAv.src = avatarSrcFromName(it.out?.name);
     outAv.alt = it.out?.name ?? "";
-    outAv.onerror = () => { outAv.onerror = null; outAv.src = AVATAR_FALLBACK; };
+    outAv.onerror = () => {
+      outAv.onerror = null;
+      outAv.src = AVATAR_FALLBACK;
+    };
 
     inAv.src = avatarSrcFromName(it.in?.name);
     inAv.alt = it.in?.name ?? "";
-    inAv.onerror = () => { inAv.onerror = null; inAv.src = AVATAR_FALLBACK; };
+    inAv.onerror = () => {
+      inAv.onerror = null;
+      inAv.src = AVATAR_FALLBACK;
+    };
 
     outName.textContent = it.out?.name ?? "—";
     inName.textContent = it.in?.name ?? "—";
@@ -789,7 +805,7 @@ function recomputeCountersAndSwaps() {
   LAST_SWAP_RECS = suggestSwaps(TEAM, threatsForSwaps, MAX_SWAP_SUGGESTIONS);
   renderSwaps(LAST_SWAP_RECS);
 
-  // debug: por qué sale lo que sale
+  // debug top
   if (LAST_THREATS.length) {
     const top = LAST_THREATS[0];
     console.log("[TB] Top counter:", {
@@ -799,7 +815,7 @@ function recomputeCountersAndSwaps() {
       avg: top.vs?.avg,
       move: top.vs?.moveName,
       elem: top.vs?.moveElem,
-      mul: top.vs?.mul
+      mul: top.vs?.mul,
     });
   }
 }

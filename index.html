@@ -20,7 +20,17 @@
         />
       </a>
 
-      <nav class="topnav topnav--header" aria-label="Navegación principal">
+      <button class="navToggle" id="navToggle"
+              type="button"
+              aria-label="Abrir menú"
+              aria-controls="mainNav"
+              aria-expanded="false">
+        <span class="navToggle__bar"></span>
+        <span class="navToggle__bar"></span>
+        <span class="navToggle__bar"></span>
+      </button>
+
+      <nav id="mainNav" class="topnav topnav--header" aria-label="Navegación principal">
         <a class="topnav__link is-active" href="./index.html">Spawns</a>
         <a class="topnav__link" href="./html/breeding.html">Breeding Calculator</a>
         <a class="topnav__link" href="./html/statscalculator.html">Stats Calculator</a>
@@ -145,5 +155,6 @@
   </footer>
 
   <script src="./js/app.js"></script>
+  <script src="./js/nav.js" defer></script>
 </body>
 </html>
