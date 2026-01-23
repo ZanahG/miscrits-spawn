@@ -83,10 +83,10 @@
       "format": "Platinum Arena",
       "patch": "1.0.4",
       "miscrits": [
-        { "name": "Narlope", "autoRelics": false },
-        { "name": "Eclipso", "autoRelics": false },
-        { "name": "Beateorite", "autoRelics": false },
-        { "name": "Dark Squibee", "autoRelics": false }]
+        { "name": "Narlope", "autoRelics": true },
+        { "name": "Eclipso", "autoRelics": true },
+        { "name": "Beateorite", "autoRelics": true },
+        { "name": "Dark Squibee", "autoRelics": true }]
     },
     {
       "id": "t002",
@@ -94,10 +94,10 @@
       "format": "Platinum Arena",
       "patch": "1.0.4",
       "miscrits": [
-        { "name": "Mooncrit", "autoRelics": false },
-        { "name": "Skelepup", "autoRelics": false },
-        { "name": "Dark Poltergust", "autoRelics": false },
-        { "name": "Narlope", "autoRelics": false }]
+        { "name": "Mooncrit", "autoRelics": true },
+        { "name": "Skelepup", "autoRelics": true },
+        { "name": "Dark Poltergust", "autoRelics": true },
+        { "name": "Narlope", "autoRelics": true }]
     },
     {
       "id": "t003",
@@ -105,21 +105,21 @@
       "format": "Platinum Arena",
       "patch": "1.0.4",
       "miscrits": [
-        { "name": "Flurrious", "autoRelics": false },
-        { "name": "Dark Squibee", "autoRelics": false },
-        { "name": "Dark Elefauna", "autoRelics": false },
-        { "name": "Phoboros", "autoRelics": false }]
-    },
+        { "name": "Flurrious", "autoRelics": true },
+        { "name": "Dark Squibee", "autoRelics": true },
+        { "name": "Dark Elefauna", "autoRelics": true },
+        { "name": "Phoboros", "autoRelics": true }]
+    },  
     {
       "id": "t004",
       "title": "Shembot Team",
       "format": "Platinum Arena",
       "patch": "1.0.4",
       "miscrits": [
-        { "name": "Flurrious", "autoRelics": false },
-        { "name": "Winnebeargo", "autoRelics": false },
-        { "name": "Pinplar", "autoRelics": false },
-        { "name": "Nero", "autoRelics": false }]
+        { "name": "Flurrious", "autoRelics": true },
+        { "name": "Winnebeargo", "autoRelics": true },
+        { "name": "Pinplar", "autoRelics": true },
+        { "name": "Nero", "autoRelics": true }]
     },
     {
       "id": "t005",
@@ -127,10 +127,10 @@
       "format": "Platinum Arena",
       "patch": "1.0.4",
       "miscrits": [
-        { "name": "Flurrious", "autoRelics": false },
-        { "name": "Hotdog", "autoRelics": false },
-        { "name": "Lavazard", "autoRelics": false },
-        { "name": "Dreamger", "autoRelics": false }]
+        { "name": "Flurrious", "autoRelics": true },
+        { "name": "Hotdog", "autoRelics": true },
+        { "name": "Lavazard", "autoRelics": true },
+        { "name": "Dreamger", "autoRelics": true }]
     }
   ]
 }

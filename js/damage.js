@@ -1,3 +1,16 @@
+import {
+  normalize,
+  toNum,
+  clamp,
+  elementMultiplier,
+  pickAtkDefStats,
+  computePerHit,
+  getMovesPvp,
+  pickBestMove,
+  calcDamageRange
+} from "./damage_core.js";
+
+
 const $ = (sel) => document.querySelector(sel);
 
 /* =========================================================
@@ -22,6 +35,7 @@ let DEF_COLORS = { HP:"green", SPD:"green", EA:"green", PA:"green", ED:"green", 
 
 const PVP_LEVEL = 35;
 const BONUS_POOL_MAX = 136;
+const SLOT_LEVELS = [10, 20, 30, 35];
 
 let BONUS_ATK = { HP:0, EA:0, PA:0, SPD:0, ED:0, PD:0 };
 let BONUS_DEF = { HP:0, EA:0, PA:0, SPD:0, ED:0, PD:0 };
@@ -35,20 +49,6 @@ let atkUseEnhanced = false;
 /* =========================================================
    HELPERS
 ========================================================= */
-
-function normalize(str) {
-  return (str ?? "").toString().trim().toLowerCase();
-}
-
-function toNum(v) {
-  const n = Number(v);
-  return Number.isFinite(n) ? n : 0;
-}
-
-function clamp(n, a, b) {
-  n = toNum(n);
-  return Math.max(a, Math.min(b, n));
-}
 
 function getSideColors(side) {
   return side === "atk" ? ATK_COLORS : DEF_COLORS;
@@ -169,72 +169,6 @@ function moveKey(a) {
     toNum(a?.ap),
     toNum(a?.hits ?? 1)
   ].join("|");
-}
-
-/* =========================================================
-   ELEMENT MULTIPLIER
-========================================================= */
-
-const SLOT_LEVELS = [10, 20, 30, 35];
-
-const STRONG = {
-  water: ["fire"],
-  fire: ["nature"],
-  nature: ["water"],
-  earth: ["lightning"],
-  wind: ["earth"],
-  lightning: ["wind"]
-};
-
-const WEAK = {
-  water: ["nature"],
-  fire: ["water"],
-  nature: ["fire"],
-  earth: ["wind"],
-  wind: ["lightning"],
-  lightning: ["earth"]
-};
-
-function elementMultiplier(atkElem, defElems) {
-  const a = normalize(atkElem);
-  const defs = (defElems ?? []).map(normalize);
-
-  let mul = 1;
-  for (const d of defs) {
-    if (STRONG[a]?.includes(d)) mul *= 2.0;
-    if (WEAK[a]?.includes(d)) mul *= 0.5;
-  }
-  return mul;
-}
-
-function isElementalAttack(elem) {
-  const e = normalize(elem);
-  return ["water","fire","nature","earth","wind","lightning"].includes(e);
-}
-
-function pickAtkDefStats(mode, attackElem, inputs) {
-  if (mode === "physical") {
-    return { atk: inputs.atkPA, def: inputs.defPD, label: "PA vs PD" };
-  }
-  if (mode === "elemental") {
-    return { atk: inputs.atkEA, def: inputs.defED, label: "EA vs ED" };
-  }
-
-  const elemental = isElementalAttack(attackElem);
-  if (elemental) return { atk: inputs.atkEA, def: inputs.defED, label: "EA vs ED" };
-  return { atk: inputs.atkPA, def: inputs.defPD, label: "PA vs PD" };
-}
-
-function computePerHit(ap, atkStat, defStat, elemMul) {
-  const a = toNum(ap);
-  const atk = Math.max(1, toNum(atkStat));
-  const def = Math.max(1, toNum(defStat));
-  const m = toNum(elemMul);
-
-  const base = (a * (atk / def)) * m;
-  const min = Math.floor(base * 0.90);
-  const max = Math.floor(base * 1.10);
-  return { min, max, base };
 }
 
 /* =========================================================

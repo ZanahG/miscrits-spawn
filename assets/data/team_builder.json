@@ -1,0 +1,25 @@
+{
+  "format": "Platinum Arena",
+  "maxRarityPoints": 12,
+  "team": {
+    "id": "tb001",
+    "name": "My Meta Team",
+    "slots": [
+      {
+        "slot": 0,
+        "miscritId": "001",
+        "name": "Flue",
+        "locks": { "relics": false, "colors": false, "bonus": false },
+        "build": {
+          "colors": { "HP": "Green", "SPD": "Red", "EA": "Green", "PA": "Green", "ED": "Green", "PD": "Green" },
+          "platBonus": { "HP": 30, "SPD": 0, "EA": 30, "PA": 30, "ED": 30, "PD": 30 },
+          "relics": ["CLOUD_CAKE", "GKS_SLIPPERS", "PAMBOO_CANE", "ETERNAL_FALL_MUSHROOM"],
+          "moves": ["FIREBALL", "FLAME_WHIRL", "BURST", "FOCUS"] 
+        }
+      },
+      { "slot": 1, "miscritId": "032", "name": "Kiloray", "locks": { "relics": false, "colors": false, "bonus": false }, "build": { "colors": {}, "platBonus": {}, "relics": [], "moves": [] } },
+      { "slot": 2, "miscritId": null, "name": null, "locks": { "relics": false, "colors": false, "bonus": false }, "build": { "colors": {}, "platBonus": {}, "relics": [], "moves": [] } },
+      { "slot": 3, "miscritId": null, "name": null, "locks": { "relics": false, "colors": false, "bonus": false }, "build": { "colors": {}, "platBonus": {}, "relics": [], "moves": [] } }
+    ]
+  }
+}

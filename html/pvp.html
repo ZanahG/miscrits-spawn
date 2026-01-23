@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>PVP Teams</title>
   <link rel="stylesheet" href="../styles.css" />
+  <link rel="stylesheet" href="../styles/pvp_teams.css" />
   <link rel="icon" href="../assets/images/logo.png" sizes="32x32">
   <link rel="apple-touch-icon" href="../assets/images/logo.png">
 </head>
@@ -49,6 +50,7 @@
         </div>
       </div>
     </section>
+
     <section class="card pvp-carousel" aria-label="Top teams más usados">
       <div class="pvp-carousel__head">
         <div class="pvp-carousel__title">Top 5 Platinum Arena Players Teams</div>
@@ -60,6 +62,58 @@
     </section>
 
   </main>
+
+  <!-- MODAL -->
+  <div class="modal" id="miscritModal" aria-hidden="true">
+    <div class="modal__backdrop" data-modal-close></div>
+
+    <div class="modal__card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal__close" type="button" data-modal-close>✕</button>
+
+      <!-- TOP CENTER -->
+      <div class="modal__topbar">
+        <div class="modal__tierWrap" id="modalTierWrap">
+          <span class="badge badge--tier" id="modalTier">Tier —</span>
+        </div>
+      </div>
+
+      <!-- HEADER -->
+      <div class="modal__header">
+        <img id="modalAvatar" class="modal__avatar" alt="">
+
+        <div class="modal__headText">
+          <div class="modal__titleRow">
+            <div id="modalTitle" class="modal__title">—</div>
+          </div>
+
+          <div class="modal__metaRow">
+            <img id="modalTypeIcon" class="typeIcon" alt="">
+            <span id="modalTypeText" class="typeText">—</span>
+
+            <span id="modalRarity" class="badge badge--rarity">—</span>
+            <span id="modalBestRank" class="badge badge--rank">—</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal__section">
+        <div class="modal__sectionTitle">Level 35</div>
+        <div class="modal__sectionTitle">Stats simulated with all green and 20 bonus points for each attribute</div>
+        <div class="statsGrid" id="modalStatsGrid"></div>
+      </div>
+
+      <div class="modal__section">
+        <div class="modal__sectionTitle">Relics used</div>
+        <div class="relicRow" id="modalRelicsRow"></div>
+      </div>
+
+      <!-- OPCIONALES -->
+      <div class="modal__section">
+        <div class="modal__sectionTitle">Relics optionals</div>
+        <div class="relicRow" id="modalRelicsOptionalRow"></div>
+      </div>
+    </div>
+  </div>
 
   <script src="../js/pvp.js"></script>
 </body>
