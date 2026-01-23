@@ -2220,3 +2220,22 @@ input::placeholder{ color:#6b778b; }
     max-width: calc(100vw - 40px);
   }
 }
+.navToggle{
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.navToggle__icon{
+  width: 36px;
+  height: 36px;
+  display: block;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
