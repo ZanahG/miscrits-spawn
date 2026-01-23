@@ -2226,9 +2226,15 @@ input::placeholder{ color:#6b778b; }
   padding: 0;
   border: 0;
   background: transparent;
-  display: grid;
+  display: none;
   place-items: center;
   cursor: pointer;
+}
+
+@media (max-width: 820px){
+  .navToggle{
+    display: grid;
+  }
 }
 
 .navToggle__icon{
