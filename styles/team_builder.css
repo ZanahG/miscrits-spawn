@@ -394,3 +394,57 @@
   background: rgba(255,255,255,.08);
   margin: 6px 0;
 }
+
+.tb-threatHead{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.tb-threatAvatar{
+  width:34px;
+  height:34px;
+  border-radius:10px;
+  object-fit:cover;
+  background: rgba(0,0,0,.25);
+  border: 1px solid rgba(255,255,255,.10);
+  flex: 0 0 auto;
+}
+
+.tb-threatRow {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 18px;
+  padding: 16px 16px 38px;
+  border-radius: 14px;
+}
+
+.tb-outcome {
+  position: absolute;
+  bottom: 12px;
+  right: 14px;
+}
+
+.tb-badge {
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: .06em;
+}
+
+.tb-badge.win {
+  background: rgba(0,180,80,.25);
+  color: #6dffb2;
+}
+
+.tb-badge.lose {
+  background: rgba(180,40,40,.28);
+  color: #ff8b8b;
+}
+
+.tb-badge.even {
+  background: rgba(180,140,40,.28);
+  color: #ffd36e;
+}

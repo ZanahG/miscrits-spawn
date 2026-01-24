@@ -543,41 +543,47 @@ function analyzeThreats() {
       const cls = r.outcome === "win" ? "win" : r.outcome === "lose" ? "lose" : "even";
       const htkThemTxt = r.htkThem === Infinity ? "—" : String(r.htkThem);
 
+      const avatar = avatarSrcFromMetaOrInfer(r.threatName);
+
       return `
-				<div class="tb-threatRow">
-					<div class="tb-col">
-						<div class="tb-label">Miscrit Name</div>
-						<div class="tb-value">${r.threatName} <span class="tb-mini"></span></div>
-					</div>
+        <div class="tb-threatRow">
+          
+          <div class="tb-col">
+            <div class="tb-label">Miscrit Name</div>
+            <div class="tb-value tb-miscrit">
+              <img class="tb-mini-avatar" src="${avatarSrcFromMetaOrInfer(r.threatName)}" alt="">
+              ${r.threatName}
+            </div>
+          </div>
 
-					<div class="tb-col">
-						<div class="tb-label">Best Option</div>
-						<div class="tb-value">${r.slotName}</div>
-					</div>
+          <div class="tb-col">
+            <div class="tb-label">Best Option</div>
+            <div class="tb-value">${r.slotName}</div>
+          </div>
 
-					<div class="tb-col">
-						<div class="tb-label">Move</div>
-						<div class="tb-value">${r.yourMove}</div>
-					</div>
+          <div class="tb-col">
+            <div class="tb-label">Move</div>
+            <div class="tb-value">${r.yourMove}</div>
+          </div>
 
-					<div class="tb-col">
-						<div class="tb-label">HTK (You/Them)</div>
-						<div class="tb-value tb-mono">${r.htkYou} / ${htkThemTxt}</div>
-					</div>
+          <div class="tb-col">
+            <div class="tb-label">HTK (You/Them)</div>
+            <div class="tb-value tb-mono">${r.htkYou} / ${htkThemTxt}</div>
+          </div>
 
-					<div class="tb-col">
-						<div class="tb-label">Damage</div>
-						<div class="tb-value tb-mono">${r.yourRange}</div>
-						<div class="tb-label" style="margin-top:6px;">Average</div>
-						<div class="tb-value tb-mono">${r.yourAvg}</div>
-					</div>
+          <div class="tb-col">
+            <div class="tb-label">Damage</div>
+            <div class="tb-value tb-mono">${r.yourRange}</div>
+            <div class="tb-label" style="margin-top:6px;">Average</div>
+            <div class="tb-value tb-mono">${r.yourAvg}</div>
+          </div>
 
-					<div style="display:flex;justify-content:flex-end;align-items:flex-start;">
-						<span class="tb-badge ${cls}">${r.outcome.toUpperCase()}</span>
-					</div>
-				</div>
-			`;
+          <div class="tb-outcome">
+            <span class="tb-badge ${cls}">${r.outcome.toUpperCase()}</span>
+          </div>
 
+        </div>
+      `;
     })
     .join("");
 }
