@@ -23,13 +23,12 @@ const TEAM_SIZE = 4;
 const POINT_CAP = 12;
 const PVP_LEVEL = 35;
 
-// Defaults
 const DEFAULT_COLORS = { hp: "green", spd: "green", ea: "green", pa: "green", ed: "green", pd: "green" };
 const DEFAULT_BONUS = { HP: 0, EA: 0, PA: 0, SPD: 0, ED: 0, PD: 0 };
 
 let DB = [];
-let BASE = []; // base_stats.json miscrits array
-let META = []; // miscrits_meta.json miscrits array
+let BASE = [];
+let META = [];
 
 let DB_BY_NAME = new Map();
 let BASE_BY_NAME = new Map();
@@ -38,7 +37,6 @@ let META_BY_NAME = new Map();
 let PICK_SLOT_INDEX = null;
 let SELECTED_THREAT = null;
 
-// Team state
 const state = {
   slots: Array.from({ length: TEAM_SIZE }, () => null),
 };
@@ -159,7 +157,7 @@ async function loadAll() {
 }
 
 /* =========================================================
-   HELPERS (data)
+   HELPERS
 ========================================================= */
 
 function getMetaForName(name) {
@@ -404,7 +402,7 @@ function renderPickerGrid(query) {
 }
 
 /* =========================================================
-   THREAT ANALYSIS (S/A list)
+   THREAT ANALYSIS
 ========================================================= */
 
 function classifyOutcome(htkYou, htkThem) {
@@ -546,35 +544,46 @@ function analyzeThreats() {
       const htkThemTxt = r.htkThem === Infinity ? "—" : String(r.htkThem);
 
       return `
-        <div class="tb-threatRow">
-          <div>
-            <div class="tb-strong">${r.threatName} <span class="tb-mini">(${r.threatTier})</span></div>
-            <div class="tb-mini">Best: Slot ${r.slotIdx + 1} • ${r.slotName}</div>
-          </div>
+				<div class="tb-threatRow">
+					<div class="tb-col">
+						<div class="tb-label">Miscrit Name</div>
+						<div class="tb-value">${r.threatName} <span class="tb-mini"></span></div>
+					</div>
 
-          <div>
-            <div class="tb-mini">Move</div>
-            <div class="tb-strong">${r.yourMove}</div>
-            <div class="tb-mini">x${r.multiplier}</div>
-          </div>
+					<div class="tb-col">
+						<div class="tb-label">Best Option</div>
+						<div class="tb-value">${r.slotName}</div>
+					</div>
 
-          <div>
-            <div class="tb-mini">HTK (you/them)</div>
-            <div class="tb-strong">${r.htkYou} / ${htkThemTxt}</div>
-            <div class="tb-mini">${r.yourRange} (avg ${r.yourAvg})</div>
-          </div>
+					<div class="tb-col">
+						<div class="tb-label">Move</div>
+						<div class="tb-value">${r.yourMove}</div>
+					</div>
 
-          <div style="display:flex;justify-content:flex-end;">
-            <span class="tb-badge ${cls}">${r.outcome.toUpperCase()}</span>
-          </div>
-        </div>
-      `;
+					<div class="tb-col">
+						<div class="tb-label">HTK (You/Them)</div>
+						<div class="tb-value tb-mono">${r.htkYou} / ${htkThemTxt}</div>
+					</div>
+
+					<div class="tb-col">
+						<div class="tb-label">Damage</div>
+						<div class="tb-value tb-mono">${r.yourRange}</div>
+						<div class="tb-label" style="margin-top:6px;">Average</div>
+						<div class="tb-value tb-mono">${r.yourAvg}</div>
+					</div>
+
+					<div style="display:flex;justify-content:flex-end;align-items:flex-start;">
+						<span class="tb-badge ${cls}">${r.outcome.toUpperCase()}</span>
+					</div>
+				</div>
+			`;
+
     })
     .join("");
 }
 
 /* =========================================================
-   QUICK CHECK (panel derecha)
+   QUICK CHECK
 ========================================================= */
 
 function setQuickOut({ atkName = "—", defName = "—", move = "—", avg = "—", range = "—", htk = "—", mul = "—" }) {
@@ -635,10 +644,7 @@ function runQuickCheck() {
 }
 
 /* =========================================================
-   THREAT SEARCH (dropdown derecha) — SOLO UNA (DB, con avatar)
-   Requiere:
-   - input#tbThreatSearch
-   - div#tbThreatDropdown.miscritpicker__dropdown
+   THREAT SEARCH
 ========================================================= */
 
 function closeThreatDropdown() {
@@ -842,7 +848,6 @@ function bindUI() {
     if (e.key === "Escape") closePicker();
   });
 
-  // Threat dropdown (Miscritdle style)
   $("#tbThreatSearch")?.addEventListener("focus", (e) => {
     renderThreatDropdown(e.target.value);
   });

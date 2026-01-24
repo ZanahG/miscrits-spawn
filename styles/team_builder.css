@@ -155,7 +155,6 @@
     color: var(--muted, #9aa4b2);
 }
 
-/* Modal + picker (reusa tus clases si ya las tienes) */
 .modal {
     position: fixed;
     inset: 0;
@@ -267,4 +266,131 @@
 .miscritpicker__cost {
     font-weight: 700;
     color: var(--text, #e6edf3);
+}
+/* ===============================
+   Threat Matchups - Better UI
+================================ */
+
+#tbThreatsBox{
+  display: grid;
+  gap: 10px;
+}
+
+.tb-threatRow{
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr auto;
+  gap: 14px;
+  padding: 12px 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(0,0,0,.16);
+  box-shadow: 0 10px 28px rgba(0,0,0,.20) inset;
+  align-items: start;
+}
+
+@media (max-width: 520px){
+  .tb-threatRow{
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+}
+
+.tb-threatTitle{
+  font-weight: 900;
+  letter-spacing: .3px;
+  color: rgba(255,255,255,.95);
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.tb-threatSub{
+  margin-top: 6px;
+  font-size: 12px;
+  color: rgba(255,255,255,.72);
+  font-weight: 800;
+}
+
+.tb-label{
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: rgba(255,255,255,.55);
+  font-weight: 900;
+  margin-bottom: 4px;
+}
+
+.tb-value{
+  font-weight: 900;
+  color: rgba(255,255,255,.92);
+}
+
+.tb-pill{
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.06);
+  font-size: 12px;
+  font-weight: 900;
+  color: rgba(255,255,255,.9);
+}
+
+.tb-pill--tierS{ background: rgba(196,164,107,.14); border-color: rgba(196,164,107,.35); }
+.tb-pill--tierA{ background: rgba(76,222,128,.12); border-color: rgba(76,222,128,.28); }
+.tb-pill--tierB{ background: rgba(122,162,255,.12); border-color: rgba(122,162,255,.28); }
+.tb-pill--tierC{ background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.14); }
+.tb-pill--tierD,
+.tb-pill--tierF{ background: rgba(255,100,100,.08); border-color: rgba(255,100,100,.18); }
+
+.tb-badge{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 70px;
+  height: 28px;
+  padding: 0 10px;
+  border-radius: 999px;
+  font-weight: 900;
+  letter-spacing: .08em;
+  font-size: 12px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.06);
+  color: rgba(255,255,255,.92);
+}
+
+.tb-badge.win{
+  background: rgba(0, 170, 80, .18);
+  border-color: rgba(0, 255, 140, .28);
+}
+.tb-badge.even{
+  background: rgba(255, 200, 0, .12);
+  border-color: rgba(255, 200, 0, .25);
+}
+.tb-badge.lose{
+  background: rgba(255, 70, 70, .14);
+  border-color: rgba(255, 70, 70, .25);
+}
+
+.tb-move{
+  font-weight: 900;
+  color: rgba(255,255,255,.95);
+}
+
+.tb-mono{
+  font-variant-numeric: tabular-nums;
+}
+
+.tb-col{
+  display: grid;
+  gap: 6px;
+}
+
+.tb-softline{
+  height: 1px;
+  background: rgba(255,255,255,.08);
+  margin: 6px 0;
 }
