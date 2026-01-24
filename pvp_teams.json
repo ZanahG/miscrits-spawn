@@ -274,6 +274,61 @@
         { "name": "Lagoony", "autoRelics": true },
         { "name": "Geneseed", "autoRelics": true },
         { "name": "Rexie", "autoRelics": true }]
+    },
+    {
+      "id": "t018",
+      "title": "Suggested Team",
+      "format": "Platinum Arena",
+      "patch": "2.0.0",
+      "miscrits": [
+        { "name": "Dark Prawnja", "autoRelics": true },
+        { "name": "Luvcraft", "autoRelics": true },
+        { "name": "Alpha", "autoRelics": true },
+        { "name": "Mooncrit", "autoRelics": true }]
+    },
+    {
+      "id": "t019",
+      "title": "Suggested Team",
+      "format": "Platinum Arena",
+      "patch": "2.0.0",
+      "miscrits": [
+        { "name": "Dark Snortus", "autoRelics": true },
+        { "name": "Luvcraft", "autoRelics": true },
+        { "name": "Narlope", "autoRelics": true },
+        { "name": "Eclipso", "autoRelics": true }]
+    },
+    {
+      "id": "t020",
+      "title": "Suggested Team",
+      "format": "Platinum Arena",
+      "patch": "2.0.0",
+      "miscrits": [
+        { "name": "Dark Tongutail", "autoRelics": true },
+        { "name": "Dark Flue", "autoRelics": true },
+        { "name": "Flurrious", "autoRelics": true },
+        { "name": "Owlie", "autoRelics": true }]
+    },
+    {
+      "id": "t021",
+      "title": "Suggested Team",
+      "format": "Platinum Arena",
+      "patch": "2.0.0",
+      "miscrits": [
+        { "name": "Dark Prawnja", "autoRelics": true },
+        { "name": "Rexie", "autoRelics": true },
+        { "name": "Geneseed", "autoRelics": true },
+        { "name": "Dark Nessy", "autoRelics": true }]
+    },
+    {
+      "id": "t022",
+      "title": "Suggested Team",
+      "format": "Platinum Arena",
+      "patch": "2.0.0",
+      "miscrits": [
+        { "name": "Deetlee", "autoRelics": true },
+        { "name": "Pamboo", "autoRelics": true },
+        { "name": "Foil Croaky", "autoRelics": true },
+        { "name": "Light Rafiery", "autoRelics": true }]
     }
   ]
 }
