@@ -157,7 +157,8 @@
           "ELEFAUNA_FLOWER"
         ],
         "20": [
-          "STONY_SHIELD"
+          "STONY_SHIELD",
+          "SUNFALL_SHORES_BANNER"
         ],
         "30": [
           "MAGICITE_STAFF",
@@ -219,6 +220,7 @@
       "tierlist": null,
       "relics_by_level": {
         "10": [
+          "FROOST_ROOT",
           "BLESSED_POLLEN",
           "WOODMANS_AXE_HEAD"
         ],
@@ -272,11 +274,12 @@
           "STONY_SHIELD"
         ],
         "30": [
+          "PEEPSIE_EGGS",
           "MAGICITE_STAFF"
         ],
         "35": [
-          "MOON_ROCK",
-          "SHARD_OF_RUDOLFE"
+          "SHARD_OF_RUDOLFE",
+          "MOON_ROCK"
         ]
       }
     },
@@ -376,6 +379,7 @@
       "tierlist": "B",
       "relics_by_level": {
         "10": [
+          "GKS_SLIPPERS",
           "CLOUD_CAKE",
           "ELEFAUNA_FLOWER"
         ],
@@ -410,7 +414,6 @@
           "VANQUISHED_SOUL"
         ],
         "35": [
-          "GOGS_COG",
           "SAYAMS_TRIDENT"
         ]
       }
@@ -689,15 +692,16 @@
       "relics_by_level": {
         "10": [
           "ELEFAUNA_FLOWER",
-          "GKS_SLIPPERS"
+          "GKS_SLIPPERS",
+          "FROOST_ROOT"
         ],
         "20": [
-          "SHIP_CAPTAINS_LOG",
-          "STONY_SHIELD"
+          "STONY_SHIELD",
+          "SHIP_CAPTAINS_LOG"
         ],
         "30": [
-          "ARROW_OF_LOVE",
-          "MAGICITE_STAFF"
+          "MAGICITE_STAFF",
+          "ARROW_OF_LOVE"
         ],
         "35": [
           "SHARD_OF_RUDOLFE"
@@ -892,7 +896,7 @@
         "20": [
           "MT._GEMMA_BANNER",
           "OBSIDIAN_LAVA",
-          "STONY_SHIELD"
+          "BEAN_STALK"
         ],
         "30": [
           "CACTUS_FLOWER",
@@ -900,7 +904,8 @@
         ],
         "35": [
           "CAGE_OF_DESPAIR",
-          "MOLTEN_COIN"
+          "DARK_WINDS_VENOM",
+          "PETRIFIED_MAMA_BABY"
         ]
       }
     },
@@ -918,6 +923,7 @@
           "FORGING_HAMMER"
         ],
         "30": [
+          "VANQUISHED_SOUL",
           "SHACKLERS_GEM"
         ],
         "35": [
@@ -1179,16 +1185,16 @@
       "tierlist": "B",
       "relics_by_level": {
         "10": [
-          "FROOST_ROOT",
-          "WOODMANS_AXE_HEAD"
+          "WOODMANS_AXE_HEAD",
+          "FROOST_ROOT"
         ],
         "20": [
           "EMERALD_SCALES",
           "MONKS_ROBE"
         ],
         "30": [
-          "PAPAS_ANTLERS",
-          "VANQUISHED_SOUL"
+          "VANQUISHED_SOUL",
+          "PAPAS_ANTLERS"
         ],
         "35": [
           "GOGS_COG"
@@ -1466,14 +1472,16 @@
       "id": 66,
       "name": "Dark Poltergust",
       "rarity": "Legendary",
-      "best_rank": ["RS", "S"],
+      "best_rank": "S+",
       "tierlist": "S",
       "relics_by_level": {
         "10": [
+          "CLOUD_CAKE",
           "ELEFAUNA_FLOWER",
           "GKS_SLIPPERS"
         ],
         "20": [
+          "SHIP_CAPTAINS_LOG",
           "HELZBELZ_BELLS",
           "STONY_SHIELD"
         ],
@@ -1519,7 +1527,8 @@
           "WOODMANS_AXE_HEAD"
         ],
         "20": [
-          "FORGING_HAMMER"
+          "MT._GEMMA_BANNER",
+          "EMERALD_SCALES"
         ],
         "30": [
           "CACTUS_FLOWER"
@@ -1893,7 +1902,8 @@
       "tierlist": null,
       "relics_by_level": {
         "10": [
-          "WOODMANS_AXE_HEAD"
+          "WOODMANS_AXE_HEAD",
+          "FROOST_ROOT"
         ],
         "20": [
           "BEAN_STALK",
@@ -2077,8 +2087,8 @@
           "STONY_SHIELD"
         ],
         "30": [
-          "ARROW_OF_LOVE",
-          "MAGICITE_STAFF"
+          "MAGICITE_STAFF",
+          "ARROW_OF_LOVE"
         ],
         "35": [
           "SHARD_OF_RUDOLFE"
@@ -2555,17 +2565,20 @@
       "tierlist": "A",
       "relics_by_level": {
         "10": [
+          "FROOST_ROOT",
           "BLESSED_POLLEN"
         ],
         "20": [
           "FROZEN_CLAWS",
-          "OBSIDIAN_LAVA"
+          "OBSIDIAN_LAVA",
+          "BEAN_STALK"
         ],
         "30": [
           "CACTUS_FLOWER"
         ],
         "35": [
-          "CAGE_OF_DESPAIR"
+          "CAGE_OF_DESPAIR",
+          "DARK_WINDS_VENOM"
         ]
       }
     },
@@ -2944,14 +2957,16 @@
       "tierlist": "S",
       "relics_by_level": {
         "10": [
+          "BLESSED_POLLEN",
           "ELEFAUNA_FLOWER"
         ],
         "20": [
+          "STONY_SHIELD",
           "OBSIDIAN_LAVA",
-          "SHORES_BANNER",
-          "STONY_SHIELD"
+          "SHORES_BANNER"
         ],
         "30": [
+          "SHACKLERS_GEM",
           "MAGICITE_STAFF",
           "TEMPLE_STONE"
         ],
@@ -2990,15 +3005,20 @@
       "tierlist": "B",
       "relics_by_level": {
         "10": [
+          "BLESSED_POLLEN",
           "ELEFAUNA_FLOWER"
         ],
         "20": [
+          "BEAN_STALK",
           "STONY_SHIELD"
         ],
         "30": [
-          "TEMPLE_STONE"
+          "PEEPSIE_EGGS",
+          "TEMPLE_STONE",
+          "FRACTURED_SHELL"
         ],
         "35": [
+          "DARK_WINDS_VENOM",
           "FLYING_CARPET_FRAGMENT"
         ]
       }
@@ -3159,19 +3179,22 @@
       "id": 143,
       "name": "Hotdog",
       "rarity": "Epic",
-      "best_rank": "RS",
+      "best_rank": "S+",
       "tierlist": "B",
       "relics_by_level": {
         "10": [
           "WOODMANS_AXE_HEAD"
         ],
         "20": [
-          "EMERALD_SCALES"
+          "EMERALD_SCALES",
+          "MONKS_BANNER"
         ],
         "30": [
+          "LOST_SWORDS",
           "VANQUISHED_SOUL"
         ],
         "35": [
+          "SAYAMS_TRIDENT",
           "GOGS_COG"
         ]
       }
@@ -3400,10 +3423,13 @@
       "tierlist": null,
       "relics_by_level": {
         "10": [
+          "CLOUD_CAKE",
+          "GKS_SLIPPERS",
           "ELEFAUNA_FLOWER"
         ],
         "20": [
-          "STONY_SHIELD"
+          "SHIP_CAPTAINS_LOG",
+          "HELZBELZ_BELLS"
         ],
         "30": [
           "ARROW_OF_LOVE",
@@ -3487,17 +3513,19 @@
       "tierlist": "A",
       "relics_by_level": {
         "10": [
+          "WOODMANS_AXE_HEAD",
           "BLESSED_POLLEN"
         ],
         "20": [
-          "FORGING_HAMMER"
+          "MONKS_BANNER",
+          "EMERALD_SCALES"
         ],
         "30": [
-          "SHACKLERS_GEM",
-          "VANQUISHED_SOUL"
+          "VANQUISHED_SOUL",
+          "PAPAS_ANTLERS"
         ],
         "35": [
-          "MOLTEN_COIN"
+          "GOGS_COG"
         ]
       }
     },
@@ -3815,9 +3843,11 @@
       "tierlist": "B",
       "relics_by_level": {
         "10": [
+          "GKS_SLIPPERS",
           "ELEFAUNA_FLOWER"
         ],
         "20": [
+          "SHIP_CAPTAINS_LOG",
           "STONY_SHIELD"
         ],
         "30": [
@@ -3837,15 +3867,19 @@
       "tierlist": "B",
       "relics_by_level": {
         "10": [
+          "WOODMANS_AXE_HEAD",
           "BLESSED_POLLEN"
         ],
         "20": [
+          "MONKS_BANNER",
           "EMERALD_SCALES"
         ],
         "30": [
+          "DARK_WARRO_THORN",
           "VANQUISHED_SOUL"
         ],
         "35": [
+          "SAYAMS_TRIDENT",
           "MOON_ROCK"
         ]
       }
@@ -4348,12 +4382,14 @@
           "WOODMANS_AXE_HEAD"
         ],
         "20": [
+          "MONKS_BANNER",
           "EMERALD_SCALES"
         ],
         "30": [
           "VANQUISHED_SOUL"
         ],
         "35": [
+          "SAYAMS_TRIDENT",
           "GOGS_COG"
         ]
       }
@@ -4542,20 +4578,21 @@
       "tierlist": "B",
       "relics_by_level": {
         "10": [
+          "FROOST_ROOT",
           "ELEFAUNA_FLOWER"
         ],
         "20": [
-          "OBSIDIAN_LAVA",
-          "STONY_SHIELD"
+          "STONY_SHIELD",
+          "OBSIDIAN_LAVA"
         ],
         "30": [
+          "TEMPLE_STONE",
           "CACTUS_FLOWER",
-          "PEEPSIE_EGGS",
-          "TEMPLE_STONE"
+          "PEEPSIE_EGGS"
         ],
         "35": [
-          "CAGE_OF_DESPAIR",
-          "FLYING_CARPET_FRAGMENT"
+          "FLYING_CARPET_FRAGMENT",
+          "CAGE_OF_DESPAIR"
         ]
       }
     },
@@ -4809,16 +4846,20 @@
       "tierlist": "C",
       "relics_by_level": {
         "10": [
-          "ELEFAUNA_FLOWER"
+          "ELEFAUNA_FLOWER",
+          "BLESSED_POLLEN"
         ],
         "20": [
-          "STONY_SHIELD"
+          "STONY_SHIELD",
+          "BEAN_STALK"
         ],
         "30": [
+          "CACTUS_FLOWER",
           "TEMPLE_STONE"
         ],
         "35": [
-          "FLYING_CARPET_FRAGMENT"
+          "FLYING_CARPET_FRAGMENT",
+          "CAGE_OF_DESPAIR"
         ]
       }
     },
@@ -4830,10 +4871,12 @@
       "tierlist": "C",
       "relics_by_level": {
         "10": [
-          "ELEFAUNA_FLOWER"
+          "ELEFAUNA_FLOWER",
+          "BLESSED_POLLEN"
         ],
         "20": [
           "OBSIDIAN_LAVA",
+          "SUNFALL_SHORES_BANNER",
           "STONY_SHIELD"
         ],
         "30": [
@@ -4989,14 +5032,15 @@
           "ELEFAUNA_FLOWER"
         ],
         "20": [
+          "SUNFALL_SHORES_BANNER",
           "STONY_SHIELD"
         ],
         "30": [
-          "SHACKLERS_GEM",
+          "MAGICITE_STAFF",
           "TEMPLE_STONE"
         ],
         "35": [
-          "FLYING_CARPET_FRAGMENT"
+          "SHARD_OF_RUDOLFE"
         ]
       }
     },
@@ -5321,6 +5365,7 @@
           "EMERALD_SCALES"
         ],
         "30": [
+          "LOST_SWORDS",
           "VANQUISHED_SOUL"
         ],
         "35": [
@@ -5560,10 +5605,12 @@
           "FROOST_ROOT"
         ],
         "20": [
+          "VOLCANO_BANNER",
           "OBSIDIAN_LAVA",
           "STONY_SHIELD"
         ],
         "30": [
+          "MYSTIC_MAP",
           "CACTUS_FLOWER"
         ],
         "35": [
@@ -6452,12 +6499,12 @@
           "STONY_SHIELD"
         ],
         "30": [
-          "SHACKLERS_GEM",
-          "TEMPLE_STONE"
+          "MAGICITE_STAFF",
+          "TEMPLE_STONE",
+          "PEEPSIE_EGGS"
         ],
         "35": [
-          "FLYING_CARPET_FRAGMENT",
-          "MOON_ROCK"
+          "SHARD_OF_RUDOLFE"
         ]
       }
     },
@@ -6613,10 +6660,11 @@
       "best_rank": "S+",
       "tierlist": "A",
       "relics_by_level": {
-        "10": [],
-        "20": [],
-        "30": [],
-        "35": []
+        "10": ["GKS_SLIPPERS"],
+        "20": ["SHIP_CAPTAINS_LOG",
+              "HELZBELZ_BELLS"],
+        "30": ["ARROW_OF_LOVE"],
+        "35": ["SHARD_OF_RUDOLFE"]
       }
     },
     {
@@ -6626,10 +6674,14 @@
       "best_rank": "RS",
       "tierlist": "A",
       "relics_by_level": {
-        "10": [],
-        "20": [],
-        "30": [],
-        "35": []
+        "10": ["WOODMANS_AXE_HEAD",
+              "BLESSED_POLLEN"],
+        "20": ["EMERALD_SCALES",
+              "MONKS_BANNER"],
+        "30": ["PAPAS_ANTLERS",
+              "VANQUISHED_SOUL"],
+        "35": ["SCENT_OF_SKUSTUNK",
+              "CAGE_OF_DESPAIR"]
       }
     },
     {
@@ -6740,13 +6792,13 @@
       "id": 312,
       "name": "Kitpole",
       "rarity": "Exotic",
-      "best_rank": "RS/S+_(RS_Better)",
+      "best_rank": "RS/S+ (RS Better)",
       "tierlist": "B",
       "relics_by_level": {
-        "10": [],
-        "20": [],
-        "30": [],
-        "35": []
+        "10": ["FROOST_ROOT"],
+        "20": ["STONY_SHIELD"],
+        "30": ["PEEPSIE_EGGS"],
+        "35": ["FLYING_CARPET_FRAGMENT"]
       }
     },
     {
