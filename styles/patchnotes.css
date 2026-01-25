@@ -223,3 +223,115 @@ html,body{ margin:0; background:linear-gradient(180deg,#06101d,#050a12); color:v
 .pn-diffRow--new .pn-diffDot{ background:#facc15; }
 
 
+/* =========================================================
+   PATCH NOTES — Mobile
+========================================================= */
+@media (max-width: 460px){
+
+  .pn-wrap{
+    width: calc(100vw - 24px);
+  }
+
+  .pn-topbar{
+    padding: 12px 0;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .pn-brand{
+    font-size: 16px;
+  }
+
+  .pn-sub{
+    font-size: 12px;
+  }
+
+  .pn-main{
+    padding: 16px 0 50px;
+    gap: 14px;
+  }
+
+  .pn-panel{
+    padding: 14px;
+    border-radius: 16px;
+  }
+
+  .pn-h2{
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  .pn-champHead{
+    gap: 12px;
+    padding: 14px;
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .pn-champImg{
+    width: 52px;
+    height: 52px;
+    border-radius: 12px;
+  }
+
+  .pn-champName{
+    font-size: 16px;
+  }
+
+  .pn-champQuote{
+    margin-top: 8px;
+    font-size: 13px;
+  }
+
+  .pn-spellBlock{
+    margin: 10px 12px;
+    padding: 12px;
+    border-radius: 14px;
+  }
+
+  .pn-spellHead{
+    gap: 10px;
+  }
+
+  .pn-spellIcon{
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+  }
+
+  .pn-diffRow{
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .pn-diffText{
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .pn-num,
+  .pn-kw,
+  .pn-badge{
+    white-space: normal;
+  }
+
+  .pn-patchLink{
+    padding: 12px;
+    border-radius: 14px;
+  }
+
+  .pn-patchMeta{
+    font-size: 11px;
+  }
+
+  .pn-patchTitle{
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 360px){
+  .pn-champHead{
+    flex-direction: column;
+  }
+}
