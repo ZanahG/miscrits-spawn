@@ -609,9 +609,9 @@
     }
   },
   {
-    "name": "Sayam's Trident",
+    "name": "Saiyam's Trident",
     "level": 35,
-    "icon": "sayams_trident.png",
+    "icon": "saiyams_trident.png",
     "stats": {
       "HP": 15,
       "PA": 22,

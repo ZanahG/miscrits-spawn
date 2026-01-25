@@ -1,6 +1,12 @@
 {
   "version": "2.1.0",
   "title": "Miscrits & Relics adjustments",
+
+  "visual": {
+    "buff": ["Bunaken", "Beldame", "Aquarion", "Dark Slithero", "Blighted Cubsprout", "Light Twiggum", "Mama", "Papa", "Foil Pamboo", "Light Snorkels", "Light Flue", "Fangly", "Slithero", "Geneseed"],
+    "nerf": ["Eclipso", "Skelepup", "Flurrious", "Winnebeargo", "Hotdog", "Liothning", "Dreamger", "Narlope"],
+    "relics": ["Mystic Map", "Palmdas Talon", "Froost Root", "Quartex Crystal", "Sayams Trident"]
+  },
   "intro": [
     "PATCH NOTES VER 2.1.0",
     "Patch focuses on fine-tuning ability scaling, utility, and stat distribution across multiple Miscrits. This update targets outliers in sustain, damage-over-time pressure, and stat stacking, while also introducing several ability reworks and utility shifts to improve combat clarity and strategic diversity. Overall, these changes aim to create healthier trade-offs between damage, control, and survivability across both PvE and PvP encounters"
@@ -619,6 +625,86 @@
               "label": "Hoof Blast",
               "from": "A 25 AP Lightning attack that steals 8 HP from foe, with 100% Accuracy (Enchanted | +2 AP)",
               "to": "A 25 AP Lightning attack that steals 6 HP from foe, with 100% Accuracy (Enchanted | +2 AP)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Relic",
+      "name": "Mystic Map",
+      "blocks": [
+        {
+          "spell": "Mystic Map",
+          "changes": [
+            {
+              "label": "Mystic Map",
+              "from": "+8 HP, +8 EA, -10 SPD",
+              "to": "+9 HP, +9 EA, -10 SPD"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Relic",
+      "name": "Palmdas Talon",
+      "blocks": [
+        {
+          "spell": "Palmdas Talon",
+          "changes": [
+            {
+              "label": "Palmdas Talon",
+              "from": "+8 HP, +8 PA, -10 SPD",
+              "to": "+9 HP, +9 PA, -10 SPD"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Relic",
+      "name": "Frost Root",
+      "blocks": [
+        {
+          "spell": "Frost Root",
+          "changes": [
+            {
+              "label": "Frost Root",
+              "from": "Sleep Immunity, -10 HP",
+              "to": "Sleep Immunity, -7 HP"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Relic",
+      "name": "Quartex Crystal",
+      "blocks": [
+        {
+          "spell": "Quartex Crystal",
+          "changes": [
+            {
+              "label": "Quartex Crystal",
+              "from": "Confuse Immunity, -10 HP",
+              "to": "Confuse Immunity, -7 HP"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Relic",
+      "name": "Saiyams Trident",
+      "blocks": [
+        {
+          "spell": "Saiyams Trident",
+          "changes": [
+            {
+              "label": "Saiyams Trident",
+              "from": "+18 HP, +20 PA, +10 SPD",
+              "to": "+15 HP, +20 PA, +10 SPD"
             }
           ]
         }

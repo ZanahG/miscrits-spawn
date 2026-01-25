@@ -190,15 +190,24 @@ function renderMiscritSection(sec){
 
 function renderRelicSection(sec){
   const blocks = (sec.blocks ?? []).map(b => {
-    const changes = (b.changes ?? []).map(c => renderDiffRow(c.label, c.from, c.to)).join("");
+    const changes = (b.changes ?? [])
+      .map(c => renderDiffRow(c.label, c.from, c.to))
+      .join("");
+
+    const iconSrc = b.icon
+      ? b.icon
+      : getRelicIconPath(b.spell ?? b.title ?? sec.name);
+
     return `
       <div class="pn-spellBlock">
         <div class="pn-spellHead">
-					${b.icon
-						? `<img class="pn-spellIcon" src="${esc(b.icon)}" alt="${esc(b.spell)}" />`
-						: `<div class="pn-spellIcon pn-spellIcon--empty"></div>`
-					}
-          <div class="pn-spellTitle">${esc(b.spell ?? b.title ?? "Cambios")}</div>
+          <img
+            class="pn-spellIcon"
+            src="${esc(iconSrc)}"
+            alt="${esc(b.spell ?? b.title ?? sec.name)}"
+            onerror="this.onerror=null;this.src='../assets/images/relics/_placeholder.png';"
+          />
+          <div class="pn-spellTitle">${esc(b.spell ?? b.title ?? "Changes")}</div>
         </div>
         <div class="pn-diffList">${changes}</div>
       </div>
@@ -208,7 +217,12 @@ function renderRelicSection(sec){
   return `
     <section class="pn-panel pn-champ">
       <div class="pn-champHead">
-        <img class="pn-champImg" src="${esc(sec.icon)}" alt="${esc(sec.name)}" />
+        <img
+          class="pn-champImg"
+          src="${esc(getRelicIconPath(sec.name))}"
+          alt="${esc(sec.name)}"
+          onerror="this.onerror=null;this.src='../assets/images/relics/_placeholder.png';"
+        />
         <div class="pn-champMeta">
           <div class="pn-champName">${esc(sec.name)}</div>
           ${sec.quote ? `<div class="pn-champQuote">“${miniMD(sec.quote)}”</div>` : ""}
@@ -218,6 +232,125 @@ function renderRelicSection(sec){
     </section>
   `;
 }
+
+async function renderPatchVisual(patch){
+  if (!patch.visual) return null;
+
+  const canvas = document.createElement("canvas");
+  canvas.width = 1600;
+  canvas.height = 900;
+
+  const ctx = canvas.getContext("2d");
+
+  function drawTriangleDown(x, y, size, color){
+    ctx.fillStyle = color;
+    ctx.beginPath();
+    ctx.moveTo(x, y);
+    ctx.lineTo(x + size, y);
+    ctx.lineTo(x + size/2, y + size);
+    ctx.closePath();
+    ctx.fill();
+  }
+
+  function drawTriangleUp(x, y, size, color){
+    ctx.fillStyle = color;
+    ctx.beginPath();
+    ctx.moveTo(x + size/2, y);
+    ctx.lineTo(x, y + size);
+    ctx.lineTo(x + size, y + size);
+    ctx.closePath();
+    ctx.fill();
+  }
+
+
+  ctx.fillStyle = "#191919";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  const bg = new Image();
+  bg.src = "../assets/images/ui/patch-template.png";
+  await bg.decode();
+
+  ctx.globalAlpha = 0.25;
+  ctx.drawImage(bg, 0, 0, canvas.width, canvas.height);
+  ctx.globalAlpha = 1;
+
+  ctx.fillStyle = "#fff";
+  ctx.font = "bold 64px system-ui";
+  ctx.fillText("PATCH NOTES", 80, 130);
+
+  ctx.font = "bold 120px system-ui";
+  ctx.fillText(patch.version, 550, 130);
+
+  const logo = new Image();
+  logo.src = "../assets/images/logo.png";
+  await logo.decode();
+
+  const logoHeight = 300;
+  const logoWidth = (logo.width / logo.height) * logoHeight;
+  const logoX = 1180;
+  const logoY = -40;
+
+  ctx.drawImage(logo, logoX, logoY, logoWidth, logoHeight);
+
+
+  ctx.font = "bold 40px system-ui";
+  drawTriangleDown(80, 305, 22, "#ff3b3b");
+  ctx.fillStyle = "#fff";
+  ctx.fillText("NERF", 110, 332);
+  drawTriangleUp(80, 505, 22, "#34ff2e");
+  ctx.fillStyle = "#fff";
+  ctx.fillText("BUFF", 110, 532);
+  ctx.fillText("RELICS", 1050, 340);
+
+  async function drawIcons(list, startX, startY, isMiscrit = true){
+    const ICON = 72;
+    const GAP  = 12;
+    const PER_ROW = 8;
+
+    let x = startX;
+    let y = startY;
+
+    for (let i = 0; i < (list?.length ?? 0); i++){
+      const item = list[i];
+
+      const img = new Image();
+      img.src = isMiscrit ? getMiscritAvatarPath(item) : getRelicIconPath(item);
+
+      try { await img.decode(); } catch { }
+
+      ctx.drawImage(img, x, y, ICON, ICON);
+
+      const isRowEnd = (i + 1) % PER_ROW === 0;
+      if (isRowEnd){
+        x = startX;
+        y += ICON + GAP;
+      } else {
+        x += ICON + GAP;
+      }
+    }
+  }
+
+  await drawIcons(patch.visual.nerf ?? [], 80, 380, true);
+  await drawIcons(patch.visual.buff ?? [], 80, 580, true);
+  await drawIcons(patch.visual.relics ?? [], 1050, 380, false);
+
+  return canvas.toDataURL("image/png");
+}
+
+function slugifyRelicName(name){
+  return String(name || "")
+    .trim()
+    .toLowerCase()
+    .replace(/['’]/g, "")
+    .replace(/[^a-z0-9]+/g, "_")
+    .replace(/^_+|_+$/g, "");
+}
+
+function getRelicIconPath(name){
+  const slug = slugifyRelicName(name);
+  return `../assets/images/relics/${slug}.png`;
+}
+
 
 async function loadPatch(){
   const version = getParam("v") || "2.1.0";
@@ -239,10 +372,15 @@ async function loadPatch(){
   qs("#patchTitle").textContent = patch.title ?? "";
 
   // Intro
-  const introHTML = (patch.intro ?? []).map(p => `<p class="pn-p">${miniMD(p)}</p>`).join("");
+  const visualDataURL = await renderPatchVisual(patch);
+
   qs("#patchIntro").innerHTML = `
-    <h2 class="pn-h2">Resumen</h2>
-    ${introHTML || `<div class="pn-muted">Sin resumen.</div>`}
+    <h2 class="pn-h2">Summary</h2>
+    ${
+      visualDataURL
+        ? `<img class="pn-patchAutoVisual" src="${visualDataURL}" alt="Patch summary" />`
+        : `<div class="pn-muted">No visual summary available.</div>`
+    }
   `;
 
   // Secciones
@@ -252,10 +390,8 @@ async function loadPatch(){
 
 		if (t === "system") return renderSystemSection(sec);
 
-		// Acepta Miscrit / miscrit / MISCRIT
 		if (t === "miscrit") return renderMiscritSection(sec);
 
-		// Acepta reliquia / reliquias / relic / relics
 		if (t === "relic" || t === "relics" || t === "reliquia" || t === "reliquias") {
 			return renderRelicSection(sec);
 		}
