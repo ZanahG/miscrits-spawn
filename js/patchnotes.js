@@ -297,9 +297,9 @@ async function renderPatchVisual(patch){
   drawTriangleDown(80, 305, 22, "#ff3b3b");
   ctx.fillStyle = "#fff";
   ctx.fillText("NERF", 110, 332);
-  drawTriangleUp(80, 505, 22, "#34ff2e");
+  drawTriangleUp(80, 573, 22, "#34ff2e");
   ctx.fillStyle = "#fff";
-  ctx.fillText("BUFF", 110, 532);
+  ctx.fillText("BUFF", 110, 600);
   ctx.fillText("RELICS", 1050, 340);
 
   async function drawIcons(list, startX, startY, isMiscrit = true){
@@ -331,7 +331,7 @@ async function renderPatchVisual(patch){
   }
 
   await drawIcons(patch.visual.nerf ?? [], 80, 380, true);
-  await drawIcons(patch.visual.buff ?? [], 80, 580, true);
+  await drawIcons(patch.visual.buff ?? [], 80, 650, true);
   await drawIcons(patch.visual.relics ?? [], 1050, 380, false);
 
   return canvas.toDataURL("image/png");
