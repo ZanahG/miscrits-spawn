@@ -22,7 +22,9 @@ function isEmptyChange(v){
 
 function tokenizeStats(str){
   const s = String(str ?? "");
-  const re = /(\d+\/\d+|\d+(?:\.\d+)?%|\d+(?:\.\d+)?)/g;
+  // incluye negativos y negativos con %
+  const re = /(-?\d+\/\d+|-?\d+(?:\.\d+)?%|-?\d+(?:\.\d+)?)/g;
+
   const out = [];
   let m;
   while ((m = re.exec(s)) !== null){
@@ -56,7 +58,7 @@ function diffHighlight(from, to){
   const fromTokens = tokenizeStats(fromStr).map(t => t.token);
 
   if (isEmptyChange(fromStr) && !isEmptyChange(toStr)){
-    const toHTML = esc(toStr).replace(/(\d+\/\d+|\d+(?:\.\d+)?%|\d+(?:\.\d+)?)/g, (m) => wrapChangedToken(m, "new"));
+    const toHTML = esc(toStr).replace(/(-?\d+\/\d+|-?\d+(?:\.\d+)?%|-?\d+(?:\.\d+)?)/g, (m) => wrapChangedToken(m, "new"));
     return { fromHTML: "", toHTML, rowKind: "new" };
   }
 
