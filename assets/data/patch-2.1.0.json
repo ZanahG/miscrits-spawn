@@ -3,8 +3,8 @@
   "title": "Miscrits & Relics adjustments",
 
   "visual": {
-    "buff": ["Bunaken", "Beldame", "Aquarion", "Dark Slithero", "Blighted Cubsprout", "Light Twiggum", "Mama", "Papa", "Foil Pamboo", "Light Snorkels", "Light Flue", "Fangly", "Slithero", "Geneseed"],
-    "nerf": ["Eclipso", "Skelepup", "Flurrious", "Winnebeargo", "Hotdog", "Liothning", "Dreamger", "Narlope"],
+    "buff": ["Bunaken", "Beldame", "Aquarion", "Dark Slithero", "Blighted Cubsprout", "Light Twiggum", "Mama", "Papa", "Foil Pamboo", "Light Snorkels", "Light Flue", "Fangly", "Slithero"],
+    "nerf": ["Geneseed","Eclipso", "Skelepup", "Flurrious", "Winnebeargo", "Hotdog", "Liothning", "Dreamger", "Narlope"],
     "relics": ["Mystic Map", "Palmdas Talon", "Froost Root", "Quartex Crystal", "Sayams Trident"]
   },
   "intro": [
