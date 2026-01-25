@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Patch Notes | Miscrits HUB</title>
+
+  <link rel="stylesheet" href="../styles.css" />
+  <link rel="stylesheet" href="../styles/patchnotes.css" />
+  <link rel="stylesheet" href="../styles/patchs.css" />
+
+  <link rel="icon" href="../assets/images/logo.png" sizes="32x32">
+  <link rel="apple-touch-icon" href="../assets/images/logo.png">
+</head>
+
+<body>
+  <header class="top">
+    <div class="wrap topbar">
+      <a class="brand" href="../index.html" aria-label="Ir a Miscrits Hub">
+        <img
+          src="../assets/images/logo.png"
+          alt="Miscrits Hub"
+          class="brand__logo"
+          draggable="false"
+        />
+      </a>
+
+      <button class="navToggle" id="navToggle"
+              type="button"
+              aria-label="Abrir menú"
+              aria-controls="mainNav"
+              aria-expanded="false">
+        <img class="navToggle__icon" src="../assets/images/icons/menu.png" alt="">
+      </button>
+
+      <nav id="mainNav" class="topnav topnav--header" aria-label="Navegación principal">
+        <a class="topnav__link" href="../index.html">Spawns</a>
+        <a class="topnav__link" href="../breeding.html">Breeding Calculator</a>
+        <a class="topnav__link" href="../statscalculator.html">Stats Calculator</a>
+        <a class="topnav__link" href="../pvp.html">PVP Teams</a>
+        <a class="topnav__link" href="../teambuilder.html">Team Builder</a>
+        <a class="topnav__link" href="../damage.html">Damage Calculator</a>
+        <a class="topnav__link" href="../miscritdle.html">Miscritdle</a>
+        <a class="topnav__link is-active" href="../patchnotes.html">Patch Notes</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap" style="padding-top:16px;">
+    <section class="card">
+        <div class="pn-headWrap">
+        <div class="pn-head">
+            <h1 class="pn-title">Patch Notes</h1>
+            <a class="pn-link" href="./patchnotes.html">All patches</a>
+        </div>
+        </div>
+
+
+      <div id="patchList" class="pn-patchList"></div>
+      <div id="patchEmpty" class="pn-empty" style="display:none;">No patches found.</div>
+    </section>
+  </main>
+
+  <script src="../js/nav.js" defer></script>
+
+  <script>
+    async function loadPatches(){
+      const listEl = document.getElementById("patchList");
+      const emptyEl = document.getElementById("patchEmpty");
+
+      try{
+        const res = await fetch("../assets/data/patches.json", { cache: "no-store" });
+        if(!res.ok) throw new Error("patches.json not found");
+
+        const patches = await res.json();
+        if(!Array.isArray(patches) || patches.length === 0){
+          emptyEl.style.display = "block";
+          return;
+        }
+
+        patches.sort((a,b) => (b.version || "").localeCompare((a.version || ""), undefined, { numeric: true }));
+
+        listEl.innerHTML = patches.map(p => `
+          <a class="pn-patchLink" href="./patchnotes.html?v=${encodeURIComponent(p.version)}">
+            <div class="pn-patchVer">${p.version || ""}</div>
+            <div class="pn-patchMeta">${p.date || ""}</div>
+            <div class="pn-patchTitle">${p.title || ""}</div>
+          </a>
+        `).join("");
+
+      }catch(err){
+        emptyEl.style.display = "block";
+        emptyEl.textContent = "Could not load patches.json (check path).";
+        console.error(err);
+      }
+    }
+    loadPatches();
+  </script>
+</body>
+</html>

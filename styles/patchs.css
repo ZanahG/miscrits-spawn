@@ -1,0 +1,130 @@
+.pn-head{ display:flex; align-items:baseline; justify-content:space-between; gap:12px; margin-bottom:14px; }
+.pn-title{ margin:0; font-size:22px; }
+.pn-subtitle{ color: var(--muted); font-size:13px; }
+.pn-empty{ color: var(--muted); padding: 10px 2px; }
+
+html, body{
+  background: #0b0f14 !important;
+  background-image: none !important;
+}
+
+body::before,
+body::after{
+  content: none !important;
+  display: none !important;
+}
+
+.pn-head{
+  display:flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.pn-title{
+  margin: 0;
+  font-size: 22px;
+  font-weight: 900;
+}
+
+.pn-subtitle{
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.pn-patchList{
+  display: grid;
+  gap: 12px;
+}
+
+.pn-patchLink{
+  display: grid;
+  grid-template-columns: 90px 110px 1fr;
+  gap: 10px;
+  align-items: center;
+
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.08);
+  background: rgba(255,255,255,.03);
+  text-decoration: none;
+  color: var(--text);
+}
+
+.pn-patchLink:hover{
+  background: rgba(255,255,255,.05);
+  border-color: rgba(255,255,255,.14);
+}
+
+.pn-patchVer{
+  font-weight: 900;
+  font-size: 18px;
+}
+
+.pn-patchMeta{
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.pn-patchTitle{
+  font-weight: 700;
+}
+
+.pn-patchLink{
+  padding: 18px 22px;
+}
+
+.pn-patchLink{
+  display: grid;
+  grid-template-columns: 90px 120px 1fr;
+  gap: 16px;
+  align-items: center;
+}
+.pn-patchList{
+  margin-bottom: 48px;
+}
+.pn-patchVer{
+  font-size: 18px;
+}
+
+.pn-patchMeta{
+  font-size: 13px;
+}
+
+.pn-patchTitle{
+  font-size: 15px;
+  line-height: 1.4;
+}
+.pn-patchLink{
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.04);
+}
+
+.pn-headWrap{
+  padding: 16px 22px 12px;
+}
+
+.pn-head{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 100%;
+}
+
+.pn-title{
+  margin: 0;
+  font-size: 24px;
+  font-weight: 900;
+  letter-spacing: .2px;
+}
+
+.pn-link{
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.pn-link:hover{
+  text-decoration: underline;
+}

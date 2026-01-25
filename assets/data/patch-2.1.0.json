@@ -1,15 +1,15 @@
 {
   "version": "2.1.0",
-  "title": "Ajustes de Miscrits y Reliquias",
+  "title": "Miscrits & Relics adjustments",
   "intro": [
-    "Bienvenidos al parche 2.1.0.",
-    "Este parche ajusta escalados de daños de habilidades y estadisticas de ciertos Miscrits."
+    "PATCH NOTES VER 2.1.0",
+    "Patch focuses on fine-tuning ability scaling, utility, and stat distribution across multiple Miscrits. This update targets outliers in sustain, damage-over-time pressure, and stat stacking, while also introducing several ability reworks and utility shifts to improve combat clarity and strategic diversity. Overall, these changes aim to create healthier trade-offs between damage, control, and survivability across both PvE and PvP encounters"
   ],
   "sections": [
     {
       "type": "Miscrit",
       "name": "Bunaken",
-      "quote": "Los índices tanto de selección como de victorias de Gwen se han disparado en la jungla...",
+      "quote": "Bunaken was providing too much sustain and utility for its cost, so we adjusted its healing and cleanse effects to require more deliberate timing.",
       "blocks": [
         {
           "spell": "Storm -> Resplendent Rain",
@@ -38,7 +38,7 @@
     {
       "type": "Miscrit",
       "name": "Beldame",
-      "quote": "Los índices tanto de selección como de victorias de Gwen se han disparado en la jungla...",
+      "quote": "Beldame’s utility was slightly underperforming, so we reinforced its defensive value while preserving its role as a supportive control Miscrit.",
       "blocks": [
         {
           "spell": "Dream Catcher",
@@ -67,7 +67,7 @@
     {
       "type": "Miscrit",
       "name": "Aquarion",
-      "quote": "Los índices tanto de selección como de victorias de Gwen se han disparado en la jungla...",
+      "quote": "Aquarion’s Water-based pressure was overwhelming in extended fights, prompting targeted adjustments to its damage and debuff uptime.",
       "blocks": [
         {
           "spell": "Krakyn Klaw",
@@ -118,7 +118,7 @@
     {
       "type": "Miscrit",
       "name": "Dark Slithero",
-      "quote": "Los índices tanto de selección como de victorias de Gwen se han disparado en la jungla...",
+      "quote": "Dark Slithero’s poison output scaled too efficiently, so we slightly reduced its effectiveness to keep sustained damage in check.",
       "blocks": [
         {
           "spell": "Dark Tainted Flame",
@@ -136,7 +136,7 @@
     {
       "type": "Miscrit",
       "name": "Blighted Cubsprout",
-      "quote": "Los índices tanto de selección como de victorias de Gwen se han disparado en la jungla...",
+      "quote": "Blighted Cubsprout received a utility-focused update, shifting power from raw stats into more interactive sustain and control options.",
       "blocks": [
         {
           "spell": "Blighted Ferocity",
@@ -221,7 +221,7 @@
       "type": "Miscrit",
       "name": "Light Twiggum",
       "icon": "../assets/images/miscrits_avatar/light_twiggum_avatar.png",
-      "quote": "Los índices tanto de selección como de victorias de Gwen se han disparado en la jungla...",
+      "quote": "Light Twiggum’s stat distribution was adjusted to better reflect its intended defensive role and long-term survivability.",
       "blocks": [
         {
           "spell": "PA",
@@ -251,7 +251,7 @@
       "type": "Miscrit",
       "name": "Mama",
       "icon": "../assets/images/miscrits_avatar/mama_avatar.png",
-      "quote": "Los índices tanto de selección como de victorias de Gwen se han disparado en la jungla...",
+      "quote": "Mama’s core ability now provides a slightly stronger stat boost, reinforcing its identity as a steady frontline supporter.",
       "blocks": [
         {
           "spell": "Mother's Instinct",
@@ -269,7 +269,7 @@
     {
       "type": "Miscrit",
       "name": "Papa",
-      "quote": "Los índices tanto de selección como de victorias de Gwen se han disparado en la jungla...",
+      "quote": "Papa’s buffs were modestly increased to improve its consistency as a balanced offensive-support hybrid.",
       "blocks": [
         {
           "spell": "Origin",
@@ -287,7 +287,7 @@
     {
       "type": "Miscrit",
       "name": "Foil Pamboo",
-      "quote": "Los índices tanto de selección como de victorias de Gwen se han disparado en la jungla...",
+      "quote": "Foil Pamboo’s elemental scaling has been enhanced to better reward successful Anti-heal application.",
       "blocks": [
         {
           "spell": "Foil Panda Bash",
@@ -305,7 +305,7 @@
     {
       "type": "Miscrit",
       "name": "Light Snorkels",
-      "quote": "Los índices tanto de selección como de victorias de Gwen se han disparado en la jungla...",
+      "quote": "Light Snorkels’ healing-over-time effect was slightly increased to improve its effectiveness in prolonged encounters.",
       "blocks": [
         {
           "spell": "Coral Tempest",
@@ -323,7 +323,7 @@
     {
       "type": "Miscrit",
       "name": "Light Flue",
-      "quote": "Los índices tanto de selección como de victorias de Gwen se han disparado en la jungla...",
+      "quote": "Light Flue’s kit was adjusted to tone down damage-over-time pressure while refining its stat progression.",
       "blocks": [
         {
           "spell": "Mighty Winds",
@@ -374,7 +374,7 @@
     {
       "type": "Miscrit",
       "name": "Fangly",
-      "quote": "Los índices tanto de selección como de victorias de Gwen se han disparado en la jungla...",
+      "quote": "Fangly’s control tools were refined to reduce excessive disruption while maintaining its aggressive playstyle.",
       "blocks": [
         {
           "spell": "Wailing Wind",
@@ -436,7 +436,7 @@
     {
       "type": "Miscrit",
       "name": "Slithero",
-      "quote": "Los índices tanto de selección como de victorias de Gwen se han disparado en la jungla...",
+      "quote": "Slithero’s poison output has been carefully adjusted to prevent excessive snowballing in longer fights.",
       "blocks": [
         {
           "spell": "Tainted Flame",
@@ -454,7 +454,7 @@
     {
       "type": "Miscrit",
       "name": "Geneseed",
-      "quote": "Los índices tanto de selección como de victorias de Gwen se han disparado en la jungla...",
+      "quote": "Geneseed received a small rework to improve ability flow and reinforce its growth-oriented identity.",
       "blocks": [
         {
           "spell": "Reap -> Sow",
@@ -472,7 +472,7 @@
     {
       "type": "Miscrit",
       "name": "Eclipso",
-      "quote": "Los índices tanto de selección como de victorias de Gwen se han disparado en la jungla...",
+      "quote": "Eclipso’s bleed uptime was slightly reduced to ensure counterplay remains available during extended engagements.",
       "blocks": [
         {
           "spell": "Eclipse",
@@ -490,7 +490,7 @@
     {
       "type": "Miscrit",
       "name": "Skelepup",
-      "quote": "Los índices tanto de selección como de victorias de Gwen se han disparado en la jungla...",
+      "quote": "Skelepup’s sustain and damage values were adjusted to reduce overall efficiency without changing its core role.",
       "blocks": [
         {
           "spell": "Brainy Bolts",
@@ -519,7 +519,7 @@
     {
       "type": "Miscrit",
       "name": "Flurrious",
-      "quote": "Los índices tanto de selección como de victorias de Gwen se han disparado en la jungla...",
+      "quote": "Flurrious’ crowd-control effect was refined to maintain impact while reducing randomness.",
       "blocks": [
         {
           "spell": "Naughty List",
@@ -537,7 +537,7 @@
     {
       "type": "Miscrit",
       "name": "Winnebeargo",
-      "quote": "Los índices tanto de selección como de victorias de Gwen se han disparado en la jungla...",
+      "quote": "Winnebeargo’s damage-over-time pressure was slightly lowered to balance its strong offensive presence.",
       "blocks": [
         {
           "spell": "Mauling Fury",
@@ -555,7 +555,7 @@
     {
       "type": "Miscrit",
       "name": "Hotdog",
-      "quote": "Los índices tanto de selección como de victorias de Gwen se han disparado en la jungla...",
+      "quote": "Hotdog’s damage-over-time duration was reduced to limit excessive chip damage over long fights.",
       "blocks": [
         {
           "spell": "Ruff Rush",
@@ -573,7 +573,7 @@
     {
       "type": "Miscrit",
       "name": "Liothning",
-      "quote": "Los índices tanto de selección como de victorias de Gwen se han disparado en la jungla...",
+      "quote": "Liothning’s sustained physical pressure was tuned down to better align with similar Physical attackers.",
       "blocks": [
         {
           "spell": "Poison Mauler",
@@ -591,7 +591,7 @@
     {
       "type": "Miscrit",
       "name": "Dreamger",
-      "quote": "Los índices tanto de selección como de victorias de Gwen se han disparado en la jungla...",
+      "quote": "Dreamger’s lifesteal values were adjusted to reduce its effectiveness in extended duels.",
       "blocks": [
         {
           "spell": "Cry of the Tiger",
@@ -609,7 +609,7 @@
     {
       "type": "Miscrit",
       "name": "Narlope",
-      "quote": "Los índices tanto de selección como de victorias de Gwen se han disparado en la jungla...",
+      "quote": "Narlope’s healing reduction was slightly increased to maintain balance between damage and sustain denial.",
       "blocks": [
         {
           "spell": "Hoof Blast",
