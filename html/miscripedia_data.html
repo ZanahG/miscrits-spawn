@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Miscrit</title>
+  <link rel="stylesheet" href="../styles/miscripedia.css" />
+</head>
+<body>
+  <div class="wrap">
+    <a class="back" href="../html/miscripedia.html">← Back to Miscripedia</a>
+
+    <div class="detail">
+      <section class="left">
+        <div class="titleRow">
+          <div class="elemBadge" id="elemBadge"></div>
+          <div>
+            <h2 id="name" class="name"></h2>
+            <div id="rarityText" class="rarity"></div>
+            <div id="tags" class="tags"></div>
+          </div>
+        </div>
+
+        <div class="spriteBox">
+          <img id="sprite" alt="" />
+        </div>
+
+        <h3 class="sectionTitle">Stats</h3>
+        <div class="stats" id="stats"></div>
+      </section>
+
+      <section class="right">
+        <h2 class="bigTitle">Miscrit Lore</h2>
+        <p id="lore" class="lore"></p>
+
+        <div class="metaGrid">
+          <div class="meta">
+            <div class="metaLabel">Type</div>
+            <div id="type" class="metaValue"></div>
+          </div>
+          <div class="meta">
+            <div class="metaLabel">Location</div>
+            <div id="location" class="metaValue"></div>
+          </div>
+        </div>
+
+        <h3 class="sectionTitle">Evolutions</h3>
+        <div id="evolutions" class="evolutions"></div>
+
+        <h3 class="sectionTitle">Abilities</h3>
+        <div id="abilities" class="abilities"></div>
+      </section>
+    </div>
+  </div>
+  <div id="abTip" class="abTip" hidden></div>
+
+  <script src="../js/miscripedia_data.js"></script>
+  <script src="../js/nav.js" defer></script>
+</body>
+</html>

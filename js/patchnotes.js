@@ -22,7 +22,6 @@ function isEmptyChange(v){
 
 function tokenizeStats(str){
   const s = String(str ?? "");
-  // incluye negativos y negativos con %
   const re = /(-?\d+\/\d+|-?\d+(?:\.\d+)?%|-?\d+(?:\.\d+)?)/g;
 
   const out = [];

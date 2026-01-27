@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Miscripedia</title>
+  <link rel="stylesheet" href="../styles/miscripedia.css" />
+</head>
+<body>
+  <div class="wrap">
+    <header class="top">
+
+      <!-- LOGO HUB -->
+      <a href="../index.html" class="brandLogo" aria-label="Back to Miscrits Hub">
+        <img src="../assets/images/logo.png" alt="Miscrits Hub">
+      </a>
+
+      <h1 class="brand">Miscripedia</h1>
+
+      <div class="searchRow">
+        <div class="search">
+          <span class="ico">🔎</span>
+          <input id="q" type="search" placeholder="Search Miscrits..." autocomplete="off"/>
+        </div>
+      </div>
+
+      <div class="searchRow">
+        <div class="miscritpicker miscritpicker--md">
+          <div class="search search--full">
+            <span class="ico">⚔️</span>
+            <input
+              id="attackFilter"
+              type="text"
+              placeholder="Filter by attack name..."
+              autocomplete="off"
+            />
+          </div>
+
+          <div id="attackDropdown" class="miscritpicker__dropdown" hidden></div>
+        </div>
+      </div>
+
+      <div class="filtersRow">
+        <select id="rarity">
+          <option value="">All Rarities</option>
+        </select>
+
+        <select id="sort">
+          <option value="nameAsc">Sort: Name (A→Z)</option>
+          <option value="nameDesc">Sort: Name (Z→A)</option>
+          <option value="idAsc">Sort: ID (↑)</option>
+          <option value="idDesc">Sort: ID (↓)</option>
+        </select>
+
+        <select id="tag">
+          <option value="">Filter by Tags</option>
+        </select>
+      </div>
+
+      <div class="pills" id="elementsPills"></div>
+    </header>
+
+    <main>
+      <div id="grid" class="grid"></div>
+      <div id="empty" class="empty hidden">No results.</div>
+    </main>
+  </div>
+
+  <script src="../js/miscripedia.js"></script>
+</body>
+</html>
