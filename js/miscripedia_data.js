@@ -132,8 +132,8 @@ function statToPips(label){
     case "Weak": return 1;
     case "Moderate": return 2;
     case "Strong": return 3;
-    case "Elite": return 4;
-    case "Max": return 5;
+    case "Max": return 4;
+    case "Elite": return 5;
     default: return 0;
   }
 }

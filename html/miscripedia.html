@@ -3,8 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Miscripedia</title>
+  <title>Miscripedia | Miscrits Hub</title>
+
   <link rel="stylesheet" href="../styles/miscripedia.css" />
+
+  <link rel="icon" href="../assets/images/logo.png" sizes="32x32">
+  <link rel="apple-touch-icon" href="../assets/images/logo.png">
 </head>
 <body>
   <div class="wrap">
@@ -55,6 +59,23 @@
         <select id="tag">
           <option value="">Filter by Tags</option>
         </select>
+
+        <!-- Stats filter (dropdown) -->
+        <div class="statsFilter" id="statsFilter">
+          <button class="statsBtn" id="statsBtn" type="button" aria-expanded="false">
+            Stats <span class="statsBtn__chev">▾</span>
+          </button>
+
+          <div class="statsPanel" id="statsPanel" hidden>
+            <div class="statsPanel__head">
+              <div class="statsPanel__title">Filter by Stats</div>
+              <button class="statsClear" id="statsClear" type="button">Clear</button>
+            </div>
+
+            <div class="statsPanel__grid" id="statsGrid"></div>
+          </div>
+        </div>
+
       </div>
 
       <div class="pills" id="elementsPills"></div>

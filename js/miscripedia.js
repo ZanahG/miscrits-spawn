@@ -5,7 +5,7 @@ const STATE = {
   q: "",
   rarity: "",
   element: "",
-  tag: "",
+  tags: new Set(),
   attack: "",
   sort: "idAsc",
 };
@@ -19,17 +19,112 @@ function prettyElementLabel(el){
 
 function elementIconPath(el){
   const parts = String(el ?? "").match(/[A-Z][a-z]*/g) || [];
-
   const file = parts.length >= 2
     ? parts.map(p => p.toLowerCase()).join("")
     : String(el ?? "").toLowerCase();
-
   return `../assets/images/type/${file}.png`;
 }
 
-
 function stageName(m, stageIdx=0){
   return m?.names?.[stageIdx] ?? m?.names?.[0] ?? "Unknown";
+}
+
+/* =========================================================
+   STATS FILTER
+========================================================= */
+
+const STAT_LABELS = ["Weak","Moderate","Strong","Max","Elite"];
+
+const STATS_SELECTED = {
+  hp: null, spd: null, ea: null, ed: null, pa: null, pd: null,
+};
+
+const STAT_META = [
+  ["hp", "HP"],
+  ["spd","Speed"],
+  ["ea", "Elemental Attack"],
+  ["ed", "Elemental Defense"],
+  ["pa", "Physical Attack"],
+  ["pd", "Physical Defense"],
+];
+
+function getStatValue(m, key){
+  return String(m?.[key] ?? "").trim();
+}
+
+function passesStatsFilter(m){
+  for (const [key] of STAT_META){
+    const wanted = STATS_SELECTED[key];
+    if (!wanted) continue;
+    const actual = getStatValue(m, key);
+    if (actual !== wanted) return false;
+  }
+  return true;
+}
+
+function initStatsFilterUI(){
+  const btn = $("#statsBtn");
+  const panel = $("#statsPanel");
+  const grid = $("#statsGrid");
+  const clearBtn = $("#statsClear");
+  const root = $("#statsFilter");
+
+  if (!btn || !panel || !grid || !root) return;
+
+  grid.innerHTML = STAT_META.map(([key,label]) => `
+    <div class="statGroup" data-key="${key}">
+      <div class="statGroup__label">${label}</div>
+      <div class="statOpts">
+        ${STAT_LABELS.map(v => `
+          <div class="statOpt" data-val="${v}">${v}</div>
+        `).join("")}
+      </div>
+    </div>
+  `).join("");
+
+  function setOpen(open){
+    panel.hidden = !open;
+    btn.setAttribute("aria-expanded", open ? "true" : "false");
+  }
+
+  btn.addEventListener("click", (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setOpen(panel.hidden);
+  });
+
+  panel.addEventListener("click", (e) => e.stopPropagation());
+
+  document.addEventListener("click", (e) => {
+    if (panel.hidden) return;
+    if (!root.contains(e.target)) setOpen(false);
+  });
+
+  grid.addEventListener("click", (e) => {
+    const opt = e.target.closest(".statOpt");
+    if (!opt) return;
+
+    const group = opt.closest(".statGroup");
+    const key = group?.dataset?.key;
+    const val = opt.dataset.val;
+
+    if (!key) return;
+
+    STATS_SELECTED[key] = (STATS_SELECTED[key] === val) ? null : val;
+
+    group.querySelectorAll(".statOpt").forEach(el => {
+      el.classList.toggle("is-on", STATS_SELECTED[key] === el.dataset.val);
+    });
+
+    render();
+  });
+
+  clearBtn?.addEventListener("click", (e) => {
+    e.preventDefault();
+    for (const k in STATS_SELECTED) STATS_SELECTED[k] = null;
+    grid.querySelectorAll(".statOpt").forEach(el => el.classList.remove("is-on"));
+    render();
+  });
 }
 
 /* =========================================================
@@ -50,10 +145,17 @@ function buildAttackIndex(){
 }
 
 function escapeAttr(s){
-  return String(s).replaceAll("&","&amp;").replaceAll('"',"&quot;").replaceAll("<","&lt;").replaceAll(">","&gt;");
+  return String(s)
+    .replaceAll("&","&amp;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;");
 }
 function escapeHtml(s){
-  return String(s).replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;");
+  return String(s)
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;");
 }
 
 function renderAttackDropdown(query){
@@ -164,6 +266,15 @@ function spriteUrl(m) {
 
 function uniq(arr){ return Array.from(new Set(arr)); }
 
+const RARITY_ORDER = [
+  "Common",
+  "Rare",
+  "Epic",
+  "Exotic",
+  "Legendary"
+];
+
+
 function computeTags(m){
   const set = new Set();
 
@@ -178,11 +289,8 @@ function computeTags(m){
   }
 
   const deny = new Set(["Attack", "Buff"]);
-  const out = [...set].filter(t => !deny.has(t));
-
-  return out;
+  return [...set].filter(t => !deny.has(t));
 }
-
 
 function rarityColor(rarity){
   switch ((rarity ?? "").toLowerCase()){
@@ -205,16 +313,65 @@ function hasAttack(m, attackName){
 }
 
 /* =========================================================
+   TAGS
+========================================================= */
+
+function ensureTagsUI(){
+  const row = $(".filtersRow");
+  if (!row) return;
+  if ($("#tagsBar")) return;
+
+  const bar = document.createElement("div");
+  bar.id = "tagsBar";
+  bar.style.display = "flex";
+  bar.style.gap = "8px";
+  bar.style.flexWrap = "wrap";
+  bar.style.justifyContent = "center";
+  bar.style.margin = "10px 0 0";
+  row.insertAdjacentElement("afterend", bar);
+
+  bar.addEventListener("click", (e) => {
+    const btn = e.target.closest("[data-tag-remove]");
+    if (!btn) return;
+    const t = btn.getAttribute("data-tag-remove");
+    STATE.tags.delete(t);
+    renderSelectedTags();
+    render();
+  });
+}
+
+function renderSelectedTags(){
+  const bar = $("#tagsBar");
+  if (!bar) return;
+
+  const tags = [...STATE.tags].sort((a,b)=>a.localeCompare(b));
+  if (!tags.length){
+    bar.innerHTML = "";
+    return;
+  }
+
+  bar.innerHTML = tags.map(t => `
+    <span class="tag" style="display:inline-flex;align-items:center;gap:8px;">
+      ${escapeHtml(t)}
+      <button type="button"
+        data-tag-remove="${escapeAttr(t)}"
+        aria-label="Remove ${escapeAttr(t)}"
+        style="border:0;cursor:pointer;background:transparent;color:inherit;font-weight:900;opacity:.85;line-height:1;">
+        ×
+      </button>
+    </span>
+  `).join("");
+}
+
+/* =========================================================
    APPLY FILTERS + RENDER
 ========================================================= */
 
 function applyFilters(){
   let out = STATE.all.slice();
 
-  // attack filter
   if (STATE.attack) out = out.filter(m => hasAttack(m, STATE.attack));
 
-  // search by name/id
   const q = STATE.q.trim().toLowerCase();
   if (q){
     out = out.filter(m => (
@@ -225,7 +382,15 @@ function applyFilters(){
 
   if (STATE.rarity) out = out.filter(m => m.rarity === STATE.rarity);
   if (STATE.element) out = out.filter(m => (m.element ?? "") === STATE.element);
-  if (STATE.tag) out = out.filter(m => computeTags(m).includes(STATE.tag));
+  if (STATE.tags.size){
+    const need = [...STATE.tags];
+    out = out.filter(m => {
+      const mtags = computeTags(m);
+      return need.every(t => mtags.includes(t));
+    });
+  }
+
+  out = out.filter(m => passesStatsFilter(m));
 
   out.sort((a,b) => {
     const an = stageName(a,0).toLowerCase();
@@ -246,6 +411,8 @@ function render(){
   const grid = $("#grid");
   const empty = $("#empty");
   if (!grid || !empty) return;
+
+  renderSelectedTags();
 
   const list = applyFilters();
 
@@ -276,8 +443,8 @@ function render(){
           ${tags.map(t => `<span class="tag">${escapeHtml(t)}</span>`).join("")}
         </div>
         <div class="cardRarity ${rarityClass(m.rarity)}">
-					${escapeHtml(m.rarity ?? "")}
-				</div>
+          ${escapeHtml(m.rarity ?? "")}
+        </div>
       </div>
     `;
     grid.appendChild(card);
@@ -340,7 +507,10 @@ function fillSelects(){
   raritySel.innerHTML = `<option value="">All Rarities</option>`;
   tagSel.innerHTML = `<option value="">Filter by Tags</option>`;
 
-  const rarities = uniq(STATE.all.map(m=>m.rarity).filter(Boolean)).sort();
+  const rarities = uniq(STATE.all.map(m => m.rarity).filter(Boolean))
+    .sort((a, b) =>
+      RARITY_ORDER.indexOf(a) - RARITY_ORDER.indexOf(b)
+    );
   for (const r of rarities){
     const opt = document.createElement("option");
     opt.value = r;
@@ -372,6 +542,10 @@ async function main(){
 
   fillSelects();
   renderElementPills();
+  initStatsFilterUI();
+
+  ensureTagsUI();
+  renderSelectedTags();
 
   const qEl = $("#q");
   const rarityEl = $("#rarity");
@@ -380,7 +554,15 @@ async function main(){
 
   if (qEl) qEl.addEventListener("input", (e)=>{ STATE.q = e.target.value; render(); });
   if (rarityEl) rarityEl.addEventListener("change", (e)=>{ STATE.rarity = e.target.value; render(); });
-  if (tagEl) tagEl.addEventListener("change", (e)=>{ STATE.tag = e.target.value; render(); });
+  if (tagEl) tagEl.addEventListener("change", (e)=>{
+    const v = String(e.target.value || "").trim();
+    if (!v) return;
+    STATE.tags.add(v);
+    e.target.value = "";
+    renderSelectedTags();
+    render();
+  });
+
   if (sortEl) sortEl.addEventListener("change", (e)=>{ STATE.sort = e.target.value; render(); });
 
   render();

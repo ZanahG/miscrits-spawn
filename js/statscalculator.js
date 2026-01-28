@@ -4,7 +4,7 @@
   ========================================================= */
   const DATA_URL = "../assets/data/base_stats.json";
 
-  const AVATAR_FOLDER = "../assets/images/miscrits_avatar/";
+  const AVATAR_FOLDER = "../assets/images/backs/";
   const AVATAR_FALLBACK = `${AVATAR_FOLDER}preset_avatar.png`;
 
   const RELICS_URL = "../assets/data/relics.json";
@@ -134,7 +134,7 @@
         .trim()
         .toLowerCase()
         .replace(/\s+/g, "_")
-        .replace(/[^\w_]/g, "") + "_avatar.png";
+        .replace(/[^\w_]/g, "") + "_back.png";
     return `${AVATAR_FOLDER}${file}`;
   }
 
