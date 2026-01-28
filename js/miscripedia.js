@@ -274,6 +274,19 @@ const RARITY_ORDER = [
   "Legendary"
 ];
 
+function hasFixedDamage(m){
+  const hay = (arr) => (arr ?? []).some(a =>
+    String(a?.desc ?? "").toLowerCase().includes("fixed damage")
+  );
+
+  if (hay(m.abilities)) return true;
+
+  for (const ab of (m.abilities ?? [])){
+    if (hay(ab?.additional)) return true;
+  }
+
+  return false;
+}
 
 function computeTags(m){
   const set = new Set();
@@ -287,6 +300,7 @@ function computeTags(m){
       }
     }
   }
+  if (hasFixedDamage(m)) set.add("Fixed Damage");
 
   const deny = new Set(["Attack", "Buff"]);
   return [...set].filter(t => !deny.has(t));

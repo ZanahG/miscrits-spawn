@@ -2244,3 +2244,25 @@ input::placeholder{ color:#6b778b; }
   user-select: none;
   -webkit-user-drag: none;
 }
+
+.tagGrid{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+
+.tagOpt{
+  padding:8px 12px;
+  border-radius:999px;
+  border:1px solid rgba(242,181,68,.25);
+  background: rgba(0,0,0,.35);
+  color: var(--gold);
+  font-weight:800;
+  cursor:pointer;
+  user-select:none;
+}
+
+.tagOpt.is-on{
+  background: rgba(242,181,68,.18);
+  border-color: rgba(242,181,68,.55);
+}
