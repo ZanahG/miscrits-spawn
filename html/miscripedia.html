@@ -11,15 +11,41 @@
   <link rel="apple-touch-icon" href="../assets/images/logo.png">
 </head>
 <body>
-  <div class="wrap">
-    <header class="top">
 
-      <!-- LOGO HUB -->
-      <a href="../index.html" class="brandLogo" aria-label="Back to Miscrits Hub">
-        <img src="../assets/images/logo.png" alt="Miscrits Hub">
+  <!-- NAVBAR GLOBAL -->
+  <header class="siteHeader">
+    <div class="wrap siteHeader__inner">
+      <a class="brand" href="../index.html" aria-label="Ir a Miscrits Hub">
+        <img src="../assets/images/logo.png" alt="Miscrits Hub" class="brand__logo" draggable="false"/>
       </a>
 
-      <h1 class="brand">Miscripedia</h1>
+      <button
+        class="navToggle"
+        id="navToggle"
+        type="button"
+        aria-label="Abrir menú"
+        aria-controls="mainNav"
+        aria-expanded="false"
+      >
+        <img class="navToggle__icon" src="../assets/images/icons/menu.png" alt="">
+      </button>
+
+      <nav id="mainNav" class="siteNav" aria-label="Navegación principal">
+        <a class="siteNav__link" href="../index.html">Spawns</a>
+        <a class="siteNav__link is-active" href="./miscripedia.html">Miscripedia</a>
+        <a class="siteNav__link" href="./breeding.html">Breeding Calculator</a>
+        <a class="siteNav__link" href="./statscalculator.html">Stats Calculator</a>
+        <a class="siteNav__link" href="./pvp.html">PVP Teams</a>
+        <a class="siteNav__link" href="./teambuilder.html">Team Builder</a>
+        <a class="siteNav__link" href="./damage.html">Damage Calculator</a>
+        <a class="siteNav__link" href="./miscritdle.html">Miscritdle</a>
+        <a class="siteNav__link" href="./patchs.html">Patch Notes</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <header class="top">
 
       <div class="searchRow">
         <div class="search">
@@ -87,6 +113,7 @@
     </main>
   </div>
 
+  <script src="../js/nav.js" defer></script>
   <script src="../js/miscripedia.js"></script>
 </body>
 </html>
