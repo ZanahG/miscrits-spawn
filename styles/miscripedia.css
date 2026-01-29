@@ -1016,7 +1016,7 @@ select{
 }
 
 .brand{ display:flex; align-items:center; text-decoration:none; flex:0 0 auto; }
-.brand__logo{ height: 44px; width:auto; display:block; object-fit:contain; }
+.brand__logo{ height: 56px; width:auto; display:block; object-fit:contain; }
 
 .siteNav{
   display:flex;

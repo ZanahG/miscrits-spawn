@@ -35840,7 +35840,7 @@
                 },
                 "element": "Physical",
                 "type": "Attack",
-                "desc": "An immensely powerful Physical attack that steals 10 Elemental Attack from foe. 2 turns cooldown",
+                "desc": "An immensely powerful Physical attack that raises your Elemental Attack by 10. 2 turns cooldown",
                 "enchant_desc": "+5 Attack Power",
                 "additional": [
                     {
@@ -35875,7 +35875,7 @@
                 },
                 "element": "Nature",
                 "type": "Attack",
-                "desc": "A massively powerful Nature attack that heals yourself by 15 HP",
+                "desc": "A massively powerful Nature attack that raises your Physical Attack by 10",
                 "enchant_desc": "+10% Accuracy",
                 "additional": [
                     {
@@ -74650,14 +74650,15 @@
             {
                 "id": 1345,
                 "name": "Tears of Adinda",
-                "ap": 10,
+                "accuracy": 100,
+                "ap": 25,
                 "enchant": {
                     "accuracy": 10
                 },
                 "element": "Misc",
                 "type": "Cleanser",
                 "target": "Self",
-                "desc": "Cleanses yourself and heals yourself by 25 HP. 2 turns cooldown",
+                "desc": "Cleanses yourself and heals yourself by 25 HP. 2 turns cooldown, with 100% Accuracy",
                 "enchant_desc": "+10% Accuracy",
                 "additional": [
                     {
@@ -74668,15 +74669,16 @@
             },
             {
                 "id": 1346,
-                "name": "Nusantara Whirlpool",
-                "ap": 30,
+                "name": "Resplendent Rain",
+                "ap": 25,
+                "accuracy": 90,
                 "enchant": {
-                    "ap": 3
+                    "accuracy": 10
                 },
                 "element": "Water",
                 "type": "Attack",
-                "desc": "A more than massively powerful Water attack with a 40% chance to put foe to Sleep for 1 turn",
-                "enchant_desc": "+3 Attack Power",
+                "desc": "A 25 AP Water attack that raises your Elemental Attack by 10, with 90% Accuracy",
+                "enchant_desc": "+10% Accuracy",
                 "additional": [
                     {
                         "type": "Sleep"
