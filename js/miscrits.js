@@ -210,6 +210,12 @@ function setMapFromSpawn(spawn) {
 }
 
 async function init() {
+  const backBtn = $("#back");
+  const ret = getQueryParam("return");
+  if (backBtn) {
+    const qs = (ret ?? "").trim();
+    backBtn.href = qs ? `../index.html?${qs}` : "../index.html";
+  }
 
   const id = getQueryParam("id");
   const subtitle = $("#subtitle");
