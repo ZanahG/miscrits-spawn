@@ -141,6 +141,57 @@
   height: 58px;
 }
 
+/* ===============================
+   RELICS totals (summary)
+================================ */
+.sc__relicTotals{
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--line);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.sc__relicTotals.is-off{
+  opacity: .55;
+  filter: saturate(.7);
+}
+
+.sc__relicTotal{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border: 1px solid var(--line);
+  background: #0f1624;
+  border-radius: 14px;
+  font-weight: 900;
+  font-size: 12px;
+  letter-spacing: .2px;
+}
+
+.sc__relicTotalIcon{
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
+.sc__relicTotalKey{
+  color: var(--muted);
+}
+
+.sc__relicTotalVal{
+  color: var(--text);
+}
+
+.sc__relicTotalsEmpty{
+  color: var(--muted);
+  font-weight: 800;
+  font-size: 12px;
+  padding: 4px 2px;
+}
+
 /* =========================================================
    RELICS + MODAL — Mobile
 ========================================================= */
