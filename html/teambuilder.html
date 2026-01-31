@@ -79,14 +79,43 @@
 
         <div class="tb-hr"></div>
 
-        <div class="tb-row" style="justify-content:space-between;">
-          <button id="tbExportBtn" class="tb-btn" type="button">Export</button>
-          <button id="tbImportBtn" class="tb-btn" type="button">Import</button>
-          <button id="tbCopyLinkBtn" class="tb-btn" type="button">Copy Share Link</button>
+        <div class="tb-row" style="justify-content:space-between; gap:10px; flex-wrap:wrap;">
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <button id="tbExportBtn" class="tb-btn" type="button">Export</button>
+            <button id="tbExportImgBtn" class="tb-btn" type="button">Export IMG</button>
+            <button id="tbImportBtn" class="tb-btn" type="button">Import</button>
+            <button id="tbSaveTeamBtn" class="tb-btn" type="button">Save Team</button>
+          </div>
+
+          <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+            <select id="tbSavedSelect" class="tb-input" style="max-width:260px;">
+              <option value="">Saved Teams…</option>
+            </select>
+            <button id="tbLoadSavedBtn" class="tb-btn" type="button">Load</button>
+            <button id="tbDeleteSavedBtn" class="tb-btn" type="button">Delete</button>
+          </div>
         </div>
 
-        <div style="margin-top:10px;">
-          <textarea id="tbIO" class="tb-input" rows="5" placeholder="Export/Import JSON here..."></textarea>
+        <div class="tb-hr"></div>
+
+        <div style="font-weight:800;">Element Check</div>
+        <div class="tb-small">Weaknesses (what hits you x2) • Coverage (what you hit x2)</div>
+
+        <div class="tb-elgrid" style="margin-top:10px;">
+          <div class="tb-elcol">
+            <div class="tb-label">Weak to</div>
+            <div id="tbWeakBox" class="tb-els"></div>
+          </div>
+
+          <div class="tb-elcol">
+            <div class="tb-label">Not covered</div>
+            <div id="tbNotCoveredBox" class="tb-els"></div>
+          </div>
+        </div>
+
+        <div style="margin-top:12px;">
+          <div class="tb-label">Covered by slot</div>
+          <div id="tbCoveredBySlot" class="tb-coverSlots"></div>
         </div>
       </section>
 
@@ -103,10 +132,10 @@
             <button id="tbAnalyzeThreats" class="tb-btn" type="button">Analyze Team vs Meta</button>
             <button id="tbClearThreats" class="tb-btn" type="button">Clear</button>
           </div>
-        <label class="tb-small" style="display:flex;gap:8px;align-items:center;">
+          <label class="tb-small" style="display:flex;gap:8px;align-items:center;">
             <input type="checkbox" id="tbShowOnlyLoses" />
             Only loses
-        </label>
+          </label>
         </div>
 
         <div id="tbThreatsBox" style="margin-top:10px;"></div>
@@ -126,7 +155,7 @@
         </div>
 
         <div style="margin-top:10px;">
-            <div class="miscritpicker miscritpicker--md">
+          <div class="miscritpicker miscritpicker--md">
             <input
               id="tbThreatSearch"
               class="dmgx__search"
@@ -136,7 +165,6 @@
             />
             <div id="tbThreatDropdown" class="miscritpicker__dropdown" hidden></div>
           </div>
-          <div id="tbThreatDropdown" style="margin-top:8px;"></div>
         </div>
 
         <div class="tb-hr"></div>
@@ -186,9 +214,232 @@
       <div id="tbPickerGrid" class="modal__grid"></div>
     </div>
   </div>
-  
+
+  <div id="tbToast" class="tb-toast" hidden></div>
+
+  <div id="tbImportModal" class="modal" hidden>
+    <div class="modal__panel" style="max-width:720px;">
+      <div class="modal__top">
+        <div class="modal__title">Import Team JSON</div>
+        <button class="tb-btn" type="button" id="tbImportClose">Close</button>
+      </div>
+
+      <div class="tb-small" style="margin-bottom:10px; opacity:.8;">
+        Paste the exported JSON here and click Import.
+      </div>
+
+      <textarea id="tbImportText" class="tb-input" rows="8" placeholder="Paste JSON..."></textarea>
+
+      <div class="tb-row" style="justify-content:flex-end; gap:10px; margin-top:10px;">
+        <button id="tbImportCancel" class="tb-btn" type="button">Cancel</button>
+        <button id="tbImportApply" class="tb-btn" type="button">Import</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- BONUS & RELICS MODAL -->
+  <div id="tbBRModal" class="modal" hidden>
+    <div class="modal__panel" style="max-width:820px;">
+      <div class="modal__top">
+        <div class="modal__title" id="tbBRTitle">Bonus & Relics</div>
+        <button class="tb-btn" type="button" id="tbBRClose">Close</button>
+      </div>
+
+      <div class="tb-small" id="tbBRSub" style="opacity:.8; margin-bottom:10px;">
+        Set bonus points and relics for this Miscrit.
+      </div>
+
+      <div class="tb-hr"></div>
+
+      <div class="tb-br-grid">
+        <!-- LEFT COLUMN -->
+        <div>
+          <div class="tb-label" style="margin-bottom:8px;">Bonus points</div>
+
+          <div class="tb-br-bonus">
+            <label class="tb-small">HP <input id="tbBR_HP" class="tb-input" type="number" step="1"></label>
+            <label class="tb-small">SPD <input id="tbBR_SPD" class="tb-input" type="number" step="1"></label>
+            <label class="tb-small">EA <input id="tbBR_EA" class="tb-input" type="number" step="1"></label>
+            <label class="tb-small">PA <input id="tbBR_PA" class="tb-input" type="number" step="1"></label>
+            <label class="tb-small">ED <input id="tbBR_ED" class="tb-input" type="number" step="1"></label>
+            <label class="tb-small">PD <input id="tbBR_PD" class="tb-input" type="number" step="1"></label>
+          </div>
+
+          <div class="tb-small" style="opacity:.7; margin-top:8px;">
+            These bonuses apply on top of the level 35 totals.
+          </div>
+
+          <div class="tbBRBlock">
+            <div class="tbBRBlock__title">FINAL STATS (BASE 35 + BONUS + RELICS)</div>
+
+            <div class="tbBRPresetRow">
+              <button id="tbBRAllGreen" class="tb-btn tb-btn--sm" type="button">ALL GREEN</button>
+              <button id="tbBRRS" class="tb-btn tb-btn--sm" type="button">RS</button>
+            </div>
+
+            <div class="tbBRKV" id="tbBRFinalStats">
+              <div class="tbBRKV__row"><b>HP</b><span>—</span></div>
+              <div class="tbBRKV__row"><b>SPD</b><span>—</span></div>
+              <div class="tbBRKV__row"><b>EA</b><span>—</span></div>
+              <div class="tbBRKV__row"><b>PA</b><span>—</span></div>
+              <div class="tbBRKV__row"><b>ED</b><span>—</span></div>
+              <div class="tbBRKV__row"><b>PD</b><span>—</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT COLUMN -->
+        <div>
+          <div class="tb-label" style="margin-bottom:8px;">Relics (up to 4)</div>
+
+          <div class="tb-br-relics">
+            <input id="tbBR_R1" class="tb-input" placeholder="Relic 1 (Lvl 10)" list="tbRelicsLvl10">
+            <input id="tbBR_R2" class="tb-input" placeholder="Relic 2 (Lvl 20)" list="tbRelicsLvl20">
+            <input id="tbBR_R3" class="tb-input" placeholder="Relic 3 (Lvl 30)" list="tbRelicsLvl30">
+            <input id="tbBR_R4" class="tb-input" placeholder="Relic 4 (Lvl 35)" list="tbRelicsLvl35">
+          </div>
+
+          <div class="tb-small" style="opacity:.7; margin-top:8px;">
+            Uses stats from <code>assets/data/relics.json</code> (any level). Unknown relics give 0.
+          </div>
+
+          <div class="tb-hr"></div>
+
+          <div class="tbBRBottomGrid">
+            <div class="tbBRBlock">
+              <div class="tbBRBlock__title">RELICS BONUS PREVIEW</div>
+
+              <div class="tbBRKV" id="tbBRRelicPreview">
+                <div class="tbBRKV__row"><b>HP</b><span>0</span></div>
+                <div class="tbBRKV__row"><b>SPD</b><span>0</span></div>
+                <div class="tbBRKV__row"><b>EA</b><span>0</span></div>
+                <div class="tbBRKV__row"><b>PA</b><span>0</span></div>
+                <div class="tbBRKV__row"><b>ED</b><span>0</span></div>
+                <div class="tbBRKV__row"><b>PD</b><span>0</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div><!-- /tb-br-grid -->
+
+      <div class="tb-hr"></div>
+
+      <div class="tb-row" style="justify-content:flex-end; gap:10px;">
+        <button id="tbBRReset" class="tb-btn" type="button">Reset</button>
+        <button id="tbBRApply" class="tb-btn" type="button">Apply</button>
+      </div>
+    </div><!-- /modal__panel -->
+  </div><!-- /tbBRModal -->
+
+
+  <!-- EXPORT IMG PREVIEW MODAL -->
+  <div id="tbImgModal" class="modal" hidden>
+    <div class="modal__panel" style="max-width:1100px;">
+      <div class="modal__top">
+        <div class="modal__title">Export IMG Preview</div>
+        <div style="display:flex; gap:10px;">
+          <button class="tb-btn" type="button" id="tbImgDownload">Download PNG</button>
+          <button class="tb-btn" type="button" id="tbImgClose">Close</button>
+        </div>
+      </div>
+
+      <div class="tb-small" style="opacity:.8; margin-bottom:10px;">
+        Ajusta sliders → preview en vivo. (Se guarda localmente.)
+      </div>
+
+      <div style="display:grid; grid-template-columns: 1fr 320px; gap:14px; align-items:start;">
+        <div style="background:rgba(0,0,0,.25); border:1px solid rgba(255,255,255,.08); border-radius:14px; padding:10px;">
+          <canvas id="tbImgCanvas" width="1536" height="1024" style="width:100%; height:auto; display:block; border-radius:12px;"></canvas>
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:10px;">
+          <label class="tb-small">Team name
+            <input id="tbImgTeamName" class="tb-input" placeholder="TEAM NAME" />
+          </label>
+
+          <div class="tb-hr"></div>
+
+          <!-- ACCORDIONS: all collapsed by default -->
+          <details class="tb-acc">
+            <summary>Title</summary>
+            <div class="tb-acc__body">
+              <label class="tb-small">Title Y
+                <input id="tbImg_titleY" class="tb-input" type="range" min="0" max="300" value="145" />
+              </label>
+              <label class="tb-small">Title size
+                <input id="tbImg_titleSize" class="tb-input" type="range" min="40" max="160" value="118" />
+              </label>
+            </div>
+          </details>
+
+          <details class="tb-acc">
+            <summary>Avatars</summary>
+            <div class="tb-acc__body">
+              <label class="tb-small">Avatar Y
+                <input id="tbImg_avatarY" class="tb-input" type="range" min="0" max="600" value="240" />
+              </label>
+              <label class="tb-small">Avatar size
+                <input id="tbImg_avatarSize" class="tb-input" type="range" min="60" max="220" value="140" />
+              </label>
+              <label class="tb-small">Avatar gap
+                <input id="tbImg_avatarGap" class="tb-input" type="range" min="20" max="220" value="120" />
+              </label>
+            </div>
+          </details>
+
+          <details class="tb-acc">
+            <summary>Badges (RS / S+)</summary>
+            <div class="tb-acc__body">
+              <label class="tb-small">Badge Y
+                <input id="tbImg_badgeY" class="tb-input" type="range" min="0" max="600" value="210" />
+              </label>
+              <label class="tb-small">Badge size
+                <input id="tbImg_badgeSize" class="tb-input" type="range" min="20" max="90" value="56" />
+              </label>
+            </div>
+          </details>
+
+          <details class="tb-acc">
+            <summary>Weakness / Coverage</summary>
+            <div class="tb-acc__body">
+              <label class="tb-small">Type X
+                <input id="tbImg_typeX" class="tb-input" type="range" min="0" max="1536" value="370" />
+              </label>
+              <label class="tb-small">Weak label Y
+                <input id="tbImg_weakY" class="tb-input" type="range" min="0" max="1024" value="700" />
+              </label>
+              <label class="tb-small">Coverage label Y
+                <input id="tbImg_covY" class="tb-input" type="range" min="0" max="1024" value="900" />
+              </label>
+            </div>
+          </details>
+
+          <details class="tb-acc">
+            <summary>Icon sizing</summary>
+            <div class="tb-acc__body">
+              <label class="tb-small">Icon radius
+                <input id="tbImg_iconR" class="tb-input" type="range" min="18" max="80" value="40" />
+              </label>
+              <label class="tb-small">Icon step (vertical)
+                <input id="tbImg_iconStep" class="tb-input" type="range" min="50" max="140" value="98" />
+              </label>
+            </div>
+          </details>
+
+          <button class="tb-btn" type="button" id="tbImgReset" style="margin-top:6px;">Reset layout</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script src="../js/gtm.js"></script>
   <script src="../js/nav.js" defer></script>
   <script type="module" src="../js/teambuilder.js"></script>
+
+  <!-- Datalists (Relics) -->
+  <datalist id="tbRelicsLvl10"></datalist>
+  <datalist id="tbRelicsLvl20"></datalist>
+  <datalist id="tbRelicsLvl30"></datalist>
+  <datalist id="tbRelicsLvl35"></datalist>
 </body>
 </html>
