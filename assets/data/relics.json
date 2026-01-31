@@ -514,7 +514,8 @@
     "level": 30,
     "icon": "lost_swords.png",
     "stats": {
-      "PA": 22,
+      "HP": 4,
+      "PA": 20,
       "SPD": 14
     }
   },
@@ -603,8 +604,8 @@
     "level": 35,
     "icon": "shard_of_rudolfe.png",
     "stats": {
-      "EA": 22,
-      "HP": 15,
+      "EA": 20,
+      "HP": 18,
       "SPD": 10
     }
   },
