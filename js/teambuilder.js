@@ -1367,7 +1367,7 @@ function slotBadge(slot) {
 
 function relicIconSrc(entry) {
   const raw = (entry && typeof entry === "object") ? entry.key : entry;
-  const k = relicNameToKey(raw);
+  const k = relicNameToKey(raw).toLowerCase();
   return `${PATH.RELIC_ICON_FOLDER}${k}.png`;
 }
 
