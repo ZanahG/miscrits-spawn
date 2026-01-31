@@ -533,7 +533,8 @@
     "level": 30,
     "icon": "arrow_of_love.png",
     "stats": {
-      "EA": 22,
+      "EA": 20,
+      "HP": 4,
       "SPD": 14
     }
   },
