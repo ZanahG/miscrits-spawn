@@ -355,12 +355,12 @@ function getRelicIconPath(name){
 
 async function loadPatch(){
   const version = getParam("v") || "2.1.0";
-  const res = await fetch(`../assets/data/patch-${encodeURIComponent(version)}.json`);
+  const res = await fetch(`../assets/data/patchs/patch-${encodeURIComponent(version)}.json`);
   if (!res.ok){
     qs("#patchSections").innerHTML = `
       <section class="pn-panel">
         <h2 class="pn-h2">No se encontró el parche ${esc(version)}</h2>
-        <div class="pn-muted">Revisa que exista data/patch-${esc(version)}.json</div>
+        <div class="pn-muted">Revisa que exista data/patchs/patch-${esc(version)}.json</div>
       </section>
     `;
     return;
