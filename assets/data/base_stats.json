@@ -4583,6 +4583,76 @@
         "ed": 3,
         "pd": 3
       }
+    },
+    {
+      "id": "327",
+      "name": "Lheon",
+      "type": "Fire",
+      "rarity": "Common",
+      "baseStats": {
+        "hp": 2,
+        "spd": 1,
+        "ea": 2,
+        "pa": 4,
+        "ed": 3,
+        "pd": 3
+      }
+    },
+    {
+      "id": "328",
+      "name": "Dark Hoghedge",
+      "type": "Nature",
+      "rarity": "Rare",
+      "baseStats": {
+        "hp": 2,
+        "spd": 2,
+        "ea": 1,
+        "pa": 4,
+        "ed": 3,
+        "pd": 4
+      }
+    },
+    {
+      "id": "329",
+      "name": "Dark Beetor",
+      "type": "Fire",
+      "rarity": "Rare",
+      "baseStats": {
+        "hp": 3,
+        "spd": 1,
+        "ea": 4,
+        "pa": 1,
+        "ed": 3,
+        "pd": 4
+      }
+    },
+    {
+      "id": "330",
+      "name": "Zhakor",
+      "type": "Fire",
+      "rarity": "Epic",
+      "baseStats": {
+        "hp": 2,
+        "spd": 2,
+        "ea": 4,
+        "pa": 3,
+        "ed": 3,
+        "pd": 3
+      }
+    },
+    {
+      "id": "331",
+      "name": "Foil Pangoleaf",
+      "type": "Nature",
+      "rarity": "Exotic",
+      "baseStats": {
+        "hp": 3,
+        "spd": 1,
+        "ea": 2,
+        "pa": 4,
+        "ed": 3,
+        "pd": 5
+      }
     }
   ]
 }

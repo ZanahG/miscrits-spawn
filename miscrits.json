@@ -3279,6 +3279,56 @@
       "spawns": [
         {"place": "Volcano Island","zone": ["4th Area on Volcano Island"],"view": "object","objectImage": "../assets/images/maps/Bunaken.png","days": "ALL_DAYS"}
       ]
+    },
+    {
+      "id": "327",
+      "name": "Lheon",
+      "type": "Fire",
+      "rarity": "Common",
+      "avatar": "lheon_avatar.png",
+      "spawns": [
+        {"place": "Volcano Island","zone": ["Any Object 1st & 2th Area on Volcano Island"],"view": "object","objectImage": "../assets/images/maps/volcanoisland.png","days": "ALL_DAYS"}
+      ]
+    },
+    {
+      "id": "328",
+      "name": "Dark Hoghedge",
+      "type": "Nature",
+      "rarity": "Rare",
+      "avatar": "dark_hoghedge_avatar.png",
+      "spawns": [
+        {"place": "Volcano Island","zone": ["UNKNOW"],"view": "object","objectImage": "../assets/images/maps/volcanoisland.png","days": ["Sunday"]}
+      ]
+    },
+    {
+      "id": "329",
+      "name": "Dark Beetor",
+      "type": "Fire",
+      "rarity": "Rare",
+      "avatar": "dark_beetor_avatar.png",
+      "spawns": [
+        {"place": "Volcano Island","zone": ["Any Object 3rd Area on Volcano Island"],"view": "object","objectImage": "../assets/images/maps/volcanoisland.png","days": ["Saturday"]}
+      ]
+    },
+    {
+      "id": "330",
+      "name": "Zhakor",
+      "type": "Fire",
+      "rarity": "Epic",
+      "avatar": "zhakor_avatar.png",
+      "spawns": [
+        {"place": "Volcano Island","zone": ["3rd Area on Volcano Island"],"view": "object","objectImage": "../assets/images/maps/Zhakor.png","days": ["Saturday"]}
+      ]
+    },
+    {
+      "id": "331",
+      "name": "Foil Pangoleaf",
+      "type": "Nature",
+      "rarity": "Exotic",
+      "avatar": "foil_pangoleaf_avatar.png",
+      "spawns": [
+        {"place": "Volcano Island","zone": ["4th Area on Volcano Island"],"view": "object","objectImage": "../assets/images/maps/FoilPango.png","days": "ALL_DAYS"}
+      ]
     }
   ]
 }

@@ -11,6 +11,16 @@
   const RELIC_IMG_FOLDER = "../assets/images/relics/";
   const RELIC_PLACEHOLDER = `${RELIC_IMG_FOLDER}CRUZ.png`;
 
+  const STAT_ICON_FOLDER = "../assets/images/icons/";
+  const STAT_ICON = {
+    hp: `${STAT_ICON_FOLDER}hp.png`,
+    spd: `${STAT_ICON_FOLDER}spd.png`,
+    ea: `${STAT_ICON_FOLDER}ea.png`,
+    pa: `${STAT_ICON_FOLDER}pa.png`,
+    ed: `${STAT_ICON_FOLDER}ed.png`,
+    pd: `${STAT_ICON_FOLDER}pd.png`,
+  };
+
   const SLOT_LEVELS = [10, 20, 30, 35];
 
   const $id = (id) => document.getElementById(id);
@@ -65,20 +75,7 @@
       },
     },
 
-    plat: {
-      title: $id("platBonusTitle"),
-      regen: $id("regenPlatBonusBtn"),
-      applyBtn: $id("applyPlatBonusBtn"),
-      inputs: {
-        hp: $id("pHp"),
-        spd: $id("pSpd"),
-        ea: $id("pEa"),
-        pa: $id("pPa"),
-        ed: $id("pEd"),
-        pd: $id("pPd"),
-      },
-    },
-
+    relicTotals: $id("relicTotals"),
     relicModal: $id("relicModal"),
     relicTitle: $id("relicModalTitle"),
     relicGrid: $id("relicGrid"),
@@ -92,7 +89,6 @@
   let selected = null;
 
   let applyBonus = false;
-  let applyPlat = false;
 
   let RELICS = [];
   let RELIC_BY_NAME = new Map();
@@ -187,11 +183,7 @@
   }
 
   function totalBonusPoints(level) {
-    return Math.max(0, 3 * (level - 1));
-  }
-
-  function totalPlatBonusPoints(level) {
-    return Math.max(0, level);
+    return Math.max(0, 4 * (level - 1));
   }
 
   function sumInputs(group) {
@@ -233,15 +225,17 @@
   }
 
   function updateBonusTitles(level) {
-    const b = totalBonusPoints(level);
-    const p = totalPlatBonusPoints(level);
-    if (ui.bonus.title) ui.bonus.title.textContent = `BONUS X LEVEL (${b} PTS)`;
-    if (ui.plat.title) ui.plat.title.textContent = `BONUS X PLATINUM (${p} PTS)`;
+    const lvl = clampInt(level, 1, 35);
+
+    const lvlPts = Math.max(0, 3 * (lvl - 1));
+    const platPts = Math.max(0, (lvl - 1));
+    const total = lvlPts + platPts; 
+
+    if (ui.bonus.title) ui.bonus.title.textContent = `BONUS TOTAL (${total} PTS) — ${lvlPts} LVL + ${platPts} PLAT`;
   }
 
   function syncApplyButtons() {
     if (ui.bonus.applyBtn) ui.bonus.applyBtn.classList.toggle("is-active", applyBonus);
-    if (ui.plat.applyBtn) ui.plat.applyBtn.classList.toggle("is-active", applyPlat);
     if (applyRelicsBtn) applyRelicsBtn.classList.toggle("is-active", applyRelics);
   }
 
@@ -575,6 +569,45 @@
     });
   }
 
+    function formatRelicTotals(t) {
+    return [
+      ["hp", t.hp],
+      ["spd", t.spd],
+      ["ea", t.ea],
+      ["pa", t.pa],
+      ["ed", t.ed],
+      ["pd", t.pd],
+    ];
+  }
+
+  function renderRelicTotalsUI(totals) {
+    const host = ui.relicTotals;
+    if (!host) return;
+
+    const pairs = formatRelicTotals(totals);
+    const nonZero = pairs.filter(([, v]) => Number(v) > 0);
+
+    host.classList.toggle("is-off", !applyRelics);
+
+    if (!nonZero.length) {
+      host.innerHTML = `<div class="sc__relicTotalsEmpty">No relic bonuses selected</div>`;
+      return;
+    }
+
+    host.innerHTML = nonZero
+      .map(([k, v]) => {
+        const label = STAT_KEY_MAP[k] || k.toUpperCase();
+        const icon = STAT_ICON[k] || "";
+        return `
+          <div class="sc__relicTotal" data-stat="${k}">
+            <img class="sc__relicTotalIcon" src="${icon}" alt="${label}">
+            <span class="sc__relicTotalKey">${label}</span>
+            <span class="sc__relicTotalVal">+${Number(v)}</span>
+          </div>
+        `;
+      })
+      .join("");
+  }
 
   function sumRelicsStats() {
     const totals = { hp: 0, spd: 0, ea: 0, pa: 0, ed: 0, pd: 0 };
@@ -637,26 +670,18 @@
       pd: statAtLevel(t.pd, level, c.pd, false),
     };
 
-    const manualLevelBonus = sumInputs(ui.bonus.inputs);
-    const manualPlatBonus = sumInputs(ui.plat.inputs);
+    const manualBonus = sumInputs(ui.bonus.inputs);
 
     if (applyBonus) {
-      s.hp += manualLevelBonus.hp;
-      s.spd += manualLevelBonus.spd;
-      s.ea += manualLevelBonus.ea;
-      s.pa += manualLevelBonus.pa;
-      s.ed += manualLevelBonus.ed;
-      s.pd += manualLevelBonus.pd;
+      s.hp += manualBonus.hp;
+      s.spd += manualBonus.spd;
+      s.ea += manualBonus.ea;
+      s.pa += manualBonus.pa;
+      s.ed += manualBonus.ed;
+      s.pd += manualBonus.pd;
     }
-
-    if (applyPlat) {
-      s.hp += manualPlatBonus.hp;
-      s.spd += manualPlatBonus.spd;
-      s.ea += manualPlatBonus.ea;
-      s.pa += manualPlatBonus.pa;
-      s.ed += manualPlatBonus.ed;
-      s.pd += manualPlatBonus.pd;
-    }
+    
+    renderRelicTotalsUI(sumRelicsStats());
 
     if (applyRelics) {
       const rAdd = sumRelicsStats();
@@ -673,7 +698,6 @@
       ui.subtitle.textContent =
         `${selected.rarity} • ${selected.type}` +
         ` • BONUS:${applyBonus ? "ON" : "OFF"}` +
-        ` • PLAT:${applyPlat ? "ON" : "OFF"}` +
         ` • RELICS:${applyRelics ? "ON" : "OFF"}`;
     }
 
@@ -735,7 +759,6 @@
 
       const lvl = clampInt(ui.level?.value, 1, 35);
       if (ui.bonus.inputs.hp) writeInputs(ui.bonus.inputs, randomDistribution(totalBonusPoints(lvl)));
-      if (ui.plat.inputs.hp) writeInputs(ui.plat.inputs, randomDistribution(totalPlatBonusPoints(lvl)));
 
       render();
     } catch (e) {
@@ -748,7 +771,6 @@
   /* =========================================================
      EVENTS
   ========================================================= */
-  ui.calc?.addEventListener("click", render);
   ui.reset?.addEventListener("click", resetColors);
 
   ui.level?.addEventListener("input", () => {
@@ -767,21 +789,9 @@
     render();
   });
 
-  ui.plat.applyBtn?.addEventListener("click", () => {
-    applyPlat = !applyPlat;
-    syncApplyButtons();
-    render();
-  });
-
   ui.bonus.regen?.addEventListener("click", () => {
     const level = clampInt(ui.level.value, 1, 35);
     writeInputs(ui.bonus.inputs, randomDistribution(totalBonusPoints(level)));
-    render();
-  });
-
-  ui.plat.regen?.addEventListener("click", () => {
-    const level = clampInt(ui.level.value, 1, 35);
-    writeInputs(ui.plat.inputs, randomDistribution(totalPlatBonusPoints(level)));
     render();
   });
 
@@ -792,7 +802,6 @@
   });
 
   Object.values(ui.bonus.inputs).forEach((inp) => inp?.addEventListener("input", render));
-  Object.values(ui.plat.inputs).forEach((inp) => inp?.addEventListener("input", render));
 
   init();
 })();
