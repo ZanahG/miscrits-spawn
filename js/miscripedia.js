@@ -288,6 +288,24 @@ function hasFixedDamage(m){
   return false;
 }
 
+function hasChaos(m){
+  const has = (arr) => (arr ?? []).some(a => {
+    const desc = String(a?.desc ?? "").toLowerCase();
+    const name = String(a?.name ?? "").toLowerCase();
+
+    return desc.includes("chaos") || name.includes("chaos");
+  });
+
+  if (has(m.abilities)) return true;
+
+  for (const ab of (m.abilities ?? [])){
+    if (has(ab?.additional)) return true;
+  }
+
+  return false;
+}
+
+
 function computeTags(m){
   const set = new Set();
 
@@ -301,6 +319,7 @@ function computeTags(m){
     }
   }
   if (hasFixedDamage(m)) set.add("Fixed Damage");
+  if (hasChaos(m)) set.add("Chaos");
 
   const deny = new Set(["Attack", "Buff"]);
   return [...set].filter(t => !deny.has(t));

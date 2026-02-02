@@ -46,7 +46,7 @@
       "type": "Nature",
       "rarity": "Common",
       "spawns": [
-        {"place": "Mansion","zone": ["Cualquier Objeto de la Mansion"],"view": "object","objectImage": "../assets/images/maps/mansion.jpg","days": "ALL_DAYS"}
+        {"place": "Mansion","zone": ["Any Object 1st Area in Mansion"],"view": "object","objectImage": "../assets/images/maps/mansion.jpg","days": "ALL_DAYS"}
       ],
       "avatar": "weevern_avatar.png"
     },
@@ -2277,7 +2277,7 @@
       "rarity": "Legendary",
       "avatar": "manio_avatar.png",
       "spawns": [
-        {"place": "Cave","zone": ["Zona 1 de la Cueva"],"view": "object","objectImage": "../assets/images/maps/cave.jpg","days": "ALL_DAYS"}
+        {"place": "Cave","zone": ["Cave Zone 1"],"view": "object","objectImage": "../assets/images/maps/Manio.png","days": "ALL_DAYS"}
       ]
     },
     {
