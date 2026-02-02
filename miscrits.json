@@ -3037,7 +3037,7 @@
       "rarity": "Rare",
       "avatar": "squawcat_avatar.png",
       "spawns": [
-        {"place": "Volcano Island","zone": ["1st Area on Volcano Island"],"view": "object","objectImage": "../assets/images/maps/volcanoisland.png","days": ["Lunes", "Martes", "Miercoles"]}
+        {"place": "Volcano Island","zone": ["1st Area on Volcano Island"],"view": "object","objectImage": "../assets/images/maps/Squawcat.png","days": ["Lunes", "Martes", "Miercoles"]}
       ]
     },
     {
@@ -3147,7 +3147,7 @@
       "rarity": "Exotic",
       "avatar": "kitpole_avatar.png",
       "spawns": [
-        {"place": "Volcano Island","zone": ["2th Area on Volcano Island"],"view": "object","objectImage": "../assets/images/maps/Volcano1.png","days": "ALL_DAYS"}
+        {"place": "Volcano Island","zone": ["2th Area on Volcano Island"],"view": "object","objectImage": "../assets/images/maps/Kitpole.png","days": "ALL_DAYS"}
       ]
     },
     {
@@ -3157,7 +3157,7 @@
       "rarity": "Common",
       "avatar": "magpole_avatar.png",
       "spawns": [
-        {"place": "Volcano Island","zone": ["3rd Area on Volcano Island"],"view": "object","objectImage": "../assets/images/maps/Volcano1.png","days": "ALL_DAYS"}
+        {"place": "Volcano Island","zone": ["3rd Area on Volcano Island"],"view": "object","objectImage": "../assets/images/maps/volcanoisland.png","days": "ALL_DAYS"}
       ]
     },
     {
@@ -3167,17 +3167,17 @@
       "rarity": "Common",
       "avatar": "beetor_avatar.png",
       "spawns": [
-        {"place": "Volcano Island","zone": ["3rd Area on Volcano Island"],"view": "object","objectImage": "../assets/images/maps/Volcano1.png","days": "ALL_DAYS"}
+        {"place": "Volcano Island","zone": ["3rd Area on Volcano Island"],"view": "object","objectImage": "../assets/images/maps/volcanoisland.png","days": "ALL_DAYS"}
       ]
     },
     {
       "id": "316",
       "name": "Liquifien",
       "type": "Water",
-      "rarity": "Common",
+      "rarity": "Rare",
       "avatar": "liquifien_avatar.png",
       "spawns": [
-        {"place": "Volcano Island","zone": ["3rd Area on Volcano Island"],"view": "object","objectImage": "../assets/images/maps/Volcano1.png","days": "ALL_DAYS"}
+        {"place": "Volcano Island","zone": ["3rd Area on Volcano Island"],"view": "object","objectImage": "../assets/images/maps/Liquifien.png","days": ["Miercoles", "Jueves", "Viernes"]}
       ]
     },
     {
@@ -3207,7 +3207,7 @@
       "rarity": "Common",
       "avatar": "pachydo_avatar.png",
       "spawns": [
-        {"place": "Volcano Island","zone": ["4th Area on Volcano Island"],"view": "object","objectImage": "../assets/images/maps/FoilLiquifien.png","days": "ALL_DAYS"}
+        {"place": "Volcano Island","zone": ["4th Area on Volcano Island"],"view": "object","objectImage": "../assets/images/maps/volcanoisland.png","days": "ALL_DAYS"}
       ]
     },
     {
@@ -3217,7 +3217,7 @@
       "rarity": "Common",
       "avatar": "gurgleplops_avatar.png",
       "spawns": [
-        {"place": "Volcano Island","zone": ["4th Area on Volcano Island"],"view": "object","objectImage": "../assets/images/maps/FoilLiquifien.png","days": "ALL_DAYS"}
+        {"place": "Volcano Island","zone": ["4th Area on Volcano Island"],"view": "object","objectImage": "../assets/images/maps/volcanoisland.png","days": "ALL_DAYS"}
       ]
     },
     {
@@ -3225,9 +3225,9 @@
       "name": "Budillo",
       "type": "Nature",
       "rarity": "Common",
-      "avatar": "gurgleplops_avatar.png",
+      "avatar": "budillo_avatar.png",
       "spawns": [
-        {"place": "Volcano Island","zone": ["4th Area on Volcano Island"],"view": "object","objectImage": "../assets/images/maps/FoilLiquifien.png","days": "ALL_DAYS"}
+        {"place": "Volcano Island","zone": ["4th Area on Volcano Island"],"view": "object","objectImage": "../assets/images/maps/volcanoisland.png","days": "ALL_DAYS"}
       ]
     },
     {
@@ -3297,7 +3297,7 @@
       "rarity": "Rare",
       "avatar": "dark_hoghedge_avatar.png",
       "spawns": [
-        {"place": "Volcano Island","zone": ["UNKNOW"],"view": "object","objectImage": "../assets/images/maps/volcanoisland.png","days": ["Domingo"]}
+        {"place": "Volcano Island","zone": ["Any Object 3rd Area on Volcano Island"],"view": "object","objectImage": "../assets/images/maps/volcanoisland.png","days": ["Lunes", "Martes"]}
       ]
     },
     {
@@ -3307,7 +3307,7 @@
       "rarity": "Rare",
       "avatar": "dark_beetor_avatar.png",
       "spawns": [
-        {"place": "Volcano Island","zone": ["Any Object 3rd Area on Volcano Island"],"view": "object","objectImage": "../assets/images/maps/volcanoisland.png","days": ["Sabado"]}
+        {"place": "Volcano Island","zone": ["Any Object 3rd Area on Volcano Island"],"view": "object","objectImage": "../assets/images/maps/volcanoisland.png","days": ["Sabado", "Domingo"]}
       ]
     },
     {
@@ -3317,7 +3317,7 @@
       "rarity": "Epic",
       "avatar": "zhakor_avatar.png",
       "spawns": [
-        {"place": "Volcano Island","zone": ["3rd Area on Volcano Island"],"view": "object","objectImage": "../assets/images/maps/Zhakor.png","days": ["Sabado"]}
+        {"place": "Volcano Island","zone": ["3rd Area on Volcano Island"],"view": "object","objectImage": "../assets/images/maps/Zhakor.png","days": "ALL_DAYS"}
       ]
     },
     {
