@@ -37,7 +37,6 @@ function dayToEnglish(dayEs) {
   return DAY_ES_TO_EN[key] ?? dayEs;
 }
 
-
 function getServerDayName() {
   const now = new Date(
     new Date().toLocaleString("en-US", {
@@ -114,6 +113,12 @@ function resolvePreset(value, presets) {
   return Array.isArray(value) ? value : [];
 }
 
+function isAllDaysPreset(daysRaw) {
+  if (typeof daysRaw === "string" && normalize(daysRaw) === "all_days") return true;
+  const resolved = resolveDays(daysRaw);
+  return Array.isArray(resolved) && resolved.length >= 7;
+}
+
 function resolveDays(days) {
   return resolvePreset(days, DAY_PRESETS);
 }
@@ -125,7 +130,8 @@ function includesDay(daysArray, selectedDay) {
 // ===============================
 // URL Filters + paginación
 // ===============================
-const FILTER_KEYS = ["q", "day", "place", "rarity", "element", "page", "perPage"];
+
+const FILTER_KEYS = ["q", "day", "place", "rarity", "element", "onlyTodayNoAll", "page", "perPage"];
 
 function defaultFilters() {
   return {
@@ -134,6 +140,7 @@ function defaultFilters() {
     place: "",
     rarity: "",
     element: "",
+    onlyTodayNoAll: "",
     page: "1",
     perPage: "36",
   };
@@ -146,6 +153,7 @@ function getFiltersFromUI() {
     place: $("#place")?.value ?? "",
     rarity: $("#rarity")?.value ?? "",
     element: $("#element")?.value ?? "",
+    onlyTodayNoAll: $("#onlyTodayNoAll")?.checked ? "1" : "",
     page: String(PAGE),
     perPage: String(PER_PAGE),
   };
@@ -158,6 +166,7 @@ function setFiltersToUI(f) {
   if ($("#place")) $("#place").value = f.place ?? "";
   if ($("#rarity")) $("#rarity").value = f.rarity ?? "";
   if ($("#element")) $("#element").value = f.element ?? "";
+  if ($("#onlyTodayNoAll")) $("#onlyTodayNoAll").checked = (f.onlyTodayNoAll ?? "") === "1";
   if ($("#pageSize") && f.perPage) $("#pageSize").value = f.perPage;
 }
 
@@ -202,6 +211,38 @@ function placeToImageFilename(place) {
 function applySpawnBackground(box, place) {
   const file = placeToImageFilename(place);
   box.style.setProperty("--spawn-bg", `url("./assets/images/places/${file}")`);
+}
+
+const RARITY_ORDER = {
+  common: 1,
+  rare: 2,
+  epic: 3,
+  exotic: 4,
+  legendary: 5,
+};
+
+const PLACE_ORDER = {
+  "forest": 1,
+  "mount gemma": 2,
+  "cave": 3,
+  "the shack": 4,
+  "mansion": 5,
+  "shores": 6,
+  "moon of miscria": 7,
+  "volcano island": 8,
+  "shop": 9,
+};
+
+function placeRank(place) {
+  return PLACE_ORDER[normalize(place)] ?? 999;
+}
+
+function rarityRank(r) {
+  return RARITY_ORDER[normalize(r)] ?? 999;
+}
+
+function placeKey(p) {
+  return normalize(p ?? "");
 }
 
 // ===============================
@@ -279,7 +320,7 @@ function updatePagerUI(total, totalPages, startIdx, endIdx) {
 // ===============================
 // Render
 // ===============================
-function render(listPaged, total, totalPages, startIdx, endIdx) {
+function render(itemsPaged, total, totalPages, startIdx, endIdx) {
   const results = $("#results");
   const count = $("#count");
   if (!results || !count) return;
@@ -303,8 +344,12 @@ function render(listPaged, total, totalPages, startIdx, endIdx) {
     return;
   }
 
-  for (const m of listPaged) {
+  for (const item of itemsPaged) {
+    const m = item.m;
+    const spawn = item.spawn; // <- solo 1 spawn (place/days) para este “registro”
+
     const node = tpl.content.cloneNode(true);
+
     const avatarEl = node.querySelector(".miscrit__avatar");
     if (avatarEl) {
       avatarEl.src = `./assets/images/miscrits_avatar/${m.avatar ?? "preset_avatar.png"}`;
@@ -341,42 +386,41 @@ function render(listPaged, total, totalPages, startIdx, endIdx) {
       if (cls) badgeEl.classList.add(cls);
     }
 
+    // ✅ spawns: ahora renderizamos SOLO el spawn que corresponde a este item
     const spawnsWrap = node.querySelector(".spawns");
     if (spawnsWrap) {
       spawnsWrap.innerHTML = "";
 
-      for (const s of (m.spawns ?? [])) {
-        const box = document.createElement("div");
-        box.className = "spawn";
-        applySpawnBackground(box, s.place);
+      const box = document.createElement("div");
+      box.className = "spawn";
+      applySpawnBackground(box, spawn.place);
 
-        const top = document.createElement("div");
-        top.className = "spawn__top";
+      const top = document.createElement("div");
+      top.className = "spawn__top";
 
-        const place = document.createElement("div");
-        place.className = "spawn__place";
-        place.textContent = s.place ?? "-";
+      const place = document.createElement("div");
+      place.className = "spawn__place";
+      place.textContent = spawn.place ?? "-";
 
-        const lvl = document.createElement("div");
-        lvl.className = "spawn__lvl";
-        lvl.textContent = "";
+      const lvl = document.createElement("div");
+      lvl.className = "spawn__lvl";
+      lvl.textContent = "";
 
-        top.appendChild(place);
-        top.appendChild(lvl);
+      top.appendChild(place);
+      top.appendChild(lvl);
 
-        const daysWrap = document.createElement("div");
-        daysWrap.className = "pills";
-        for (const d of resolveDays(s.days)) {
-          const pill = document.createElement("span");
-          pill.className = "pill";
-          pill.textContent = dayToEnglish(d);
-          daysWrap.appendChild(pill);
-        }
-
-        box.appendChild(top);
-        box.appendChild(daysWrap);
-        spawnsWrap.appendChild(box);
+      const daysWrap = document.createElement("div");
+      daysWrap.className = "pills";
+      for (const d of resolveDays(spawn.days)) {
+        const pill = document.createElement("span");
+        pill.className = "pill";
+        pill.textContent = dayToEnglish(d);
+        daysWrap.appendChild(pill);
       }
+
+      box.appendChild(top);
+      box.appendChild(daysWrap);
+      spawnsWrap.appendChild(box);
     }
 
     const cardEl = node.querySelector(".miscrit");
@@ -404,11 +448,13 @@ function applyFilters(resetPage = false) {
   const place = $("#place")?.value ?? "";
   const rarity = $("#rarity")?.value ?? "";
   const element = $("#element")?.value ?? "";
+  const onlyTodayNoAll = $("#onlyTodayNoAll")?.checked ?? false;
+  const today = getServerDayName();
 
   const dayRaw = $("#day")?.value ?? "";
   const day = dayRaw === "__today__" ? getServerDayName() : dayRaw;
 
-  FILTERED = MISCRITS.filter((m) => {
+  const miscritsFiltered = MISCRITS.filter((m) => {
     if (!matchesText(m.name, q)) return false;
 
     if (dayRaw === "__today__" && !isRarePlus(m.rarity)) return false;
@@ -427,6 +473,39 @@ function applyFilters(resetPage = false) {
       : (m.spawns ?? []).some((s) => includesDay(resolveDays(s.days), day));
     return dayOk;
   });
+
+  const items = [];
+  for (const m of miscritsFiltered) {
+    for (const s of (m.spawns ?? [])) {
+      if (place && !matchesText(s.place, place)) continue;
+
+      if (onlyTodayNoAll) {
+        const appearsToday = includesDay(resolveDays(s.days), today);
+        if (!appearsToday) continue;
+        if (isAllDaysPreset(s.days)) continue;
+      } else {
+        if (day && !includesDay(resolveDays(s.days), day)) continue;
+      }
+
+      items.push({ m, spawn: s });
+    }
+  }
+
+  items.sort((a, b) => {
+    const pa = placeRank(a.spawn?.place);
+    const pb = placeRank(b.spawn?.place);
+
+    if (pa !== pb) return pa - pb;
+
+    const ra = rarityRank(a.m?.rarity);
+    const rb = rarityRank(b.m?.rarity);
+
+    if (ra !== rb) return ra - rb;
+
+    return normalize(a.m?.name).localeCompare(normalize(b.m?.name));
+  });
+
+  FILTERED = items;
 
   const { slice, total, totalPages, startIdx, endIdx } = getPaged(FILTERED);
   updateURLFromFilters(getFiltersFromUI());
@@ -453,6 +532,8 @@ async function init() {
     day: fromURL.day || d.day,
     place: fromURL.place || d.place,
     rarity: fromURL.rarity || d.rarity,
+    element: fromURL.element || d.element,
+    onlyTodayNoAll: fromURL.onlyTodayNoAll || d.onlyTodayNoAll,
     page: fromURL.page || d.page,
     perPage: fromURL.perPage || d.perPage,
   };
@@ -488,6 +569,7 @@ async function init() {
 
   $("#place")?.addEventListener("change", onFilterChange);
   $("#rarity")?.addEventListener("change", onFilterChange);
+  $("#onlyTodayNoAll")?.addEventListener("change", () => applyFilters(true));
   $("#element")?.addEventListener("change", onFilterChange);
 
   $("#pageSize")?.addEventListener("change", () => {
@@ -512,6 +594,7 @@ async function init() {
     if ($("#day")) $("#day").value = "";
     if ($("#place")) $("#place").value = "";
     if ($("#rarity")) $("#rarity").value = "";
+    if ($("#onlyTodayNoAll")) $("#onlyTodayNoAll").checked = false;
     if ($("#element")) $("#element").value = "";
 
     PAGE = 1;
@@ -530,6 +613,7 @@ async function init() {
     if ($("#day")) $("#day").value = "__today__";
     if ($("#place")) $("#place").value = "";
     if ($("#rarity")) $("#rarity").value = "";
+    if ($("#onlyTodayNoAll")) $("#onlyTodayNoAll").checked = false;
     if ($("#element")) $("#element").value = "";
 
     PAGE = 1;
