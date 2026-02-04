@@ -22984,7 +22984,7 @@
                 },
                 "element": "Water",
                 "type": "Attack",
-                "desc": "A massively powerful Water attack that applies Barbed",
+                "desc": "A massively powerful Water attack that applies Barbed 3 times",
                 "enchant_desc": "+5 Attack Power",
                 "additional": [
                     {
@@ -31393,7 +31393,7 @@
                 },
                 "element": "Physical",
                 "type": "Attack",
-                "desc": "A more than massively powerful Physical attack that applies Barbed",
+                "desc": "A more than massively powerful Physical attack that applies Barbed 2 times",
                 "enchant_desc": "+2 Attack Power",
                 "additional": [
                     {
@@ -37519,7 +37519,7 @@
                 },
                 "element": "Physical",
                 "type": "Attack",
-                "desc": "A massively powerful Physical attack that applies Barbed",
+                "desc": "A massively powerful Physical attack that applies Barbed 1 time",
                 "enchant_desc": "+4 Attack Power",
                 "additional": [
                     {
@@ -50302,7 +50302,7 @@
                 "element": "Misc",
                 "type": "Heal",
                 "target": "Self",
-                "desc": "Recovers a fair amount of your health and applies Barbed. 4 turns cooldown",
+                "desc": "Recovers a fair amount of your health and applies Barbed 3 times. 4 turns cooldown",
                 "enchant_desc": "+10% Accuracy",
                 "additional": [
                     {
@@ -51172,7 +51172,7 @@
                 },
                 "element": "Physical",
                 "type": "Attack",
-                "desc": "A powerful Physical attack that hits 2 times and applies Barbed",
+                "desc": "A powerful Physical attack that hits 2 times and applies Barbed 2 times",
                 "enchant_desc": "+5% Accuracy",
                 "times": 2,
                 "additional": [
@@ -51841,7 +51841,7 @@
                 },
                 "element": "Physical",
                 "type": "Attack",
-                "desc": "A massively powerful Physical attack that applies Barbed",
+                "desc": "A massively powerful Physical attack that applies Barbed 2 times",
                 "enchant_desc": "+2 Attack Power",
                 "additional": [
                     {
@@ -61224,7 +61224,7 @@
                 },
                 "element": "Fire",
                 "type": "Attack",
-                "desc": "A massively powerful Fire attack that applies Barbed",
+                "desc": "A massively powerful Fire attack that applies Barbed 2 times",
                 "enchant_desc": "+3 Attack Power",
                 "additional": [
                     {
@@ -63389,7 +63389,7 @@
                 },
                 "element": "Lightning",
                 "type": "Attack",
-                "desc": "A powerful Lightning attack that hits 2 times and applies Barbed",
+                "desc": "A powerful Lightning attack that hits 2 times and applies Barbed 2 times",
                 "enchant_desc": "+5% Accuracy",
                 "times": 2,
                 "additional": [
@@ -64452,7 +64452,7 @@
                 "element": "Misc",
                 "type": "Barbed",
                 "target": "Self",
-                "desc": "Applies Barbed to the user and Paralyzes foe for 1 turn. 2 turns cooldown",
+                "desc": "Applies Barbed 3 times to the user and Paralyzes foe for 1 turn. 2 turns cooldown",
                 "enchant_desc": "+10% Accuracy",
                 "turns": 4,
                 "additional": [
@@ -65255,7 +65255,7 @@
                 },
                 "element": "Lightning",
                 "type": "Attack",
-                "desc": "A massively powerful Lightning attack that inflicts Bleed for 4 turns and provides Barbed",
+                "desc": "A massively powerful Lightning attack that inflicts Bleed for 4 turns and provides Barbed 1 time",
                 "enchant_desc": "+4 Attack Power",
                 "additional": [
                     {
@@ -68176,7 +68176,7 @@
                 },
                 "element": "Physical",
                 "type": "Attack",
-                "desc": "A more than massively powerful Physical attack that raises your Elemental Attack by 12 and applies Barbed",
+                "desc": "A more than massively powerful Physical attack that raises your Elemental Attack by 12 and applies Barbed 1 time",
                 "enchant_desc": "+3 Attack Power",
                 "additional": [
                     {
@@ -69514,7 +69514,7 @@
                 "element": "Misc",
                 "type": "Barbed",
                 "target": "Self",
-                "desc": "Applies Barbed to the user",
+                "desc": "Applies Barbed 3 times to the user",
                 "enchant_desc": "+10% Accuracy",
                 "turns": 3
             },
@@ -74438,7 +74438,7 @@
                 },
                 "element": "Water",
                 "type": "Attack",
-                "desc": "A massively powerful Water attack that inflicts Bleed for 4 turns and provides Barbed",
+                "desc": "A massively powerful Water attack that inflicts Bleed for 4 turns and provides Barbed 1 time",
                 "enchant_desc": "+4 Attack Power",
                 "additional": [
                     {
