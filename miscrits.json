@@ -517,7 +517,7 @@
       "rarity": "Common",
       "avatar": "sparkspeck_avatar.png",
       "spawns": [
-        {"place": "Beach","zone": ["Cualquier Objeto Zona 1 de la Playa"],"view": "object","objectImage": "../assets/images/maps/beach.jpg","days": "ALL_DAYS"}
+        {"place": "Shores","zone": ["Cualquier Objeto Zona 1 de la Playa"],"view": "object","objectImage": "../assets/images/maps/beach.jpg","days": "ALL_DAYS"}
       ]
     },
     {
@@ -527,7 +527,7 @@
       "rarity": "Common",
       "avatar": "grubbean_avatar.png",
       "spawns": [
-        {"place": "Beach","zone": ["Cualquier Objeto Zona 1 de la Playa"],"view": "object","objectImage": "../assets/images/maps/beach.jpg","days": "ALL_DAYS"}
+        {"place": "Shores","zone": ["Cualquier Objeto Zona 1 de la Playa"],"view": "object","objectImage": "../assets/images/maps/beach.jpg","days": "ALL_DAYS"}
       ]
     },
     {
@@ -537,7 +537,7 @@
       "rarity": "Common",
       "avatar": "echino_avatar.png",
       "spawns": [
-        {"place": "Beach","zone": ["Cualquier Objeto Zona 2 de la Playa"],"view": "object","objectImage": "../assets/images/maps/beach.jpg","days": "ALL_DAYS"}
+        {"place": "Shores","zone": ["Cualquier Objeto Zona 2 de la Playa"],"view": "object","objectImage": "../assets/images/maps/beach.jpg","days": "ALL_DAYS"}
       ]
     },
     {
@@ -547,7 +547,7 @@
       "rarity": "Common",
       "avatar": "wavesling_avatar.png",
       "spawns": [
-        {"place": "Beach","zone": ["Cualquier Objeto Zona 2 de la Playa"],"view": "object","objectImage": "../assets/images/maps/beach.jpg","days": "ALL_DAYS"}
+        {"place": "Shores","zone": ["Cualquier Objeto Zona 2 de la Playa"],"view": "object","objectImage": "../assets/images/maps/beach.jpg","days": "ALL_DAYS"}
       ]
     },
     {
@@ -557,7 +557,7 @@
       "rarity": "Common",
       "avatar": "sparkitten_avatar.png",
       "spawns": [
-        {"place": "Beach","zone": ["Cualquier Objeto Zona 2 de la Playa"],"view": "object","objectImage": "../assets/images/maps/beach.jpg","days": "ALL_DAYS"}
+        {"place": "Shores","zone": ["Cualquier Objeto Zona 2 de la Playa"],"view": "object","objectImage": "../assets/images/maps/beach.jpg","days": "ALL_DAYS"}
       ]
     },
     {
@@ -567,7 +567,7 @@
       "rarity": "Common",
       "avatar": "arigato_avatar.png",
       "spawns": [
-        {"place": "Beach","zone": ["Cualquier Objeto Zona 2 de la Playa"],"view": "object","objectImage": "../assets/images/maps/beach.jpg","days": "ALL_DAYS"}
+        {"place": "Shores","zone": ["Cualquier Objeto Zona 2 de la Playa"],"view": "object","objectImage": "../assets/images/maps/beach.jpg","days": "ALL_DAYS"}
       ]
     },
     {
@@ -577,7 +577,7 @@
       "rarity": "Common",
       "avatar": "jack_avatar.png",
       "spawns": [
-        {"place": "Beach","zone": ["Cualquier Objeto Zona 1 de la Playa"],"view": "object","objectImage": "../assets/images/maps/beach.jpg","days": "ALL_DAYS"}
+        {"place": "Shores","zone": ["Cualquier Objeto Zona 1 de la Playa"],"view": "object","objectImage": "../assets/images/maps/beach.jpg","days": "ALL_DAYS"}
       ]
     },
     {
@@ -587,7 +587,7 @@
       "rarity": "Common",
       "avatar": "quebble_avatar.png",
       "spawns": [
-        {"place": "Beach","zone": ["Cualquier Objeto Zona 4 de la Playa"],"view": "object","objectImage": "../assets/images/maps/beach.jpg","days": "ALL_DAYS"}
+        {"place": "Shores","zone": ["Cualquier Objeto Zona 4 de la Playa"],"view": "object","objectImage": "../assets/images/maps/beach.jpg","days": "ALL_DAYS"}
       ]
     },
     {
@@ -597,7 +597,7 @@
       "rarity": "Common",
       "avatar": "digsy_avatar.png",
       "spawns": [
-        {"place": "Beach","zone": ["Cualquier Objeto Zona 1 de la Playa"],"view": "object","objectImage": "../assets/images/maps/beach.jpg","days": "ALL_DAYS"}
+        {"place": "Shores","zone": ["Cualquier Objeto Zona 1 de la Playa"],"view": "object","objectImage": "../assets/images/maps/beach.jpg","days": "ALL_DAYS"}
       ]
     },
     {
@@ -607,7 +607,7 @@
       "rarity": "Common",
       "avatar": "hippoke_avatar.png",
       "spawns": [
-        {"place": "Beach","zone": ["Cualquier Objeto Zona 2 de la Playa"],"view": "object","objectImage": "../assets/images/maps/beach.jpg","days": "ALL_DAYS"}
+        {"place": "Shores","zone": ["Cualquier Objeto Zona 2 de la Playa"],"view": "object","objectImage": "../assets/images/maps/beach.jpg","days": "ALL_DAYS"}
       ]
     },
     {
@@ -617,7 +617,7 @@
       "rarity": "Common",
       "avatar": "leggy_avatar.png",
       "spawns": [
-        {"place": "Beach","zone": ["Cualquier Objeto Zona 4 de la Playa"],"view": "object","objectImage": "../assets/images/maps/beach.jpg","days": "ALL_DAYS"}
+        {"place": "Shores","zone": ["Cualquier Objeto Zona 4 de la Playa"],"view": "object","objectImage": "../assets/images/maps/beach.jpg","days": "ALL_DAYS"}
       ]
     },
     {
@@ -627,7 +627,7 @@
       "rarity": "Common",
       "avatar": "orcatide_avatar.png",
       "spawns": [
-        {"place": "Beach","zone": ["Cualquier Objeto Zona 4 de la Playa"],"view": "object","objectImage": "../assets/images/maps/beach.jpg","days": "ALL_DAYS"}
+        {"place": "Shores","zone": ["Cualquier Objeto Zona 4 de la Playa"],"view": "object","objectImage": "../assets/images/maps/beach.jpg","days": "ALL_DAYS"}
       ]
     },
     {
@@ -647,7 +647,7 @@
       "rarity": "Rare",
       "avatar": "snorkels_avatar.png",
       "spawns": [
-        {"place": "Beach","zone": ["Playa Zona 3"],"view": "object","objectImage": "../assets/images/maps/ShoreChest.png","days": ["Miercoles", "Sabado", "Domingo"]}
+        {"place": "Shores","zone": ["Playa Zona 3"],"view": "object","objectImage": "../assets/images/maps/ShoresChest.png","days": ["Miercoles", "Sabado", "Domingo"]}
       ]
     },
     {
@@ -657,7 +657,7 @@
       "rarity": "Rare",
       "avatar": "kelpa_avatar.png",
       "spawns": [
-        {"place": "Beach","zone": ["Playa Zona 1"],"view": "object","objectImage": "../assets/images/maps/SandCastle.png","days": ["Martes", "Viernes", "Domingo"]}
+        {"place": "Shores","zone": ["Playa Zona 1"],"view": "object","objectImage": "../assets/images/maps/SandCastle.png","days": ["Martes", "Viernes", "Domingo"]}
       ]
     },
     {
@@ -667,7 +667,7 @@
       "rarity": "Rare",
       "avatar": "ignios_avatar.png",
       "spawns": [
-        {"place": "Beach","zone": ["Playa Zona 2"],"view": "object","objectImage": "../assets/images/maps/Eggs.png","days": ["Miercoles", "Sabado", "Domingo"]}
+        {"place": "Shores","zone": ["Playa Zona 2"],"view": "object","objectImage": "../assets/images/maps/Eggs.png","days": ["Miercoles", "Sabado", "Domingo"]}
       ]
     },
     {
@@ -687,7 +687,7 @@
       "rarity": "Epic",
       "avatar": "winnebeargo_avatar.png",
       "spawns": [
-        {"place": "Beach","zone": ["Playa Zona 1"],"view": "object","objectImage": "../assets/images/maps/Leaves.png","days": ["Jueves", "Viernes", "Sabado"]}
+        {"place": "Shores","zone": ["Playa Zona 1"],"view": "object","objectImage": "../assets/images/maps/Leaves.png","days": ["Jueves", "Viernes", "Sabado"]}
       ]
     },
     {
@@ -697,7 +697,7 @@
       "rarity": "Epic",
       "avatar": "fennie_avatar.png",
       "spawns": [
-        {"place": "Beach","zone": ["Playa Zona 2"],"view": "object","objectImage": "../assets/images/maps/Cave.png","days": ["Jueves", "Viernes", "Sabado"]}
+        {"place": "Shores","zone": ["Playa Zona 2"],"view": "object","objectImage": "../assets/images/maps/Cave.png","days": ["Jueves", "Viernes", "Sabado"]}
       ]
     },
     {
@@ -777,7 +777,7 @@
       "rarity": "Rare",
       "avatar": "dark_sparkitten_avatar.png",
       "spawns": [
-        {"place": "Beach","zone": ["Cualquier Objeto Zona 2 de la Playa"],"view": "object","objectImage": "../assets/images/maps/beach.jpg","days": ["Martes", "Viernes"]}
+        {"place": "Shores","zone": ["Cualquier Objeto Zona 2 de la Playa"],"view": "object","objectImage": "../assets/images/maps/beach.jpg","days": ["Martes", "Viernes"]}
       ]
     },
     {
@@ -847,7 +847,7 @@
       "rarity": "Exotic",
       "avatar": "peepsie_avatar.png",
       "spawns": [
-        {"place": "Beach","zone": ["Shores 4"],"view": "object","objectImage": "../assets/images/maps/ColEggs.png","days": "ALL_DAYS"}
+        {"place": "Shores","zone": ["Shores 4"],"view": "object","objectImage": "../assets/images/maps/ColEggs.png","days": "ALL_DAYS"}
       ]
     },
     {
@@ -1017,7 +1017,7 @@
       "rarity": "Rare",
       "avatar": "pamboo_avatar.png",
       "spawns": [
-        {"place": "Beach","zone": ["Cualquier Objeto Zona 2 de la Playa"],"view": "object","objectImage": "../assets/images/maps/beach.jpg","days": ["Lunes", "Jueves"]}
+        {"place": "Shores","zone": ["Cualquier Objeto Zona 2 de la Playa"],"view": "object","objectImage": "../assets/images/maps/beach.jpg","days": ["Lunes", "Jueves"]}
       ]
     },
     {
@@ -1027,7 +1027,7 @@
       "rarity": "Rare",
       "avatar": "rockodile_avatar.png",
       "spawns": [
-        {"place": "Beach","zone": ["Playa Zona 4"],"view": "object","objectImage": "../assets/images/maps/Bones.png","days": ["Lunes", "Jueves", "Domingo"]}
+        {"place": "Shores","zone": ["Playa Zona 4"],"view": "object","objectImage": "../assets/images/maps/Bones.png","days": ["Lunes", "Jueves", "Domingo"]}
       ]
     },
     {
@@ -1037,7 +1037,7 @@
       "rarity": "Epic",
       "avatar": "boneshee_avatar.png",
       "spawns": [
-        {"place": "Beach","zone": ["Playa Zona 4"],"view": "object","objectImage": "../assets/images/maps/Sand.png","days": ["Lunes", "Martes", "Miercoles"]}
+        {"place": "Shores","zone": ["Playa Zona 4"],"view": "object","objectImage": "../assets/images/maps/Sand.png","days": ["Lunes", "Martes", "Miercoles"]}
       ]
     },
     {
@@ -1047,7 +1047,7 @@
       "rarity": "Epic",
       "avatar": "ursiwave_avatar.png",
       "spawns": [
-        {"place": "Beach","zone": ["Playa Zona 1"],"view": "object","objectImage": "../assets/images/maps/Conch.png","days": ["Lunes", "Martes", "Miercoles"]}
+        {"place": "Shores","zone": ["Playa Zona 1"],"view": "object","objectImage": "../assets/images/maps/Conch.png","days": ["Lunes", "Martes", "Miercoles"]}
       ]
     },
     {
@@ -1067,7 +1067,7 @@
       "rarity": "Common",
       "avatar": "zaptor_avatar.png",
       "spawns": [
-        {"place": "Beach","zone": ["Cualquier Objeto de la Mansion"],"view": "object","objectImage": "../assets/images/maps/beach.jpg","days": "ALL_DAYS"}
+        {"place": "Shores","zone": ["Cualquier Objeto de la Mansion"],"view": "object","objectImage": "../assets/images/maps/beach.jpg","days": "ALL_DAYS"}
       ]
     },
     {
@@ -1107,7 +1107,7 @@
       "rarity": "Common",
       "avatar": "hawkai_avatar.png",
       "spawns": [
-        {"place": "Beach","zone": ["Cualquier Objeto de la Mansion"],"view": "object","objectImage": "../assets/images/maps/beach.jpg","days": "ALL_DAYS"}
+        {"place": "Shores","zone": ["Cualquier Objeto de la Mansion"],"view": "object","objectImage": "../assets/images/maps/beach.jpg","days": "ALL_DAYS"}
       ]
     },
     {
@@ -1147,7 +1147,7 @@
       "rarity": "Common",
       "avatar": "tectonyx_avatar.png",
       "spawns": [
-        {"place": "Beach","zone": ["Cualquier Objeto en la Playa"],"view": "object","objectImage": "../assets/images/maps/beach.jpg","days": "ALL_DAYS"}
+        {"place": "Shores","zone": ["Cualquier Objeto en la Playa"],"view": "object","objectImage": "../assets/images/maps/beach.jpg","days": "ALL_DAYS"}
       ]
     },
     {
@@ -1157,7 +1157,7 @@
       "rarity": "Common",
       "avatar": "nibbles_avatar.png",
       "spawns": [
-        {"place": "Beach","zone": ["Cualquier Objeto en la Playa"],"view": "object","objectImage": "../assets/images/maps/beach.jpg","days": "ALL_DAYS"}
+        {"place": "Shores","zone": ["Cualquier Objeto en la Playa"],"view": "object","objectImage": "../assets/images/maps/beach.jpg","days": "ALL_DAYS"}
       ]
     },
     {
@@ -1167,7 +1167,7 @@
       "rarity": "Rare",
       "avatar": "skustunk_avatar.png",
       "spawns": [
-        {"place": "Beach","zone": ["Cualquier Objeto Zona 1 de la Playa"],"view": "object","objectImage": "../assets/images/maps/beach.jpg","days": ["Miercoles", "Sabado"]}
+        {"place": "Shores","zone": ["Cualquier Objeto Zona 1 de la Playa"],"view": "object","objectImage": "../assets/images/maps/beach.jpg","days": ["Miercoles", "Sabado"]}
       ]
     },
     {
@@ -1207,7 +1207,7 @@
       "rarity": "Rare",
       "avatar": "crabbles_avatar.png",
       "spawns": [
-        {"place": "Beach","zone": ["Cualquier Objeto Zona 4 de la Playa"],"view": "object","objectImage": "../assets/images/maps/beach.jpg","days": ["Martes", "Viernes"]}
+        {"place": "Shores","zone": ["Cualquier Objeto Zona 4 de la Playa"],"view": "object","objectImage": "../assets/images/maps/beach.jpg","days": ["Martes", "Viernes"]}
       ]
     },
     {
@@ -1307,7 +1307,7 @@
       "rarity": "Epic",
       "avatar": "lavazard_avatar.png",
       "spawns": [
-        {"place": "Beach","zone": ["Playa Zona 4"],"view": "object","objectImage": "../assets/images/maps/BrokenBox.png","days": ["Jueves", "Viernes", "Sabado"]}
+        {"place": "Shores","zone": ["Playa Zona 4"],"view": "object","objectImage": "../assets/images/maps/BrokenBox.png","days": ["Jueves", "Viernes", "Sabado"]}
       ]
     },
     {
@@ -1417,7 +1417,7 @@
       "rarity": "Exotic",
       "avatar": "light_tectonyx_avatar.png",
       "spawns": [
-        {"place": "Beach","zone": ["Shores 3"],"view": "object","objectImage": "../assets/images/maps/SpikyStone.png","days": "ALL_DAYS"}
+        {"place": "Shores","zone": ["Shores 3"],"view": "object","objectImage": "../assets/images/maps/SpikyStone.png","days": "ALL_DAYS"}
       ]
     },
     {
@@ -1467,7 +1467,7 @@
       "rarity": "Common",
       "avatar": "blub_avatar.png",
       "spawns": [
-        {"place": "Beach","zone": ["Cualquier Objeto en la Playa"],"view": "object","objectImage": "../assets/images/maps/beach.jpg","days": "ALL_DAYS"}
+        {"place": "Shores","zone": ["Cualquier Objeto en la Playa"],"view": "object","objectImage": "../assets/images/maps/beach.jpg","days": "ALL_DAYS"}
       ]
     },
     {
@@ -1567,7 +1567,7 @@
       "rarity": "Epic",
       "avatar": "pennon_avatar.png",
       "spawns": [
-        {"place": "Beach","zone": ["Playa Zona 3"],"view": "object","objectImage": "../assets/images/maps/SeaGrass.png","days": ["Lunes", "Martes", "Miercoles"]}
+        {"place": "Shores","zone": ["Playa Zona 3"],"view": "object","objectImage": "../assets/images/maps/SeaGrass.png","days": ["Lunes", "Martes", "Miercoles"]}
       ]
     },
     {
@@ -1627,7 +1627,7 @@
       "rarity": "Epic",
       "avatar": "light_nibbles_avatar.png",
       "spawns": [
-        {"place": "Beach","zone": ["Playa Zona 3"],"view": "object","objectImage": "../assets/images/maps/Laguna.png","days": ["Jueves", "Viernes", "Sabado"]}
+        {"place": "Shores","zone": ["Playa Zona 3"],"view": "object","objectImage": "../assets/images/maps/Laguna.png","days": ["Jueves", "Viernes", "Sabado"]}
       ]
     },
     {
@@ -1637,7 +1637,7 @@
       "rarity": "Exotic",
       "avatar": "light_frostmite_avatar.png",
       "spawns": [
-        {"place": "Beach","zone": ["Shores 1"],"view": "object","objectImage": "../assets/images/maps/IcyConch.png","days": "ALL_DAYS"}
+        {"place": "Shores","zone": ["Shores 1"],"view": "object","objectImage": "../assets/images/maps/IcyConch.png","days": "ALL_DAYS"}
       ]
     },
     {
@@ -1647,7 +1647,7 @@
       "rarity": "Exotic",
       "avatar": "light_bludger_avatar.png",
       "spawns": [
-        {"place": "Beach","zone": ["Shores 4"],"view": "object","objectImage": "../assets/images/maps/BlueCrate.png","days": "ALL_DAYS"}
+        {"place": "Shores","zone": ["Shores 4"],"view": "object","objectImage": "../assets/images/maps/BlueCrate.png","days": "ALL_DAYS"}
       ]
     },
     {
@@ -1667,7 +1667,7 @@
       "rarity": "Epic",
       "avatar": "light_quirk_avatar.png",
       "spawns": [
-        {"place": "Beach","zone": ["Playa Zona 2"],"view": "object","objectImage": "../assets/images/maps/Quirk.png","days": ["Lunes", "Martes", "Miercoles"]}
+        {"place": "Shores","zone": ["Playa Zona 2"],"view": "object","objectImage": "../assets/images/maps/Quirk.png","days": ["Lunes", "Martes", "Miercoles"]}
       ]
     },
     {
@@ -1677,7 +1677,7 @@
       "rarity": "Exotic",
       "avatar": "light_statikat_avatar.png",
       "spawns": [
-        {"place": "Beach","zone": ["Shores 1"],"view": "object","objectImage": "../assets/images/maps/PurpleCoral.png","days": "ALL_DAYS"}
+        {"place": "Shores","zone": ["Shores 1"],"view": "object","objectImage": "../assets/images/maps/PurpleCoral.png","days": "ALL_DAYS"}
       ]
     },
     {
@@ -1697,7 +1697,7 @@
       "rarity": "Exotic",
       "avatar": "light_twiggum_avatar.png",
       "spawns": [
-        {"place": "Beach","zone": ["Shores 2"],"view": "object","objectImage": "../assets/images/maps/PalmTree.png","days": "ALL_DAYS"}
+        {"place": "Shores","zone": ["Shores 2"],"view": "object","objectImage": "../assets/images/maps/PalmTree.png","days": "ALL_DAYS"}
       ]
     },
     {
@@ -1707,7 +1707,7 @@
       "rarity": "Legendary",
       "avatar": "aquarion_avatar.png",
       "spawns": [
-        {"place": "Beach","zone": ["Shores 2"],"view": "object","objectImage": "../assets/images/maps/AquaEggs.png","days": "ALL_DAYS"}
+        {"place": "Shores","zone": ["Shores 2"],"view": "object","objectImage": "../assets/images/maps/AquaEggs.png","days": "ALL_DAYS"}
       ]
     },
     {
@@ -1897,7 +1897,7 @@
       "rarity": "Exotic",
       "avatar": "light_nanaslug_avatar.png",
       "spawns": [
-        {"place": "Beach","zone": ["Shores 3"],"view": "object","objectImage": "../assets/images/maps/Pound.png","days": "ALL_DAYS"}
+        {"place": "Shores","zone": ["Shores 3"],"view": "object","objectImage": "../assets/images/maps/Pound.png","days": "ALL_DAYS"}
       ]
     },
     {
@@ -1907,7 +1907,7 @@
       "rarity": "Exotic",
       "avatar": "light_crickin_avatar.png",
       "spawns": [
-        {"place": "Beach","zone": ["Shores 2"],"view": "object","objectImage": "../assets/images/maps/MiniGrass.png","days": "ALL_DAYS"}
+        {"place": "Shores","zone": ["Shores 2"],"view": "object","objectImage": "../assets/images/maps/MiniGrass.png","days": "ALL_DAYS"}
       ]
     },
     {
@@ -1927,7 +1927,7 @@
       "rarity": "Epic",
       "avatar": "light_grubbean_avatar.png",
       "spawns": [
-        {"place": "Beach","zone": "ZONE_4","objects": "MYSTERIOUS_EGG","days": "ALL_DAYS"}
+        {"place": "Shores","zone": "ZONE_4","objects": "MYSTERIOUS_EGG","days": "ALL_DAYS"}
       ]
     },
     {
@@ -1947,7 +1947,7 @@
       "rarity": "Rare",
       "avatar": "light_sparkspeck_avatar.png",
       "spawns": [
-        {"place": "Beach","zone": ["Cualquier Objeto Zona 1 de la Playa"],"view": "object","objectImage": "../assets/images/maps/beach.jpg","days": ["Lunes", "Jueves"]}
+        {"place": "Shores","zone": ["Cualquier Objeto Zona 1 de la Playa"],"view": "object","objectImage": "../assets/images/maps/beach.jpg","days": ["Lunes", "Jueves"]}
       ]
     },
     {
@@ -2017,7 +2017,7 @@
       "rarity": "Legendary",
       "avatar": "light_ignios_avatar.png",
       "spawns": [
-        {"place": "Beach","zone": ["Shores 4"],"view": "object","objectImage": "../assets/images/maps/LightingBones.png","days": "ALL_DAYS"}
+        {"place": "Shores","zone": ["Shores 4"],"view": "object","objectImage": "../assets/images/maps/LightingBones.png","days": "ALL_DAYS"}
       ]
     },
     {
@@ -2027,7 +2027,7 @@
       "rarity": "Rare",
       "avatar": "light_mumbah_avatar.png",
       "spawns": [
-        {"place": "Beach","zone": ["Cualquier Objeto Zona 4 de la Playa"],"view": "object","objectImage": "../assets/images/maps/beach.jpg","days": ["Miercoles", "Sabado"]}
+        {"place": "Shores","zone": ["Cualquier Objeto Zona 4 de la Playa"],"view": "object","objectImage": "../assets/images/maps/beach.jpg","days": ["Miercoles", "Sabado"]}
       ]
     },
     {
@@ -2127,7 +2127,7 @@
       "rarity": "Rare",
       "avatar": "sol_avatar.png",
       "spawns": [
-        {"place": "Beach","zone": ["Cualquier Objeto Zona 3 de la Playa"],"view": "object","objectImage": "../assets/images/maps/beach.jpg","days": ["Lunes", "Jueves"]}
+        {"place": "Shores","zone": ["Cualquier Objeto Zona 3 de la Playa"],"view": "object","objectImage": "../assets/images/maps/beach.jpg","days": ["Lunes", "Jueves"]}
       ]
     },
     {
@@ -2137,7 +2137,7 @@
       "rarity": "Rare",
       "avatar": "dreamger_avatar.png",
       "spawns": [
-        {"place": "Beach","zone": ["Cualquier Objeto Zona 3 de la Playa"],"view": "object","objectImage": "../assets/images/maps/beach.jpg","days": ["Martes", "Viernes"]}
+        {"place": "Shores","zone": ["Cualquier Objeto Zona 3 de la Playa"],"view": "object","objectImage": "../assets/images/maps/beach.jpg","days": ["Martes", "Viernes"]}
       ]
     },
     {
