@@ -493,16 +493,16 @@
       "tierlist": null,
       "relics_by_level": {
         "10": [
-          "BLESSED_POLLEN"
+          "FROOST_ROOT", "BLESSED_POLLEN"
         ],
         "20": [
-          "MONKS_BANNER"
+          "EMERALD_SCALES", "OBSIDIAN_LAVA"
         ],
         "30": [
-          "CACTUS_FLOWER"
+          "VANQUISHED_SOUL", "PALMDAS_TALON"
         ],
         "35": [
-          "MOLTEN_COIN"
+          "GOGS_COG"
         ]
       }
     },
@@ -1906,11 +1906,11 @@
           "FROOST_ROOT"
         ],
         "20": [
-          "BEAN_STALK",
-          "JUNGLE_BANNER"
+          "EMERALD_SCALES",
+          "BEAN_STALK"
         ],
         "30": [
-          "VANQUISHED_SOUL"
+          "FRACTURED_SHELL"
         ],
         "35": [
           "DARK_WINDS_VENOM"
@@ -3892,15 +3892,14 @@
       "tierlist": "B",
       "relics_by_level": {
         "10": [
-          "CLOUD_CAKE",
+          "SKELEPUPS_SPARK",
           "FROOST_ROOT"
         ],
         "20": [
-          "STONY_SHIELD"
+          "SHIP_CAPTAINS_LOG"
         ],
         "30": [
-          "ARROW_OF_LOVE",
-          "MAGICITE_STAFF"
+          "ARROW_OF_LOVE"
         ],
         "35": [
           "SHARD_OF_RUDOLFE"
@@ -5673,12 +5672,12 @@
           "ELEFAUNA_FLOWER"
         ],
         "20": [
-          "OBSIDIAN_LAVA",
-          "STONY_SHIELD"
+          "STONY_SHIELD",
+          "OBSIDIAN_LAVA"
         ],
         "30": [
-          "MYSTIC_MAP",
-          "TEMPLE_STONE"
+          "TEMPLE_STONE",
+          "MYSTIC_MAP"
         ],
         "35": [
           "FLYING_CARPET_FRAGMENT"
@@ -6691,10 +6690,22 @@
       "best_rank": "RS",
       "tierlist": "C",
       "relics_by_level": {
-        "10": [],
-        "20": [],
-        "30": [],
-        "35": []
+        "10": [
+          "ELEFAUNA_FLOWER",
+          "BLESSED_POLLEN"
+        ],
+        "20": [
+          "OBSIDIAN_LAVA",
+          "SUNFALL_SHORES_BANNER",
+          "STONY_SHIELD"
+        ],
+        "30": [
+          "CACTUS_FLOWER",
+          "TEMPLE_STONE"
+        ],
+        "35": [
+          "FLYING_CARPET_FRAGMENT"
+        ]
       }
     },
     {
@@ -6756,10 +6767,10 @@
       "best_rank": "S+",
       "tierlist": "A",
       "relics_by_level": {
-        "10": [],
-        "20": [],
-        "30": [],
-        "35": []
+        "10": ["ELEFAUNA_FLOWER"],
+        "20": ["SUNFALL_SHORES_BANNER", "SHIP_CAPTAINS_LOG"],
+        "30": ["MAGICITE_STAFF", "PEEPSIE_EGGS"],
+        "35": ["SHARD_OF_RUDOLFE"]
       }
     },
     {
@@ -6834,10 +6845,10 @@
       "best_rank": "S+",
       "tierlist": "A",
       "relics_by_level": {
-        "10": [],
-        "20": [],
-        "30": [],
-        "35": []
+        "10": ["BLESSED_POLLEN" ],
+        "20": ["SUNFALL_SHORES_BANNER", "OBSIDIAN_LAVA"],
+        "30": ["PEEPSIE_EGGS"],
+        "35": ["FLYING_CARPET_FRAGMENT"]
       }
     },
     {
@@ -6860,10 +6871,10 @@
       "best_rank": "S+",
       "tierlist": "A",
       "relics_by_level": {
-        "10": [],
-        "20": [],
-        "30": [],
-        "35": []
+        "10": ["ELEFAUNA_FLOWER"],
+        "20": ["STONY_SHIELD", "SUNFALL_SHORES_BANNER"],
+        "30": ["MAGICITE_STAFF", "PEEPSIE_EGGS"],
+        "35": ["SHARD_OF_RUDOLFE"]
       }
     },
     {
@@ -6899,10 +6910,10 @@
       "best_rank": "RS",
       "tierlist": "C",
       "relics_by_level": {
-        "10": [],
-        "20": [],
-        "30": [],
-        "35": []
+        "10": ["BLESSED_POLLEN", "ELEFAUNA_FLOWER"],
+        "20": ["OBSIDIAN_LAVA", "BEAN_STALK"],
+        "30": ["PEEPSIE_EGGS", "CACTUS_FLOWER"],
+        "35": ["PETRIFIED_MAMA_BABY", "FLYING_CARPET_FRAGMENT"]
       }
     },
     {
@@ -6964,10 +6975,10 @@
       "best_rank": "S+",
       "tierlist": "B",
       "relics_by_level": {
-        "10": [],
-        "20": [],
-        "30": [],
-        "35": []
+        "10": ["SKELEPUPS_SPARK"],
+        "20": ["HELZBELZ_BELLS", "SHIP_CAPTAINS_LOG"],
+        "30": ["ARROW_OF_LOVE"],
+        "35": ["SHARD_OF_RUDOLFE"]
       }
     }
   ]
