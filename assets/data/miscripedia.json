@@ -68800,7 +68800,7 @@
                 },
                 "element": "Water",
                 "type": "Attack",
-                "desc": "A massively powerful Water attack that applies Barbed",
+                "desc": "A massively powerful Water attack that applies Barbed 2 times",
                 "enchant_desc": "+3 Attack Power",
                 "additional": [
                     {
@@ -74717,6 +74717,1171 @@
             "Celebes, with a red pattern at the edge of her hair, is a very sacred creature. Celebes proficiency in controlling the sea is known all over Miscria",
             "Adinda is an extremely beautiful and majestic Miscrit. The people of Miscria say she dances with the sea",
             "Mermafox is a beautiful white fox, the guardian and mermaid of the sea. One whip from its powerful tail could resist the fiercest storm"
+        ],
+        "locations": {
+            "Miscrian Jungle": {
+                "4": []
+            }
+        }
+    },
+    {
+        "id": 657,
+        "element": "Fire",
+        "names": [
+            "Lheon",
+            "Cuburne",
+            "Flameron",
+            "Obsideron"
+        ],
+        "rarity": "Common",
+        "hp": "Moderate",
+        "spd": "Weak",
+        "ea": "Moderate",
+        "pa": "Max",
+        "ed": "Strong",
+        "pd": "Strong",
+        "abilities": [
+            {
+                "id": 65,
+                "name": "Anger",
+                "ap": 7,
+                "enchant": {
+                    "ap": 2
+                },
+                "element": "Misc",
+                "type": "Buff",
+                "target": "Self",
+                "desc": "Raises your Physical Attack by 7",
+                "enchant_desc": "+2 to Buff",
+                "keys": [
+                    "pa"
+                ]
+            },
+            {
+                "id": 63,
+                "name": "Debilitate",
+                "ap": -11,
+                "enchant": {
+                    "ap": -3
+                },
+                "element": "Misc",
+                "type": "Buff",
+                "desc": "Lowers your foe's Defenses by 11",
+                "enchant_desc": "+3 to Debuff",
+                "keys": [
+                    "ed",
+                    "pd"
+                ]
+            },
+            {
+                "id": 83,
+                "name": "Bewitch",
+                "ap": -10,
+                "enchant": {
+                    "ap": -2
+                },
+                "element": "Misc",
+                "type": "Buff",
+                "desc": "Lowers your foe's Elemental Attack by 10",
+                "enchant_desc": "+2 to Debuff",
+                "keys": [
+                    "ea"
+                ]
+            },
+            {
+                "id": 69,
+                "name": "Intimidation",
+                "ap": -11,
+                "enchant": {
+                    "ap": -3
+                },
+                "element": "Misc",
+                "type": "Buff",
+                "desc": "Lowers your foe's Attacks by 11",
+                "enchant_desc": "+3 to Debuff",
+                "keys": [
+                    "ea",
+                    "pa"
+                ]
+            },
+            {
+                "id": 1365,
+                "name": "Lie In",
+                "ap": 10,
+                "enchant": {
+                    "ap": 5
+                },
+                "element": "Misc",
+                "type": "Heal",
+                "target": "Self",
+                "desc": "Recovers a fair amount of your health",
+                "enchant_desc": "+5 Heal"
+            },
+            {
+                "id": 1366,
+                "name": "Prideful Trounce",
+                "ap": 25,
+                "enchant": {
+                    "ap": 4
+                },
+                "element": "Physical",
+                "type": "Attack",
+                "desc": "A massively powerful Physical attack that steals 8 Physical Attack from foe",
+                "enchant_desc": "+4 Attack Power",
+                "additional": [
+                    {
+                        "keys": [
+                            "pa"
+                        ],
+                        "type": "StatSteal"
+                    }
+                ]
+            },
+            {
+                "id": 190,
+                "name": "Overwhelm",
+                "ap": 20,
+                "accuracy": 90,
+                "enchant": {
+                    "accuracy": 10
+                },
+                "element": "Physical",
+                "type": "Attack",
+                "desc": "A very powerful Physical attack",
+                "enchant_desc": "+10% Accuracy"
+            },
+            {
+                "id": 232,
+                "name": "Firewater",
+                "enchant": {
+                    "additional": [
+                        {
+                            "ap": 5,
+                            "type": "Heal",
+                            "target": "Self"
+                        }
+                    ]
+                },
+                "element": "Misc",
+                "type": "Negate",
+                "target": "Self",
+                "desc": "Removes your elemental weakness",
+                "enchant_desc": "Replenishes 5 Health"
+            },
+            {
+                "id": 1,
+                "name": "Burn",
+                "ap": 7,
+                "enchant": {
+                    "ap": 1
+                },
+                "element": "Fire",
+                "type": "Attack",
+                "desc": "A simple Fire attack",
+                "enchant_desc": "+1 Attack Power"
+            },
+            {
+                "id": 96,
+                "name": "Weaken",
+                "ap": -5,
+                "enchant": {
+                    "ap": -1
+                },
+                "element": "Misc",
+                "type": "Buff",
+                "desc": "Lowers your foe's Defenses by 5",
+                "enchant_desc": "+1 to Debuff",
+                "keys": [
+                    "ed",
+                    "pd"
+                ]
+            },
+            {
+                "id": 55,
+                "name": "Bite",
+                "ap": 7,
+                "enchant": {
+                    "ap": 1
+                },
+                "element": "Physical",
+                "type": "Attack",
+                "desc": "A simple Physical attack",
+                "enchant_desc": "+1 Attack Power"
+            },
+            {
+                "id": 7,
+                "name": "Brimstone",
+                "ap": 20,
+                "accuracy": 95,
+                "enchant": {
+                    "ap": 2
+                },
+                "element": "Fire",
+                "type": "Attack",
+                "desc": "A very powerful Fire attack",
+                "enchant_desc": "+2 Attack Power"
+            }
+        ],
+        "ability_order": [
+            1,
+            96,
+            55,
+            65,
+            1365,
+            83,
+            63,
+            190,
+            7,
+            232,
+            69,
+            1366
+        ],
+        "descriptions": [
+            "Lheon is often seen sleeping under the trees, but this is a ruse. They are only pretending to sleep in order to ambush their prey",
+            "Cuburne's flames emit a very strange aura that calms everyone around it, which it can easily use in battle",
+            "Flameron's shiny fur is sure to catch the attention of others, but Flameron itself prefers to stay in the background to avoid drawing too much attention",
+            "Obsideron is a natural leader and a very formidable rival who often clashes with Obsidiape, constantly trying to prove its superiority"
+        ],
+        "locations": {
+            "Miscrian Jungle": {
+                "1": [],
+                "2": []
+            }
+        }
+    },
+    {
+        "id": 658,
+        "element": "Nature",
+        "names": [
+            "Dark Hoghedge",
+            "Dark Timboar",
+            "Dark Boarax",
+            "Dark Stumperback"
+        ],
+        "rarity": "Rare",
+        "hp": "Moderate",
+        "spd": "Moderate",
+        "ea": "Weak",
+        "pa": "Max",
+        "ed": "Strong",
+        "pd": "Max",
+        "abilities": [
+            {
+                "id": 53,
+                "name": "Headbutt",
+                "ap": 7,
+                "enchant": {
+                    "ap": 1
+                },
+                "element": "Physical",
+                "type": "Attack",
+                "desc": "A simple Physical attack",
+                "enchant_desc": "+1 Attack Power"
+            },
+            {
+                "id": 48,
+                "name": "Bash",
+                "ap": 15,
+                "accuracy": 95,
+                "enchant": {
+                    "ap": 3
+                },
+                "element": "Physical",
+                "type": "Attack",
+                "desc": "A powerful Physical attack",
+                "enchant_desc": "+3 Attack Power"
+            },
+            {
+                "id": 16,
+                "name": "Sleep",
+                "accuracy": 40,
+                "enchant": {
+                    "additional": [
+                        {
+                            "ap": 5,
+                            "type": "Heal",
+                            "target": "Self"
+                        }
+                    ]
+                },
+                "element": "Misc",
+                "type": "Sleep",
+                "desc": "Puts your foe to Sleep for 2 turns, or until you attack them",
+                "enchant_desc": "Replenishes 5 Health",
+                "turns": 2,
+                "immunity": 4
+            },
+            {
+                "id": 78,
+                "name": "Shy Smile",
+                "ap": -5,
+                "enchant": {
+                    "ap": -1
+                },
+                "element": "Misc",
+                "type": "Buff",
+                "desc": "Lowers your foe's Attacks by 5",
+                "enchant_desc": "+1 to Debuff",
+                "keys": [
+                    "ea",
+                    "pa"
+                ]
+            },
+            {
+                "id": 1264,
+                "name": "Thrash",
+                "ap": 20,
+                "accuracy": 95,
+                "enchant": {
+                    "ap": 2
+                },
+                "element": "Physical",
+                "type": "Attack",
+                "desc": "A very powerful Physical attack",
+                "enchant_desc": "+2 Attack Power"
+            },
+            {
+                "id": 145,
+                "name": "Leaves",
+                "ap": 7,
+                "enchant": {
+                    "ap": 1
+                },
+                "element": "Nature",
+                "type": "Attack",
+                "desc": "A simple Nature attack",
+                "enchant_desc": "+1 Attack Power"
+            },
+            {
+                "id": 1367,
+                "name": "Dark Root Rash",
+                "ap": 7,
+                "enchant": {
+                    "ap": 1
+                },
+                "element": "Physical",
+                "type": "Dot",
+                "desc": "Inflicts Physical damage over 3 turns",
+                "enchant_desc": "+1 Attack Power",
+                "turns": 3
+            },
+            {
+                "id": 1368,
+                "name": "Dark Trunk Tusks",
+                "ap": 25,
+                "enchant": {
+                    "ap": 5
+                },
+                "element": "Physical",
+                "type": "Attack",
+                "desc": "A massively powerful Physical attack that grants Ethereal for 1 turn and provides 10 Block",
+                "enchant_desc": "+5 Attack Power",
+                "additional": [
+                    {
+                        "type": "Ethereal"
+                    },
+                    {
+                        "type": "Block"
+                    }
+                ]
+            },
+            {
+                "id": 233,
+                "name": "Gilly Weed",
+                "enchant": {
+                    "additional": [
+                        {
+                            "ap": 5,
+                            "type": "Heal",
+                            "target": "Self"
+                        }
+                    ]
+                },
+                "element": "Misc",
+                "type": "Negate",
+                "target": "Self",
+                "desc": "Removes your elemental weakness",
+                "enchant_desc": "Replenishes 5 Health"
+            },
+            {
+                "id": 27,
+                "name": "Mother Nature",
+                "ap": 20,
+                "accuracy": 95,
+                "enchant": {
+                    "ap": 4
+                },
+                "element": "Nature",
+                "type": "Attack",
+                "desc": "A very powerful Nature attack",
+                "enchant_desc": "+4 Attack Power"
+            },
+            {
+                "id": 1084,
+                "name": "Fortify",
+                "ap": 10,
+                "accuracy": 90,
+                "enchant": {
+                    "accuracy": 10
+                },
+                "element": "Misc",
+                "type": "Block",
+                "target": "Self",
+                "desc": "Provides 10 Block and lowers the user's Speed by 50",
+                "enchant_desc": "+10% Accuracy",
+                "turns": -1,
+                "additional": [
+                    {
+                        "keys": [
+                            "spd"
+                        ],
+                        "type": "Buff"
+                    }
+                ]
+            },
+            {
+                "id": 94,
+                "name": "Unbreakable",
+                "ap": 11,
+                "enchant": {
+                    "ap": 3
+                },
+                "element": "Misc",
+                "type": "Buff",
+                "target": "Self",
+                "desc": "Raises your Defenses by 11",
+                "enchant_desc": "+3 to Buff",
+                "keys": [
+                    "ed",
+                    "pd"
+                ]
+            }
+        ],
+        "ability_order": [
+            78,
+            145,
+            53,
+            233,
+            1367,
+            1084,
+            48,
+            16,
+            1264,
+            27,
+            94,
+            1368
+        ],
+        "descriptions": [
+            "Dark Hoghedge's anxiety at meeting strangers can sometimes cause it to act out violently when approached",
+            "Dark Timboar leeches far more than its fair share of nutrients from the soil, killing anything else in the immediate area",
+            "The roots on Dark Boarax turned red from the deadly poison contained within them",
+            "Dark Stumperback trusts no one, and will violently attack absolutely anyone without provocation or warning"
+        ],
+        "locations": {
+            "Miscrian Jungle": {
+                "3": [
+                    1,
+                    2
+                ]
+            }
+        }
+    },
+    {
+        "id": 659,
+        "element": "Fire",
+        "names": [
+            "Dark Beetor",
+            "Dark Bugglow",
+            "Dark Tennix",
+            "Dark Dungaroll"
+        ],
+        "rarity": "Rare",
+        "hp": "Strong",
+        "spd": "Weak",
+        "ea": "Max",
+        "pa": "Weak",
+        "ed": "Strong",
+        "pd": "Max",
+        "abilities": [
+            {
+                "id": 177,
+                "name": "Poke",
+                "ap": 7,
+                "enchant": {
+                    "ap": 1
+                },
+                "element": "Physical",
+                "type": "Attack",
+                "desc": "A simple Physical attack",
+                "enchant_desc": "+1 Attack Power"
+            },
+            {
+                "id": 77,
+                "name": "Fetal Position",
+                "ap": -5,
+                "enchant": {
+                    "ap": -1
+                },
+                "element": "Misc",
+                "type": "Buff",
+                "desc": "Lowers your foe's Attacks by 5",
+                "enchant_desc": "+1 to Debuff",
+                "keys": [
+                    "ea",
+                    "pa"
+                ]
+            },
+            {
+                "id": 216,
+                "name": "Toxic",
+                "ap": 10,
+                "accuracy": 90,
+                "enchant": {
+                    "accuracy": 5
+                },
+                "element": "Misc",
+                "type": "Poison",
+                "desc": "Poisons your foe, causing 10 damage for 3 turns",
+                "enchant_desc": "+5% Accuracy",
+                "turns": 3
+            },
+            {
+                "id": 1369,
+                "name": "Dark Fuse Fire",
+                "ap": 11,
+                "enchant": {
+                    "ap": 2
+                },
+                "element": "Fire",
+                "type": "Attack",
+                "desc": "An average Fire attack",
+                "enchant_desc": "+2 Attack Power"
+            },
+            {
+                "id": 187,
+                "name": "Claw",
+                "ap": 15,
+                "accuracy": 95,
+                "enchant": {
+                    "ap": 3
+                },
+                "element": "Physical",
+                "type": "Attack",
+                "desc": "A powerful Physical attack",
+                "enchant_desc": "+3 Attack Power"
+            },
+            {
+                "id": 1370,
+                "name": "Implosion",
+                "ap": 25,
+                "accuracy": 170,
+                "enchant": {
+                    "ap": 5
+                },
+                "element": "Misc",
+                "type": "Disease",
+                "desc": "Inflicts Disease over 1 turn, inflicts 1000 AP Disease on user for 1 turn and forces you to switch. (1 Use)",
+                "enchant_desc": "+5 Attack Power",
+                "turns": 1,
+                "additional": [
+                    {
+                        "type": "Disease"
+                    },
+                    {
+                        "type": "ForceSwitch"
+                    }
+                ],
+                "cooldown": -1
+            },
+            {
+                "id": 1371,
+                "name": "Dark Explosion",
+                "ap": 37,
+                "accuracy": 90,
+                "enchant": {
+                    "accuracy": 10
+                },
+                "element": "Fire",
+                "type": "Attack",
+                "desc": "An extremely powerful Fire attack that lowers your foe's Accuracy by 10%",
+                "enchant_desc": "+10% Accuracy",
+                "additional": [
+                    {
+                        "keys": [
+                            "acc"
+                        ],
+                        "type": "Buff"
+                    }
+                ],
+                "cooldown": 1,
+                "max_uses": 3
+            },
+            {
+                "id": 6,
+                "name": "Campfire",
+                "ap": 15,
+                "accuracy": 95,
+                "enchant": {
+                    "ap": 3
+                },
+                "element": "Fire",
+                "type": "Attack",
+                "desc": "A powerful Fire attack",
+                "enchant_desc": "+3 Attack Power"
+            },
+            {
+                "id": 1,
+                "name": "Burn",
+                "ap": 7,
+                "enchant": {
+                    "ap": 1
+                },
+                "element": "Fire",
+                "type": "Attack",
+                "desc": "A simple Fire attack",
+                "enchant_desc": "+1 Attack Power"
+            },
+            {
+                "id": 94,
+                "name": "Unbreakable",
+                "ap": 11,
+                "enchant": {
+                    "ap": 3
+                },
+                "element": "Misc",
+                "type": "Buff",
+                "target": "Self",
+                "desc": "Raises your Defenses by 11",
+                "enchant_desc": "+3 to Buff",
+                "keys": [
+                    "ed",
+                    "pd"
+                ]
+            },
+            {
+                "id": 96,
+                "name": "Weaken",
+                "ap": -5,
+                "enchant": {
+                    "ap": -1
+                },
+                "element": "Misc",
+                "type": "Buff",
+                "desc": "Lowers your foe's Defenses by 5",
+                "enchant_desc": "+1 to Debuff",
+                "keys": [
+                    "ed",
+                    "pd"
+                ]
+            },
+            {
+                "id": 7,
+                "name": "Brimstone",
+                "ap": 20,
+                "accuracy": 95,
+                "enchant": {
+                    "ap": 2
+                },
+                "element": "Fire",
+                "type": "Attack",
+                "desc": "A very powerful Fire attack",
+                "enchant_desc": "+2 Attack Power"
+            }
+        ],
+        "ability_order": [
+            1,
+            77,
+            177,
+            96,
+            1369,
+            216,
+            6,
+            187,
+            7,
+            94,
+            1370,
+            1371
+        ],
+        "descriptions": [
+            "Dark Beetor's eerie, ultraviolet glow provides it with just enough light to hunt its prey. It is the reason why some children are afraid of the dark",
+            "Dark Bugglow's super-hardened shell protects nearly every part of its body, except its belly, which has been nicknamed the 'deadlight'",
+            "The internal temperature of Dark Tennix's body reaches such extraordinary heights, if you were to cut one open, you may suffer major burns from the heat",
+            "Dark Dungaroll may look awkward, but it knows exactly how to maneuver its huge body to make effective use of its size and weight in order to crush anything in its way"
+        ],
+        "locations": {
+            "Miscrian Jungle": {
+                "3": [
+                    0,
+                    6
+                ]
+            }
+        }
+    },
+    {
+        "id": 660,
+        "element": "Fire",
+        "names": [
+            "Zhakor",
+            "Anjog",
+            "Yilkasom",
+            "Muskesilik"
+        ],
+        "rarity": "Epic",
+        "hp": "Moderate",
+        "spd": "Moderate",
+        "ea": "Max",
+        "pa": "Strong",
+        "ed": "Strong",
+        "pd": "Strong",
+        "abilities": [
+            {
+                "id": 71,
+                "name": "Merciless",
+                "ap": 9,
+                "enchant": {
+                    "ap": 2
+                },
+                "element": "Misc",
+                "type": "Buff",
+                "target": "Self",
+                "desc": "Raises your Attacks by 9",
+                "enchant_desc": "+2 to Buff",
+                "keys": [
+                    "ea",
+                    "pa"
+                ]
+            },
+            {
+                "id": 90,
+                "name": "Shields Up",
+                "ap": 5,
+                "enchant": {
+                    "ap": 1
+                },
+                "element": "Misc",
+                "type": "Buff",
+                "target": "Self",
+                "desc": "Raises your Defenses by 5",
+                "enchant_desc": "+1 to Buff",
+                "keys": [
+                    "ed",
+                    "pd"
+                ]
+            },
+            {
+                "id": 115,
+                "name": "Balefire",
+                "ap": 25,
+                "accuracy": 90,
+                "enchant": {
+                    "accuracy": 10
+                },
+                "element": "Fire",
+                "type": "Attack",
+                "desc": "A massively powerful Fire attack",
+                "enchant_desc": "+10% Accuracy"
+            },
+            {
+                "id": 188,
+                "name": "Strike",
+                "ap": 15,
+                "accuracy": 95,
+                "enchant": {
+                    "ap": 3
+                },
+                "element": "Physical",
+                "type": "Attack",
+                "desc": "A powerful Physical attack",
+                "enchant_desc": "+3 Attack Power"
+            },
+            {
+                "id": 1372,
+                "name": "Breakburn",
+                "ap": 10,
+                "enchant": {
+                    "ap": 1
+                },
+                "element": "Fire",
+                "type": "Attack",
+                "desc": "An average Fire attack that inflicts Anti-heal for 1 turn",
+                "enchant_desc": "+1 Attack Power",
+                "additional": [
+                    {
+                        "type": "Antiheal"
+                    }
+                ]
+            },
+            {
+                "id": 239,
+                "name": "High Focus",
+                "ap": 10,
+                "enchant": {
+                    "additional": [
+                        {
+                            "ap": 5,
+                            "type": "Heal",
+                            "target": "Self"
+                        }
+                    ]
+                },
+                "element": "Misc",
+                "type": "Buff",
+                "target": "Self",
+                "desc": "Raises your Accuracy by 10%",
+                "enchant_desc": "Replenishes 5 Health",
+                "keys": [
+                    "acc"
+                ]
+            },
+            {
+                "id": 232,
+                "name": "Firewater",
+                "enchant": {
+                    "additional": [
+                        {
+                            "ap": 5,
+                            "type": "Heal",
+                            "target": "Self"
+                        }
+                    ]
+                },
+                "element": "Misc",
+                "type": "Negate",
+                "target": "Self",
+                "desc": "Removes your elemental weakness",
+                "enchant_desc": "Replenishes 5 Health"
+            },
+            {
+                "id": 1373,
+                "name": "Supersonic Sprint",
+                "ap": 100,
+                "enchant": {
+                    "accuracy": 10
+                },
+                "element": "Physical",
+                "type": "Buff",
+                "target": "Self",
+                "desc": "Raises your Speed by 100 and heals yourself by 25 HP",
+                "enchant_desc": "+10% Accuracy",
+                "additional": [
+                    {
+                        "type": "Heal"
+                    }
+                ],
+                "keys": [
+                    "spd"
+                ]
+            },
+            {
+                "id": 1375,
+                "name": "Guard Breaker",
+                "ap": 30,
+                "enchant": {
+                    "ap": 3
+                },
+                "element": "Fire",
+                "type": "Attack",
+                "desc": "A more than massively powerful Fire attack that lowers your foe's Defenses by 12",
+                "enchant_desc": "+3 Attack Power",
+                "additional": [
+                    {
+                        "keys": [
+                            "ed",
+                            "pd"
+                        ],
+                        "type": "Buff"
+                    }
+                ]
+            },
+            {
+                "id": 1374,
+                "name": "Slice & Dice",
+                "ap": 15,
+                "enchant": {
+                    "ap": 2
+                },
+                "element": "Physical",
+                "type": "Attack",
+                "desc": "A powerful Physical attack that hits 2 times and inflicts Bleed for 4 turns",
+                "enchant_desc": "+2 Attack Power",
+                "times": 2,
+                "additional": [
+                    {
+                        "type": "Bleed"
+                    }
+                ]
+            },
+            {
+                "id": 1,
+                "name": "Burn",
+                "ap": 7,
+                "enchant": {
+                    "ap": 1
+                },
+                "element": "Fire",
+                "type": "Attack",
+                "desc": "A simple Fire attack",
+                "enchant_desc": "+1 Attack Power"
+            },
+            {
+                "id": 54,
+                "name": "Swipe",
+                "ap": 7,
+                "enchant": {
+                    "ap": 1
+                },
+                "element": "Physical",
+                "type": "Attack",
+                "desc": "A simple Physical attack",
+                "enchant_desc": "+1 Attack Power"
+            }
+        ],
+        "ability_order": [
+            1,
+            90,
+            54,
+            232,
+            1372,
+            239,
+            188,
+            71,
+            115,
+            1373,
+            1374,
+            1375
+        ],
+        "descriptions": [
+            "Zhakor appears to be extremely venomous, but this is not the case. Its body is brightly colored by design in order to intimidate would be attackers",
+            "If you anger Anjog enough, it will spit out magma from its stomach. It is unknown how it can store such a substance inside of it",
+            "Yilkasom can sense the heat of other Miscrits from dozens of meters away, making it impossible for any Fire Miscrit to hide from it",
+            "Muskesilik is an excellent swordsman, but it never engages in battle without a reason, as it knows the meaning of honor and always respects its enemies"
+        ],
+        "locations": {
+            "Miscrian Jungle": {
+                "3": []
+            }
+        }
+    },
+    {
+        "id": 661,
+        "element": "Nature",
+        "names": [
+            "Foil Pangoleaf",
+            "Foil Priodontes",
+            "Foil Cactolin",
+            "Foil Spikrus"
+        ],
+        "rarity": "Exotic",
+        "hp": "Strong",
+        "spd": "Weak",
+        "ea": "Moderate",
+        "pa": "Max",
+        "ed": "Strong",
+        "pd": "Elite",
+        "abilities": [
+            {
+                "id": 24,
+                "name": "Vines",
+                "ap": 7,
+                "enchant": {
+                    "ap": 1
+                },
+                "element": "Nature",
+                "type": "Attack",
+                "desc": "A simple Nature attack",
+                "enchant_desc": "+1 Attack Power"
+            },
+            {
+                "id": 16,
+                "name": "Sleep",
+                "accuracy": 40,
+                "enchant": {
+                    "additional": [
+                        {
+                            "ap": 5,
+                            "type": "Heal",
+                            "target": "Self"
+                        }
+                    ]
+                },
+                "element": "Misc",
+                "type": "Sleep",
+                "desc": "Puts your foe to Sleep for 2 turns, or until you attack them",
+                "enchant_desc": "Replenishes 5 Health",
+                "turns": 2,
+                "immunity": 4
+            },
+            {
+                "id": 1086,
+                "name": "Overgrowth",
+                "ap": 25,
+                "enchant": {
+                    "ap": 5
+                },
+                "element": "Nature",
+                "type": "Attack",
+                "desc": "A massively powerful Nature attack",
+                "enchant_desc": "+5 Attack Power"
+            },
+            {
+                "id": 1294,
+                "name": "Spikes",
+                "ap": 10,
+                "accuracy": 90,
+                "enchant": {
+                    "accuracy": 10
+                },
+                "element": "Misc",
+                "type": "Barbed",
+                "target": "Self",
+                "desc": "Applies Barbed to the user",
+                "enchant_desc": "+10% Accuracy",
+                "turns": 3
+            },
+            {
+                "id": 74,
+                "name": "Hyper Power",
+                "ap": 12,
+                "enchant": {
+                    "ap": 2
+                },
+                "element": "Misc",
+                "type": "Buff",
+                "target": "Self",
+                "desc": "Raises your Attacks by 12",
+                "enchant_desc": "+2 to Buff",
+                "keys": [
+                    "ea",
+                    "pa"
+                ]
+            },
+            {
+                "id": 79,
+                "name": "Eraser",
+                "ap": -7,
+                "enchant": {
+                    "ap": -2
+                },
+                "element": "Misc",
+                "type": "Buff",
+                "desc": "Lowers your foe's Elemental Attack by 7",
+                "enchant_desc": "+2 to Debuff",
+                "keys": [
+                    "ea"
+                ]
+            },
+            {
+                "id": 190,
+                "name": "Overwhelm",
+                "ap": 20,
+                "accuracy": 90,
+                "enchant": {
+                    "accuracy": 10
+                },
+                "element": "Physical",
+                "type": "Attack",
+                "desc": "A very powerful Physical attack",
+                "enchant_desc": "+10% Accuracy"
+            },
+            {
+                "id": 229,
+                "name": "Photosynth",
+                "enchant": {
+                    "additional": [
+                        {
+                            "ap": 5,
+                            "type": "Heal",
+                            "target": "Self"
+                        }
+                    ]
+                },
+                "element": "Misc",
+                "type": "Negate",
+                "target": "Self",
+                "desc": "Removes your elemental weakness",
+                "enchant_desc": "Replenishes 5 Health"
+            },
+            {
+                "id": 86,
+                "name": "Sustain",
+                "ap": 5,
+                "enchant": {
+                    "ap": 1
+                },
+                "element": "Misc",
+                "type": "Buff",
+                "target": "Self",
+                "desc": "Raises your Defenses by 5",
+                "enchant_desc": "+1 to Buff",
+                "keys": [
+                    "ed",
+                    "pd"
+                ]
+            },
+            {
+                "id": 1376,
+                "name": "Foil Tail Spikes",
+                "ap": 12,
+                "enchant": {
+                    "ap": 2
+                },
+                "element": "Physical",
+                "type": "Attack",
+                "desc": "An average Physical attack",
+                "enchant_desc": "+2 Attack Power"
+            },
+            {
+                "id": 1377,
+                "name": "Foil Cactus Crash",
+                "ap": 29,
+                "enchant": {
+                    "ap": 3
+                },
+                "element": "Physical",
+                "type": "Attack",
+                "desc": "A massively powerful Physical attack that inflicts 8 AP Poison for 2 turns and 7 AP Disease for 3 turns",
+                "enchant_desc": "+3 Attack Power",
+                "additional": [
+                    {
+                        "type": "Poison"
+                    },
+                    {
+                        "type": "Disease"
+                    }
+                ]
+            },
+            {
+                "id": 55,
+                "name": "Bite",
+                "ap": 7,
+                "enchant": {
+                    "ap": 1
+                },
+                "element": "Physical",
+                "type": "Attack",
+                "desc": "A simple Physical attack",
+                "enchant_desc": "+1 Attack Power"
+            }
+        ],
+        "ability_order": [
+            79,
+            24,
+            55,
+            86,
+            1376,
+            1294,
+            229,
+            16,
+            190,
+            74,
+            1086,
+            1377
+        ],
+        "descriptions": [
+            "Foil Pangoleaf's shiny exterior is distracting, which it will always use to its advantage during battle",
+            "The hypnotic effect of Foil Priodontes' tail swishing is multiplied tenfold by the amazing prism of colors it reflects",
+            "Many people get accidentally stuck on Foil Cactolin's tail spines because they can't resist reaching out to touch it",
+            "Foil Spikrus is sometimes seen by adventurers walking through the desert, and is believed to help lead them to water"
         ],
         "locations": {
             "Miscrian Jungle": {

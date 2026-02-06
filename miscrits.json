@@ -2347,7 +2347,7 @@
       "rarity": "Common",
       "avatar": "stalkra_avatar.png",
       "spawns": [
-        {"place": "Forest","zone": ["Cualquier objeto del Bosque"],"view": "object","objectImage": "../assets/images/maps/forest.jpg","days": "ALL_DAYS"}
+        {"place": "Forest","zone": ["Any Object in Hidden Forest"],"view": "object","objectImage": "../assets/images/maps/forest.jpg","days": "ALL_DAYS"}
       ]
     },
     {
@@ -2377,7 +2377,7 @@
       "rarity": "Common",
       "avatar": "warrian_avatar.png",
       "spawns": [
-        {"place": "","level": "","days": ""}
+        {"place": "Forest","zone": ["Any Object in Hidden Forest"],"view": "object","objectImage": "../assets/images/maps/forest.jpg","days": "ALL_DAYS"}
       ]
     },
     {
