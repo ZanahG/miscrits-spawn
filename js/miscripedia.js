@@ -3,8 +3,8 @@ const $ = (s) => document.querySelector(s);
 const STATE = {
   all: [],
   q: "",
-  rarity: "",
-  element: "",
+  rarities: new Set(),
+  elements: new Set(),
   tags: new Set(),
   attack: "",
   sort: "idAsc",
@@ -396,6 +396,56 @@ function renderSelectedTags(){
   `).join("");
 }
 
+function ensureRaritiesUI(){
+  const row = $(".filtersRow");
+  if (!row) return;
+  if ($("#raritiesBar")) return;
+
+  const bar = document.createElement("div");
+  bar.id = "raritiesBar";
+  bar.style.display = "flex";
+  bar.style.gap = "8px";
+  bar.style.flexWrap = "wrap";
+  bar.style.justifyContent = "center";
+  bar.style.margin = "10px 0 0";
+  row.insertAdjacentElement("afterend", bar);
+
+  bar.addEventListener("click", (e) => {
+    const btn = e.target.closest("[data-rarity-remove]");
+    if (!btn) return;
+    const r = btn.getAttribute("data-rarity-remove");
+    STATE.rarities.delete(r);
+    renderSelectedRarities();
+    render();
+  });
+}
+
+function renderSelectedRarities(){
+  const bar = $("#raritiesBar");
+  if (!bar) return;
+
+  const list = [...STATE.rarities].sort(
+    (a,b)=>RARITY_ORDER.indexOf(a)-RARITY_ORDER.indexOf(b)
+  );
+
+  if (!list.length){
+    bar.innerHTML = "";
+    return;
+  }
+
+  bar.innerHTML = list.map(r => `
+    <span class="tag" style="display:inline-flex;align-items:center;gap:8px;">
+      ${escapeHtml(r)}
+      <button type="button"
+        data-rarity-remove="${escapeAttr(r)}"
+        aria-label="Remove ${escapeAttr(r)}"
+        style="border:0;cursor:pointer;background:transparent;color:inherit;font-weight:900;opacity:.85;line-height:1;">
+        ×
+      </button>
+    </span>
+  `).join("");
+}
+
 /* =========================================================
    APPLY FILTERS + RENDER
 ========================================================= */
@@ -413,8 +463,14 @@ function applyFilters(){
     ));
   }
 
-  if (STATE.rarity) out = out.filter(m => m.rarity === STATE.rarity);
-  if (STATE.element) out = out.filter(m => (m.element ?? "") === STATE.element);
+  if (STATE.rarities.size){
+    out = out.filter(m => STATE.rarities.has(m.rarity));
+  }
+
+  if (STATE.elements.size){
+    out = out.filter(m => STATE.elements.has(m.element ?? ""));
+  }
+
   if (STATE.tags.size){
     const need = [...STATE.tags];
     out = out.filter(m => {
@@ -445,6 +501,7 @@ function render(){
   const empty = $("#empty");
   if (!grid || !empty) return;
 
+  renderSelectedRarities();
   renderSelectedTags();
 
   const list = applyFilters();
@@ -488,7 +545,7 @@ function render(){
    UI BUILDERS
 ========================================================= */
 
-function renderElementPills(){
+function renderElementPills() {
   const box = $("#elementsPills");
   if (!box) return;
 
@@ -498,15 +555,16 @@ function renderElementPills(){
   box.innerHTML = "";
 
   const allBtn = document.createElement("div");
-  allBtn.className = "pill active";
+  allBtn.className = "pill";
   allBtn.innerHTML = `<span>All Elements</span>`;
   allBtn.onclick = () => {
-    STATE.element = "";
-    [...box.querySelectorAll(".pill")].forEach(p=>p.classList.remove("active"));
-    allBtn.classList.add("active");
+    STATE.elements.clear();
+    sync();
     render();
   };
   box.appendChild(allBtn);
+
+  const pillByEl = new Map();
 
   for (const el of elems){
     const p = document.createElement("div");
@@ -522,15 +580,28 @@ function renderElementPills(){
     `;
 
     p.onclick = () => {
-      STATE.element = el;
-      [...box.querySelectorAll(".pill")].forEach(x=>x.classList.remove("active"));
-      p.classList.add("active");
+      if (STATE.elements.has(el)) STATE.elements.delete(el);
+      else STATE.elements.add(el);
+      sync();
       render();
     };
 
+    pillByEl.set(el, p);
     box.appendChild(p);
   }
+
+  function sync(){
+    const noneSelected = STATE.elements.size === 0;
+    allBtn.classList.toggle("active", noneSelected);
+
+    for (const [el, pill] of pillByEl){
+      pill.classList.toggle("active", STATE.elements.has(el));
+    }
+  }
+
+  sync();
 }
+
 
 function fillSelects(){
   const raritySel = $("#rarity");
@@ -578,6 +649,8 @@ async function main(){
   initStatsFilterUI();
 
   ensureTagsUI();
+  ensureRaritiesUI();
+  renderSelectedRarities();
   renderSelectedTags();
 
   const qEl = $("#q");
@@ -586,7 +659,16 @@ async function main(){
   const sortEl = $("#sort");
 
   if (qEl) qEl.addEventListener("input", (e)=>{ STATE.q = e.target.value; render(); });
-  if (rarityEl) rarityEl.addEventListener("change", (e)=>{ STATE.rarity = e.target.value; render(); });
+
+  if (rarityEl) rarityEl.addEventListener("change", (e)=> {
+    const v = String(e.target.value || "").trim();
+    if (!v) return;
+    STATE.rarities.add(v);
+    e.target.value = "";
+    renderSelectedRarities();
+    render();
+  });
+
   if (tagEl) tagEl.addEventListener("change", (e)=>{
     const v = String(e.target.value || "").trim();
     if (!v) return;
