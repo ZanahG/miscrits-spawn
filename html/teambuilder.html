@@ -217,6 +217,7 @@
 
   <div id="tbToast" class="tb-toast" hidden></div>
 
+  <!-- IMPORT MODAL -->
   <div id="tbImportModal" class="modal" hidden>
     <div class="modal__panel" style="max-width:720px;">
       <div class="modal__top">
@@ -239,7 +240,7 @@
 
   <!-- BONUS & RELICS MODAL -->
   <div id="tbBRModal" class="modal" hidden>
-    <div class="modal__panel" style="max-width:820px;">
+    <div class="modal__panel" style="max-width:920px;">
       <div class="modal__top">
         <div class="modal__title" id="tbBRTitle">Bonus & Relics</div>
         <button class="tb-btn" type="button" id="tbBRClose">Close</button>
@@ -253,7 +254,7 @@
 
       <div class="tb-br-grid">
         <!-- LEFT COLUMN -->
-        <div>
+        <div class="tbBRCol tbBRCol--left">
           <div class="tb-label" style="margin-bottom:8px;">Bonus points</div>
 
           <div class="tb-br-bonus">
@@ -269,7 +270,7 @@
             These bonuses apply on top of the level 35 totals.
           </div>
 
-          <div class="tbBRBlock">
+          <div class="tbBRBlock" style="margin-top:14px;">
             <div class="tbBRBlock__title">FINAL STATS (BASE 35 + BONUS + RELICS)</div>
 
             <div class="tbBRPresetRow">
@@ -289,38 +290,55 @@
         </div>
 
         <!-- RIGHT COLUMN -->
-        <div>
-          <div class="tb-label" style="margin-bottom:8px;">Relics (up to 4)</div>
+        <div class="tbBRCol tbBRCol--right">
+          <div class="tbBRBlock">
+            <div class="tbBRBlock__title">RELICS BONUS PREVIEW</div>
 
-          <div class="tb-br-relics">
-            <input id="tbBR_R1" class="tb-input" placeholder="Relic 1 (Lvl 10)" list="tbRelicsLvl10">
-            <input id="tbBR_R2" class="tb-input" placeholder="Relic 2 (Lvl 20)" list="tbRelicsLvl20">
-            <input id="tbBR_R3" class="tb-input" placeholder="Relic 3 (Lvl 30)" list="tbRelicsLvl30">
-            <input id="tbBR_R4" class="tb-input" placeholder="Relic 4 (Lvl 35)" list="tbRelicsLvl35">
+            <div class="tbBRKV" id="tbBRRelicPreview">
+              <div class="tbBRKV__row"><b>HP</b><span>0</span></div>
+              <div class="tbBRKV__row"><b>SPD</b><span>0</span></div>
+              <div class="tbBRKV__row"><b>EA</b><span>0</span></div>
+              <div class="tbBRKV__row"><b>PA</b><span>0</span></div>
+              <div class="tbBRKV__row"><b>ED</b><span>0</span></div>
+              <div class="tbBRKV__row"><b>PD</b><span>0</span></div>
+            </div>
           </div>
 
-          <div class="tb-small" style="opacity:.7; margin-top:8px;">
-            Uses stats from <code>Miscrits database</code> at lvl 35. Unknown relics give 0.
-          </div>
+          <div class="tbBRRelicsBelow">
+            <div class="tbBRRelicsLeft">
+              <div class="tb-label" style="margin-bottom:8px;">Relics</div>
 
-          <div class="tb-hr"></div>
+              <div class="tbRelicSlotsRow">
+                <button type="button" class="tbRelicSlot" data-rslot="0" aria-label="Relic slot 1 (lvl 10)" title="Relic 1 (lvl 10)">
+                  <img class="tbRelicSlot__img" src="../assets/images/relics/CRUZ.png" alt="" draggable="false">
+                  <span class="tbRelicSlot__lvl">10</span>
+                </button>
 
-          <div class="tbBRBottomGrid">
-            <div class="tbBRBlock">
-              <div class="tbBRBlock__title">RELICS BONUS PREVIEW</div>
+                <button type="button" class="tbRelicSlot" data-rslot="1" aria-label="Relic slot 2 (lvl 20)" title="Relic 2 (lvl 20)">
+                  <img class="tbRelicSlot__img" src="../assets/images/relics/CRUZ.png" alt="" draggable="false">
+                  <span class="tbRelicSlot__lvl">20</span>
+                </button>
 
-              <div class="tbBRKV" id="tbBRRelicPreview">
-                <div class="tbBRKV__row"><b>HP</b><span>0</span></div>
-                <div class="tbBRKV__row"><b>SPD</b><span>0</span></div>
-                <div class="tbBRKV__row"><b>EA</b><span>0</span></div>
-                <div class="tbBRKV__row"><b>PA</b><span>0</span></div>
-                <div class="tbBRKV__row"><b>ED</b><span>0</span></div>
-                <div class="tbBRKV__row"><b>PD</b><span>0</span></div>
+                <button type="button" class="tbRelicSlot" data-rslot="2" aria-label="Relic slot 3 (lvl 30)" title="Relic 3 (lvl 30)">
+                  <img class="tbRelicSlot__img" src="../assets/images/relics/CRUZ.png" alt="" draggable="false">
+                  <span class="tbRelicSlot__lvl">30</span>
+                </button>
+
+                <button type="button" class="tbRelicSlot" data-rslot="3" aria-label="Relic slot 4 (lvl 35)" title="Relic 4 (lvl 35)">
+                  <img class="tbRelicSlot__img" src="../assets/images/relics/CRUZ.png" alt="" draggable="false">
+                  <span class="tbRelicSlot__lvl">35</span>
+                </button>
               </div>
+
+              <input id="tbBR_R1" type="hidden" />
+              <input id="tbBR_R2" type="hidden" />
+              <input id="tbBR_R3" type="hidden" />
+              <input id="tbBR_R4" type="hidden" />
             </div>
           </div>
         </div>
-      </div><!-- /tb-br-grid -->
+      </div>
+
 
       <div class="tb-hr"></div>
 
@@ -328,11 +346,30 @@
         <button id="tbBRReset" class="tb-btn" type="button">Reset</button>
         <button id="tbBRApply" class="tb-btn" type="button">Apply</button>
       </div>
-    </div><!-- /modal__panel -->
-  </div><!-- /tbBRModal -->
+    </div>
+  </div>
 
+  <!-- RELIC PICKER MODAL -->
+  <div id="tbRelicModal" class="modal" hidden>
+    <div class="modal__panel" style="max-width:900px;">
+      <div class="modal__top">
+        <div class="modal__title" id="tbRelicModalTitle">Relics</div>
+        <button class="tb-btn" type="button" data-action="tbRelicClose">Close</button>
+      </div>
 
-  <!-- EXPORT IMG PREVIEW MODAL -->
+      <div class="tb-row" style="margin-top:10px; gap:10px;">
+        <input id="tbRelicSearch" class="tb-input" placeholder="Search relic..." />
+        <div class="tb-small" style="opacity:.75;">
+          Tip: click “Empty” to clear the slot.
+        </div>
+      </div>
+
+      <div class="tb-hr"></div>
+
+      <div id="tbRelicGrid" class="tbRelicGrid"></div>
+    </div>
+  </div>
+
   <div id="tbImgModal" class="modal" hidden>
     <div class="modal__panel" style="max-width:1100px;">
       <div class="modal__top">
@@ -359,7 +396,6 @@
 
           <div class="tb-hr"></div>
 
-          <!-- ACCORDIONS: all collapsed by default -->
           <details class="tb-acc">
             <summary>Title</summary>
             <div class="tb-acc__body">
@@ -436,7 +472,6 @@
   <script src="../js/nav.js" defer></script>
   <script type="module" src="../js/teambuilder.js"></script>
 
-  <!-- Datalists (Relics) -->
   <datalist id="tbRelicsLvl10"></datalist>
   <datalist id="tbRelicsLvl20"></datalist>
   <datalist id="tbRelicsLvl30"></datalist>
