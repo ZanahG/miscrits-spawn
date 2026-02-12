@@ -15,6 +15,13 @@ const PATH = {
   PATCH_TEMPLATE: "../assets/images/ui/arena.png",
 };
 
+const RELIC_PLACEHOLDER = "../assets/images/relics/CRUZ.png";
+
+const BR_RELIC_LEVELS = [10, 20, 30, 35];
+let BR_RELIC_PICK_SLOT = null;
+
+let BR_RELIC_LAST_LEVEL = null;
+
 const STAT_ICON = {
   HP: "hp.png",
   SPD: "spd.png",
@@ -380,6 +387,7 @@ async function loadAll() {
   BASE_BY_NAME = new Map(BASE.filter((x) => x?.name && x?.baseStats).map((x) => [normalize(x.name), x.baseStats]));
   META_BY_NAME = new Map((Array.isArray(META) ? META : []).filter((x) => x?.name).map((x) => [normalize(x.name), x]));
 
+  RELICS_BY_KEY = {};
   RELICS_BY_LEVEL = { 10: [], 20: [], 30: [], 35: [] };
   RELIC_STATS_BY_LEVEL_KEY = { 10: {}, 20: {}, 30: {}, 35: {} };
 
@@ -599,6 +607,166 @@ function renderElementCheck() {
   renderTypeList("#tbWeakBox", weakNotCovered, { withCounts: true, countsMap: data.weakCounts });
   renderTypeList("#tbNotCoveredBox", data.notCovered, { withCounts: false });
   renderCoveredBySlot(data.coveredBySlot);
+}
+
+/* =========================
+   Relics (FIXED)
+========================= */
+
+function relicBonusTextFromStats(st) {
+  if (!st) return "No bonus";
+  const parts = [];
+  if (toNum(st.HP)) parts.push(`+${toNum(st.HP)} HP`);
+  if (toNum(st.SPD)) parts.push(`+${toNum(st.SPD)} SPD`);
+  if (toNum(st.EA)) parts.push(`+${toNum(st.EA)} EA`);
+  if (toNum(st.PA)) parts.push(`+${toNum(st.PA)} PA`);
+  if (toNum(st.ED)) parts.push(`+${toNum(st.ED)} ED`);
+  if (toNum(st.PD)) parts.push(`+${toNum(st.PD)} PD`);
+  return parts.join(" • ") || "—";
+}
+
+function brRelicKeyBySlot(rslot) {
+  const id = ["tbBR_R1", "tbBR_R2", "tbBR_R3", "tbBR_R4"][rslot] || "tbBR_R1";
+  return relicNameToKey((document.getElementById(id)?.value || "").trim());
+}
+
+function setBrRelicKeyBySlot(rslot, key) {
+  const id = ["tbBR_R1", "tbBR_R2", "tbBR_R3", "tbBR_R4"][rslot] || "tbBR_R1";
+  const el = document.getElementById(id);
+  if (el) el.value = key ? relicNameToKey(key) : "";
+}
+
+function relicIconSrc(entry) {
+  const raw = entry && typeof entry === "object" ? entry.key : entry;
+  const k = relicNameToKey(raw);
+  return `${PATH.RELIC_ICON_FOLDER}${encodeURIComponent(k)}.png`;
+}
+
+function refreshBRRelicSlotsUI() {
+  document.querySelectorAll(".tbRelicSlot").forEach((btn) => {
+    const rslot = Number(btn.getAttribute("data-rslot") || 0);
+    const lvl = BR_RELIC_LEVELS[rslot] || 10;
+
+    const key = brRelicKeyBySlot(rslot);
+    const imgEl = btn.querySelector(".tbRelicSlot__img");
+
+    let src = RELIC_PLACEHOLDER;
+    let title = `Empty (lvl ${lvl})`;
+
+    if (key && RELIC_STATS_BY_LEVEL_KEY?.[lvl]?.[key]) {
+      src = relicIconSrc({ key });
+      const prettyName = RELICS_BY_KEY?.[key]?.name || key;
+      title = `${prettyName} (lvl ${lvl})`;
+    }
+
+    btn.title = title;
+    btn.setAttribute("aria-label", title);
+
+    if (imgEl) {
+      imgEl.src = src;
+      imgEl.onerror = () => {
+        imgEl.onerror = null;
+        imgEl.src = RELIC_PLACEHOLDER;
+      };
+    }
+  });
+}
+
+function openTBRelicModalFor(rslot) {
+  BR_RELIC_PICK_SLOT = rslot;
+
+  const lvl = BR_RELIC_LEVELS[rslot] || 10;
+  BR_RELIC_LAST_LEVEL = lvl;
+
+  const modal = document.getElementById("tbRelicModal");
+  const title = document.getElementById("tbRelicModalTitle");
+  const grid = document.getElementById("tbRelicGrid");
+  const search = document.getElementById("tbRelicSearch");
+
+  if (!modal || !title || !grid || !search) {
+    showToast("Relic modal not found (#tbRelicModal).");
+    return;
+  }
+
+  title.textContent = `Relics lvl ${lvl}`;
+  search.value = "";
+
+  const renderGrid = (q) => {
+    const qq = normalize(q);
+    grid.innerHTML = "";
+
+    const empty = document.createElement("div");
+    empty.className = "tbRelicItem";
+    empty.innerHTML = `
+      <img class="tbRelicItem__img" src="${RELIC_PLACEHOLDER}" alt="">
+      <div>
+        <div class="tbRelicItem__name">Empty</div>
+        <div class="tbRelicItem__bonus">No bonus</div>
+      </div>
+    `;
+    empty.addEventListener("click", () => {
+      setBrRelicKeyBySlot(rslot, "");
+      refreshBRRelicSlotsUI();
+      closeTBRelicModal();
+      renderBRRelicPreview();
+    });
+    grid.appendChild(empty);
+
+    const list = (RELICS_BY_LEVEL?.[lvl] || [])
+      .filter((r) => r?.key && r?.name)
+      .filter((r) => !qq || normalize(r.name).includes(qq))
+      .sort((a, b) => a.name.localeCompare(b.name, "en", { sensitivity: "base" }));
+
+    for (const r of list) {
+      const st = RELIC_STATS_BY_LEVEL_KEY?.[lvl]?.[r.key];
+      const item = document.createElement("div");
+      item.className = "tbRelicItem";
+
+      const icon = relicIconSrc({ key: r.key });
+
+      item.innerHTML = `
+        <img class="tbRelicItem__img" src="${icon}" alt="${r.name}">
+        <div>
+          <div class="tbRelicItem__name">${r.name}</div>
+          <div class="tbRelicItem__bonus">${relicBonusTextFromStats(st) || "—"}</div>
+        </div>
+      `;
+
+      const img = item.querySelector("img");
+      if (img) {
+        img.onerror = () => {
+          img.onerror = null;
+          img.src = RELIC_PLACEHOLDER;
+        };
+      }
+
+      item.addEventListener("click", () => {
+        setBrRelicKeyBySlot(rslot, r.key);
+        refreshBRRelicSlotsUI();
+        closeTBRelicModal();
+        renderBRRelicPreview();
+      });
+
+      grid.appendChild(item);
+    }
+  };
+
+  renderGrid("");
+  search.oninput = () => renderGrid(search.value);
+
+  modal.hidden = false;
+  search.focus?.();
+}
+
+function closeTBRelicModal() {
+  const modal = document.getElementById("tbRelicModal");
+  if (modal) modal.hidden = true;
+  BR_RELIC_PICK_SLOT = null;
+}
+
+function normalizeRelicStatsSafe(level, key) {
+  const st = RELIC_STATS_BY_LEVEL_KEY?.[level]?.[key];
+  return st ? normalizeRelicStats(st) : null;
 }
 
 /* =========================
@@ -850,6 +1018,7 @@ function openBRModal(slotIndex) {
   if (r3) r3.value = r[2]?.key || "";
   if (r4) r4.value = r[3]?.key || "";
 
+  refreshBRRelicSlotsUI();
   renderBRRelicPreview();
   renderBRFinalStats();
   updatePresetButtonsUI();
@@ -977,6 +1146,9 @@ function validateRelicInput(inputEl, level) {
     inputEl.value = "";
     showToast(`That relic is not available for level ${level}.`);
     renderBRRelicPreview();
+    refreshBRRelicSlotsUI();
+  } else {
+    refreshBRRelicSlotsUI();
   }
 }
 
@@ -997,13 +1169,14 @@ function resetBRModal() {
     if (el) el.value = "";
   });
 
+  refreshBRRelicSlotsUI();
   renderBRRelicPreview();
   renderBRFinalStats();
   showToast("Modal reset (preview).");
 }
 
 /* =========================
-   Threats (tu código igual)
+   Threats
 ========================= */
 
 function classifyOutcome(htkYou, htkThem) {
@@ -1019,12 +1192,7 @@ function getThreatTotalsMetaEnemy(threatName) {
 
   const relicBonus = sumRelicBonuses(getMetaRelicsFirstByLevel(threatName));
 
-  return computeTotalsLevel35(
-    base15,
-    META_ENEMY_COLORS_ALLGREEN,
-    META_ENEMY_BONUS_26,
-    relicBonus
-  );
+  return computeTotalsLevel35(base15, META_ENEMY_COLORS_ALLGREEN, META_ENEMY_BONUS_26, relicBonus);
 }
 
 function bestAttackResult(attackerName, attackerTotals, defenderName, defenderTotals, mode = "auto") {
@@ -1204,11 +1372,6 @@ function setQuickOut({ atkName = "—", defName = "—", move = "—", avg = "�
   $("#tbOutMul").textContent = mul;
 }
 
-function computeThreatTotals(name) {
-  const base15 = BASE_BY_NAME.get(normalize(name));
-  return computeTotalsLevel35(base15, DEFAULT_COLORS, DEFAULT_BONUS);
-}
-
 function runQuickCheck() {
   const atkSlotIdx = Number($("#tbAtkSlot")?.value ?? 0);
   const atkSlot = state.slots[atkSlotIdx];
@@ -1365,12 +1528,6 @@ function slotBadge(slot) {
   return isSlotRS(slot) ? "RS" : "S+";
 }
 
-function relicIconSrc(entry) {
-  const raw = (entry && typeof entry === "object") ? entry.key : entry;
-  const k = relicNameToKey(raw).toLowerCase();
-  return `${PATH.RELIC_ICON_FOLDER}${k}.png`;
-}
-
 function loadImage(src) {
   return new Promise((resolve) => {
     const img = new Image();
@@ -1452,9 +1609,9 @@ function applyImportFromText(txt) {
     if (Array.isArray(s.relics)) {
       slot.relics = s.relics.slice(0, 4).map((ent, idx) => {
         if (ent && typeof ent === "object") {
-          return { level: toNum(ent.level) || [10,20,30,35][idx], key: relicNameToKey(ent.key) };
+          return { level: toNum(ent.level) || [10, 20, 30, 35][idx], key: relicNameToKey(ent.key) };
         }
-        return { level: [10,20,30,35][idx], key: relicNameToKey(ent) };
+        return { level: [10, 20, 30, 35][idx], key: relicNameToKey(ent) };
       });
     }
 
@@ -1517,7 +1674,7 @@ function teamSignature() {
     if (!s?.name) return "";
     const b = s.bonus || DEFAULT_BONUS;
     const r = Array.isArray(s.relics) ? s.relics : [];
-    return [s.name, `B:${b.HP},${b.SPD},${b.EA},${b.PA},${b.ED},${b.PD}`, `R:${r.join(",")}`].join("|");
+    return [s.name, `B:${b.HP},${b.SPD},${b.EA},${b.PA},${b.ED},${b.PD}`, `R:${r.map((x) => (x?.key ? x.key : x)).join(",")}`].join("|");
   });
   return parts.join("||");
 }
@@ -1594,12 +1751,11 @@ function loadTeamById(id) {
     if (Array.isArray(s.relics)) {
       slot.relics = s.relics.slice(0, 4).map((ent, idx) => {
         if (ent && typeof ent === "object") {
-          return { level: toNum(ent.level) || [10,20,30,35][idx], key: relicNameToKey(ent.key) };
+          return { level: toNum(ent.level) || [10, 20, 30, 35][idx], key: relicNameToKey(ent.key) };
         }
-        return { level: [10,20,30,35][idx], key: relicNameToKey(ent) };
+        return { level: [10, 20, 30, 35][idx], key: relicNameToKey(ent) };
       });
     }
-
 
     recalcSlotTotals(slot);
     return slot;
@@ -1651,7 +1807,7 @@ function refreshAll() {
 }
 
 /* =========================
-   IMG Preview + Export (FIXED)
+   IMG Preview + Export (FIXED + DEFINED)
 ========================= */
 
 const IMG_LAYOUT_KEY = "miscrits_tb_img_layout_v1";
@@ -1667,18 +1823,15 @@ const IMG_DEFAULT = {
   badgeY: 210,
   badgeSize: 56,
 
-  // labels
   weakY: 690,
   covY: 890,
   typeX: 62,
   typeRowGap: 22,
 
-  // type icons
   typeIconR: 18,
   typeIconStep: 34,
   coverageOffsetY: 0,
 
-  // relic layout
   iconR: 32,
   iconStep: 64,
 };
@@ -1729,13 +1882,11 @@ async function renderImgPreview() {
   const bg = await loadImage(PATH.PATCH_TEMPLATE);
   if (bg) ctx.drawImage(bg, 0, 0, W, H);
 
-  // TITLE
   ctx.fillStyle = "#fff";
   ctx.textBaseline = "alphabetic";
   ctx.font = `900 ${IMG_CFG.titleSize}px system-ui, -apple-system, Segoe UI, Roboto, Arial`;
   drawCenteredText(ctx, (IMG_TEAMNAME || "TEAM NAME").toUpperCase(), 768, IMG_CFG.titleY);
 
-  // AVATARS + BADGES
   const slots = state.slots;
   const avatarSize = IMG_CFG.avatarSize;
   const gap = IMG_CFG.avatarGap;
@@ -1760,7 +1911,6 @@ async function renderImgPreview() {
     if (img) ctx.drawImage(img, x, IMG_CFG.avatarY, avatarSize, avatarSize);
   }
 
-  // WEAKNESS / COVERAGE
   const el = computeElementCheckV2();
   const weaknessList = el.ready ? el.weakTypes.filter((t) => !el.teamCovered.has(t)) : [];
   const coverageList = el.ready ? Array.from(el.teamCovered) : [];
@@ -1775,28 +1925,25 @@ async function renderImgPreview() {
   ctx.font = `900 ${labelFontPx}px system-ui, -apple-system, Segoe UI, Roboto, Arial`;
 
   const weakLabelY = IMG_CFG.weakY;
-  const covLabelY  = IMG_CFG.covY;
+  const covLabelY = IMG_CFG.covY;
 
   const weakText = "WEAKNESS";
-  const covText  = "COVERAGE";
+  const covText = "COVERAGE";
 
   ctx.fillText(weakText, labelX, weakLabelY);
-  ctx.fillText(covText,  labelX, covLabelY);
+  ctx.fillText(covText, labelX, covLabelY);
 
   const weakM = ctx.measureText(weakText);
-  const covM  = ctx.measureText(covText);
+  const covM = ctx.measureText(covText);
 
-  const weakAscent  = weakM.actualBoundingBoxAscent  || labelFontPx * 0.75;
   const weakDescent = weakM.actualBoundingBoxDescent || labelFontPx * 0.25;
-
-  const covAscent  = covM.actualBoundingBoxAscent  || labelFontPx * 0.75;
   const covDescent = covM.actualBoundingBoxDescent || labelFontPx * 0.25;
 
   const weakBottomY = weakLabelY + weakDescent;
-  const covBottomY  = covLabelY  + covDescent;
+  const covBottomY = covLabelY + covDescent;
 
   const weakIconsCenterY = weakBottomY + iconRowGap;
-  const covIconsCenterY  = covBottomY  + iconRowGap - (IMG_CFG.coverageOffsetY || 0);
+  const covIconsCenterY = covBottomY + iconRowGap - (IMG_CFG.coverageOffsetY || 0);
 
   function drawCircleIcon(img, cx, cy, r) {
     ctx.save();
@@ -1811,9 +1958,8 @@ async function renderImgPreview() {
   async function drawTypeRowBelow(types, startX, centerY) {
     const list = (types || []).slice(0, 12);
     const imgs = await Promise.all(list.map((t) => loadImage(typeIconSrc(t))));
-    IMG_CFG.typeIconStep = 55;
     for (let i = 0; i < list.length; i++) {
-      const cx = startX + i * IMG_CFG.typeIconStep;
+      const cx = startX + i * (IMG_CFG.typeIconStep || 55);
       drawCircleIcon(imgs[i], cx, centerY, IMG_CFG.typeIconR);
     }
   }
@@ -1896,20 +2042,27 @@ function openImgModal() {
       IMG_CFG = { ...IMG_DEFAULT };
       saveImgCfg();
 
-      setRangeValue("tbImg_titleY", IMG_CFG.titleY);
-      setRangeValue("tbImg_titleSize", IMG_CFG.titleSize);
-      setRangeValue("tbImg_avatarY", IMG_CFG.avatarY);
-      setRangeValue("tbImg_avatarSize", IMG_CFG.avatarSize);
-      setRangeValue("tbImg_avatarGap", IMG_CFG.avatarGap);
-      setRangeValue("tbImg_badgeY", IMG_CFG.badgeY);
-      setRangeValue("tbImg_badgeSize", IMG_CFG.badgeSize);
-      setRangeValue("tbImg_weakY", IMG_CFG.weakY);
-      setRangeValue("tbImg_covY", IMG_CFG.covY);
-      setRangeValue("tbImg_typeIconR", IMG_CFG.typeIconR);
-      setRangeValue("tbImg_typeIconStep", IMG_CFG.typeIconStep);
-      setRangeValue("tbImg_covOffsetY", IMG_CFG.coverageOffsetY);
-      setRangeValue("tbImg_iconR", IMG_CFG.iconR);
-      setRangeValue("tbImg_iconStep", IMG_CFG.iconStep);
+      Object.keys(IMG_DEFAULT).forEach((k) => {
+        const idMap = {
+          typeX: "tbImg_typeX",
+          titleY: "tbImg_titleY",
+          titleSize: "tbImg_titleSize",
+          avatarY: "tbImg_avatarY",
+          avatarSize: "tbImg_avatarSize",
+          avatarGap: "tbImg_avatarGap",
+          badgeY: "tbImg_badgeY",
+          badgeSize: "tbImg_badgeSize",
+          weakY: "tbImg_weakY",
+          covY: "tbImg_covY",
+          typeIconR: "tbImg_typeIconR",
+          typeIconStep: "tbImg_typeIconStep",
+          coverageOffsetY: "tbImg_covOffsetY",
+          iconR: "tbImg_iconR",
+          iconStep: "tbImg_iconStep",
+        };
+        const id = idMap[k];
+        if (id) setRangeValue(id, IMG_CFG[k]);
+      });
 
       renderImgPreview();
       showToast("Layout reset.");
@@ -1946,7 +2099,6 @@ function fillRelicDatalists() {
   for (const lvl of [10, 20, 30, 35]) {
     const dl = map[lvl];
     if (!dl) continue;
-
     dl.innerHTML = RELICS_BY_LEVEL[lvl].map((r) => `<option value="${r.key}">${r.name}</option>`).join("");
   }
 }
@@ -1980,20 +2132,12 @@ function bindUI() {
   $("#tbBRApply")?.addEventListener("click", applyBRModal);
   $("#tbBRReset")?.addEventListener("click", resetBRModal);
 
-  const brLiveIds = [
-    "tbBR_HP",
-    "tbBR_SPD",
-    "tbBR_EA",
-    "tbBR_PA",
-    "tbBR_ED",
-    "tbBR_PD",
-    "tbBR_R1",
-    "tbBR_R2",
-    "tbBR_R3",
-    "tbBR_R4",
-  ];
+  const brLiveIds = ["tbBR_HP", "tbBR_SPD", "tbBR_EA", "tbBR_PA", "tbBR_ED", "tbBR_PD", "tbBR_R1", "tbBR_R2", "tbBR_R3", "tbBR_R4"];
   brLiveIds.forEach((id) => {
-    document.getElementById(id)?.addEventListener("input", renderBRRelicPreview);
+    document.getElementById(id)?.addEventListener("input", () => {
+      renderBRRelicPreview();
+      refreshBRRelicSlotsUI();
+    });
   });
 
   $("#tbBRAllGreen")?.addEventListener("click", () => {
@@ -2006,10 +2150,37 @@ function bindUI() {
     renderBRFinalStats();
   });
 
+  document.addEventListener("click", (e) => {
+    const btn = e.target.closest(".tbRelicSlot");
+    if (!btn) return;
+
+    const brModal = document.getElementById("tbBRModal");
+    if (brModal && brModal.hidden) return;
+
+    const rslot = Number(btn.getAttribute("data-rslot") || 0);
+    openTBRelicModalFor(rslot);
+  });
+
+  document.addEventListener("click", (e) => {
+    if (e.target?.id === "tbRelicModal") {
+      closeTBRelicModal();
+      return;
+    }
+    if (e.target.closest('[data-action="tbRelicClose"]')) {
+      closeTBRelicModal();
+      return;
+    }
+    if (e.target?.id === "tbRelicClose") {
+      closeTBRelicModal();
+      return;
+    }
+  });
+
   document.getElementById("tbBR_R1")?.addEventListener("change", () => validateRelicInput(document.getElementById("tbBR_R1"), 10));
   document.getElementById("tbBR_R2")?.addEventListener("change", () => validateRelicInput(document.getElementById("tbBR_R2"), 20));
   document.getElementById("tbBR_R3")?.addEventListener("change", () => validateRelicInput(document.getElementById("tbBR_R3"), 30));
   document.getElementById("tbBR_R4")?.addEventListener("change", () => validateRelicInput(document.getElementById("tbBR_R4"), 35));
+  document.getElementById("tbRelicClose")?.addEventListener("click", closeTBRelicModal);
 
   $("#tbAnalyzeThreats")?.addEventListener("click", analyzeThreats);
   $("#tbClearThreats")?.addEventListener("click", clearThreatAnalysis);
@@ -2090,6 +2261,7 @@ function bindUI() {
     if ($("#tbPickerModal") && !$("#tbPickerModal").hidden) closePicker();
     if ($("#tbBRModal") && !$("#tbBRModal").hidden) closeBRModal();
     if ($("#tbImportModal") && !$("#tbImportModal").hidden) closeImportModal();
+    if (document.getElementById("tbRelicModal") && !document.getElementById("tbRelicModal").hidden) closeTBRelicModal();
   });
 }
 
