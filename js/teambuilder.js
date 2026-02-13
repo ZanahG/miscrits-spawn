@@ -639,8 +639,10 @@ function setBrRelicKeyBySlot(rslot, key) {
 function relicIconSrc(entry) {
   const raw = entry && typeof entry === "object" ? entry.key : entry;
   const k = relicNameToKey(raw);
-  return `${PATH.RELIC_ICON_FOLDER}${encodeURIComponent(k)}.png`;
+  const file = k.toLowerCase();
+  return `${PATH.RELIC_ICON_FOLDER}${encodeURIComponent(file)}.png`;
 }
+
 
 function refreshBRRelicSlotsUI() {
   document.querySelectorAll(".tbRelicSlot").forEach((btn) => {
