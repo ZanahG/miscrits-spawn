@@ -15,12 +15,23 @@ const PATH = {
   PATCH_TEMPLATE: "../assets/images/ui/arena.png",
 };
 
+const TB_BACKGROUNDS = [
+  { key: "arena", file: "arena.png", label: "Arena" },
+  { key: "cave", file: "cave.png", label: "Cave" },
+  { key: "forest", file: "forest.png", label: "Forest" },
+  { key: "mansion", file: "mansion.png", label: "Mansion" },
+  { key: "mansion-outside", file: "mansion2.png", label: "Mansion Outside" },
+  { key: "moon-cave", file: "mooncave.png", label: "Moon Cave" },
+  { key: "moon-of-miscria", file: "moonofmiscria.png", label: "Moon Of Miscria" },
+  { key: "mount-gemma", file: "mountgemma.png", label: "Mount Gemma" },
+  { key: "the-shac", file: "theshac.png", label: "The Shac" },
+  { key: "volcano-island", file: "volcanoisland.png", label: "Volcano Island" },
+];
+
+PATH.TEAMBUILDER_BG_FOLDER = "../assets/images/teambuilder/";
 const RELIC_PLACEHOLDER = "../assets/images/relics/CRUZ.png";
 
 const BR_RELIC_LEVELS = [10, 20, 30, 35];
-let BR_RELIC_PICK_SLOT = null;
-
-let BR_RELIC_LAST_LEVEL = null;
 
 const STAT_ICON = {
   HP: "hp.png",
@@ -1881,7 +1892,10 @@ async function renderImgPreview() {
     H = 1024;
   ctx.clearRect(0, 0, W, H);
 
-  const bg = await loadImage(PATH.PATCH_TEMPLATE);
+  const bgEntry = TB_BACKGROUNDS.find(x => x.key === IMG_CFG.bgKey) || TB_BACKGROUNDS[0];
+  const bgSrc = bgEntry ? (PATH.TEAMBUILDER_BG_FOLDER + bgEntry.file) : PATH.PATCH_TEMPLATE;
+
+  const bg = await loadImage(bgSrc);
   if (bg) ctx.drawImage(bg, 0, 0, W, H);
 
   ctx.fillStyle = "#fff";
@@ -2012,6 +2026,20 @@ function openImgModal() {
   }
 
   loadImgCfg();
+  const bgSel = document.getElementById("tbImgBg");
+  if (bgSel) {
+    bgSel.innerHTML = TB_BACKGROUNDS
+      .map(b => `<option value="${b.key}">${b.label}</option>`)
+      .join("");
+
+    bgSel.value = IMG_CFG.bgKey || (TB_BACKGROUNDS[0]?.key || "arena");
+
+    bgSel.onchange = () => {
+      IMG_CFG.bgKey = bgSel.value;
+      saveImgCfg();
+      renderImgPreview();
+    };
+  }
 
   const nameInput = document.getElementById("tbImgTeamName");
   if (nameInput) {
