@@ -31,6 +31,8 @@ const TB_BACKGROUNDS = [
 PATH.TEAMBUILDER_BG_FOLDER = "../assets/images/teambuilder/";
 const RELIC_PLACEHOLDER = "../assets/images/relics/CRUZ.png";
 
+let BR_RELIC_PICK_SLOT = null;
+let BR_RELIC_LAST_LEVEL = null;
 const BR_RELIC_LEVELS = [10, 20, 30, 35];
 
 const STAT_ICON = {
